@@ -8,6 +8,7 @@ If you are interested, you can use some of the formatting I have employed.
 
 - I generate a tag list and page by using the [tags.html](https://github.com/cudmore/cudmore.github.io/blob/master/tags.html) file. This requires each post to have some yaml front matter:
 
+~~~
 	---
 	layout: post
 	title: "Use OpenCV to acquire video"
@@ -18,34 +19,9 @@ If you are interested, you can use some of the formatting I have employed.
 	- acquisition  
 	- opencv  
 	---  
+~~~
 
-- I generate an archive page with [archive.md](https://github.com/cudmore/cudmore.github.io/blob/master/archive.md) and it looks like this:
-
-	---
-	layout: page
-	title: Archive
-	---
-
-	<ul>
-	  {% for post in site.posts %}
-
-	    {% unless post.next %}
-	   	   <h3>{{ post.date | date: '%Y' }}</h3>
-	    {% else %}
-	      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-	      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-	      {% if year != nyear %}
-			<div class="archive-group"></div>
-	        <h3>{{ post.date | date: '%Y' }}</h3>
-	      {% endif %}
-	    {% endunless %}
-
-	    {{ post.date | date:"%b %d" }}, <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
-	    <BR>
-	    	
-	  {% endfor %}
-	</ul>
-
+- I generate an archive page with [archive.md](https://github.com/cudmore/cudmore.github.io/blob/master/archive.md).
 
 ## Authors
 
