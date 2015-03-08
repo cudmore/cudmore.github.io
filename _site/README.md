@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This is the Jekyll source code and post data for my blog, the layout is auto generated using Jekyll and a theme based on Hyde which is based on Poole.
+This is the Jekyll source code and post data for my blog, the layout is auto generated using [Jekyll](http://jekyllrb.com) and a theme based on [Hyde](http://hyde.getpoole.com) which is based on [Poole](http://getpoole.com).
 
 If you are interested, you can use some of the formatting I have employed.
 
-- I generate a tag list and page by using the [tags.html](https://github.com/cudmore/cudmore.github.io/blob/master/tags.html) file. This requires each post to have some yaml front matter:
+- I generate a tag list and page by using the [tags.html](https://github.com/cudmore/cudmore.github.io/blob/master/tags.html) file. Each post specifies its tags in its yaml frontmatter like this...
 
 ~~~
 	---
@@ -22,6 +22,9 @@ If you are interested, you can use some of the formatting I have employed.
 ~~~
 
 - I generate an archive page with [archive.md](https://github.com/cudmore/cudmore.github.io/blob/master/archive.md).
+
+- I generate navigation links to pre/next post at the bottom of each blog post using [_layouts/post.html](https://github.com/cudmore/cudmore.github.io/blob/master/_layouts/post.html)
+
 
 ## Authors
 

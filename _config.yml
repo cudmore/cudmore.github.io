@@ -28,7 +28,7 @@ paginate:         5
 version:          0.1
 
 github:
-  repo:           https://github.com/cudmore/blog
+  repo:           https://github.com/cudmore/cudmore.github.io
 
 #a simple database of pages, used in header.html
 #following http://joshualande.com/jekyll-github-pages-poole/
