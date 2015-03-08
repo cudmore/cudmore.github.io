@@ -289,3 +289,6 @@ a.sidebar-nav-item:focus {
 .page-nav-item-right a {
 	float: right;
 }
+
+/* sidebar recent postst */
+.sidebarlink { font-size: 0.8rem; text-decoration: none; }
