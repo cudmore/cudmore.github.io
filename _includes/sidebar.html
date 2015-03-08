@@ -1,0 +1,54 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+
+    {% comment %}
+    <div class="sidebar-about">
+      <h1>
+        <a href="{{ site.baseurl }}">
+          {{ site.title }}
+        </a>
+      </h1>
+      <p class="lead">{{ site.description }}</p>
+    </div>
+    {% endcomment %}
+    
+    <div id="sidebar">
+    <!-- <nav class="sidebar-nav"> -->
+      <!-- <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Home</a> -->
+
+      {% comment %}
+        The code below dynamically generates a sidebar nav of pages with
+        `layout: page` in the front-matter. See readme for usage.
+      {% endcomment %}
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Recent posts</span>
+		    {% for post in site.posts offset: 0 limit: 5 %}
+		      &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><BR>
+		    {% endfor %}
+		</section>
+
+		<BR>
+
+		<span class="sidebar-nav-item">Tag cloud</span>
+		{% for tag in site.tags %}
+    		<a style="font-size: {{ tag | last | size | times: 200 | divided_by: site.tags.size | plus: 40  }}%" href="{{ site.baseurl }}/tags/#{{ tag | first | slugize }}">
+    		  {{ tag | first }}
+    		</a>
+		{% endfor %}
+
+		<BR>
+		<BR>
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Links</span>
+		  &raquo; <a href="http://robertcudmore.org">Homepage</a><BR>
+		  &raquo; <a href="{{ site.github.repo }}">Blog layout on github</a><BR>
+		  &raquo; <a href="http://www.flickr.com/cudmore">Flickr</a><BR>
+		</section>
+  
+	</div>
+<!--    </nav> -->
+
+  </div>
+</div>

@@ -1,0 +1,40 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            Robert Cudmore
+tagline:          ''
+#description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+#url:              http://hyde.getpoole.com
+
+# Keep as an empty string if served up at the root. If served up at a specific
+# path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
+baseurl: ''
+# was this
+#baseurl:          /
+
+author:
+  name:           'Robert Cudmore'
+  url:            http://robertcudmore.org
+
+paginate:         5
+
+# Custom vars
+version:          0.1
+
+github:
+  repo:           https://github.com/cudmore/blog
+
+#a simple database of pages, used in header.html
+#following http://joshualande.com/jekyll-github-pages-poole/
+pages_list:       
+  #Home: '/index.html'
+  about: '/about'
+  archive: '/archive'
+  tags: '/tags'
+  #feed: '/atom.xml'

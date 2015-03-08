@@ -1,24 +1,39 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h2>This is the homepage for Robert Cudmore on github</h2>
-This page is with GitHub Pages at <A HREF="http://cudmore.github.io/">http://cudmore.github.io/</A>
-<BR>
+---
+layout: default
+title: Home
+---
 
-New Vascular-Analysis documentation at <A HREF="http://cudmore.github.io/Vascular-Analysis/">http://cudmore.github.io/Vascular-Analysis/</A>
-<BR>
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
 
-Coming soon: Fiji PLugins
-Coming soon: MapManager
+    <span class="post-date">{{ post.date | date_to_string }}</span>
 
-Old software documentation at <A HREF="http://robertcudmore.org/maptracker">http://robertcudmore.org/maptracker</A>
-<BR>
+    {{ post.content }}
 
-Homepage at <A HREF="http://robertcudmore.org">http://robertcudmore.org</A>
-<BR>
+	<hr style="background:#CCC; border:0; height:2px" />
+  </div>
+  {% endfor %}
+</div>
 
-Blog at <A HREF="http://robertcudmore.org/blog/">http://robertcudmore.org/blog/</A>
-<BR>
-
-</body>
-</html>
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>
