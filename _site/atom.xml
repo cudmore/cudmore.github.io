@@ -4,13 +4,332 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-03-08T13:43:56-04:00</updated>
+ <updated>2015-03-08T13:58:51-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Use OpenCV to acquire video</title>
+   <link href="/post/2015/03/07/use-opencv-to-acquire-video/"/>
+   <updated>2015-03-07T17:01:06-05:00</updated>
+   <id>/post/2015/03/07/use-opencv-to-acquire-video</id>
+   <content type="html">&lt;h4&gt;Goals&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use raspberry to record video from USB camera and stream to disk.&lt;/li&gt;
+&lt;li&gt;Use python and opencv&lt;/li&gt;
+&lt;li&gt;will save either as a sequence of .tif or as an uncompressed videofile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Install opencv&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;sudo apt-get update&lt;br&gt;
+sudo apt-get upgrade&lt;br&gt;
+sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Remember that I have conda install of python in &amp;#39;/home/pi/miniconda/bin/python&amp;#39;.&lt;/li&gt;
+&lt;li&gt;I need to use &amp;#39;/usr/bin/python&amp;#39; instead.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Check opencv install&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;pi@pi40 ~ $ /usr/bin/python  
+Python 2.7.3 (default, Mar 18 2014, 05:13:23) 
+[GCC 4.6.3] on linux2  
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.  
+&amp;gt;&amp;gt;&amp;gt; import cv2  
+&amp;gt;&amp;gt;&amp;gt; cv2.__version__  
+&amp;#39;2.4.1&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Install USB thumb drive + usb camera&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;after pluggin in usb drive + usb camera&lt;/p&gt;
+
+&lt;p&gt;pi@pi40 ~ $ lsusb&lt;br&gt;
+Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&lt;br&gt;
+Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
+Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye&lt;br&gt;
+Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.  &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Got some python/opencv code to acquire&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Acquires individual .tif files in a loop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;To do&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check the frame rate by recording a clock&lt;/li&gt;
+&lt;li&gt;Add in template code for stop/start, start with keyboard and then move to GPIO&lt;/li&gt;
+&lt;li&gt;Get the DC60 STK1160 video to usb dongle working&lt;/li&gt;
+&lt;li&gt;This website says that it may just auto detect in newer linux kernels?
+http://linuxtv.org/wiki/index.php/Stk1160#Making&lt;em&gt;it&lt;/em&gt;Work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Here is the code&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#/usr/bin/python
+
+import numpy as np
+import cv2
+
+#initialize camera
+cap = cv2.VideoCapture(0)
+if cap is None:
+    print &amp;#39;Warning: unable to access camera&amp;#39;
+
+#stopPin = 7 # listen for a change on this pin to stop
+
+# number of frames to acquire
+numFrames = 30
+currFrame = 0
+
+#outfilebase = &amp;#39;images/image&amp;#39; #append number + .tif
+
+print &amp;#39;starting capture of &amp;#39; + str(numFrames) + &amp;#39; frames.&amp;#39;
+print &amp;#39;press ctrl-c to stop ... eventually we will stop on a TTL&amp;#39;
+while(cap.isOpened()):
+    try:
+        ret, frame = cap.read()
+        if ret==True:
+            #flip frame
+            #frame = cv2.flip(frame,0)
+
+            #print frame.shape
+
+            # write the flipped frame
+            try:
+                #out.write(frame)
+                #cv2.SaveImage(&amp;#39;file&amp;#39; + str(currFrame) + &amp;#39;.tif&amp;#39;, frame)
+                cv2.imwrite(&amp;#39;images/image&amp;#39; + str(currFrame) + &amp;#39;.tif&amp;#39;, frame)
+            except:
+                print &amp;#39;Error in out.write() OR user hit ctrl-c&amp;#39;
+                break
+
+            currFrame += 1
+            #if (currFrame &amp;gt; numFrames):
+            #    print &amp;#39;finished &amp;#39; + str(numFrames) + &amp;#39; frames.&amp;#39;
+            #    break
+
+        else:
+            break
+
+    except KeyboardInterrupt:
+        print &amp;#39;user hit ctrl-c&amp;#39;
+        print &amp;#39;frames=&amp;#39; + str(currFrame)
+        break
+
+# Release camera
+cap.release()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Plotting with bokeh on the Raspberry Pi</title>
+   <link href="/post/2015/03/05/bokeh-on-the-raspberry-pi/"/>
+   <updated>2015-03-05T17:01:06-05:00</updated>
+   <id>/post/2015/03/05/bokeh-on-the-raspberry-pi</id>
+   <content type="html">&lt;h3&gt;To get bokeh plotting on the Raspberry Pi&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install continuum anaconda python distribution&lt;/li&gt;
+&lt;li&gt;Install bokeh plotting and get a plot server running&lt;/li&gt;
+&lt;li&gt;be able to run bokeh examples&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Install miniconda&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+pi@pi40 ~ $ bash Miniconda-3.5.5-Linux-armv6l.sh 
+
+Miniconda will now be installed into this location:
+/home/pi/miniconda
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify an different location below
+
+[/home/pi/miniconda] &amp;gt;&amp;gt;&amp;gt; 
+PREFIX=/home/pi/miniconda
+installing: python-2.7.7-0 ...
+installing: openssl-1.0.1h-0 ...
+installing: pycosat-0.6.1-py27_0 ...
+installing: pyyaml-3.11-py27_0 ...
+installing: requests-2.3.0-py27_0 ...
+installing: yaml-0.1.4-0 ...
+installing: conda-3.5.5-py27_0 ...
+Python 2.7.7 :: Continuum Analytics, Inc.
+creating default environment...
+installation finished.
+Do you wish the installer to prepend the Miniconda install location
+to PATH in your /home/pi/.bashrc ? [yes|no]
+[no] &amp;gt;&amp;gt;&amp;gt; yes
+
+Prepending PATH=/home/pi/miniconda/bin to PATH in /home/pi/.bashrc
+A backup will be made to: /home/pi/.bashrc-miniconda.bak
+
+
+For this change to become active, you have to open a new terminal.
+
+Thank you for installing Miniconda!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Make sure numpy and pandas is correct&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;pip install numpy --upgrade&lt;br&gt;
+pip install pandas --upgrade  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Install bokeh&lt;/h3&gt;
+
+&lt;p&gt;In general &amp;#39;conda install bokeh&amp;#39; does not work on Pi, bokeh is not in repo?&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;pip install bokeh  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
+Ideally, you should have the following libraries installed:
+
+NumPy
+Flask
+Redis
+Requests
+gevent
+gevent-websocket
+Pandas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Currently installed with pip&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;pi@pi40 ~ $ pip freeze
+Flask==0.10.1
+Flask-Markdown==0.3
+Flask-Misaka==0.3.0
+Flask-SocketIO==0.5.0
+Jinja2==2.7.3
+Markdown==2.6
+MarkupSafe==0.23
+PyYAML==3.11
+Pygments==2.0.2
+RPi.GPIO==0.5.11
+Werkzeug==0.10.1
+backports.ssl-match-hostname==3.4.0.2
+bokeh==0.8.1
+colorama==0.3.3
+conda==3.5.5
+gevent==1.0.1
+gevent-socketio==0.3.6
+gevent-websocket==0.9.3
+greenlet==0.4.5
+ipython==2.1.0
+itsdangerous==0.24
+misaka==1.0.2
+nose==1.3.0
+numpy==1.9.2
+pandas==0.15.2
+psutil==2.2.1
+pycosat==0.6.1
+pystache==0.5.4
+python-dateutil==2.4.1
+pytz==2014.10
+pyzmq==14.5.0
+requests==2.3.0
+six==1.9.0
+tornado==4.1
+websocket==0.2.1
+wsgiref==0.1.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Grab some example plots from bokeh github&lt;/h3&gt;
+
+&lt;p&gt;The bokeh example plots are at:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;https://github.com/bokeh/bokeh/tree/master/examples/plotting/server&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Run the bokeh-server&lt;/h3&gt;
+
+&lt;p&gt;Remember, this make temporary files in directory you run it in.&lt;/p&gt;
+
+&lt;p&gt;--ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006  &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;bokeh-server --backend=memory --ip 0.0.0.0&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
+No module named scipy
+
+    Bokeh Server Configuration
+    ==========================
+    python version : 2.7.8
+    bokeh version  : 0.8.1
+    listening      : 0.0.0.0:5006
+    backend        : memory
+    python options : debug:OFF, verbose:OFF, filter-logs:OFF, multi-user:OFF
+    js options     : splitjs:OFF, debugjs:OFF
+
+/home/pi/miniconda/lib/python2.7/site-packages/bokeh/server/blaze/__init__.py:19: UserWarning: could not import multiuser blaze server No module named blaze.  This is fine if you do not intend to use blaze capabilities in the bokeh server
+  warnings.warn(msg)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Example plots I have working&lt;/h3&gt;
+
+&lt;p&gt;line_animate.py&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# The plot server must be running
+# Go to http://localhost:5006/bokeh to view this plot
+
+import time
+
+import numpy as np
+
+from bokeh.plotting import *
+
+N = 80
+
+x = np.linspace(0, 4*np.pi, N)
+y = np.sin(x)
+
+output_server(&amp;quot;line_animate&amp;quot;)
+
+p = figure()
+
+p.line(x, y, color=&amp;quot;#3333ee&amp;quot;, name=&amp;quot;sin&amp;quot;)
+p.line([0,4*np.pi], [-1, 1], color=&amp;quot;#ee3333&amp;quot;)
+
+show(p)
+
+renderer = p.select(dict(name=&amp;quot;sin&amp;quot;))
+ds = renderer[0].data_source
+
+while True:
+    for i in np.hstack((np.linspace(1, -1, 100), np.linspace(-1, 1, 100))):
+        ds.data[&amp;quot;y&amp;quot;] = y * i
+        cursession().store_objects(ds)
+        time.sleep(0.05)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Now use Flask + bokeh to generate a single html page (no bokeh-server)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)&lt;/li&gt;
+&lt;li&gt;simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;http://bokeh.pydata.org/en/latest/index.html&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;http://docs.continuum.io/anaconda/install.html&lt;br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>My post 2</title>
