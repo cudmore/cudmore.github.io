@@ -9,7 +9,8 @@ tags:
 - python
 - raspberry pi
 ---
-###To get bokeh plotting on the Raspberry Pi
+
+Goal is to get plotting with bokeh on the Raspberry Pi.
 
 - Install continuum anaconda python distribution
 - Install bokeh plotting and get a plot server running
