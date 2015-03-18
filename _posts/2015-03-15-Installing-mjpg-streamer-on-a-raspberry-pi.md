@@ -111,10 +111,12 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 
     The last entry is my camera, a 'Sony Playstation Eye'.
     
-- install v4l-utils
-
-    >sudo apt-get install v4l-utils
-
+- install v4l-utils (THESE ARE WRONG !!!!!!!!!!!!!!!!)
+    
+    Getting v4l2 on the raspberry is witchcraft, as of march 2015 it seems to be installed by default???
+    > sudo apt-get install v4l2-utils
+    > sudo apt-get install uv4l2 uv4l2-raspicam
+    
 - Check the parameters of our USB camera  
 	
 	```bash
