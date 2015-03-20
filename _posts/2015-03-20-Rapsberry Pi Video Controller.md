@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Raspberry-Pi-video-controller"
+title: "Raspberry Pi video controller"
 category: post
 date: 2015-03-20 22:01:06
 tags:
