@@ -11,8 +11,8 @@ What the hell is this !!!
 
 This is a video server running on a raspberry Pi that allows you to
 
-- Record video
-- Stream video
-- Listen to ScanImage and record videos as you acquire
+- Listen to ScanImage and record videos as you acquire (Arm)
+- Record video (Record)
+- Stream video (Stream)
 
-
+You will connect this to your imaging system and be able to automatically record video as you acquire
