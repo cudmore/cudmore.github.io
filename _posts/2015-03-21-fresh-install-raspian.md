@@ -12,42 +12,34 @@ This is the procedure I follow to install a fresh raspbian system on a Raspberry
 
 ###configure pi (text menu)
 
-    ~~~bash
     sudo raspi-config
-    ~~~
     
 ###update database
 
-    ~~~bash
     sudo apt-get update
-    ~~~
     
 ###update Userspace software
 
-    ~~~bash
     sudo apt-get upgrade
-    ~~~
     
 ###update firmware
 
-    ~~~bash
     sudo rpi-update
-    ~~~
     
 ###afp
 
-    ~~~bash
     sudo apt-get install netatalk
-    ~~~
     
 ###Unison
 
 See my post [here](http://www.robertcudmore.org/blog/?p=168)
 
-    > unison #run once to make /home/pi/.unison
-    > pico /home/pi/.unison/sites.prf    
+    sudo apt-get install unison
+    #see link to set up auto authentication with rsa keys
+    unison #run once to make /home/pi/.unison
+    pico /home/pi/.unison/sites.prf    
 
-    ~~~bash
+    # This is contents of /home/pi/.unison/sites.prf
     # Unison preferences file
     root = /home/pi/Sites
     root = ssh://robertcu@robertcudmore.org/raspberry/Sites
@@ -63,54 +55,46 @@ See my post [here](http://www.robertcudmore.org/blog/?p=168)
     #fastcheck = yes
 
     servercmd=/home1/robertcu/unison
-    ~~~
 
 ###Startup mailer
 See my post [here](http://www.robertcudmore.org/blog/?p=60).
+
 Use gmail 'cudmore.raspberry@gmail.com' to send  
+    
+     wget http://cudmore.github.io/downloads/startup_mailer.py
 
 ###What is my ip
 
 Download whatismyip.py, run it and it will tell you your ip
 
-    > wget http://cudmore.github.io/downloads/startup_mailer.py
+    WOOPS, NOT THIS ... wget http://cudmore.github.io/downloads/startup_mailer.py
     
 ###python
 
-    ~~~bash
     sudo apt-get install python-dev  
-    ~~~
     
 ###pip
-    ~~~bash
-    sudo apt-get install python-pip
-    ~~~
+
+    sudo apt-get install python-pip  
     
 ###flask
 tutorial: http://mattrichardson.com/Raspberry-Pi-Flask/
 
-    ~~~bash
-    sudo pip install flask
-    ~~~
+    sudo pip install flask  
     
 - socketio: https://flask-socketio.readthedocs.org/en/latest/  
 tutorial: http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent
 
-    ~~~bash
-    sudo pip install flask-socketio
-    ~~~
+    sudo pip install flask-socketio  
     
 ####pandas (this takes awhile)
 
-    ~~~bash
-    sudo apt-get install python-pandas
-    ~~~
+    sudo apt-get install python-pandas  
     
 ####mjpg-streamer  
 
 See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/)
 
-    ~~~bash
     sudo apt-get -y install libjpeg8-dev imagemagick libv4l-dev  
     sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h  
     wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip  
@@ -122,21 +106,20 @@ See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-stre
     sudo cp -R www /usr/local/www  
     
     sudo apt-get install v4l-utils #this is to detect parameters of USB camera
-    ~~~
     
 Note, make input_uvc.so is for usb cam and input_file is for raspberry CSI camera
 
 If wget does not find mjpg-streamer, download it here
     
-    > wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
+    wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
     
 ####opencv
 
-    ~~~bash
     sudo apt-get install libopencv-dev python-opencv
-    ~~~
     
-See my post at: http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/
+See my post on open cv []here]()http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)
+
+# !!! Stop Here !!!
 
 ###Client side socket.io javascript
 Client side needs socketio javascript: http://socket.io  
@@ -154,7 +137,6 @@ documentation at: http://jquery.com/download/
 > cp jquery-1.11.2.min.js Sites/iosserver/static/js/
 
 
-# !!! Stop Here !!!
 ###miniconda
 anaconda install tutorial http://docs.continuum.io/anaconda/install.html
 

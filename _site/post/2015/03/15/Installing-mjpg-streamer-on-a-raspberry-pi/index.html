@@ -49,15 +49,15 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/03/21/fresh-install-raspian/">Fresh install of Raspian</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/">Raspberry Pi video controller</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">mjpg-streamer on a Raspberry Pi</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/07/use-opencv-to-acquire-video/">Use OpenCV to acquire video</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/05/bokeh-on-the-raspberry-pi/">Plotting with bokeh on the Raspberry Pi</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/">Python calling bash to get drive space remaining</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/">Monitoring mice in their home cage</a><BR>
 		    
 		</section>
 
@@ -65,32 +65,36 @@
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 97%" href="/tags/#flask">
+    		<a style="font-size: 90%" href="/tags/#flask">
     		  flask
     		</a>
 		
-    		<a style="font-size: 125%" href="/tags/#python">
+    		<a style="font-size: 115%" href="/tags/#python">
     		  python
     		</a>
 		
-    		<a style="font-size: 125%" href="/tags/#raspberry pi">
+    		<a style="font-size: 165%" href="/tags/#raspberry pi">
     		  raspberry pi
     		</a>
 		
-    		<a style="font-size: 68%" href="/tags/#bokeh">
+    		<a style="font-size: 65%" href="/tags/#bokeh">
     		  bokeh
     		</a>
 		
-    		<a style="font-size: 68%" href="/tags/#video">
+    		<a style="font-size: 65%" href="/tags/#video">
     		  video
     		</a>
 		
-    		<a style="font-size: 68%" href="/tags/#acquisition">
+    		<a style="font-size: 65%" href="/tags/#acquisition">
     		  acquisition
     		</a>
 		
-    		<a style="font-size: 68%" href="/tags/#opencv">
+    		<a style="font-size: 65%" href="/tags/#opencv">
     		  opencv
+    		</a>
+		
+    		<a style="font-size: 65%" href="/tags/#raspian">
+    		  raspian
     		</a>
 		
 
@@ -214,6 +218,14 @@ Bus <span class="m">001</span> Device 004: ID 1a40:0201 Terminus Technology Inc.
 Bus <span class="m">001</span> Device 005: ID 1415:2000 Nam Tai E<span class="p">&amp;</span>E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye  
 </code></pre></div>
 <p>The last entry is my camera, a &#39;Sony Playstation Eye&#39;.</p></li>
+<li><p>install v4l-utils (THESE ARE WRONG !!!!!!!!!!!!!!!!)</p>
+
+<p>Getting v4l2 on the raspberry is witchcraft, as of march 2015 it seems to be installed by default???</p>
+
+<blockquote>
+<p>sudo apt-get install v4l2-utils
+sudo apt-get install uv4l2 uv4l2-raspicam</p>
+</blockquote></li>
 <li><p>Check the parameters of our USB camera  </p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">v4l2-ctl --list-formats  
 
@@ -271,6 +283,10 @@ sudo cp -R www /usr/local/www
     <a rel="prev" href="/post/2015/03/07/use-opencv-to-acquire-video/" title="View Use OpenCV to acquire video">&laquo; Previous</a>
 </span>
 
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/" title="View ">Next &raquo;</a>
+</span>
 
 
 
