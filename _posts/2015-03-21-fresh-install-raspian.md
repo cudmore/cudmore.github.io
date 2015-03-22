@@ -10,27 +10,21 @@ tags:
 
 This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.
 
-###configure pi (text menu)
+###Preliminaries
 
-    sudo raspi-config
+    sudo raspi-config # configure pi with text menu
     
-###update database
-
-    sudo apt-get update
+    sudo apt-get update # update database
     
-###update Userspace software
-
-    sudo apt-get upgrade
+    sudo apt-get upgrade # update userspace
     
-###update firmware
-
-    sudo rpi-update
+    sudo rpi-update # update firmware (requires reboot)
     
-###afp
+###Apple-File-Protocol (afp)
 
     sudo apt-get install netatalk
     
-###Unison
+###Unison file synchronization
 
 See my post [here](http://www.robertcudmore.org/blog/?p=168)
 
@@ -77,21 +71,24 @@ Download whatismyip.py, run it and it will tell you your ip
 
     sudo apt-get install python-pip  
     
-###flask
-tutorial: http://mattrichardson.com/Raspberry-Pi-Flask/
+###Flask
+
+- Flask tutorial [here](http://mattrichardson.com/Raspberry-Pi-Flask/)  
 
     sudo pip install flask  
     
-- socketio: https://flask-socketio.readthedocs.org/en/latest/  
-tutorial: http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent
+###socketio for Flask
+
+- [socketio website](https://flask-socketio.readthedocs.org/en/latest/)  
+- [socketio tutorial](http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent)  
 
     sudo pip install flask-socketio  
     
-####pandas (this takes awhile)
+###pandas (this takes awhile)
 
     sudo apt-get install python-pandas  
     
-####mjpg-streamer  
+###mjpg-streamer  
 
 See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/)
 
@@ -113,11 +110,11 @@ If wget does not find mjpg-streamer, download it here
     
     wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
     
-####opencv
+###opencv
 
     sudo apt-get install libopencv-dev python-opencv
     
-See my post on open cv []here]()http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)
+See my post on open cv [here](http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)
 
 # !!! Stop Here !!!
 
@@ -171,38 +168,6 @@ Tutorials
 http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/
 
 http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi
-
-#STREAMING HEADACHES
-
-echo "`date +%y/%m/%d_%H:%M:%S`: stream_start" # 1>>/home/pi/stream.log
-
-#old, for raspberry camera module
-#sudo raspistill -w 640 -h 480 -q 5 -o /home/pi/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 -n >>/home/pi/stream.log 2>>/dev/null &
-#export LD_LIBRARY_PATH=/home/pi/mjpg-streamer/
-#mjpg-streamer/mjpg_streamer -i "input_file.so -f /home/pi/stream -n pic.jpg" -o "output_http.so -p 9000 -w /home/pi/mjpg-streamer/www" 0>>/home/pi/stream.log 1>>/home/pi/stream.log 2>>/home/pi/stream.log &
-
-#new, march 2015
-#/usr/local/bin/mjpg_streamer -i "input_file.so -f /tmp/stream -n pic.jpg"-o "output_http.so -w /usr/local/www"
-#sudo /usr/local/bin/mjpg_streamer -i "./input_file.so -f /tmp/stream -n pic.jpg"-o "./output_http.so -w /usr/local/www"
-export LD_LIBRARY_PATH=/home/pi/mjpg-streamer/
-/usr/local/bin/mjpg_streamer -i "/home/pi/mjpg-streamer/input_file.so -f /tmp/stream -n pic.jpg" -o "/home/pi/mjpg-streamer/output_http.so -w /usr/local/www"
-
-#this is off my website
-#export LD_LIBRARY_PATH=/home/pi/mjpg-streamer/
-#mjpg-streamer/mjpg_streamer -i "input_file.so -f /home/pi/stream -n pic.jpg" -o "output_http.so -p 9000 -w /home/pi/mjpg-streamer/www" &
-
-#1
-LD_LIBRARY_PATH=/usr/local/lib mjpg_streamer -i "input_file.so -f /tmp/stream -n pic.jpg" -o "output_http.so -w /usr/local/www"
-#2
-/usr/local/bin/mjpg_streamer -i "input_file.so -f /tmp/stream -n pic.jpg" -o "output_http.so -w /usr/local/www"
-/usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so" -o "/usr/local/lib/output_http.so -w /usr/local/www"
-
-myip=$(hostname -I)
-
-myip=$(echo -n $myip)
-
-echo "View the stream in VLC with"
-echo "   http://$myip:9000/?action=stream"
 
 ###my usb webcam has following output
 - v4l2-ctl --list-formats
@@ -265,7 +230,9 @@ echo "   http://$myip:9000/?action=stream"
 	input_init() return value signals to exit
 
 #THIS WORKS FOR USB WEBCAM
-/usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 
-> /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
-- /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
+    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
+
+    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
+    
+    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"

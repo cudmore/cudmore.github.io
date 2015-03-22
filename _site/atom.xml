@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-03-21T23:31:48-04:00</updated>
+ <updated>2015-03-21T23:49:02-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -19,22 +19,19 @@
    <id>/post/2015/03/21/fresh-install-raspian</id>
    <content type="html">&lt;p&gt;This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.&lt;/p&gt;
 
-&lt;h3&gt;configure pi (text menu)&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo raspi-config
+&lt;h3&gt;Preliminaries&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo raspi-config # configure pi with text menu
+
+sudo apt-get update # update database
+
+sudo apt-get upgrade # update userspace
+
+sudo rpi-update # update firmware (requires reboot)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;update database&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;update Userspace software&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get upgrade
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;update firmware&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo rpi-update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;afp&lt;/h3&gt;
+&lt;h3&gt;Apple-File-Protocol (afp)&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install netatalk
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Unison&lt;/h3&gt;
+&lt;h3&gt;Unison file synchronization&lt;/h3&gt;
 
 &lt;p&gt;See my post &lt;a href=&quot;http://www.robertcudmore.org/blog/?p=168&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install unison
@@ -77,22 +74,27 @@ servercmd=/home1/robertcu/unison
 &lt;h3&gt;pip&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install python-pip  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;flask&lt;/h3&gt;
+&lt;h3&gt;Flask&lt;/h3&gt;
 
-&lt;p&gt;tutorial: http://mattrichardson.com/Raspberry-Pi-Flask/&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pip install flask  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;socketio: https://flask-socketio.readthedocs.org/en/latest/&lt;br&gt;
-tutorial: http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Flask tutorial &lt;a href=&quot;http://mattrichardson.com/Raspberry-Pi-Flask/&quot;&gt;here&lt;/a&gt;  &lt;/p&gt;
+
+&lt;p&gt;sudo pip install flask  &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;socketio for Flask&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://flask-socketio.readthedocs.org/en/latest/&quot;&gt;socketio website&lt;/a&gt;&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent&quot;&gt;socketio tutorial&lt;/a&gt;  &lt;/p&gt;
 
 &lt;p&gt;sudo pip install flask-socketio  &lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4&gt;pandas (this takes awhile)&lt;/h4&gt;
+&lt;h3&gt;pandas (this takes awhile)&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install python-pandas  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;mjpg-streamer&lt;/h4&gt;
+&lt;h3&gt;mjpg-streamer&lt;/h3&gt;
 
 &lt;p&gt;See my post &lt;a href=&quot;http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get -y install libjpeg8-dev imagemagick libv4l-dev  
@@ -112,10 +114,10 @@ sudo apt-get install v4l-utils #this is to detect parameters of USB camera
 &lt;p&gt;If wget does not find mjpg-streamer, download it here&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;opencv&lt;/h4&gt;
+&lt;h3&gt;opencv&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install libopencv-dev python-opencv
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;See my post on open cv []here]()http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)&lt;/p&gt;
+&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1&gt;!!! Stop Here !!!&lt;/h1&gt;
 
@@ -180,49 +182,6 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
 
 &lt;p&gt;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&lt;/p&gt;
 
-&lt;h1&gt;STREAMING HEADACHES&lt;/h1&gt;
-
-&lt;p&gt;echo &amp;quot;&lt;code&gt;date +%y/%m/%d_%H:%M:%S&lt;/code&gt;: stream_start&amp;quot; # 1&amp;gt;&amp;gt;/home/pi/stream.log&lt;/p&gt;
-
-&lt;h1&gt;old, for raspberry camera module&lt;/h1&gt;
-
-&lt;h1&gt;sudo raspistill -w 640 -h 480 -q 5 -o /home/pi/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 -n &amp;gt;&amp;gt;/home/pi/stream.log 2&amp;gt;&amp;gt;/dev/null &amp;amp;&lt;/h1&gt;
-
-&lt;h1&gt;export LD&lt;em&gt;LIBRARY&lt;/em&gt;PATH=/home/pi/mjpg-streamer/&lt;/h1&gt;
-
-&lt;h1&gt;mjpg-streamer/mjpg&lt;em&gt;streamer -i &amp;quot;input&lt;/em&gt;file.so -f /home/pi/stream -n pic.jpg&amp;quot; -o &amp;quot;output_http.so -p 9000 -w /home/pi/mjpg-streamer/www&amp;quot; 0&amp;gt;&amp;gt;/home/pi/stream.log 1&amp;gt;&amp;gt;/home/pi/stream.log 2&amp;gt;&amp;gt;/home/pi/stream.log &amp;amp;&lt;/h1&gt;
-
-&lt;h1&gt;new, march 2015&lt;/h1&gt;
-
-&lt;h1&gt;/usr/local/bin/mjpg&lt;em&gt;streamer -i &amp;quot;input&lt;/em&gt;file.so -f /tmp/stream -n pic.jpg&amp;quot;-o &amp;quot;output_http.so -w /usr/local/www&amp;quot;&lt;/h1&gt;
-
-&lt;h1&gt;sudo /usr/local/bin/mjpg&lt;em&gt;streamer -i &amp;quot;./input&lt;/em&gt;file.so -f /tmp/stream -n pic.jpg&amp;quot;-o &amp;quot;./output_http.so -w /usr/local/www&amp;quot;&lt;/h1&gt;
-
-&lt;p&gt;export LD&lt;em&gt;LIBRARY&lt;/em&gt;PATH=/home/pi/mjpg-streamer/
-/usr/local/bin/mjpg&lt;em&gt;streamer -i &amp;quot;/home/pi/mjpg-streamer/input&lt;/em&gt;file.so -f /tmp/stream -n pic.jpg&amp;quot; -o &amp;quot;/home/pi/mjpg-streamer/output_http.so -w /usr/local/www&amp;quot;&lt;/p&gt;
-
-&lt;h1&gt;this is off my website&lt;/h1&gt;
-
-&lt;h1&gt;export LD&lt;em&gt;LIBRARY&lt;/em&gt;PATH=/home/pi/mjpg-streamer/&lt;/h1&gt;
-
-&lt;h1&gt;mjpg-streamer/mjpg&lt;em&gt;streamer -i &amp;quot;input&lt;/em&gt;file.so -f /home/pi/stream -n pic.jpg&amp;quot; -o &amp;quot;output_http.so -p 9000 -w /home/pi/mjpg-streamer/www&amp;quot; &amp;amp;&lt;/h1&gt;
-
-&lt;h1&gt;1&lt;/h1&gt;
-
-&lt;p&gt;LD&lt;em&gt;LIBRARY&lt;/em&gt;PATH=/usr/local/lib mjpg&lt;em&gt;streamer -i &amp;quot;input&lt;/em&gt;file.so -f /tmp/stream -n pic.jpg&amp;quot; -o &amp;quot;output_http.so -w /usr/local/www&amp;quot;&lt;/p&gt;
-
-&lt;h1&gt;2&lt;/h1&gt;
-
-&lt;p&gt;/usr/local/bin/mjpg&lt;em&gt;streamer -i &amp;quot;input&lt;/em&gt;file.so -f /tmp/stream -n pic.jpg&amp;quot; -o &amp;quot;output&lt;em&gt;http.so -w /usr/local/www&amp;quot;
-/usr/local/bin/mjpg&lt;/em&gt;streamer -i &amp;quot;/usr/local/lib/input&lt;em&gt;uvc.so&amp;quot; -o &amp;quot;/usr/local/lib/output&lt;/em&gt;http.so -w /usr/local/www&amp;quot;&lt;/p&gt;
-
-&lt;p&gt;myip=$(hostname -I)&lt;/p&gt;
-
-&lt;p&gt;myip=$(echo -n $myip)&lt;/p&gt;
-
-&lt;p&gt;echo &amp;quot;View the stream in VLC with&amp;quot;
-echo &amp;quot;   http://$myip:9000/?action=stream&amp;quot;&lt;/p&gt;
-
 &lt;h3&gt;my usb webcam has following output&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -284,14 +243,12 @@ pi@pi50 ~ $ v4l2-ctl --list-ctrls&lt;/p&gt;
 input_init() return value signals to exit
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;THIS WORKS FOR USB WEBCAM&lt;/h1&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/usr/local/bin/mjpg_streamer -i &amp;quot;/usr/local/lib/input_uvc.so -y&amp;quot; -o &amp;quot;/usr/local/lib/output_http.so -w /usr/local/www&amp;quot;
 
-&lt;p&gt;/usr/local/bin/mjpg&lt;em&gt;streamer -i &amp;quot;/usr/local/lib/input&lt;/em&gt;uvc.so -y&amp;quot; -o &amp;quot;/usr/local/lib/output_http.so -w /usr/local/www&amp;quot;&lt;/p&gt;
+/usr/local/bin/mjpg_streamer -i &amp;quot;/usr/local/lib/input_uvc.so -y&amp;quot; -o &amp;quot;/usr/local/lib/output_http.so -w /usr/local/www&amp;quot;
 
-&lt;blockquote&gt;
-&lt;p&gt;/usr/local/bin/mjpg&lt;em&gt;streamer -i &amp;quot;/usr/local/lib/input&lt;/em&gt;uvc.so -y&amp;quot; -o &amp;quot;/usr/local/lib/output&lt;em&gt;http.so -w /usr/local/www&amp;quot;
-- /usr/local/bin/mjpg&lt;/em&gt;streamer -i &amp;quot;/usr/local/lib/input&lt;em&gt;uvc.so -y&amp;quot; -o &amp;quot;/usr/local/lib/output&lt;/em&gt;http.so -w /usr/local/www&amp;quot;&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
+/usr/local/bin/mjpg_streamer -i &amp;quot;/usr/local/lib/input_uvc.so -y&amp;quot; -o &amp;quot;/usr/local/lib/output_http.so -w /usr/local/www&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
  </entry>
  
  <entry>
