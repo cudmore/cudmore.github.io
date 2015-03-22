@@ -88,6 +88,10 @@ Download whatismyip.py, run it and it will tell you your ip
 
     sudo apt-get install python-pandas  
     
+###subversion
+
+    sudo apt-get install subversion
+
 ###mjpg-streamer  
 
 See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/)
