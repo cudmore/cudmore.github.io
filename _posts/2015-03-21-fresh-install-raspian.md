@@ -116,13 +116,16 @@ If wget does not find mjpg-streamer, download it here
     
 ###opencv
 
+See my post on open cv [here](http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)  
+
     sudo apt-get install libopencv-dev python-opencv
     
-###PIL (not sure if there is a[t-get install python-pil ???)
+###PIL
 
-    pip install pil
+Not sure if there is apt-get install python-pil ???
+
+    sudo pip install pil
     
-See my post on open cv [here](http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)
 
 # !!! Stop Here !!!
 
