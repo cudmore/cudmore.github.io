@@ -106,17 +106,21 @@ See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-stre
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/  
     sudo cp -R www /usr/local/www  
     
-    sudo apt-get install v4l-utils #this is to detect parameters of USB camera
+    sudo apt-get install v4l-utils #this is to detect parameters of USB camera  
     
-Note, make input_uvc.so is for usb cam and input_file is for raspberry CSI camera
+Note, make 'input_uvc.so' is for usb cam and 'input_file' is for raspberry CSI camera  
 
-If wget does not find mjpg-streamer, download it here
+If wget does not find mjpg-streamer, download it here  
     
     wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
     
 ###opencv
 
     sudo apt-get install libopencv-dev python-opencv
+    
+###PIL (not sure if there is a[t-get install python-pil ???)
+
+    pip install pil
     
 See my post on open cv [here](http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)
 
