@@ -49,6 +49,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/03/27/lab-protocols/">Lab Protocols</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/21/fresh-install-raspian/">Fresh install of Raspian</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/">Raspberry Pi video controller</a><BR>
@@ -57,44 +59,46 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/07/use-opencv-to-acquire-video/">Use OpenCV to acquire video</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/03/05/bokeh-on-the-raspberry-pi/">Plotting with bokeh on the Raspberry Pi</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 90%" href="/tags/#flask">
+    		<a style="font-size: 84%" href="/tags/#flask">
     		  flask
     		</a>
 		
-    		<a style="font-size: 115%" href="/tags/#python">
+    		<a style="font-size: 106%" href="/tags/#python">
     		  python
     		</a>
 		
-    		<a style="font-size: 165%" href="/tags/#raspberry pi">
+    		<a style="font-size: 151%" href="/tags/#raspberry pi">
     		  raspberry pi
     		</a>
 		
-    		<a style="font-size: 65%" href="/tags/#bokeh">
+    		<a style="font-size: 62%" href="/tags/#bokeh">
     		  bokeh
     		</a>
 		
-    		<a style="font-size: 65%" href="/tags/#video">
+    		<a style="font-size: 62%" href="/tags/#video">
     		  video
     		</a>
 		
-    		<a style="font-size: 65%" href="/tags/#acquisition">
+    		<a style="font-size: 62%" href="/tags/#acquisition">
     		  acquisition
     		</a>
 		
-    		<a style="font-size: 65%" href="/tags/#opencv">
+    		<a style="font-size: 62%" href="/tags/#opencv">
     		  opencv
     		</a>
 		
-    		<a style="font-size: 65%" href="/tags/#raspian">
+    		<a style="font-size: 62%" href="/tags/#raspian">
     		  raspian
+    		</a>
+		
+    		<a style="font-size: 62%" href="/tags/#protocols">
+    		  protocols
     		</a>
 		
 
@@ -214,6 +218,9 @@ servercmd=/home1/robertcu/unison
 <h3>pandas (this takes awhile)</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install python-pandas  
 </code></pre></div>
+<h3>subversion</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install subversion
+</code></pre></div>
 <h3>mjpg-streamer</h3>
 
 <p>See my post <a href="http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">here</a></p>
@@ -227,18 +234,23 @@ sudo cp mjpg_streamer /usr/local/bin
 sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/  
 sudo cp -R www /usr/local/www  
 
-sudo apt-get install v4l-utils #this is to detect parameters of USB camera
+sudo apt-get install v4l-utils #this is to detect parameters of USB camera  
 </code></pre></div>
-<p>Note, make input<em>uvc.so is for usb cam and input</em>file is for raspberry CSI camera</p>
+<p>Note, make &#39;input<em>uvc.so&#39; is for usb cam and &#39;input</em>file&#39; is for raspberry CSI camera  </p>
 
-<p>If wget does not find mjpg-streamer, download it here</p>
+<p>If wget does not find mjpg-streamer, download it here  </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
 </code></pre></div>
 <h3>opencv</h3>
+
+<p>See my post on open cv <a href="http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/">here</a>  </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install libopencv-dev python-opencv
 </code></pre></div>
-<p>See my post on open cv <a href="http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/">here</a></p>
+<h3>PIL</h3>
 
+<p>Not sure if there is apt-get install python-pil ???</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pip install pil
+</code></pre></div>
 <h1>!!! Stop Here !!!</h1>
 
 <h3>Client side socket.io javascript</h3>
@@ -393,6 +405,10 @@ input_init() return value signals to exit
     <a rel="prev" href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/" title="View Raspberry Pi video controller">&laquo; Previous</a>
 </span>
 
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/post/2015/03/27/lab-protocols/" title="View ">Next &raquo;</a>
+</span>
 
 
 

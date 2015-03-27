@@ -4,13 +4,32 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-03-21T23:49:02-04:00</updated>
+ <updated>2015-03-27T13:10:43-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Lab Protocols</title>
+   <link href="/post/2015/03/27/lab-protocols/"/>
+   <updated>2015-03-27T18:01:06-04:00</updated>
+   <id>/post/2015/03/27/lab-protocols</id>
+   <content type="html">&lt;h4&gt;Dental cement&lt;/h4&gt;
+
+&lt;p&gt;C&amp;amp;B-Metabond Adhesive Cement, Parkell Inc&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;S396 (3g) Radiopaque Tooth-Shade L-Powder&lt;/li&gt;
+&lt;li&gt;S398 (10ml) C&amp;amp;B-Metabond Quick Base (blue)&lt;/li&gt;
+&lt;li&gt;S371 (0.7ml) Catalyst Gold Label&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;4 drops Quick Base + 1 drop Catalyst + 2 scoops Powder&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Fresh install of Raspian</title>
@@ -94,6 +113,9 @@ servercmd=/home1/robertcu/unison
 &lt;h3&gt;pandas (this takes awhile)&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install python-pandas  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;subversion&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install subversion
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;mjpg-streamer&lt;/h3&gt;
 
 &lt;p&gt;See my post &lt;a href=&quot;http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
@@ -107,18 +129,23 @@ sudo cp mjpg_streamer /usr/local/bin
 sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/  
 sudo cp -R www /usr/local/www  
 
-sudo apt-get install v4l-utils #this is to detect parameters of USB camera
+sudo apt-get install v4l-utils #this is to detect parameters of USB camera  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Note, make input&lt;em&gt;uvc.so is for usb cam and input&lt;/em&gt;file is for raspberry CSI camera&lt;/p&gt;
+&lt;p&gt;Note, make &amp;#39;input&lt;em&gt;uvc.so&amp;#39; is for usb cam and &amp;#39;input&lt;/em&gt;file&amp;#39; is for raspberry CSI camera  &lt;/p&gt;
 
-&lt;p&gt;If wget does not find mjpg-streamer, download it here&lt;/p&gt;
+&lt;p&gt;If wget does not find mjpg-streamer, download it here  &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;opencv&lt;/h3&gt;
+
+&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;  &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install libopencv-dev python-opencv
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;PIL&lt;/h3&gt;
 
+&lt;p&gt;Not sure if there is apt-get install python-pil ???&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pip install pil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;!!! Stop Here !!!&lt;/h1&gt;
 
 &lt;h3&gt;Client side socket.io javascript&lt;/h3&gt;
