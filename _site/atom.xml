@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-03-27T13:10:43-04:00</updated>
+ <updated>2015-04-07T23:10:27-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -146,6 +146,25 @@ sudo apt-get install v4l-utils #this is to detect parameters of USB camera
 &lt;p&gt;Not sure if there is apt-get install python-pil ???&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pip install pil
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Upgrade numpy (takes a long time)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;required for pandas and bokeh&lt;/p&gt;
+
+&lt;p&gt;sudo pip install numpy --upgrade  &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Install pandas&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install python-pandas  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Install bokeh&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;To do, get an example running again  &lt;/p&gt;
+
+&lt;p&gt;sudo pip install bokeh&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1&gt;!!! Stop Here !!!&lt;/h1&gt;
 
 &lt;h3&gt;Client side socket.io javascript&lt;/h3&gt;

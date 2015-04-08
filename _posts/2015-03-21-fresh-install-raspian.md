@@ -126,7 +126,22 @@ Not sure if there is apt-get install python-pil ???
 
     sudo pip install pil
     
+###Upgrade numpy (takes a long time)
 
+- required for pandas and bokeh
+
+    sudo pip install numpy --upgrade  
+
+###Install pandas
+
+    sudo apt-get install python-pandas  
+
+###Install bokeh
+
+- To do, get an example running again  
+
+    sudo pip install bokeh
+    
 # !!! Stop Here !!!
 
 ###Client side socket.io javascript
