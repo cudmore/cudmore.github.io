@@ -7,6 +7,10 @@ tags:
 - osx
 ---
 
+![My helpful screenshot]({{ site.url }}/assets/i-can-see-you-black-flag.jpg)
+
+
+
 Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  
  - Motherboard is [GA-Z77X-UP5-TH](http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov)  
  - BIOS is [F12](http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios)  

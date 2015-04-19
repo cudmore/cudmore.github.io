@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-04-19T14:07:17-04:00</updated>
+ <updated>2015-04-19T14:24:28-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -17,7 +17,9 @@
    <link href="/post/2015/04/19/Install-OSX/"/>
    <updated>2015-04-19T18:01:06-04:00</updated>
    <id>/post/2015/04/19/Install-OSX</id>
-   <content type="html">&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
  - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br&gt;
  - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios&quot;&gt;F12&lt;/a&gt;&lt;br&gt;
  - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
