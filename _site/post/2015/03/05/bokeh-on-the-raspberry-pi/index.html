@@ -49,6 +49,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/04/19/Install-OSX/">Install OSX</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/27/lab-protocols/">Lab Protocols</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/21/fresh-install-raspian/">Fresh install of Raspian</a><BR>
@@ -57,48 +59,50 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">mjpg-streamer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/03/07/use-opencv-to-acquire-video/">Use OpenCV to acquire video</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 84%" href="/tags/#flask">
+    		<a style="font-size: 80%" href="/tags/#flask">
     		  flask
     		</a>
 		
-    		<a style="font-size: 106%" href="/tags/#python">
+    		<a style="font-size: 100%" href="/tags/#python">
     		  python
     		</a>
 		
-    		<a style="font-size: 151%" href="/tags/#raspberry pi">
+    		<a style="font-size: 140%" href="/tags/#raspberry pi">
     		  raspberry pi
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#bokeh">
+    		<a style="font-size: 60%" href="/tags/#bokeh">
     		  bokeh
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#video">
+    		<a style="font-size: 60%" href="/tags/#video">
     		  video
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#acquisition">
+    		<a style="font-size: 60%" href="/tags/#acquisition">
     		  acquisition
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#opencv">
+    		<a style="font-size: 60%" href="/tags/#opencv">
     		  opencv
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#raspian">
+    		<a style="font-size: 60%" href="/tags/#raspian">
     		  raspian
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#protocols">
+    		<a style="font-size: 60%" href="/tags/#protocols">
     		  protocols
+    		</a>
+		
+    		<a style="font-size: 60%" href="/tags/#osx">
+    		  osx
     		</a>
 		
 
@@ -199,7 +203,7 @@ pip install pandas --upgrade  </p>
 <p>pip install bokeh  </p>
 </blockquote>
 
-<p>For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  </p>
+<p>For a list of required packages, see <a href="http://bokeh.pydata.org/en/latest/tutorial/quick_install.html">http://bokeh.pydata.org/en/latest/tutorial/quick_install.html</a>  </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
 Ideally, you should have the following libraries installed:
 
@@ -255,14 +259,14 @@ wsgiref==0.1.2
 <p>The bokeh example plots are at:</p>
 
 <blockquote>
-<p>https://github.com/bokeh/bokeh/tree/master/examples/plotting/server</p>
+<p><a href="https://github.com/bokeh/bokeh/tree/master/examples/plotting/server">https://github.com/bokeh/bokeh/tree/master/examples/plotting/server</a></p>
 </blockquote>
 
 <h3>Run the bokeh-server</h3>
 
 <p>Remember, this make temporary files in directory you run it in.</p>
 
-<p>--ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006  </p>
+<p>--ip 0.0.0.0 will redirect the server to your external IP, in my case <a href="http://192.168.1.40:5006">http://192.168.1.40:5006</a>  </p>
 
 <blockquote>
 <p>bokeh-server --backend=memory --ip 0.0.0.0</p>
@@ -321,15 +325,15 @@ while True:
 
 <ul>
 <li>eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)</li>
-<li>simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple<br></li>
-<li>more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram</li>
+<li>simple example that works: <a href="https://github.com/bokeh/bokeh/tree/master/examples/embed/simple">https://github.com/bokeh/bokeh/tree/master/examples/embed/simple</a><br></li>
+<li>more complex: <a href="https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram">https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram</a></li>
 </ul>
 
 <h3>Links</h3>
 
 <ul>
-<li>http://bokeh.pydata.org/en/latest/index.html<br></li>
-<li>http://docs.continuum.io/anaconda/install.html<br></li>
+<li><a href="http://bokeh.pydata.org/en/latest/index.html">http://bokeh.pydata.org/en/latest/index.html</a><br></li>
+<li><a href="http://docs.continuum.io/anaconda/install.html">http://docs.continuum.io/anaconda/install.html</a><br></li>
 </ul>
 
 </div>

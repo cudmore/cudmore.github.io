@@ -49,6 +49,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/04/19/Install-OSX/">Install OSX</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/27/lab-protocols/">Lab Protocols</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/21/fresh-install-raspian/">Fresh install of Raspian</a><BR>
@@ -57,48 +59,50 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">mjpg-streamer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/03/07/use-opencv-to-acquire-video/">Use OpenCV to acquire video</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 84%" href="/tags/#flask">
+    		<a style="font-size: 80%" href="/tags/#flask">
     		  flask
     		</a>
 		
-    		<a style="font-size: 106%" href="/tags/#python">
+    		<a style="font-size: 100%" href="/tags/#python">
     		  python
     		</a>
 		
-    		<a style="font-size: 151%" href="/tags/#raspberry pi">
+    		<a style="font-size: 140%" href="/tags/#raspberry pi">
     		  raspberry pi
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#bokeh">
+    		<a style="font-size: 60%" href="/tags/#bokeh">
     		  bokeh
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#video">
+    		<a style="font-size: 60%" href="/tags/#video">
     		  video
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#acquisition">
+    		<a style="font-size: 60%" href="/tags/#acquisition">
     		  acquisition
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#opencv">
+    		<a style="font-size: 60%" href="/tags/#opencv">
     		  opencv
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#raspian">
+    		<a style="font-size: 60%" href="/tags/#raspian">
     		  raspian
     		</a>
 		
-    		<a style="font-size: 62%" href="/tags/#protocols">
+    		<a style="font-size: 60%" href="/tags/#protocols">
     		  protocols
+    		</a>
+		
+    		<a style="font-size: 60%" href="/tags/#osx">
+    		  osx
     		</a>
 		
 
@@ -184,7 +188,7 @@ servercmd=/home1/robertcu/unison
 
 <p>See my post <a href="http://www.robertcudmore.org/blog/?p=60">here</a>.</p>
 
-<p>Use gmail &#39;cudmore.raspberry@gmail.com&#39; to send  </p>
+<p>Use gmail &#39;<a href="mailto:cudmore.raspberry@gmail.com">cudmore.raspberry@gmail.com</a>&#39; to send  </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text"> wget http://cudmore.github.io/downloads/startup_mailer.py
 </code></pre></div>
 <h3>What is my ip</h3>
@@ -236,7 +240,7 @@ sudo cp -R www /usr/local/www
 
 sudo apt-get install v4l-utils #this is to detect parameters of USB camera  
 </code></pre></div>
-<p>Note, make &#39;input<em>uvc.so&#39; is for usb cam and &#39;input</em>file&#39; is for raspberry CSI camera  </p>
+<p>Note, make &#39;input_uvc.so&#39; is for usb cam and &#39;input_file&#39; is for raspberry CSI camera  </p>
 
 <p>If wget does not find mjpg-streamer, download it here  </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
@@ -274,30 +278,30 @@ sudo apt-get install v4l-utils #this is to detect parameters of USB camera
 
 <h3>Client side socket.io javascript</h3>
 
-<p>Client side needs socketio javascript: http://socket.io<br>
+<p>Client side needs socketio javascript: <a href="http://socket.io">http://socket.io</a><br>
 Put this in your Flask project /static/js/<br>
 Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js  </p>
 
 <blockquote>
-<p>wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js<br>
+<p>wget <a href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js</a><br>
 cp socket.io.min.js Sites/iosserver/static/js/</p>
 </blockquote>
 
 <h3>Client side jquery</h3>
 
-<p>documentation at: http://jquery.com/download/  </p>
+<p>documentation at: <a href="http://jquery.com/download/">http://jquery.com/download/</a>  </p>
 
 <blockquote>
-<p>wget wget http://code.jquery.com/jquery-1.11.2.min.js<br>
+<p>wget wget <a href="http://code.jquery.com/jquery-1.11.2.min.js">http://code.jquery.com/jquery-1.11.2.min.js</a><br>
 cp jquery-1.11.2.min.js Sites/iosserver/static/js/</p>
 </blockquote>
 
 <h3>miniconda</h3>
 
-<p>anaconda install tutorial http://docs.continuum.io/anaconda/install.html</p>
+<p>anaconda install tutorial <a href="http://docs.continuum.io/anaconda/install.html">http://docs.continuum.io/anaconda/install.html</a></p>
 
 <blockquote>
-<p>wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+<p>wget <a href="http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh">http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh</a>
 bash Miniconda-3.5.5-Linux-armv6l.sh</p>
 
 <p>conda update conda
@@ -306,7 +310,7 @@ conda update anaconda</p>
 
 <h3>bokeh</h3>
 
-<p>bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html
+<p>bokeh quickstart: <a href="http://bokeh.pydata.org/en/latest/docs/quickstart.html">http://bokeh.pydata.org/en/latest/docs/quickstart.html</a>
 make sure dependencies are installed: NumPy, Pandas, and Redis</p>
 
 <blockquote>
@@ -325,20 +329,20 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
 </code></pre></div>
 <p>Source code for mjpg streamer</p>
 
-<p>http://sourceforge.net/projects/mjpg-streamer/</p>
+<p><a href="http://sourceforge.net/projects/mjpg-streamer/">http://sourceforge.net/projects/mjpg-streamer/</a></p>
 
 <p>Tutorials</p>
 
-<p>http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/</p>
+<p><a href="http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/">http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/</a></p>
 
-<p>http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi</p>
+<p><a href="http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi">http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi</a></p>
 
 <h3>my usb webcam has following output</h3>
 
 <ul>
 <li><p>v4l2-ctl --list-formats
 pi@pi50 ~ $ v4l2-ctl --list-formats
-ioctl: VIDIOC<em>ENUM</em>FMT
+ioctl: VIDIOC_ENUM_FMT
     Index       : 0
     Type        : Video Capture
     Pixel Format: &#39;YUYV&#39;
@@ -365,8 +369,8 @@ pi@pi50 ~ $ v4l2-ctl --list-ctrls</p>
 </code></pre></div></li>
 </ul>
 
-<p>-mjpg<em>streamer --input &quot;input</em>uvc.so --help&quot;
-    pi@pi50 ~ $ mjpg<em>streamer --input &quot;input</em>uvc.so --help&quot;
+<p>-mjpg_streamer --input &quot;input_uvc.so --help&quot;
+    pi@pi50 ~ $ mjpg_streamer --input &quot;input_uvc.so --help&quot;
     MJPG Streamer Version: svn rev: Unversioned directory
      ---------------------------------------------------------------
      Help for input plugin..: UVC webcam grabber

@@ -4,13 +4,117 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-04-07T23:10:27-04:00</updated>
+ <updated>2015-04-19T14:07:17-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Install OSX</title>
+   <link href="/post/2015/04/19/Install-OSX/"/>
+   <updated>2015-04-19T18:01:06-04:00</updated>
+   <id>/post/2015/04/19/Install-OSX</id>
+   <content type="html">&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
+ - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br&gt;
+ - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios&quot;&gt;F12&lt;/a&gt;&lt;br&gt;
+ - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4&gt;Analysis&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.wavemetrics.com/support/versions.htm&quot;&gt;Igor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://fiji.sc/Downloads&quot;&gt;Fiji&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using &amp;#39;Fiji Life-Line version, 2014 November 25&amp;#39;. &lt;/li&gt;
+&lt;li&gt;Fiji will not run until setting: Security &amp;amp; Privacy -&amp;gt; Allow apps downloaded from: Anywhere&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Installing Java SE 6&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Development&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.macports.org/install.php&quot;&gt;Macports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;XCode command line tools&lt;br&gt;
+&lt;code&gt;
+xcode-select --install
+&lt;/code&gt;&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://continuum.io/downloads&quot;&gt;Anaconda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;Jekyll&lt;/a&gt;&lt;br&gt;
+&lt;code&gt;
+gem install jekyll
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Synchronization&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mac.github.com&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cis.upenn.edu/%7Ebcpierce/unison/&quot;&gt;Unison&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Utility&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.barebones.com/products/textwrangler/download.html&quot;&gt;TextWrangler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://bjango.com/mac/istatmenus/&quot;&gt;iStat Menus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://unarchiver.c3.cx/unarchiver&quot;&gt;Unarchiver&lt;/a&gt; - Handles .xz, .exe&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Word Processing&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;iWork&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Web&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stock install of Safari&lt;/li&gt;
+&lt;li&gt;Chrome&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Media&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.videolan.org&quot;&gt;VLC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Torrent&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.utorrent.com/downloads/mac&quot;&gt;mu-torrent&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Remote desktop connection to Raspberry Pi&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.realvnc.com/download/viewer/&quot;&gt;realVNC Viewer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]&lt;br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;del&gt;- Start by going &lt;a href=&quot;https://jhpulse.johnshopkins.edu.&quot;&gt;here&lt;/a&gt;&lt;/del&gt;&lt;br&gt;
+ &lt;del&gt;- &lt;a href=&quot;https://jhpulse.johnshopkins.edu&quot;&gt;https://jhpulse.johnshopkins.edu&lt;/a&gt;.&lt;/del&gt;  &lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;- Forces install of Java 8u45&lt;/del&gt;  &lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;- &lt;a href=&quot;https://www.java.com/en/download/mac_download.jsp&quot;&gt;https://www.java.com/en/download/mac_download.jsp&lt;/a&gt;&lt;/del&gt;&lt;br&gt;
+&lt;del&gt;- jre-8u45-macosx-x64.dmg&lt;/del&gt;  &lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;- Install Junos Pulse (twice)&lt;/del&gt;&lt;br&gt;
+ &lt;del&gt;- Requires manual setting of Safari security&lt;/del&gt;&lt;br&gt;
+ - Complete bullshit amateur hack job&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Lab Protocols</title>
@@ -79,7 +183,7 @@ servercmd=/home1/robertcu/unison
 
 &lt;p&gt;See my post &lt;a href=&quot;http://www.robertcudmore.org/blog/?p=60&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Use gmail &amp;#39;cudmore.raspberry@gmail.com&amp;#39; to send  &lt;/p&gt;
+&lt;p&gt;Use gmail &amp;#39;&lt;a href=&quot;mailto:cudmore.raspberry@gmail.com&quot;&gt;cudmore.raspberry@gmail.com&lt;/a&gt;&amp;#39; to send  &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt; wget http://cudmore.github.io/downloads/startup_mailer.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;What is my ip&lt;/h3&gt;
@@ -131,7 +235,7 @@ sudo cp -R www /usr/local/www
 
 sudo apt-get install v4l-utils #this is to detect parameters of USB camera  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Note, make &amp;#39;input&lt;em&gt;uvc.so&amp;#39; is for usb cam and &amp;#39;input&lt;/em&gt;file&amp;#39; is for raspberry CSI camera  &lt;/p&gt;
+&lt;p&gt;Note, make &amp;#39;input_uvc.so&amp;#39; is for usb cam and &amp;#39;input_file&amp;#39; is for raspberry CSI camera  &lt;/p&gt;
 
 &lt;p&gt;If wget does not find mjpg-streamer, download it here  &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
@@ -169,30 +273,30 @@ sudo apt-get install v4l-utils #this is to detect parameters of USB camera
 
 &lt;h3&gt;Client side socket.io javascript&lt;/h3&gt;
 
-&lt;p&gt;Client side needs socketio javascript: http://socket.io&lt;br&gt;
+&lt;p&gt;Client side needs socketio javascript: &lt;a href=&quot;http://socket.io&quot;&gt;http://socket.io&lt;/a&gt;&lt;br&gt;
 Put this in your Flask project /static/js/&lt;br&gt;
 Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js  &lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js&lt;br&gt;
+&lt;p&gt;wget &lt;a href=&quot;https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js&quot;&gt;https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js&lt;/a&gt;&lt;br&gt;
 cp socket.io.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3&gt;Client side jquery&lt;/h3&gt;
 
-&lt;p&gt;documentation at: http://jquery.com/download/  &lt;/p&gt;
+&lt;p&gt;documentation at: &lt;a href=&quot;http://jquery.com/download/&quot;&gt;http://jquery.com/download/&lt;/a&gt;  &lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;wget wget http://code.jquery.com/jquery-1.11.2.min.js&lt;br&gt;
+&lt;p&gt;wget wget &lt;a href=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;http://code.jquery.com/jquery-1.11.2.min.js&lt;/a&gt;&lt;br&gt;
 cp jquery-1.11.2.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3&gt;miniconda&lt;/h3&gt;
 
-&lt;p&gt;anaconda install tutorial http://docs.continuum.io/anaconda/install.html&lt;/p&gt;
+&lt;p&gt;anaconda install tutorial &lt;a href=&quot;http://docs.continuum.io/anaconda/install.html&quot;&gt;http://docs.continuum.io/anaconda/install.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+&lt;p&gt;wget &lt;a href=&quot;http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh&quot;&gt;http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh&lt;/a&gt;
 bash Miniconda-3.5.5-Linux-armv6l.sh&lt;/p&gt;
 
 &lt;p&gt;conda update conda
@@ -201,7 +305,7 @@ conda update anaconda&lt;/p&gt;
 
 &lt;h3&gt;bokeh&lt;/h3&gt;
 
-&lt;p&gt;bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html
+&lt;p&gt;bokeh quickstart: &lt;a href=&quot;http://bokeh.pydata.org/en/latest/docs/quickstart.html&quot;&gt;http://bokeh.pydata.org/en/latest/docs/quickstart.html&lt;/a&gt;
 make sure dependencies are installed: NumPy, Pandas, and Redis&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -220,20 +324,20 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Source code for mjpg streamer&lt;/p&gt;
 
-&lt;p&gt;http://sourceforge.net/projects/mjpg-streamer/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://sourceforge.net/projects/mjpg-streamer/&quot;&gt;http://sourceforge.net/projects/mjpg-streamer/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Tutorials&lt;/p&gt;
 
-&lt;p&gt;http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/&quot;&gt;http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&quot;&gt;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3&gt;my usb webcam has following output&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;v4l2-ctl --list-formats
 pi@pi50 ~ $ v4l2-ctl --list-formats
-ioctl: VIDIOC&lt;em&gt;ENUM&lt;/em&gt;FMT
+ioctl: VIDIOC_ENUM_FMT
     Index       : 0
     Type        : Video Capture
     Pixel Format: &amp;#39;YUYV&amp;#39;
@@ -260,8 +364,8 @@ pi@pi50 ~ $ v4l2-ctl --list-ctrls&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;-mjpg&lt;em&gt;streamer --input &amp;quot;input&lt;/em&gt;uvc.so --help&amp;quot;
-    pi@pi50 ~ $ mjpg&lt;em&gt;streamer --input &amp;quot;input&lt;/em&gt;uvc.so --help&amp;quot;
+&lt;p&gt;-mjpg_streamer --input &amp;quot;input_uvc.so --help&amp;quot;
+    pi@pi50 ~ $ mjpg_streamer --input &amp;quot;input_uvc.so --help&amp;quot;
     MJPG Streamer Version: svn rev: Unversioned directory
      ---------------------------------------------------------------
      Help for input plugin..: UVC webcam grabber
@@ -525,7 +629,7 @@ Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.  &lt;/p&gt;&lt
 &lt;li&gt;Add in template code for stop/start, start with keyboard and then move to GPIO&lt;/li&gt;
 &lt;li&gt;Get the DC60 STK1160 video to usb dongle working&lt;/li&gt;
 &lt;li&gt;This website says that it may just auto detect in newer linux kernels?
-http://linuxtv.org/wiki/index.php/Stk1160#Making&lt;em&gt;it&lt;/em&gt;Work&lt;/li&gt;
+&lt;a href=&quot;http://linuxtv.org/wiki/index.php/Stk1160#Making_it_Work&quot;&gt;http://linuxtv.org/wiki/index.php/Stk1160#Making_it_Work&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;Here is the code&lt;/h4&gt;
@@ -648,7 +752,7 @@ pip install pandas --upgrade  &lt;/p&gt;
 &lt;p&gt;pip install bokeh  &lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  &lt;/p&gt;
+&lt;p&gt;For a list of required packages, see &lt;a href=&quot;http://bokeh.pydata.org/en/latest/tutorial/quick_install.html&quot;&gt;http://bokeh.pydata.org/en/latest/tutorial/quick_install.html&lt;/a&gt;  &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
 Ideally, you should have the following libraries installed:
 
@@ -704,14 +808,14 @@ wsgiref==0.1.2
 &lt;p&gt;The bokeh example plots are at:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;https://github.com/bokeh/bokeh/tree/master/examples/plotting/server&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bokeh/bokeh/tree/master/examples/plotting/server&quot;&gt;https://github.com/bokeh/bokeh/tree/master/examples/plotting/server&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3&gt;Run the bokeh-server&lt;/h3&gt;
 
 &lt;p&gt;Remember, this make temporary files in directory you run it in.&lt;/p&gt;
 
-&lt;p&gt;--ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006  &lt;/p&gt;
+&lt;p&gt;--ip 0.0.0.0 will redirect the server to your external IP, in my case &lt;a href=&quot;http://192.168.1.40:5006&quot;&gt;http://192.168.1.40:5006&lt;/a&gt;  &lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;bokeh-server --backend=memory --ip 0.0.0.0&lt;/p&gt;
@@ -770,15 +874,15 @@ while True:
 
 &lt;ul&gt;
 &lt;li&gt;eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)&lt;/li&gt;
-&lt;li&gt;simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram&lt;/li&gt;
+&lt;li&gt;simple example that works: &lt;a href=&quot;https://github.com/bokeh/bokeh/tree/master/examples/embed/simple&quot;&gt;https://github.com/bokeh/bokeh/tree/master/examples/embed/simple&lt;/a&gt;&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;more complex: &lt;a href=&quot;https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram&quot;&gt;https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3&gt;Links&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;http://bokeh.pydata.org/en/latest/index.html&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;http://docs.continuum.io/anaconda/install.html&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://bokeh.pydata.org/en/latest/index.html&quot;&gt;http://bokeh.pydata.org/en/latest/index.html&lt;/a&gt;&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://docs.continuum.io/anaconda/install.html&quot;&gt;http://docs.continuum.io/anaconda/install.html&lt;/a&gt;&lt;br&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
@@ -821,7 +925,7 @@ while True:
 
 &lt;ul&gt;
 &lt;li&gt;Raspberry Pi, Model B 512MB RAM, &lt;a href=&quot;http://www.adafruit.com/products/998&quot;&gt;Adafruit 998&lt;/a&gt; target=&amp;quot;&lt;em&gt;blank&amp;quot;&amp;gt;Adafruit 998&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;4 GB SD Card, &amp;lt;a href=&amp;quot;http://www.adafruit.com/products/102&amp;quot; target=&amp;quot;&lt;/em&gt;blank&amp;quot;&amp;gt;Adafruit 102&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4 GB SD Card, &lt;a href=&quot;http://www.adafruit.com/products/102&quot; target=&quot;_blank&quot;&gt;Adafruit 102&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;USB 2 Wifi Dongle (802.11b/g/n), &lt;a href=&quot;http://www.adafruit.com/products/814&quot; target=&quot;_blank&quot;&gt;Adafruit, 814&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;USB 2 Powered Hub, 5V 2A, &lt;a href=&quot;http://www.adafruit.com/products/961&quot; target=&quot;_blank&quot;&gt;Adafruit, 961&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;USB 2 hard-drive, Old laptop drive with a SATA to USB 2 connector&lt;/li&gt;
@@ -838,7 +942,7 @@ while True:
 &lt;strong&gt;Lights&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;2x LED Driver, 12VDC 700 MA, &lt;a href=&quot;https://www.superbrightleds.com/moreinfo/led-drivers/700ma-constant-current-led-driver/1323/3045/&quot; target=&quot;_blank&quot;&gt;SuperBrightLeds, CCD-700&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;4x LED PCB,  &lt;a href=&quot;http://www.superbrightleds.com/moreinfo/bare-circuit-boards/universal-4-led-miniature-wedge-base-pcb-mled-pcb/403/1387/&quot; target=&quot;_blank&quot;&gt;SuperBrightleds, MLED-PCB, 84778101387&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4x LED PCB,  &amp;lt;a href=&amp;quot;&lt;a href=&quot;http://www.superbrightleds.com/moreinfo/bare-circuit-boards/universal-4-led-miniature-wedge-base-pcb-mled-pcb/403/1387/&quot;&gt;http://www.superbrightleds.com/moreinfo/bare-circuit-boards/universal-4-led-miniature-wedge-base-pcb-mled-pcb/403/1387/&lt;/a&gt;&amp;quot; target=&amp;quot;&lt;/em&gt;blank&amp;quot;&amp;gt;SuperBrightleds, MLED-PCB, 84778101387&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2x Mosfet PCB, &lt;a href=&quot;https://www.sparkfun.com/products/10256&quot; target=&quot;_blank&quot;&gt;Sparkfun, COM-10256&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;LED - Super Bright White (25 pack)&lt;/li&gt;
 &lt;li&gt;LED - Infrared 850nm (25 pack), &lt;a href=&quot;https://www.sparkfun.com/products/9854&quot; target=&quot;_blank&quot;&gt;Sparkfun COM-09854&lt;/a&gt;&lt;/li&gt;
