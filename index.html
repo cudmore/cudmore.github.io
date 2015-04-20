@@ -7,6 +7,9 @@ title: Home
   {% for post in paginator.posts %}
   <div class="post">
 	
+
+	  <hr style="background:#999; border:0; height:2px" >
+
     <h2 class="post-title">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title }}
@@ -21,7 +24,7 @@ title: Home
 
 	{{ post.excerpt }}
 	
-	<hr clear="left" style="background:#999; border:0; height:2px" />
+	<br clear="all"/>
 	
   </div>
   {% endfor %}

@@ -2,7 +2,7 @@
 layout: post
 title: "Install OSX"
 category: post
-thumbnail: images/i-can-see-you-black-flag.jpg
+thumbnail: images/i-can-see-you-black-flag-v2.png
 date: 2015-04-19 22:01:06
 tags:
 - osx
