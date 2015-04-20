@@ -6,17 +6,23 @@ title: Home
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
+	
     <h2 class="post-title">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title }}
       </a>
     </h2>
-
+  
     <span class="post-date">{{ post.date | date_to_string }}</span>
+	
+	{% if post.thumbnail %}
+	<img src="{{ post.thumbnail }}" height=160px; align="left" style="PADDING-RIGHT: 7px"/>
+	{% endif %}
 
 	{{ post.excerpt }}
 	
-	<hr style="background:#999; border:0; height:2px" />
+	<hr clear="left" style="background:#999; border:0; height:2px" />
+	
   </div>
   {% endfor %}
 </div>

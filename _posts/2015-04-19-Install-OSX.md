@@ -2,14 +2,11 @@
 layout: post
 title: "Install OSX"
 category: post
+thumbnail: images/i-can-see-you-black-flag.jpg
 date: 2015-04-19 22:01:06
 tags:
 - osx
 ---
-
-![My helpful screenshot]({{ site.url }}/assets/i-can-see-you-black-flag.jpg)
-
-
 
 Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  
  - Motherboard is [GA-Z77X-UP5-TH](http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov)  
@@ -45,8 +42,10 @@ Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.
  - [iStat Menus](http://bjango.com/mac/istatmenus/)
  - [Unarchiver](http://unarchiver.c3.cx/unarchiver) - Handles .xz, .exe
  
-####Word Processing
+####Word processing and layout
  - iWork
+ - Adobe Illustrator CS6
+ - Adobe reader (for digital signatures)
  
 ####Web
  - Stock install of Safari
@@ -60,7 +59,7 @@ Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.
  
 
 ####Remote desktop connection to Raspberry Pi
- - [realVNC Viewer](http://www.realvnc.com/download/viewer/)
+ - [realVNC viewer](http://www.realvnc.com/download/viewer/)
  
 ####myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)
 
@@ -79,4 +78,4 @@ Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.
  - Complete bullshit amateur hack job
  
  
- 
+ ![My helpful screenshot]({{ site.url }}/images/i-can-see-you-black-flag.jpg)

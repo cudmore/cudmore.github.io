@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-04-19T14:24:28-04:00</updated>
+ <updated>2015-04-19T21:23:58-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -17,9 +17,7 @@
    <link href="/post/2015/04/19/Install-OSX/"/>
    <updated>2015-04-19T18:01:06-04:00</updated>
    <id>/post/2015/04/19/Install-OSX</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
+   <content type="html">&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
  - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br&gt;
  - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios&quot;&gt;F12&lt;/a&gt;&lt;br&gt;
  - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
@@ -67,10 +65,12 @@ gem install jekyll
 &lt;li&gt;&lt;a href=&quot;http://unarchiver.c3.cx/unarchiver&quot;&gt;Unarchiver&lt;/a&gt; - Handles .xz, .exe&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4&gt;Word Processing&lt;/h4&gt;
+&lt;h4&gt;Word processing and layout&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;iWork&lt;/li&gt;
+&lt;li&gt;Adobe Illustrator CS6&lt;/li&gt;
+&lt;li&gt;Adobe reader (for digital signatures)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;Web&lt;/h4&gt;
@@ -95,7 +95,7 @@ gem install jekyll
 &lt;h4&gt;Remote desktop connection to Raspberry Pi&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.realvnc.com/download/viewer/&quot;&gt;realVNC Viewer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.realvnc.com/download/viewer/&quot;&gt;realVNC viewer&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)&lt;/h4&gt;
@@ -115,6 +115,8 @@ gem install jekyll
 &lt;p&gt;&lt;del&gt;- Install Junos Pulse (twice)&lt;/del&gt;&lt;br&gt;
  &lt;del&gt;- Requires manual setting of Safari security&lt;/del&gt;&lt;br&gt;
  - Complete bullshit amateur hack job&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -123,9 +125,7 @@ gem install jekyll
    <link href="/post/2015/03/27/lab-protocols/"/>
    <updated>2015-03-27T18:01:06-04:00</updated>
    <id>/post/2015/03/27/lab-protocols</id>
-   <content type="html">&lt;h4&gt;Dental cement&lt;/h4&gt;
-
-&lt;p&gt;C&amp;amp;B-Metabond Adhesive Cement, Parkell Inc&lt;/p&gt;
+   <content type="html">&lt;h4&gt;Dental cement, C&amp;amp;B-Metabond Adhesive Cement, Parkell Inc&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;S396 (3g) Radiopaque Tooth-Shade L-Powder&lt;/li&gt;
@@ -408,9 +408,9 @@ input_init() return value signals to exit
    <link href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/"/>
    <updated>2015-03-20T18:01:06-04:00</updated>
    <id>/post/2015/03/20/Rapsberry Pi Video Controller</id>
-   <content type="html">&lt;h2&gt;What the hell is this !!!&lt;/h2&gt;
+   <content type="html">&lt;p&gt;This is a video server running on a raspberry Pi Linux computer. It is designed to monitor a video camera pointing at your animal.&lt;/p&gt;
 
-&lt;p&gt;This is a video server running on a raspberry Pi. It is designed to monitor a video camera pointing at your animal. It allows you to:&lt;/p&gt;
+&lt;p&gt;It allows you to:&lt;/p&gt;
 
 &lt;p&gt;1 - Arm - Automatically record videos whenever you start acquisition in ScanImage&lt;br&gt;
 2 - Record - Record a one time video&lt;br&gt;

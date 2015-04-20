@@ -7,9 +7,9 @@ tags:
 - raspberry pi
 ---
 
-##What the hell is this !!!
+This is a video server running on a raspberry Pi Linux computer. It is designed to monitor a video camera pointing at your animal.
 
-This is a video server running on a raspberry Pi. It is designed to monitor a video camera pointing at your animal. It allows you to:
+It allows you to:
 
 1 - Arm - Automatically record videos whenever you start acquisition in ScanImage  
 2 - Record - Record a one time video  
