@@ -39,4 +39,5 @@ pages_list:
   about: '/about'
   archive: '/archive'
   tags: '/tags'
+  software: '/software'
   #feed: '/atom.xml'
