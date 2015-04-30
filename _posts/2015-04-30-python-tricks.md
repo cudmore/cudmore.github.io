@@ -7,4 +7,9 @@ tags:
 - python
 ---
 
-xxx
+####iPython auto reload imports
+
+    %load_ext autoreload
+    %autoreload 2
+
+
