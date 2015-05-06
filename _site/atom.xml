@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-05-05T14:22:27-04:00</updated>
+ <updated>2015-05-05T21:31:10-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -567,6 +567,12 @@ sudo apt-get install v4l-utils #this is to detect parameters of USB camera
 &lt;p&gt;sudo pip install bokeh&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3&gt;Install &lt;a href=&quot;https://wiki.python.org/moin/PyQt&quot;&gt;python-qt4&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;The list of qt libraries is huge, see &lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?f=32&amp;amp;t=102028&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install python-qt4
+sudo apt-get install python-qt4-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;!!! Stop Here !!!&lt;/h1&gt;
 
 &lt;h3&gt;Client side socket.io javascript&lt;/h3&gt;
