@@ -141,6 +141,13 @@ Not sure if there is apt-get install python-pil ???
 - To do, get an example running again  
 
     sudo pip install bokeh
+
+###Install [python-qt4](https://wiki.python.org/moin/PyQt)
+
+The list of qt libraries is huge, see [here](https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=102028)
+
+    sudo apt-get install python-qt4
+    sudo apt-get install python-qt4-dev
     
 # !!! Stop Here !!!
 

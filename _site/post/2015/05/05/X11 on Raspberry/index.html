@@ -11,7 +11,7 @@
 
   <title>
     
-      Python calling bash to get drive space remaining &middot; Robert Cudmore
+      X11 on raspberry &middot; Robert Cudmore
     
   </title>
 
@@ -177,18 +177,57 @@
       </div>
 
       <div class="post">
-  <h3 class="post-title">Python calling bash to get drive space remaining</h1>
-  <span class="post-date">24 Dec 2014</span>
-  <p>I need to have some Python code tell me how much drive space is left. Here is what I came up with.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; import subprocess as sub
-&gt;&gt;&gt; checkPath = &#39;~/video&#39;
-&gt;&gt;&gt; cmd = &quot;df &quot; + checkPath + &quot; | awk &#39;{ print $5 }&#39; | tail -n 1&quot;
-&gt;&gt;&gt; p = sub.Popen(cmd, stdout=sub.PIPE,stderr=sub.PIPE, shell=True)
-&gt;&gt;&gt; (out, err) = p.communicate()
-&gt;&gt;&gt; out
-&#39;31%\n&#39;
-&gt;&gt;&gt; out.rstrip() #rstrip &#39;chomps&#39; off newline
-&#39;31%&#39;
+  <h3 class="post-title">X11 on raspberry</h1>
+  <span class="post-date">05 May 2015</span>
+  <p>This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.</p>
+
+<p>Any program you run on the Pi server that has a GUI should be piped to the display of your mac client.</p>
+
+<h4>Install XQuartz on OSX</h4>
+
+<ul>
+<li>Install stalls at about 80%, be patient</li>
+<li>Requires logout and login</li>
+<li>Download <a href="1">here</a></li>
+</ul>
+
+<h4>ssh to Raspberry using &#39;-X&#39;</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">ssh -X pi@10.16.79.145
+</code></pre></div>
+<h4>On Raspberry server</h4>
+
+<ul>
+<li><p>This allows &#39;sudo python&#39; to work with things like Tk()</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo cp ~/.Xauthority ~root/
+</code></pre></div></li>
+<li><p>This tells X11 on the Pi server to send its windows to your mac client (when you remote ssh with -X)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">export DISPLAY=&quot;127.0.0.1:10.0&quot;
+</code></pre></div></li>
+</ul>
+
+<h4>Check that xeyes works</h4>
+
+<ul>
+<li><p>install</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install x11-apps
+</code></pre></div></li>
+<li><p>run</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">xeyes&amp;
+xclock&amp;
+leafpad&amp;
+</code></pre></div></li>
+</ul>
+
+<h4>If this doesn&#39;t work</h4>
+
+<ul>
+<li><p>open up X11 to everybody</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">xhost +
+</code></pre></div></li>
+</ul>
+
+<h4>Run Arduino ide</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/usr/bin/arduino&amp;
 </code></pre></div>
 </div>
 
@@ -198,7 +237,11 @@
     
   
   
-  <a href="/tags/#python">python</a>
+  <a href="/tags/#linux">linux</a>,
+  
+  <a href="/tags/#raspberry">raspberry</a>,
+  
+  <a href="/tags/#OSX">OSX</a>
   
 </div>
 
@@ -209,12 +252,12 @@
 
 
 <span class="page-nav-item-left">
-    <a rel="prev" href="/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/" title="View Monitoring mice in their home cage">&laquo; Previous</a>
+    <a rel="prev" href="/post/2015/05/04/Auto-login-to-ssh-server/" title="View Auto login to ssh servers">&laquo; Previous</a>
 </span>
 
 
 <span class="page-nav-item-right">
-    <a rel="next" href="/post/2015/03/05/bokeh-on-the-raspberry-pi/" title="View ">Next &raquo;</a>
+    <a rel="next" href="/post/2015/05/05/mounting-a-usb-drive-at-boot/" title="View ">Next &raquo;</a>
 </span>
 
 

@@ -4,13 +4,138 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-05-11T21:07:46-04:00</updated>
+ <updated>2015-05-11T21:17:15-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Mounting a USB drive at boot</title>
+   <link href="/post/2015/05/05/mounting-a-usb-drive-at-boot/"/>
+   <updated>2015-05-05T18:01:06-04:00</updated>
+   <id>/post/2015/05/05/mounting-a-usb-drive-at-boot</id>
+   <content type="html">&lt;p&gt;I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.&lt;/p&gt;
+
+&lt;h4&gt;Get a list of your USB devices to check if your USB drive is available&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;lsusb
+
+Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
+Bus 001 Device 004: ID 13fe:5200 Kingston Technology Company Inc.
+Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Make a directory to mount your drive/volume into&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mkdir /home/pi/crap
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Find the UUID of your drive&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo blkid
+
+/dev/mmcblk0p1: SEC_TYPE=&amp;quot;msdos&amp;quot; LABEL=&amp;quot;boot&amp;quot; UUID=&amp;quot;2654-BFC0&amp;quot; TYPE=&amp;quot;vfat&amp;quot;
+/dev/mmcblk0p2: UUID=&amp;quot;548da502-ebde-45c0-9ab2-de5e2431ee0b&amp;quot; TYPE=&amp;quot;ext4&amp;quot;
+/dev/sda1: LABEL=&amp;quot;CRAP&amp;quot; UUID=&amp;quot;7CCD-19F2&amp;quot; TYPE=&amp;quot;vfat&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).&lt;/p&gt;
+
+&lt;h4&gt;Edit your /etc/fstab file by appending a line for your dive&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pico /etc/fstab
+
+proc            /proc           proc    defaults          0       0
+/dev/mmcblk0p1  /boot           vfat    defaults          0       2
+/dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
+UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
+# a swapfile is not a swap partition, so no using swapon|off from here on, use $
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).&lt;/p&gt;
+
+&lt;h4&gt;Remount Your drives and check the drive is mounted&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mount -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;ls&amp;#39; should show /video/ in blue to indicate it is mounted&lt;/p&gt;
+
+&lt;p&gt;Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/crap’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.&lt;/p&gt;
+
+&lt;h4&gt;Linux Commands&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;List your usb devices: lsusb&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;List the Location, Label, UUID and Type of your USB devices: sudo blkid&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Unmount a volume: sudo umount /home/pi/crap&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mount everybody in fstab: sudo mount -a&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Check if a drive is mounted: df | grep “/home/pi/video” | awk ‘{print $6}’&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;To Do&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A problem I just had is that my USB drive did not get mounted at boot and the folder I have reserved for it is on my root file system, ‘/’,  with only 4 GB of space. I started writing tons of video files to the folder and quickly ran out of space on. Now, I need a way to test if the folder I am writing to is (I) a folder or (ii) an actual mount point. Tym, the bash guru in the lab and my go to person on these things suggested the following:&lt;/p&gt;
+
+&lt;p&gt;df | grep “/home/pi/video” | awk ‘{print $6}’&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This will return an empty string if /home/pi/video is NOT mounted.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>X11 on raspberry</title>
+   <link href="/post/2015/05/05/X11%20on%20Raspberry/"/>
+   <updated>2015-05-05T18:01:06-04:00</updated>
+   <id>/post/2015/05/05/X11 on Raspberry</id>
+   <content type="html">&lt;p&gt;This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.&lt;/p&gt;
+
+&lt;p&gt;Any program you run on the Pi server that has a GUI should be piped to the display of your mac client.&lt;/p&gt;
+
+&lt;h4&gt;Install XQuartz on OSX&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install stalls at about 80%, be patient&lt;/li&gt;
+&lt;li&gt;Requires logout and login&lt;/li&gt;
+&lt;li&gt;Download &lt;a href=&quot;1&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;ssh to Raspberry using &amp;#39;-X&amp;#39;&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ssh -X pi@10.16.79.145
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;On Raspberry server&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;This allows &amp;#39;sudo python&amp;#39; to work with things like Tk()&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo cp ~/.Xauthority ~root/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;This tells X11 on the Pi server to send its windows to your mac client (when you remote ssh with -X)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;export DISPLAY=&amp;quot;127.0.0.1:10.0&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Check that xeyes works&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;install&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install x11-apps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;run&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;xeyes&amp;amp;
+xclock&amp;amp;
+leafpad&amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;If this doesn&amp;#39;t work&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;open up X11 to everybody&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;xhost +
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Run Arduino ide&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/usr/bin/arduino&amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>Auto login to ssh servers</title>
@@ -442,6 +567,12 @@ sudo apt-get install v4l-utils #this is to detect parameters of USB camera
 &lt;p&gt;sudo pip install bokeh&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3&gt;Install &lt;a href=&quot;https://wiki.python.org/moin/PyQt&quot;&gt;python-qt4&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;The list of qt libraries is huge, see &lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?f=32&amp;amp;t=102028&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install python-qt4
+sudo apt-get install python-qt4-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;!!! Stop Here !!!&lt;/h1&gt;
 
 &lt;h3&gt;Client side socket.io javascript&lt;/h3&gt;
