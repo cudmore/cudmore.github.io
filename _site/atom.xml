@@ -4,13 +4,184 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-04-27T09:38:10-04:00</updated>
+ <updated>2015-05-11T21:07:46-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Auto login to ssh servers</title>
+   <link href="/post/2015/05/04/Auto-login-to-ssh-server/"/>
+   <updated>2015-05-04T18:01:06-04:00</updated>
+   <id>/post/2015/05/04/Auto-login-to-ssh-server</id>
+   <content type="html">&lt;p&gt;In order to automatically login to an ssh server, you need to generate public/private rsa key pairs on a client and copy these keys to an ssh server. Next time you login from the client to the server, you won’t need to enter your password.&lt;/p&gt;
+
+&lt;p&gt;You should learn and understand a bit about ssh and its security implementations, mostly rsa. Your privacy is only as good as your ability to keep your keys secret, here is a recent example of a nifty ‘side channel attack‘ to obtain your secret keys.&lt;/p&gt;
+
+&lt;p&gt;In what follows I am setting up automatic rsa authentication from a client to a server:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;client: OS X or Linux, cudmore$&lt;/li&gt;
+&lt;li&gt;server: Raspian, &lt;a href=&quot;mailto:pi@192.168.1.70&quot;&gt;pi@192.168.1.70&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;[Client] Generate public/private rsa key pair&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ssh-keygen -t rsa
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/cudmore/.ssh/id_rsa): 
+/Users/cudmore/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/cudmore/.ssh/id_rsa.
+Your public key has been saved in /Users/cudmore/.ssh/id_rsa.pub.
+The key fingerprint is:
+a3:73:53:ee:68:54:37:e9:aa:64:68:4d:30:c3:4f:3a cudmore@localhost
+The key&amp;#39;s randomart image is:
++--[ RSA 2048]----+
+|                 |
+|     .           |
+|      = .    .   |
+|       B  . +    |
+|      E S..o .   |
+|       *.+  .    |
+|      =.* ..     |
+|     . =.+.      |
+|       .o..      |
++-----------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;[Client] id_rsa.pub from the client to the ssh server (need to enter password)&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;[Client] Login to the ssh server (last time you will need a password)&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ssh pi@192.168.1.70
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;[Server] Copy the key into the correct location (on the server)&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cat id_rsa.pub &amp;gt;&amp;gt; ./.ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;[Server] Delete the original (on the server)&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;rm ./id_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;[Client] The next time you login you will not be asked for a password&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ssh pi@192.168.1.70
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Notes&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If your Raspberry does not have a ./.ssh directory you need to turn on ssh using ‘sudo raspi-config’ -&amp;gt; advanced options -&amp;gt; ssh&lt;/li&gt;
+&lt;li&gt;When you append to authorized_keys with ‘cat id_rsa.pub &amp;gt;&amp;gt; ./.ssh/authorized_keys’, the file will be created if it does not exist.&lt;/li&gt;
+&lt;li&gt;If your client is Mac OS X you will be asked for a passphrase when you generate your ssh public/private keys with ‘ssh-keygen -t rsa’. This is an extra level of security. The first time you login to your ssh server, OS X will ask for this passphrase. Again, your security is only as good as you keeping your passwords safe. Using a passphrase for your OSX keychain is convenient but if someone gets this passphrase, they in turn get all your passwords within your keychain. This may seem very circular and it is, the art is in being creative in breaking the loop.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Fun&lt;/h4&gt;
+
+&lt;p&gt;-ssh -o VisualHostKey=yes &lt;a href=&quot;mailto:pi@192.168.1.70&quot;&gt;pi@192.168.1.70&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Python tricks</title>
+   <link href="/post/2015/04/30/python-tricks/"/>
+   <updated>2015-04-30T18:01:06-04:00</updated>
+   <id>/post/2015/04/30/python-tricks</id>
+   <content type="html">&lt;h4&gt;iPython auto reload imports&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;%load_ext autoreload
+%autoreload 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To autoload these options, see:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython/10472712#10472712&quot;&gt;http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython/10472712#10472712&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ipython profile create
+
+c.InteractiveShellApp.exec_lines = []
+c.InteractiveShellApp.exec_lines.append(&amp;#39;%load_ext autoreload&amp;#39;)
+c.InteractiveShellApp.exec_lines.append(&amp;#39;%autoreload 2&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>VNC on raspberry pi</title>
+   <link href="/post/2015/04/29/vnc-on-raspberry/"/>
+   <updated>2015-04-29T18:01:06-04:00</updated>
+   <id>/post/2015/04/29/vnc-on-raspberry</id>
+   <content type="html">&lt;h3&gt;Remote login to Raspberry with tightvnc&lt;/h3&gt;
+
+&lt;p&gt;See&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;https://www.raspberrypi.org/documentation/remote-access/vnc/
+http://elinux.org/RPi_VNC_Server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Install tightvncserver server on Raspberry&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install tightvncserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Run tightvncserver to set password&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tightvncserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Start server on pi&lt;/h3&gt;
+
+&lt;p&gt;Use :1 if your Pi is running X11 by default (mine is)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;vncserver :1 -geometry 1920x1080 -depth 24
+vncserver :1 -geometry 1280x800 -depth 24
+vncserver :1 -geometry 1024x768 -depth 24
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;kill server&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;vncserver -kill :1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Install realVNC client on OSX&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;https://www.realvnc.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Enable copy/paste between host and server&lt;/h3&gt;
+
+&lt;p&gt;See&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi&quot;&gt;http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# install
+sudo apt-get install autocutsel
+
+#edit /home/pi/.vnc/xstartup
+pico .vnc/xstartup 
+
+#make it look like this
+#!/bin/sh
+
+xrdb $HOME/.Xresources
+xsetroot -solid grey
+#added 20150414 to get copy paste to work
+autocutsel -fork
+#x-terminal-emulator -geometry 80x24+10+10 -ls -title &amp;quot;$VNCDESKTOP Desktop&amp;quot; &amp;amp;
+#x-window-manager &amp;amp;
+# Fix to make GNOME work
+export XKL_XMODMAP_DISABLE=1
+/etc/X11/Xsession
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Alternative is to use x11vnc&lt;/h3&gt;
+
+&lt;p&gt;See&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?p=108862&quot;&gt;https://www.raspberrypi.org/forums/viewtopic.php?p=108862&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;amp;t=19600&quot;&gt;https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;amp;t=19600&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4&gt;Pros&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This will &amp;#39;recycle&amp;#39; your :0 display if you are booting with X11&lt;/li&gt;
+&lt;li&gt;You will be able to see the same screen on direct HDMI/Video output and your remote connection simultaneously&lt;/li&gt;
+&lt;li&gt;You will remote login (with realVNC) and get the same desktop&lt;/li&gt;
+&lt;li&gt;Copy/Paste works by default&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Cons&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This would work if you always had a HDMI display at a desired resolution (or tweaked /boot/config.txt to force HDMI).&lt;/li&gt;
+&lt;li&gt;Does not work well if you are throwing your display out an analog RCA jack, it is too low res and then your VNC connection just follows that low resolution. Maybe could fix this?&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Install OSX</title>

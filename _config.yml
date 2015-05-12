@@ -4,6 +4,9 @@ redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 highlighter:      pygments
 
+gems:
+  - jekyll-sitemap
+  
 # Permalinks
 permalink:        pretty
 relative_permalinks: true

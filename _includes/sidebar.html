@@ -21,6 +21,8 @@
         `layout: page` in the front-matter. See readme for usage.
       {% endcomment %}
 
+	  {% include my_google_search.html %}
+
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    {% for post in site.posts offset: 0 limit: 5 %}
