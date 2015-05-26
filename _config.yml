@@ -4,8 +4,9 @@ redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 highlighter:      pygments
 
-gems:
-  - jekyll-sitemap
+# may 2015, this was causing problems on osx
+#gems:
+#  - jekyll-sitemap
   
 # Permalinks
 permalink:        pretty

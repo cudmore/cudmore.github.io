@@ -4,13 +4,132 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-05-11T21:17:15-04:00</updated>
+ <updated>2015-05-26T11:01:38-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging</title>
+   <link href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/"/>
+   <updated>2015-05-24T18:01:06-04:00</updated>
+   <id>/post/2015/05/24/Non-blocking-stepper-motor-on-arduino</id>
+   <content type="html">&lt;p&gt;Goal here is to make an Arduino do four things simultaneously:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Read a rotary encoder&lt;/li&gt;
+&lt;li&gt;Drive a stepper motor&lt;/li&gt;
+&lt;li&gt;Respond to Scan Image (SI) frame clock&lt;/li&gt;
+&lt;li&gt;Log all events to serial&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The rotary encoder and stepper motor (1,2) need to be non-blocking. All inputs (1,2,3) need to use low-level interrupts to be &amp;#39;timing precise&amp;#39; and not get blocked themselves.&lt;/p&gt;
+
+&lt;p&gt;Initially I wanted to log all this to Arduino memory but there is not enough on the Arduino Uno. Upgrading to Arduino Mega gives you 4x memory but still not enough. The rotary encoder fires off tons of events and if I hard code events as an array (in Arduino memory), I am limited to about 250 events. Same problem with SI frames, I am limited to about 250 frame timestamps. Arduino ProgMem does not work as it is not writable at runtime. In the future I may get an SD card shield for this?&lt;/p&gt;
+
+&lt;p&gt;For now I am having Arduino log all events to serial and am using python code (on a Raspberry Pi) to grab and save all serial events coming from Arduino. I don&amp;#39;t like this as I am bound to miss some events or get out of synch due to general flakiness of serial.&lt;/p&gt;
+
+&lt;h3&gt;Install Arduino 1.6.x&lt;/h3&gt;
+
+&lt;p&gt;Don&amp;#39;t upgrade the system to Debian Jesse, just pull the Arduino 1.6 packages from Debian Jesse repository.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://nicohood.wordpress.com/2015/01/24/installing-avr-gcc-4-8-1-and-arduino-ide-1-6-on-raspberry-pi/&quot;&gt;https://nicohood.wordpress.com/2015/01/24/installing-avr-gcc-4-8-1-and-arduino-ide-1-6-on-raspberry-pi/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Motor controller&lt;/h3&gt;
+
+&lt;p&gt;I am using &lt;a href=&quot;http://www.schmalzhaus.com/EasyDriver/&quot;&gt;EasyDriver&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Non blocking stepper motor on arduino&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.airspayce.com/mikem/arduino/AccelStepper/index.html&quot;&gt;AccelStepper&lt;/a&gt; Arduino library.&lt;/p&gt;
+
+&lt;h3&gt;Rotary encoder&lt;/h3&gt;
+
+&lt;p&gt;I have a &amp;#39;Honeywell 600-128-cbl&amp;#39;. Looking at wires as they come out of encoder...&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;green - Ground&lt;/li&gt;
+&lt;li&gt;yellow -  &amp;#39;A&amp;#39; out --&amp;gt;&amp;gt; arduino 0&lt;/li&gt;
+&lt;li&gt;orange - &amp;#39;B&amp;#39; out --&amp;gt;&amp;gt; arduino 1&lt;/li&gt;
+&lt;li&gt;red - 5 Vdc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pinouts are in &lt;a href=&quot;http://www.farnell.com/datasheets/1712854.pdf&quot;&gt;.pdf on farnell website&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Mount with nut and lockwasher
+- Hex Mount Nut: 3/8 in x 32
+- Internal Tooth Lockwasher&lt;/p&gt;
+
+&lt;h3&gt;Rotary encoder library&lt;/h3&gt;
+
+&lt;p&gt;A non-blocking rotary encoder library for Arduino is made by &lt;a href=&quot;http://www.pjrc.com/teensy/td_libs_Encoder.html&quot;&gt;pjrc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Setting arbitrary interrupts on Arduino&lt;/h3&gt;
+
+&lt;p&gt;By default the Arduino Uno has low level interrupts on input pins 2 and 3. I need more interrupts. You can upgrade your Arduino board or just set low level interrupts on any input pin. I am setting A0/A1/A2 to accept &lt;a href=&quot;http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html&quot;&gt;low level interrupts&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Plotting sensor data from arduino&lt;/h3&gt;
+
+&lt;p&gt;This is tricky as parsing incoming serial data is slow. It is slow on any operating system and with any CPU chip including Pentium i7 running OSX or Window, Arm processor on Raspberry Pi. The serial parsing/reading eventually finishes but to get a legitimate real-time plot requires buffering a number of values and plotting them in a batch. This is particularly important for the high bandwidth of the rotary encoder.&lt;/p&gt;
+
+&lt;p&gt;I tried three different options and dedicating myself to pyqtgraph...&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://matplotlib.org&quot;&gt;Matplotlib&lt;/a&gt;. Too slow and plots are inherently non interactive (like Matlab).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://processing.org&quot;&gt;Processing&lt;/a&gt;. Very simple to implement, good for prototyping, very powerful Java based code. In the end I want to use Python so I am ditching it for final production.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.pyqtgraph.org&quot;&gt;PyQtGraph&lt;/a&gt;. Python based and designed to plot within an application. HIghly interactive.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Good code for python matplotlib&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;https://www.lebsanft.org/?p=48
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Processing on the pi&lt;/h4&gt;
+
+&lt;p&gt;Installing Processing on the PI is a little tricky.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cagewebdev.com/index.php/raspberry-pi-running-processing-on-your-raspi/&quot;&gt;http://cagewebdev.com/index.php/raspberry-pi-running-processing-on-your-raspi/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4&gt;pyqtgraph&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pip install pyqtgraph
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Gotchas&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Don&amp;#39;t connect pin 0 on Arduino, you will get arduino error
+avrdude stk500_getsync(): not in sync&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Put Arduino libraries in&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/usr/share/arduino/libraries/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;AccellStepper Arduino library&lt;br&gt;
+&lt;a href=&quot;http://www.airspayce.com/mikem/arduino/AccelStepper/index.html&quot;&gt;http://www.airspayce.com/mikem/arduino/AccelStepper/index.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Non blocking rotary encoder library for Arduino&lt;br&gt;
+&lt;a href=&quot;http://www.pjrc.com/teensy/td_libs_Encoder.html&quot;&gt;http://www.pjrc.com/teensy/td_libs_Encoder.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Setting any pin as a low level interrupt on Arduino&lt;br&gt;
+&lt;a href=&quot;http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html&quot;&gt;http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;easy driver motor controller&lt;br&gt;
+&lt;a href=&quot;http://www.schmalzhaus.com/EasyDriver/&quot;&gt;http://www.schmalzhaus.com/EasyDriver/&lt;/a&gt;
+&lt;a href=&quot;http://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html&quot;&gt;http://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pinouts for &amp;#39;Honeywell 600-128-cbl&amp;#39; rotary encoder&lt;br&gt;
+&lt;a href=&quot;http://www.farnell.com/datasheets/1712854.pdf&quot;&gt;http://www.farnell.com/datasheets/1712854.pdf&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;EasyDriver Tutorials&lt;br&gt;
+&lt;a href=&quot;http://bildr.org/2012/11/big-easy-driver-arduino/&quot;&gt;http://bildr.org/2012/11/big-easy-driver-arduino/&lt;/a&gt;
+&lt;a href=&quot;http://bildr.org/2012/11/big-easy-driver-arduino/&quot;&gt;http://bildr.org/2012/11/big-easy-driver-arduino/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;[not useful] A small fork of AccelStepper v1.3 with AF_motor (Adafruit motor shield) support&lt;br&gt;
+&lt;a href=&quot;https://github.com/adafruit/AccelStepper&quot;&gt;https://github.com/adafruit/AccelStepper&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://matplotlib.org&quot;&gt;Matplotlib&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://processing.org&quot;&gt;Processing&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.pyqtgraph.org&quot;&gt;PyQtGraph&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Mounting a USB drive at boot</title>
