@@ -28,6 +28,8 @@ Don't upgrade the system to Debian Jesse, just pull the Arduino 1.6 packages fro
 
 https://nicohood.wordpress.com/2015/01/24/installing-avr-gcc-4-8-1-and-arduino-ide-1-6-on-raspberry-pi/
 
+His site is moving to [github.com/NicoHood](https://github.com/NicoHood/Arduino-IDE-for-Raspberry). Another person who bailed on Wordpress, hard times for wordpress?
+
 ###Motor controller
 
 I am using [EasyDriver](http://www.schmalzhaus.com/EasyDriver/)
