@@ -11,7 +11,7 @@
 
   <title>
     
-      Robert Cudmore &middot; 
+      Changing default mount name in Apple File Sharing &middot; Robert Cudmore
     
   </title>
 
@@ -180,128 +180,60 @@
 		<hr style="background:#202020; border:0; height:3px" />
       </div>
 
-      <div class="posts">
+      <div class="post">
+  <h3 class="post-title">Changing default mount name in Apple File Sharing</h1>
+  <span class="post-date">07 Jun 2015</span>
+  <p>I mount multiple Raspberry Pi&#39;s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name &#39;Home Directory&#39;. There is no way to tell them apart once mounted (except for looking at what is in them).</p>
+
+<p>Here is how you change the name of the default AFP mount point.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#stop netatalk
+sudo /etc/init.d/netatalk stop
+
+#edit config file
+sudo nano /etc/netatalk/AppleVolumes.default
+
+#change this one line
+
+# By default all users have access to their home directories.
+#~/                     &quot;Home Directory&quot;
+~/                      &quot;pi50&quot;
+
+#restart netatalk
+sudo /etc/init.d/netatalk start
+</code></pre></div>
+<p>This pi will now mount on my Mac desktop as a hard-drive named &#39;pi50&#39;</p>
+
+<h4>Links</h4>
+
+<p>I got this <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=36&amp;t=26826">from here</a>.</p>
+
+</div>
+
+<div class="post-tags">
+  Tags: 
   
-  <div class="post">
-	
-
-	  <hr style="background:#999; border:0; height:2px" >
-
-    <h2 class="post-title">
-      <a href="/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/">
-        Changing default mount name in Apple File Sharing
-      </a>
-    </h2>
+    
   
-    <span class="post-date">07 Jun 2015</span>
-	
-	
-
-	<p>I mount multiple Raspberry Pi&#39;s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name &#39;Home Directory&#39;. There is no way to tell them apart once mounted (except for looking at what is in them).</p>
-
-	
-	<br clear="all"/>
-	
-  </div>
   
-  <div class="post">
-	
-
-	  <hr style="background:#999; border:0; height:2px" >
-
-    <h2 class="post-title">
-      <a href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/">
-        Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging
-      </a>
-    </h2>
+  <a href="/tags/#linux">linux</a>,
   
-    <span class="post-date">24 May 2015</span>
-	
-	
-
-	<p>Goal here is to make an Arduino do four things simultaneously:</p>
-
-	
-	<br clear="all"/>
-	
-  </div>
-  
-  <div class="post">
-	
-
-	  <hr style="background:#999; border:0; height:2px" >
-
-    <h2 class="post-title">
-      <a href="/post/2015/05/05/mounting-a-usb-drive-at-boot/">
-        Mounting a USB drive at boot
-      </a>
-    </h2>
-  
-    <span class="post-date">05 May 2015</span>
-	
-	
-
-	<p>I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.</p>
-
-	
-	<br clear="all"/>
-	
-  </div>
-  
-  <div class="post">
-	
-
-	  <hr style="background:#999; border:0; height:2px" >
-
-    <h2 class="post-title">
-      <a href="/post/2015/05/05/X11%20on%20Raspberry/">
-        X11 on raspberry
-      </a>
-    </h2>
-  
-    <span class="post-date">05 May 2015</span>
-	
-	
-
-	<p>This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.</p>
-
-	
-	<br clear="all"/>
-	
-  </div>
-  
-  <div class="post">
-	
-
-	  <hr style="background:#999; border:0; height:2px" >
-
-    <h2 class="post-title">
-      <a href="/post/2015/05/04/Auto-login-to-ssh-server/">
-        Auto login to ssh servers
-      </a>
-    </h2>
-  
-    <span class="post-date">04 May 2015</span>
-	
-	
-
-	<p>In order to automatically login to an ssh server, you need to generate public/private rsa key pairs on a client and copy these keys to an ssh server. Next time you login from the client to the server, you won’t need to enter your password.</p>
-
-	
-	<br clear="all"/>
-	
-  </div>
+  <a href="/tags/#raspberry pi">raspberry pi</a>
   
 </div>
 
-<div class="pagination">
-  
-    <a class="pagination-item older" href="/page2">Older</a>
-  
-  
-    <span class="pagination-item newer">Newer</span>
-  
+
+<div class="post-tags">
+    <p><font size="-1rem">&copy;2015. <A HREF="http://robertcudmore.org">Robert Cudmore</A>.</font></p>
 </div>
+
+
+<span class="page-nav-item-left">
+    <a rel="prev" href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/" title="View Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging">&laquo; Previous</a>
+</span>
+
+
+
+
     </div>
 
   </body>
