@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      VNC on raspberry pi &middot; Robert Cudmore
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  -->
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+
+
+
+  <body class="layout-reverse">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+
+    
+    
+    <div id="sidebar">
+    <!-- <nav class="sidebar-nav"> -->
+      <!-- <a class="sidebar-nav-item" href="">Home</a> -->
+
+      
+
+	  <script>
+  (function() {
+    var cx = '014838221913568838622:5bpsoltbvmg';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Recent posts</span>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/">Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/">Changing default mount name in Apple File Sharing</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/">Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/05/mounting-a-usb-drive-at-boot/">Mounting a USB drive at boot</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/05/X11%20on%20Raspberry/">X11 on raspberry</a><BR>
+		    
+		</section>
+
+		<BR>
+
+		<span class="sidebar-nav-item">Tag cloud</span>
+		
+    		<a style="font-size: 66%" href="/tags/#flask">
+    		  flask
+    		</a>
+		
+    		<a style="font-size: 106%" href="/tags/#python">
+    		  python
+    		</a>
+		
+    		<a style="font-size: 146%" href="/tags/#raspberry pi">
+    		  raspberry pi
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#bokeh">
+    		  bokeh
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#video">
+    		  video
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#acquisition">
+    		  acquisition
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#opencv">
+    		  opencv
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#raspian">
+    		  raspian
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#protocols">
+    		  protocols
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#osx">
+    		  osx
+    		</a>
+		
+    		<a style="font-size: 80%" href="/tags/#raspberry">
+    		  raspberry
+    		</a>
+		
+    		<a style="font-size: 106%" href="/tags/#linux">
+    		  linux
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#OSX">
+    		  OSX
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#arduino">
+    		  arduino
+    		</a>
+		
+    		<a style="font-size: 53%" href="/tags/#ScanImage">
+    		  ScanImage
+    		</a>
+		
+
+		<BR>
+		<BR>
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Links</span>
+		  &raquo; <a class="sidebarlink" href="http://robertcudmore.org">Homepage</a><BR>
+		  &raquo; <a class="sidebarlink" href="https://github.com/cudmore/cudmore.github.io">Blog layout on github</a><BR>
+		  &raquo; <a class="sidebarlink" href="http://www.flickr.com/cudmore">Flickr</a><BR>
+		</section>
+  
+	</div>
+<!--    </nav> -->
+
+  </div>
+</div>
+
+
+    <div class="content container">
+
+      <!-- added by bob -->
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Robert Cudmore</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/about">about</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/archive">archive</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/tags">tags</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/software">software</a></small>
+          
+
+
+        </h3>
+		<hr style="background:#202020; border:0; height:3px" />
+      </div>
+
+      <div class="post">
+  <h3 class="post-title">VNC on raspberry pi</h1>
+  <span class="post-date">29 Apr 2015</span>
+  <h3>Remote login to Raspberry with tightvnc</h3>
+
+<p>See</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.raspberrypi.org/documentation/remote-access/vnc/
+http://elinux.org/RPi_VNC_Server
+</code></pre></div>
+<h3>Install tightvncserver server on Raspberry</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install tightvncserver
+</code></pre></div>
+<h3>Run tightvncserver to set password</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tightvncserver
+</code></pre></div>
+<h3>Start server on pi</h3>
+
+<p>Use :1 if your Pi is running X11 by default (mine is)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver :1 -geometry 1920x1080 -depth 24
+vncserver :1 -geometry 1280x800 -depth 24
+vncserver :1 -geometry 1024x768 -depth 24
+</code></pre></div>
+<h3>kill server</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver -kill :1
+</code></pre></div>
+<h3>Install realVNC client on OSX</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.realvnc.com
+</code></pre></div>
+<h3>Enable copy/paste between host and server</h3>
+
+<p>See</p>
+
+<p><a href="http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi">http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</a></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># install
+sudo apt-get install autocutsel
+
+#edit /home/pi/.vnc/xstartup
+pico .vnc/xstartup 
+
+#make it look like this
+#!/bin/sh
+
+xrdb $HOME/.Xresources
+xsetroot -solid grey
+#added 20150414 to get copy paste to work
+autocutsel -fork
+#x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;
+#x-window-manager &amp;
+# Fix to make GNOME work
+export XKL_XMODMAP_DISABLE=1
+/etc/X11/Xsession
+</code></pre></div>
+<h3>Alternative is to use x11vnc</h3>
+
+<p>See</p>
+
+<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=108862">https://www.raspberrypi.org/forums/viewtopic.php?p=108862</a></p>
+
+<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600">https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600</a></p>
+
+<h4>Pros</h4>
+
+<ul>
+<li>This will &#39;recycle&#39; your :0 display if you are booting with X11</li>
+<li>You will be able to see the same screen on direct HDMI/Video output and your remote connection simultaneously</li>
+<li>You will remote login (with realVNC) and get the same desktop</li>
+<li>Copy/Paste works by default</li>
+</ul>
+
+<h4>Cons</h4>
+
+<ul>
+<li>This would work if you always had a HDMI display at a desired resolution (or tweaked /boot/config.txt to force HDMI).</li>
+<li>Does not work well if you are throwing your display out an analog RCA jack, it is too low res and then your VNC connection just follows that low resolution. Maybe could fix this?</li>
+</ul>
+
+</div>
+
+<div class="post-tags">
+  Tags: 
+  
+    
+  
+  
+  <a href="/tags/#raspberry">raspberry</a>
+  
+</div>
+
+
+<div class="post-tags">
+    <p><font size="-1rem">&copy;2015. <A HREF="http://robertcudmore.org">Robert Cudmore</A>.</font></p>
+</div>
+
+
+<span class="page-nav-item-left">
+    <a rel="prev" href="/post/2015/04/19/Install-OSX/" title="View Install OSX">&laquo; Previous</a>
+</span>
+
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/post/2015/04/30/python-tricks/" title="View ">Next &raquo;</a>
+</span>
+
+
+
+    </div>
+
+  </body>
+</html>
