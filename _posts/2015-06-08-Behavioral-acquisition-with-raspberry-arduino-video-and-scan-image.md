@@ -7,6 +7,7 @@ tags:
 - linux
 - raspberry pi
 - ScanImage
+- data acquisition
 ---
 
 Have a Raspberry Pi be the master control for a trial based experiment. Each trial is started by the Pi, the Pi triggers an Arduino and ScanImage (via TTL) and then saves Arduino based timestamped events to a file while recording real-time timestamped video.

@@ -5,7 +5,6 @@ category: post
 date: 2015-03-21 22:01:06
 tags:
 - raspberry pi
-- raspian
 ---
 
 This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.

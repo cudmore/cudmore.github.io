@@ -7,6 +7,7 @@ tags:
 - flask
 - python
 - raspberry pi
+- data acquisition
 ---
 
 [Aug 4, 2014, updated]

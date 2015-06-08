@@ -6,7 +6,7 @@ date: 2015-05-05 22:01:06
 tags:
 - linux
 - raspberry
-- OSX
+- osx
 ---
 
 This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.

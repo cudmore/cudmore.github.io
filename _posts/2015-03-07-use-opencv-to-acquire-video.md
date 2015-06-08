@@ -4,9 +4,7 @@ title: "Use OpenCV to acquire video"
 category: post
 date: 2015-03-07 22:01:06
 tags:
-- video
-- acquisition
-- opencv
+- data acquisition
 ---
 ####Goals
 - Use raspberry to record video from USB camera and stream to disk.

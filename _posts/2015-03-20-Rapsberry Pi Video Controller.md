@@ -5,6 +5,7 @@ category: post
 date: 2015-03-20 22:01:06
 tags:
 - raspberry pi
+- data acquisition
 ---
 
 This is a video server running on a raspberry Pi Linux computer. It is designed to monitor a video camera pointing at your animal.
