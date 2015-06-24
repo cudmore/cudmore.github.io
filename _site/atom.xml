@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-06-08T07:45:07-04:00</updated>
+ <updated>2015-06-24T08:57:13-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -19,7 +19,7 @@
    <id>/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image</id>
    <content type="html">&lt;p&gt;Have a Raspberry Pi be the master control for a trial based experiment. Each trial is started by the Pi, the Pi triggers an Arduino and ScanImage (via TTL) and then saves Arduino based timestamped events to a file while recording real-time timestamped video.&lt;/p&gt;
 
-&lt;p&gt;See blog post &lt;a href=&quot;https://github.com/cudmore/triggerserver&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;See github code &lt;a href=&quot;https://github.com/cudmore/triggerserver&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </content>
  </entry>
  
@@ -79,6 +79,8 @@ sudo /etc/init.d/netatalk start
 &lt;p&gt;Don&amp;#39;t upgrade the system to Debian Jesse, just pull the Arduino 1.6 packages from Debian Jesse repository.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://nicohood.wordpress.com/2015/01/24/installing-avr-gcc-4-8-1-and-arduino-ide-1-6-on-raspberry-pi/&quot;&gt;https://nicohood.wordpress.com/2015/01/24/installing-avr-gcc-4-8-1-and-arduino-ide-1-6-on-raspberry-pi/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;His site is moving to &lt;a href=&quot;https://github.com/NicoHood/Arduino-IDE-for-Raspberry&quot;&gt;github.com/NicoHood&lt;/a&gt;. Another person who bailed on Wordpress, hard times for wordpress?&lt;/p&gt;
 
 &lt;h3&gt;Motor controller&lt;/h3&gt;
 

@@ -13,7 +13,7 @@ if len( sys.argv ) > 1:
 # Change to your own account information
 to = 'robert.cudmore@gmail.com'
 gmail_user = 'cudmore.raspberry@gmail.com'
-gmail_password = 'poetry7d'
+gmail_password = 'ENTER_YOUR_PASSWORD_HERE'
 smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 smtpserver.ehlo()
 smtpserver.starttls()
