@@ -4,13 +4,30 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-06-24T08:57:13-04:00</updated>
+ <updated>2015-06-25T14:04:40-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>this is an example post</title>
+   <link href="/post/2015/06/25/this-is-an-example-post/"/>
+   <updated>2015-06-25T18:01:06-04:00</updated>
+   <id>/post/2015/06/25/this-is-an-example-post</id>
+   <content type="html">&lt;h3&gt;h3, this is an example post&lt;/h3&gt;
+
+&lt;h4&gt;h4, this is heading 4&lt;/h4&gt;
+
+&lt;p&gt;a link &lt;a href=&quot;https://github.com/cudmore/triggerserver&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;another link&lt;/p&gt;
+
+&lt;h4&gt;this is an update&lt;/h4&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</title>
