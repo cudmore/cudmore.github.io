@@ -60,7 +60,7 @@ Use gmail 'cudmore.raspberry@gmail.com' to send
 
 Download whatismyip.py, run it and it will tell you your ip
 
-    WOOPS, NOT THIS ... wget http://cudmore.github.io/downloads/startup_mailer.py
+     wget http://cudmore.github.io/downloads/whatismyip.py
     
 ###python
 
