@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Monitoring mice in their home cage &middot; Robert Cudmore
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  -->
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+
+
+
+  <body class="layout-reverse">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+
+    
+    
+    <div id="sidebar">
+    <!-- <nav class="sidebar-nav"> -->
+      <!-- <a class="sidebar-nav-item" href="">Home</a> -->
+
+      
+
+	  <!-- <script>
+  (function() {
+    var cx = '014838221913568838622:5bpsoltbvmg';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+ -->
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Recent posts</span>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/08/14/this-is-an-example-post/">pyqtGraph to display a .tif stack</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/">Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/">Changing default mount name in Apple File Sharing</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/">Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/05/mounting-a-usb-drive-at-boot/">Mounting a USB drive at boot</a><BR>
+		    
+		</section>
+
+		<BR>
+
+		<span class="sidebar-nav-item">Tag cloud</span>
+		
+    		<a style="font-size: 76%" href="/tags/#flask">
+    		  flask
+    		</a>
+		
+    		<a style="font-size: 149%" href="/tags/#python">
+    		  python
+    		</a>
+		
+    		<a style="font-size: 185%" href="/tags/#raspberry pi">
+    		  raspberry pi
+    		</a>
+		
+    		<a style="font-size: 112%" href="/tags/#data acquisition">
+    		  data acquisition
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#bokeh">
+    		  bokeh
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#protocols">
+    		  protocols
+    		</a>
+		
+    		<a style="font-size: 76%" href="/tags/#osx">
+    		  osx
+    		</a>
+		
+    		<a style="font-size: 94%" href="/tags/#raspberry">
+    		  raspberry
+    		</a>
+		
+    		<a style="font-size: 130%" href="/tags/#linux">
+    		  linux
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#arduino">
+    		  arduino
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#ScanImage">
+    		  ScanImage
+    		</a>
+		
+
+		<BR>
+		<BR>
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Links</span>
+		  &raquo; <a class="sidebarlink" href="http://robertcudmore.org">Homepage</a><BR>
+		  &raquo; <a class="sidebarlink" href="https://github.com/cudmore/cudmore.github.io">Blog layout on github</a><BR>
+		  &raquo; <a class="sidebarlink" href="http://www.flickr.com/cudmore">Flickr</a><BR>
+		</section>
+  
+	</div>
+<!--    </nav> -->
+
+  </div>
+</div>
+
+
+    <div class="content container">
+
+      <!-- added by bob -->
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Robert Cudmore</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/about">about</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/archive">archive</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/tags">tags</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/software">software</a></small>
+          
+
+
+        </h3>
+		<hr style="background:#202020; border:0; height:3px" />
+      </div>
+
+      <div class="post">
+  <h3 class="post-title">Monitoring mice in their home cage</h1>
+  <span class="post-date">14 Feb 2014</span>
+  <p>[Aug 4, 2014, updated]
+[March 2015, moved to cudmore.github.io]</p>
+
+<h2>Goal</h2>
+
+<ul>
+<li>videotape mice in their home cage.</li>
+</ul>
+
+<h3>Parts</h3>
+
+<h4>Computer</h4>
+
+<ul>
+<li>Raspberry Pi, Model B 512MB RAM, <a href="http://www.adafruit.com/products/998">Adafruit 998</a> target=&quot;<em>blank&quot;&gt;Adafruit 998</a></li>
+<li>4 GB SD Card, <a href="http://www.adafruit.com/products/102" target="_blank">Adafruit 102</a></li>
+<li>USB 2 Wifi Dongle (802.11b/g/n), <a href="http://www.adafruit.com/products/814" target="_blank">Adafruit, 814</a></li>
+<li>USB 2 Powered Hub, 5V 2A, <a href="http://www.adafruit.com/products/961" target="_blank">Adafruit, 961</a></li>
+<li>USB 2 hard-drive, Old laptop drive with a SATA to USB 2 connector</li>
+<li>5V 1A AC to DC converter, <a href="http://www.adafruit.com/products/501" target="_blank">Adafruit, 501</a></li>
+</ul>
+<h4>Video</h4>
+<ul>
+<li>Raspberry Pi NoIR camera, <a href="http://www.adafruit.com/products/1567" target="_blank">Adafruit, 1567</a></li>
+<li>12&quot; flex cable for Raspberry Pi NoIR Camera, <a href="http://www.adafruit.com/products/1648" target="_blank">Adafruit, 1648</a> (24&quot;, <a href="https://www.adafruit.com/products/1731" target="_blank">Adafruit 1731</a>)</li>
+<li>4x Right-angle 1/2&quot; post clamps, <a href="http://search.newport.com/?q=*&amp;x2=sku&amp;q2=CA-1" target="_blank">Newport CA-1</a></li>
+<li>Mini Ball Head, <a href="http://www.bhphotovideo.com/c/product/221096-REG/Giottos_MH1004_320_MH_1004_Mini_Ball.html" target="_blank">B&amp;H Giottos MH1004</a></li>
+<li>1/2&quot; hollow aluminum tubes, these are cheap and easily cut with hack-saw, <a href="http://www.homedepot.com/p/Allied-Tube-Conduit-1-2-in-x-10-ft-Electric-Metallic-Tube-Conduit-101543/100400405" target="_blank">Home Depot</a></li>
+</ul>
+<strong>Lights</strong>
+<ul>
+<li>2x LED Driver, 12VDC 700 MA, <a href="https://www.superbrightleds.com/moreinfo/led-drivers/700ma-constant-current-led-driver/1323/3045/" target="_blank">SuperBrightLeds, CCD-700</a></li>
+<li>4x LED PCB,  &lt;a href=&quot;<a href="http://www.superbrightleds.com/moreinfo/bare-circuit-boards/universal-4-led-miniature-wedge-base-pcb-mled-pcb/403/1387/">http://www.superbrightleds.com/moreinfo/bare-circuit-boards/universal-4-led-miniature-wedge-base-pcb-mled-pcb/403/1387/</a>&quot; target=&quot;</em>blank&quot;&gt;SuperBrightleds, MLED-PCB, 84778101387</a></li>
+<li>2x Mosfet PCB, <a href="https://www.sparkfun.com/products/10256" target="_blank">Sparkfun, COM-10256</a></li>
+<li>LED - Super Bright White (25 pack)</li>
+<li>LED - Infrared 850nm (25 pack), <a href="https://www.sparkfun.com/products/9854" target="_blank">Sparkfun COM-09854</a></li>
+<li>LED - Infrared 950nm (25 pack), <a href="https://www.sparkfun.com/products/10557" target="_blank">Sparkfun COM-10557</a></li>
+<li>2x LED Light Bar - White (SMD), <a href="https://www.sparkfun.com/products/12014" target="_blank">Sparkfun, COM-12014</a></li>
+<li>Light Holders,<b> </b>25 lb circular magnets, 3 foot threaded rods, screws, washers (Ace Hardware)</li>
+</ul>
+<h4>Running Wheels</h4>
+<ul>
+<li>Empty running wheels from <a href="http://www.med-associates.com/product/low-profile-wireless-running-wheel-for-mouse/" target="_blank">Med Associates</a> (find cheaper solution)</li>
+<li>2 Hall Effect sensors per wheel (Optek/TT O090U), <a href="http://www.mouser.com/ProductDetail/Optek-TT-electronics/OH090U/?qs=MYMjFsmMg9Zxhz344sS0jg==" target="_blank">Mouser 828-OH090U</a></li>
+</ul>
+<h4>Miscellaneous Sensors</h4>
+<ul>
+<li>Visible light sensor (Vishay, TEPT5600), <a href="http://www.mouser.com/ProductDetail/Vishay/TEPT5600/?qs=%2fha2pyFadujUHPassviAP51fh4B6FFdxq%2fQn0JoB63RFxPBe7%2ffCXA%3d%3d" target="_blank">Mouser 782-TEPT5600</a></li>
+<li>IR sensor (Vishay BPW83), <a href="http://www.mouser.com/ProductDetail/Vishay/BPW83/?qs=%2fha2pyFaduiEcAuMy5rpt15ObB2haiIvhq3aASHM7R0%3d" target="_blank">Mouser 782-BPW83</a></li>
+<li>Temperature and Humidity Sensor (AM2302 wired DHT22), <a href="http://www.adafruit.com/products/393" target="_blank">Adafruit 393</a></li>
+</ul>
+<strong>Acquisition Software (</strong>Python scripts running in Pi)</li>
+</ul>
+
+<p>Script 1:
+<ul>
+    <li>Acquires sequential 5 minute videos and save each to a timestamped .h264 file.</li>
+</ul>
+Script 2:
+<ul>
+    <li>Turns IR and White lights on and off, uses time-of-day from Raspberry Linux.</li>
+    <li>Reads from IR and visible light sensors to check light levels and sends an email if either IR or white lights burn out.</li>
+    <li>Reads temperature and humidity.</li>
+    <li>Reads wheel turn events using low level GPIO callbacks to get more accurate time.</li>
+    <li>Logs all of this to text file locally on Raspberry.</li>
+    <li>Pushes all of this to online web server so I can check if the mice have been running. <del>Remote webserver has a PHP script to accept and save name/value pairs of data</del>. Now using mySQL on external web server.</li>
+</ul>
+<strong>Software Analysis</strong>
+<ul>
+    <li>Python/OpenCV motion detection using a modified version of <a href="http://derek.simkowiak.net/motion-tracking-with-python/" target="_blank">this</a> (Thanks to Derek Simkowiak). Motion detection does not run on Pi, runs offline on desktop/laptop (OS X)</li>
+    <li>In future, write in C++/OpenCV using <a href="http://sundararajana.blogspot.com/2007/05/motion-detection-using-opencv.html" target="_blank">this</a>.</li>
+    <li><a title="Setting up Python, OpenCV and ffmpeg in OSX" href="http://www.robertcudmore.org/blog/?p=183" target="_blank">How to install Python/OpenCV/ffmpeg on OSX</a></li>
+    <li>Another project to monitor a hamster in their cage, <a href="http://www.raspberrypi.org/learning/hamster-party-cam/">the hamster party-cam</a> (from the Raspberry people).</li></p>
+
+<h1></ul></h1>
+
+<h3>Wish List</h3>
+
+<p><strong>Sensors</strong>
+<ul>
+    <li><del>Temperature and Humidity sensor, <a href="http://www.adafruit.com/products/393" target="_blank">Adafruit, 393</a>, $15</del></li>
+    <li><del>Upgrade temperature/humidity to something like, <a href="http://www.adafruit.com/products/1293" target="_blank">Adafruit 1293</a>, $30, no tutorials 2/14/14</del></li>
+</ul>
+<strong>Camera Holder</strong>
+<ul>
+    <li><del>Right-angle 1/2&quot; post clamps, <a href="http://www.thorlabs.com/thorProduct.cfm?partNumber=RA90" target="_blank">Thor Labs, RA90</a> (google image search for &#39;Right Angle Clamp rod&#39;). Will order Newport right-angle post clamp, Newport <a href="http://search.newport.com/?q=*&amp;x2=sku&amp;q2=CA-1" target="_blank">CA-1</a>. In general, it seems that any kind of post system with clamps, junctions, and T&#39;s triples in price as soon as the post/rod diameter goes below 1/2&quot;. Because I need many of these post clamps, 3-4 for camera and 3-4 for lights) I will stick with the 1/2&quot; variety. My choice to go with Newport is based on <a href="http://mousevr.blogspot.com/2011_09_01_archive.html" target="_blank">this</a> comment.</del></li>
+    <li><del>1/2&quot; aluminum OR wood tubes/dowels</del></li>
+    <li><del>12&quot; flex cable for Raspberry Pi NoIR Camera, <a href="http://www.adafruit.com/products/1648" target="_blank">Adafruit, 1648</a></del></li></p>
+
+<h1></ul></h1>
+
+<h3>Notes</h3>
+
+<p>Temp/Humidity Sensor (DHT22) spits out readings once per second (fine) and does it fast (not fine). On Raspberry Pi this requires some C code to read &#39;bit-banged&#39; sensor output. See <a href="http://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging" target="_blank">Adafruit</a>.</p>
+
+<p>The <a href="http://www.adafruit.com/products/1293" target="_blank">AM2315</a> is a more accurate temperature/humidity sensor, and data comes in via I2C. This particular sensor has a fixed address.</p>
+
+<p>The Pi NoIR camera is just the standard Pi camera with the IR filter removed. Right now there are no detailed specs on the nm sensitivity of the NoIR camera, the IR filter or the original camera for that matter. According to the <a href="http://elinux.org/Rpi_Camera_Module" target="_blank">Embedded Linux Wiki</a>, the Pi NoIR camera has a CMOS <a href="http://www.ovt.com/products/sensor.php?id=66" target="_blank">Omnivision 5647 CMOS</a> chip. Also see the pdf <a href="http://www.ovt.com/download_document.php?type=sensor&amp;sensorid=66" target="_blank">spec/ad sheet</a>. <a href="http://www.aphesa.com" target="_blank">Aphesa</a> has some pretty in depth discussion of the <a href="http://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;ved=0CDoQFjAC&amp;url=http%3A%2F%2Fwww.aphesa.com%2Fdownloads%2Fdownload2.php%3Fid%3D1&amp;ei=6DX-UryPKMXb0wGq4YHgBg&amp;usg=AFQjCNG9S8Vix59mZKa5fYeZ-mvSw0ZaOQ&amp;sig2=eRzJXiMlOerKKYQ4RmtkKA&amp;bvm=bv.61190604,d.dmQ" target="_blank">spectral response properties of silicon image sensors</a>.</p>
+
+<p>I tried 950nm LEDs and got a pretty grainy video, I switched to 850 nm LEDs and the image is brighter and less grainy (as expected). In both these cases, the camera is about 20&quot; from subject and IR  lights are off to the left and right, 4 LEDs on the left and 4 LEDs on the right. See <a href="http://www.raspberrypi.org/forum/viewtopic.php?f=43&amp;t=60103" target="_blank">this</a> discussion and <a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=43&amp;t=48787" target="_blank">here</a> for a guess at the spectral sensitivity.</p>
+
+<del><span style="font-size: 1rem; line-height: 1.714285714;">-Try -night switch for video with IR LEDs.</span></del>
+
+<p><span style="line-height: 1.714285714; font-size: 1rem;">-</span><a style="line-height: 1.714285714; font-size: 1rem;" href="http://www.lukasz-skalski.com/category/software/" target="_blank">Raspberry Control</a><span style="line-height: 1.714285714; font-size: 1rem;">, a general purpose Android based Raspberry Pi Controller.</span></p>
+
+<p><span style="line-height: 1.714285714; font-size: 1rem;"> Camera board has 2mm screw holes, see </span><a style="line-height: 1.714285714; font-size: 1rem;" href="http://www.scribd.com/doc/142718448/Raspberry-Pi-Camera-Mechanical-Data" target="_blank">Gert&#39;s drawings</a><span style="line-height: 1.714285714; font-size: 1rem;">.</span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+</div>
+
+<div class="post-tags">
+  Tags: 
+  
+    
+  
+  
+  <a href="/tags/#flask">flask</a>,
+  
+  <a href="/tags/#python">python</a>,
+  
+  <a href="/tags/#raspberry pi">raspberry pi</a>,
+  
+  <a href="/tags/#data acquisition">data acquisition</a>
+  
+</div>
+
+
+<div class="post-tags">
+    <p><font size="-1rem">&copy;2015. <A HREF="http://robertcudmore.org">Robert Cudmore</A>.</font></p>
+</div>
+
+
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/" title="View ">Newer &raquo;</a>
+</span>
+
+
+
+    </div>
+
+  </body>
+</html>

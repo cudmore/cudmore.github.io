@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Raspberry Pi video controller &middot; Robert Cudmore
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  -->
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+
+
+
+  <body class="layout-reverse">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+
+    
+    
+    <div id="sidebar">
+    <!-- <nav class="sidebar-nav"> -->
+      <!-- <a class="sidebar-nav-item" href="">Home</a> -->
+
+      
+
+	  <!-- <script>
+  (function() {
+    var cx = '014838221913568838622:5bpsoltbvmg';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+ -->
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Recent posts</span>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/08/14/this-is-an-example-post/">pyqtGraph to display a .tif stack</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/">Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/">Changing default mount name in Apple File Sharing</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/">Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/05/05/mounting-a-usb-drive-at-boot/">Mounting a USB drive at boot</a><BR>
+		    
+		</section>
+
+		<BR>
+
+		<span class="sidebar-nav-item">Tag cloud</span>
+		
+    		<a style="font-size: 76%" href="/tags/#flask">
+    		  flask
+    		</a>
+		
+    		<a style="font-size: 149%" href="/tags/#python">
+    		  python
+    		</a>
+		
+    		<a style="font-size: 185%" href="/tags/#raspberry pi">
+    		  raspberry pi
+    		</a>
+		
+    		<a style="font-size: 112%" href="/tags/#data acquisition">
+    		  data acquisition
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#bokeh">
+    		  bokeh
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#protocols">
+    		  protocols
+    		</a>
+		
+    		<a style="font-size: 76%" href="/tags/#osx">
+    		  osx
+    		</a>
+		
+    		<a style="font-size: 94%" href="/tags/#raspberry">
+    		  raspberry
+    		</a>
+		
+    		<a style="font-size: 130%" href="/tags/#linux">
+    		  linux
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#arduino">
+    		  arduino
+    		</a>
+		
+    		<a style="font-size: 58%" href="/tags/#ScanImage">
+    		  ScanImage
+    		</a>
+		
+
+		<BR>
+		<BR>
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Links</span>
+		  &raquo; <a class="sidebarlink" href="http://robertcudmore.org">Homepage</a><BR>
+		  &raquo; <a class="sidebarlink" href="https://github.com/cudmore/cudmore.github.io">Blog layout on github</a><BR>
+		  &raquo; <a class="sidebarlink" href="http://www.flickr.com/cudmore">Flickr</a><BR>
+		</section>
+  
+	</div>
+<!--    </nav> -->
+
+  </div>
+</div>
+
+
+    <div class="content container">
+
+      <!-- added by bob -->
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Robert Cudmore</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/about">about</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/archive">archive</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/tags">tags</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/software">software</a></small>
+          
+
+
+        </h3>
+		<hr style="background:#202020; border:0; height:3px" />
+      </div>
+
+      <div class="post">
+  <h3 class="post-title">Raspberry Pi video controller</h1>
+  <span class="post-date">20 Mar 2015</span>
+  <p>This is a video server running on a raspberry Pi Linux computer. It provides a web interface to stream and record video.</p>
+
+<h3>What it does</h3>
+
+<ul>
+<li><strong>Arm</strong> - Start video recording when a TTL is received. Hook up the ScanImage frame clock to the Pi and this will start a video recording at the start of each stack or timeseries. </li>
+<li><strong>Record</strong> - Record a one time video. </li>
+<li><strong>Stream</strong> - Stream the video to your web browser so you can see a live feed.</li>
+<li><strong>Stop</strong> - Stop any video streaming or recording.</li>
+<li><strong>IR On/Off</strong> - Turn one set of LEDs on/off. The brightness of the LED is set with the slider. This is usually hooked up to a bank of IR LEDs.</li>
+<li><strong>White On/Off</strong> - Turn one set of LEDs on/off (usually hooked up to White LEDs)</li>
+<li><strong>Message</strong> - Text entered in the &#39;Messages&#39; field are saved to a text file with timestamps.</li>
+<li>Provides real-time feedback with elements/objects within the webpage updated without reloading. Some examples are: the time of day, the last ScanImage frame number, current log file, temperature, humidity, etc.</li>
+</ul>
+
+<h3>Interface</h3>
+
+<p><IMG SRC="/images/example-iosserver.png" width=700 align=CENTER></p>
+
+<h3>How it works</h3>
+
+<p>The server is pure python running on the Pi. It uses the web framework <a href="http://flask.pocoo.org">Flask</a>. Once the web page is loaded by a client browser(you), any objects within the webpage can be updated in real-time using <a href="https://flask-socketio.readthedocs.org/en/latest/">flask-socket-io</a>. This can be done without refreshing the entire webpage. The layout and interface objects are using <a href="http://getbootstrap.com">Bootstrap</a>.</p>
+
+<h3>Required Hardware</h3>
+
+<ul>
+<li><a href="https://www.raspberrypi.org/products/">Raspberry Pi</a></li>
+<li><a href="https://www.raspberrypi.org/products/">Raspberry Pi Camera</a>, the IR version is called &#39;NOIR&#39;.</li>
+</ul>
+
+<h3>Installation:</h3>
+
+<ul>
+<li>[I need to make a GitHub repository with the python source code]</li>
+<li>[I need to write out how I install this, my original and pretty useless notes are <a href="http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">here</a>]</li>
+</ul>
+
+<h3>Running the server</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo python iosserver.py
+</code></pre></div>
+<p>This will tell you the IP adress you use to login to the server.</p>
+
+<h3>Connecting to the server</h3>
+
+<p>Just point any browser to the server address.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">http://192.168.1.60:5000
+</code></pre></div>
+<h2>Extra Details</h2>
+
+<h3>The internet of things</h3>
+
+<p>Python code running on any other internet-connected device can &#39;inject&#39; values into the iosserver and they will show up in real-time inside all client browsers. Here is example code on another Pi that has its own temperature and humidity sensor.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># send to iosserver</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">thisTimestamp</span><span class="p">,</span> <span class="s">&#39;insideTemp&#39;</span><span class="p">:</span> <span class="n">temp</span><span class="p">,</span> <span class="s">&#39;insideHum&#39;</span><span class="p">:</span> <span class="n">hum</span><span class="p">,</span> <span class="s">&#39;outsideTemp&#39;</span> <span class="p">:</span> <span class="n">outsidetemp</span><span class="p">,</span> <span class="s">&#39;outsideHum&#39;</span> <span class="p">:</span> <span class="n">outsidehumidity</span><span class="p">}</span>
+    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;http://192.168.1.60:5000/_add_numbers&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;sent to 192.168.1.60 !!!&#39;</span>
+    <span class="k">print</span> <span class="n">payload</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;-------- error sending to iosserver ---------&#39;</span>
+</code></pre></div>
+<p>The iosserver receives this GET request with a little function decorator.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/_add_numbers&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_numbers</span><span class="p">():</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="c"># defaults to &#39;&#39;</span>
+    <span class="n">insideTemp</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;insideTemp&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">insideHum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;insideHum&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">outsideTemp</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;outsideTemp&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">outsideHum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;outsideHum&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;timestamp=&#39;</span><span class="p">,</span> <span class="n">timestamp</span>
+    <span class="c">#myVideo is another python class that handles all runtime</span>
+    <span class="c">#it is not detailed in this example</span>
+    <span class="n">myVideo</span><span class="o">.</span><span class="n">insideTemp</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">insideTemp</span>
+    <span class="n">myVideo</span><span class="o">.</span><span class="n">insideHum</span> <span class="o">=</span> <span class="n">insideHum</span>
+    <span class="n">myVideo</span><span class="o">.</span><span class="n">outsideTemp</span> <span class="o">=</span> <span class="n">outsideTemp</span>
+    <span class="n">myVideo</span><span class="o">.</span><span class="n">outsideHum</span> <span class="o">=</span> <span class="n">outsideHum</span>
+    <span class="k">print</span> <span class="s">&#39;add_nummbers() received &#39;</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">insideTemp</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">insideHum</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">outsideTemp</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">outsideHum</span>
+    <span class="k">return</span> <span class="s">&#39;&#39;</span>
+</code></pre></div>
+<p>There are a few more steps including some javascript and html. This is not a Flask or Socket-IO tutorial. Have a look a <a href="https://flask-socketio.readthedocs.org/en/latest/">socket-io for Flask</a>.</p>
+
+</div>
+
+<div class="post-tags">
+  Tags: 
+  
+    
+  
+  
+  <a href="/tags/#raspberry pi">raspberry pi</a>,
+  
+  <a href="/tags/#data acquisition">data acquisition</a>
+  
+</div>
+
+
+<div class="post-tags">
+    <p><font size="-1rem">&copy;2015. <A HREF="http://robertcudmore.org">Robert Cudmore</A>.</font></p>
+</div>
+
+
+<span class="page-nav-item-left">
+    <a rel="prev" href="/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/" title="View mjpg-streamer on a Raspberry Pi">&laquo; Older</a>
+</span>
+
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/post/2015/03/21/fresh-install-raspian/" title="View ">Newer &raquo;</a>
+</span>
+
+
+
+    </div>
+
+  </body>
+</html>

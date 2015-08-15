@@ -20,7 +20,7 @@ The rotary encoder and stepper motor (1,2) need to be non-blocking. All inputs (
 
 Initially I wanted to log all this to Arduino memory but there is not enough on the Arduino Uno. Upgrading to Arduino Mega gives you 4x memory but still not enough. The rotary encoder fires off tons of events and if I hard code events as an array (in Arduino memory), I am limited to about 250 events. Same problem with SI frames, I am limited to about 250 frame timestamps. Arduino ProgMem does not work as it is not writable at runtime. In the future I may get an SD card shield for this?
 
-For now I am having Arduino log all events to serial and am using python code (on a Raspberry Pi) to grab and save all serial events coming from Arduino. I don't like this as I am bound to miss some events or get out of synch due to general flakiness of serial.
+For now I am having Arduino log all events to serial and am using python code (on a Raspberry Pi) to grab and save all serial events coming from Arduino. This seems to work well. The critical piece is that the serial logger on the Pi is stateless, you just 'set it and forget it' and it logs all events all day.
 
 ###Install Arduino 1.6.x
 

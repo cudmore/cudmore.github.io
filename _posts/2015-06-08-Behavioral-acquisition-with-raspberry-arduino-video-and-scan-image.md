@@ -12,5 +12,5 @@ tags:
 
 Have a Raspberry Pi be the master control for a trial based experiment. Each trial is started by the Pi, the Pi triggers an Arduino and ScanImage (via TTL) and then saves Arduino based timestamped events to a file while recording real-time timestamped video.
 
-See github code [here](https://github.com/cudmore/triggerserver).
+See github code and full documentation at [https://github.com/cudmore/triggerserver](https://github.com/cudmore/triggerserver).
 
