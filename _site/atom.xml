@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-08-14T22:38:06-04:00</updated>
+ <updated>2015-08-14T22:42:06-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>pyqtGraph to display a .tif stack</title>
-   <link href="/post/2015/08/14/this-is-an-example-post/"/>
+   <link href="/post/2015/08/14/PyQtGraph-to-display-a-stack/"/>
    <updated>2015-08-14T18:01:06-04:00</updated>
-   <id>/post/2015/08/14/this-is-an-example-post</id>
+   <id>/post/2015/08/14/PyQtGraph-to-display-a-stack</id>
    <content type="html">&lt;p&gt;This will display a 3D .tif stack where slices can be viewed and contrast set.&lt;/p&gt;
 
 &lt;h4&gt;Install libraries&lt;/h4&gt;
