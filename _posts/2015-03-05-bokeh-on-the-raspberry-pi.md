@@ -16,6 +16,37 @@ Goal is to get plotting with bokeh on the Raspberry Pi.
 - Install bokeh plotting and get a plot server running
 - be able to run bokeh examples
 
+[UPDATE August 16, 2015]
+[THIS IS NOT WORKING ... REWRITING]
+
+- don't install miniconda, just use stock raspian pytohn
+
+```python
+# this takes > 1 hour on a Raspberry Pi Model B !!!
+# most of the time is spent in gcc cc1 command
+sudo pip install pandas --upgrade 
+# after > 1 hour I get an error
+# Successfully installed pandas python-dateutil pytz
+# OSError: [Errno 39] Directory not empty: '/home/pi/build/pytz'
+# I am ignoring this pytz error (something to do with timezone library???)
+#
+# now i am sidetracked
+sudo pip install ipython
+# ipython seems ok
+#
+# this next one may take awhile, started at 1:50pm
+sudo pip install bokeh  
+# seems ok, can import pandas in python but it gives error
+#
+#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used
+#    The minimum supported version is 2.1
+#
+# fixed error with (hopefully does not cause other problems)
+sudo pip install numexpr --upgrade
+```
+
+[ORIGINAL POST STARTS HERE]
+
 ###Install miniconda
 	pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
 	pi@pi40 ~ $ bash Miniconda-3.5.5-Linux-armv6l.sh 

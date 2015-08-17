@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-08-14T22:42:06-04:00</updated>
+ <updated>2015-08-17T09:05:26-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -1264,6 +1264,36 @@ cap.release()
 &lt;li&gt;Install bokeh plotting and get a plot server running&lt;/li&gt;
 &lt;li&gt;be able to run bokeh examples&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;[UPDATE August 16, 2015]
+[THIS IS NOT WORKING ... REWRITING]&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;don&amp;#39;t install miniconda, just use stock raspian pytohn&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;# this takes &amp;gt; 1 hour on a Raspberry Pi Model B !!!&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# most of the time is spent in gcc cc1 command&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upgrade&lt;/span&gt; 
+&lt;span class=&quot;c&quot;&gt;# after &amp;gt; 1 hour I get an error&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Successfully installed pandas python-dateutil pytz&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# OSError: [Errno 39] Directory not empty: &amp;#39;/home/pi/build/pytz&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# I am ignoring this pytz error (something to do with timezone library???)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# now i am sidetracked&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ipython&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ipython seems ok&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# this next one may take awhile, started at 1:50pm&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bokeh&lt;/span&gt;  
+&lt;span class=&quot;c&quot;&gt;# seems ok, can import pandas in python but it gives error&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#    The minimum supported version is 2.1&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# fixed error with (hopefully does not cause other problems)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numexpr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upgrade&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;[ORIGINAL POST STARTS HERE]&lt;/p&gt;
 
 &lt;h3&gt;Install miniconda&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
