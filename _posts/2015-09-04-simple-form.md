@@ -7,7 +7,15 @@ tags:
 - jekyll
 ---
 
-Software request form
+<head>
+  <style>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</style>
+</head>
+
+<BR>
+<BR>
+###Software request form
 
 <form action="//formspree.io/robert.cudmore@gmail.com"
       method="POST">
@@ -77,7 +85,8 @@ Message
 
  <TR>
  <TD>
-    <input type="submit" value="Send" style="border:1; height:75px; width:100px">
+	<input type="submit" class="btn btn-primary btn-md" value="Submit">
+
  </TD>
  </TR>
 </form>

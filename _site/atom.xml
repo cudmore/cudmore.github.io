@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-09-05T00:46:23-04:00</updated>
+ <updated>2015-09-05T01:22:09-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -17,7 +17,16 @@
    <link href="/post/2015/09/04/simple-form/"/>
    <updated>2015-09-04T18:01:06-04:00</updated>
    <id>/post/2015/09/04/simple-form</id>
-   <content type="html">&lt;p&gt;Software request form&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;head&gt;
+  &lt;style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+&lt;/style&gt;
+&lt;/head&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;BR&gt;
+&lt;BR&gt;&lt;/p&gt;
+
+&lt;h3&gt;Software request form&lt;/h3&gt;
 
 &lt;form action=&quot;//formspree.io/robert.cudmore@gmail.com&quot;
       method=&quot;POST&quot;&gt;
@@ -87,7 +96,8 @@ Message
 
  &lt;TR&gt;
  &lt;TD&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Send&quot; style=&quot;border:1; height:75px; width:100px&quot;&gt;
+    &lt;input type=&quot;submit&quot; class=&quot;btn btn-primary btn-md&quot; value=&quot;Submit&quot;&gt;
+
  &lt;/TD&gt;
  &lt;/TR&gt;
 &lt;/form&gt;
