@@ -11,7 +11,7 @@
 
   <title>
     
-      VNC on raspberry pi &middot; Robert Cudmore
+      Thanks &middot; Robert Cudmore
     
   </title>
 
@@ -172,110 +172,15 @@
 		<hr style="background:#202020; border:0; height:3px" />
       </div>
 
-      <div class="post">
-  <h3 class="post-title">VNC on raspberry pi</h1>
-  <span class="post-date">29 Apr 2015</span>
-  <h3>Remote login to Raspberry with tightvnc</h3>
+      <div class="page">
+  <h1 class="page-title">Thanks</h1>
+  <p>Thanks for your request. You should receive a download link in 24-48 hours.</p>
 
-<p>See</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.raspberrypi.org/documentation/remote-access/vnc/
-http://elinux.org/RPi_VNC_Server
-</code></pre></div>
-<h3>Install tightvncserver server on Raspberry</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install tightvncserver
-</code></pre></div>
-<h3>Run tightvncserver to set password</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">tightvncserver
-</code></pre></div>
-<h3>Start server on pi</h3>
+<p>If you do not receive an email, you may have typed your email wrong.</p>
 
-<p>Use :1 if your Pi is running X11 by default (mine is)</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver :1 -geometry 1920x1080 -depth 24
-vncserver :1 -geometry 1280x800 -depth 24
-vncserver :1 -geometry 1024x768 -depth 24
-</code></pre></div>
-<h3>kill server</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver -kill :1
-</code></pre></div>
-<h3>Install realVNC client on OSX</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.realvnc.com
-</code></pre></div>
-<h3>Enable copy/paste between host and server</h3>
-
-<p>See</p>
-
-<p><a href="http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi">http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</a></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># install
-sudo apt-get install autocutsel
-
-#edit /home/pi/.vnc/xstartup
-pico .vnc/xstartup 
-
-#make it look like this
-#!/bin/sh
-
-xrdb $HOME/.Xresources
-xsetroot -solid grey
-#added 20150414 to get copy paste to work
-autocutsel -fork
-#x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;
-#x-window-manager &amp;
-# Fix to make GNOME work
-export XKL_XMODMAP_DISABLE=1
-/etc/X11/Xsession
-</code></pre></div>
-<h3>Alternative is to use x11vnc</h3>
-
-<p>See</p>
-
-<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=108862">https://www.raspberrypi.org/forums/viewtopic.php?p=108862</a></p>
-
-<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600">https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600</a></p>
-
-<h4>Pros</h4>
-
-<ul>
-<li>This will &#39;recycle&#39; your :0 display if you are booting with X11</li>
-<li>You will be able to see the same screen on direct HDMI/Video output and your remote connection simultaneously</li>
-<li>You will remote login (with realVNC) and get the same desktop</li>
-<li>Copy/Paste works by default</li>
-</ul>
-
-<h4>Cons</h4>
-
-<ul>
-<li>This would work if you always had a HDMI display at a desired resolution (or tweaked /boot/config.txt to force HDMI).</li>
-<li>Does not work well if you are throwing your display out an analog RCA jack, it is too low res and then your VNC connection just follows that low resolution. Maybe could fix this?</li>
-</ul>
+<p><span class="sidebar-nav-item">v0.1</span></p>
 
 </div>
-
-<div class="post-tags">
-  Tags: 
-  
-    
-  
-  
-  <a href="/tags/#raspberry">raspberry</a>
-  
-</div>
-
-
-<div class="post-tags">
-    <p><font size="-1rem">&copy;2015. <A HREF="http://robertcudmore.org">Robert Cudmore</A>.</font></p>
-</div>
-
-
-<span class="page-nav-item-left">
-    <a rel="prev" href="/post/2015/04/19/Install-OSX/" title="View Install OSX">&laquo; Older</a>
-</span>
-
-
-<span class="page-nav-item-right">
-    <a rel="next" href="/post/2015/04/30/python-tricks/" title="View ">Newer &raquo;</a>
-</span>
-
-
 
     </div>
 

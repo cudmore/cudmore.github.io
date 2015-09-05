@@ -4,13 +4,97 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-08-14T22:42:06-04:00</updated>
+ <updated>2015-09-05T00:46:23-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>simple form in jekyll</title>
+   <link href="/post/2015/09/04/simple-form/"/>
+   <updated>2015-09-04T18:01:06-04:00</updated>
+   <id>/post/2015/09/04/simple-form</id>
+   <content type="html">&lt;p&gt;Software request form&lt;/p&gt;
+
+&lt;form action=&quot;//formspree.io/robert.cudmore@gmail.com&quot;
+      method=&quot;POST&quot;&gt;
+    
+    &lt;table style=&quot;width:500px&quot;&gt;
+    &lt;tr&gt;
+    &lt;td&gt;
+    Name:
+    &lt;/td&gt;
+    &lt;td&gt;
+    &lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;50&quot;&gt;&lt;BR&gt;
+    &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;TR&gt;
+    &lt;TD&gt;
+    Institution:
+    &lt;/TD&gt;
+    &lt;TD&gt;
+    &lt;input type=&quot;text&quot; name=&quot;Institution&quot; size=&quot;50&quot;&gt;&lt;BR&gt;
+    &lt;/TD&gt;
+    &lt;/TR&gt;
+    
+    &lt;TR&gt;
+    &lt;TD&gt;
+    Lab:
+    &lt;/TD&gt;
+    &lt;TD&gt;
+    &lt;input type=&quot;text&quot; name=&quot;Lab&quot; placeholder=&quot;&quot; size=&quot;50&quot;&gt;&lt;BR&gt;
+    &lt;/TD&gt;
+    &lt;/TR&gt;
+    
+    &lt;TR&gt;
+    &lt;TD&gt;
+    email:
+    &lt;/TD&gt;
+    &lt;TD&gt;
+    &lt;input type=&quot;email&quot; name=&quot;_replyto&quot; placeholder=&quot;&quot; size=&quot;50&quot;&gt;&lt;BR&gt;
+    &lt;/TD&gt;
+    &lt;/TR&gt;
+    
+    &lt;TR&gt;
+    &lt;TD&gt;
+    retype email:
+    &lt;/TD&gt;
+    &lt;TD&gt;
+    &lt;input type=&quot;email&quot; name=&quot;_replyto2&quot; placeholder=&quot;&quot; size=&quot;50&quot;&gt;&lt;BR&gt;
+    &lt;/TD&gt;
+    &lt;/TR&gt;
+
+&lt;TR&gt;
+&lt;TD&gt;
+Message
+&lt;/TD&gt;
+&lt;TD&gt;
+    &lt;textarea name=&quot;message&quot; rows=&quot;5&quot; cols=&quot;48&quot; placeholder=&quot;&quot;&gt;&lt;/textarea&gt;
+&lt;/TD&gt;
+&lt;/TR&gt;
+
+    &lt;/table&gt;
+
+    &lt;input type=&quot;hidden&quot; name=&quot;whereicamefrom&quot; value=&quot;MapManager&quot; /&gt;
+
+    &lt;input type=&quot;hidden&quot; name=&quot;_next&quot; value=&quot;/thanks/&quot; /&gt;
+
+    &lt;input type=&quot;text&quot; name=&quot;_gotcha&quot; style=&quot;display:none&quot; /&gt;
+
+ &lt;TR&gt;
+ &lt;TD&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Send&quot; style=&quot;border:1; height:75px; width:100px&quot;&gt;
+ &lt;/TD&gt;
+ &lt;/TR&gt;
+&lt;/form&gt;
+
+&lt;p&gt;&lt;BR&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>pyqtGraph to display a .tif stack</title>

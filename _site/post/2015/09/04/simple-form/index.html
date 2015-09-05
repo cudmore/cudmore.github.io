@@ -11,7 +11,7 @@
 
   <title>
     
-      VNC on raspberry pi &middot; Robert Cudmore
+      simple form in jekyll &middot; Robert Cudmore
     
   </title>
 
@@ -173,80 +173,84 @@
       </div>
 
       <div class="post">
-  <h3 class="post-title">VNC on raspberry pi</h1>
-  <span class="post-date">29 Apr 2015</span>
-  <h3>Remote login to Raspberry with tightvnc</h3>
+  <h3 class="post-title">simple form in jekyll</h1>
+  <span class="post-date">04 Sep 2015</span>
+  <p>Software request form</p>
 
-<p>See</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.raspberrypi.org/documentation/remote-access/vnc/
-http://elinux.org/RPi_VNC_Server
-</code></pre></div>
-<h3>Install tightvncserver server on Raspberry</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install tightvncserver
-</code></pre></div>
-<h3>Run tightvncserver to set password</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">tightvncserver
-</code></pre></div>
-<h3>Start server on pi</h3>
+<form action="//formspree.io/robert.cudmore@gmail.com"
+      method="POST">
+    
+    <table style="width:500px">
+    <tr>
+    <td>
+    Name:
+    </td>
+    <td>
+    <input type="text" name="name" size="50"><BR>
+    </td>
+    </tr>
 
-<p>Use :1 if your Pi is running X11 by default (mine is)</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver :1 -geometry 1920x1080 -depth 24
-vncserver :1 -geometry 1280x800 -depth 24
-vncserver :1 -geometry 1024x768 -depth 24
-</code></pre></div>
-<h3>kill server</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver -kill :1
-</code></pre></div>
-<h3>Install realVNC client on OSX</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.realvnc.com
-</code></pre></div>
-<h3>Enable copy/paste between host and server</h3>
+    <TR>
+    <TD>
+    Institution:
+    </TD>
+    <TD>
+    <input type="text" name="Institution" size="50"><BR>
+    </TD>
+    </TR>
+    
+    <TR>
+    <TD>
+    Lab:
+    </TD>
+    <TD>
+    <input type="text" name="Lab" placeholder="" size="50"><BR>
+    </TD>
+    </TR>
+    
+    <TR>
+    <TD>
+    email:
+    </TD>
+    <TD>
+    <input type="email" name="_replyto" placeholder="" size="50"><BR>
+    </TD>
+    </TR>
+    
+    <TR>
+    <TD>
+    retype email:
+    </TD>
+    <TD>
+    <input type="email" name="_replyto2" placeholder="" size="50"><BR>
+    </TD>
+    </TR>
 
-<p>See</p>
+<TR>
+<TD>
+Message
+</TD>
+<TD>
+    <textarea name="message" rows="5" cols="48" placeholder=""></textarea>
+</TD>
+</TR>
 
-<p><a href="http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi">http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</a></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># install
-sudo apt-get install autocutsel
+    </table>
 
-#edit /home/pi/.vnc/xstartup
-pico .vnc/xstartup 
+    <input type="hidden" name="whereicamefrom" value="MapManager" />
 
-#make it look like this
-#!/bin/sh
+    <input type="hidden" name="_next" value="/thanks/" />
 
-xrdb $HOME/.Xresources
-xsetroot -solid grey
-#added 20150414 to get copy paste to work
-autocutsel -fork
-#x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;
-#x-window-manager &amp;
-# Fix to make GNOME work
-export XKL_XMODMAP_DISABLE=1
-/etc/X11/Xsession
-</code></pre></div>
-<h3>Alternative is to use x11vnc</h3>
+    <input type="text" name="_gotcha" style="display:none" />
 
-<p>See</p>
+ <TR>
+ <TD>
+    <input type="submit" value="Send" style="border:1; height:75px; width:100px">
+ </TD>
+ </TR>
+</form>
 
-<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=108862">https://www.raspberrypi.org/forums/viewtopic.php?p=108862</a></p>
-
-<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600">https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600</a></p>
-
-<h4>Pros</h4>
-
-<ul>
-<li>This will &#39;recycle&#39; your :0 display if you are booting with X11</li>
-<li>You will be able to see the same screen on direct HDMI/Video output and your remote connection simultaneously</li>
-<li>You will remote login (with realVNC) and get the same desktop</li>
-<li>Copy/Paste works by default</li>
-</ul>
-
-<h4>Cons</h4>
-
-<ul>
-<li>This would work if you always had a HDMI display at a desired resolution (or tweaked /boot/config.txt to force HDMI).</li>
-<li>Does not work well if you are throwing your display out an analog RCA jack, it is too low res and then your VNC connection just follows that low resolution. Maybe could fix this?</li>
-</ul>
+<p><BR></p>
 
 </div>
 
@@ -256,7 +260,7 @@ export XKL_XMODMAP_DISABLE=1
     
   
   
-  <a href="/tags/#raspberry">raspberry</a>
+  <a href="/tags/#jekyll">jekyll</a>
   
 </div>
 
@@ -267,13 +271,9 @@ export XKL_XMODMAP_DISABLE=1
 
 
 <span class="page-nav-item-left">
-    <a rel="prev" href="/post/2015/04/19/Install-OSX/" title="View Install OSX">&laquo; Older</a>
+    <a rel="prev" href="/post/2015/08/14/PyQtGraph-to-display-a-stack/" title="View pyqtGraph to display a .tif stack">&laquo; Older</a>
 </span>
 
-
-<span class="page-nav-item-right">
-    <a rel="next" href="/post/2015/04/30/python-tricks/" title="View ">Newer &raquo;</a>
-</span>
 
 
 
