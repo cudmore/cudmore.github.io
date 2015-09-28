@@ -4,13 +4,41 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-09-05T01:22:09-04:00</updated>
+ <updated>2015-09-28T00:25:21-04:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>remote sensors</title>
+   <link href="/post/2015/09/07/remote-sensors/"/>
+   <updated>2015-09-07T18:01:06-04:00</updated>
+   <id>/post/2015/09/07/remote-sensors</id>
+   <content type="html">&lt;h3&gt;Interface&lt;/h3&gt;
+
+&lt;p&gt;Point your browser to the webpage &lt;a href=&quot;http://cudmore.duckdns.org:5000&quot;&gt;http://cudmore.duckdns.org:5000&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Background&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Temperature sensor on pi transmits data to any number of servers via http&lt;/li&gt;
+&lt;li&gt;Server currently running on MacOS can receive data from a number of sensors&lt;/li&gt;
+&lt;li&gt;Both sensors and server are running Python&lt;/li&gt;
+&lt;li&gt;Server is running Flask&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;API&lt;/h3&gt;
+
+&lt;p&gt;/bokeh&lt;/p&gt;
+
+&lt;p&gt;/images/a&lt;/p&gt;
+
+&lt;p&gt;/system&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>simple form in jekyll</title>
