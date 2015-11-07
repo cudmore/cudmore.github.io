@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      debian server &middot; Robert Cudmore
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  -->
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+
+
+
+  <body class="layout-reverse">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+
+    
+    
+    <div id="sidebar">
+    <!-- <nav class="sidebar-nav"> -->
+      <!-- <a class="sidebar-nav-item" href="">Home</a> -->
+
+      
+
+	  <!-- <script>
+  (function() {
+    var cx = '014838221913568838622:5bpsoltbvmg';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+ -->
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Recent posts</span>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/11/07/debian-server/">debian server</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/09/07/remote-sensors/">remote sensors</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/09/04/simple-form/">simple form in jekyll</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/08/14/PyQtGraph-to-display-a-stack/">pyqtGraph to display a .tif stack</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/">Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</a><BR>
+		    
+		</section>
+
+		<BR>
+
+		<span class="sidebar-nav-item">Tag cloud</span>
+		
+    		<a style="font-size: 90%" href="/tags/#flask">
+    		  flask
+    		</a>
+		
+    		<a style="font-size: 140%" href="/tags/#python">
+    		  python
+    		</a>
+		
+    		<a style="font-size: 173%" href="/tags/#raspberry pi">
+    		  raspberry pi
+    		</a>
+		
+    		<a style="font-size: 106%" href="/tags/#data acquisition">
+    		  data acquisition
+    		</a>
+		
+    		<a style="font-size: 56%" href="/tags/#bokeh">
+    		  bokeh
+    		</a>
+		
+    		<a style="font-size: 56%" href="/tags/#protocols">
+    		  protocols
+    		</a>
+		
+    		<a style="font-size: 90%" href="/tags/#osx">
+    		  osx
+    		</a>
+		
+    		<a style="font-size: 106%" href="/tags/#raspberry">
+    		  raspberry
+    		</a>
+		
+    		<a style="font-size: 140%" href="/tags/#linux">
+    		  linux
+    		</a>
+		
+    		<a style="font-size: 73%" href="/tags/#arduino">
+    		  arduino
+    		</a>
+		
+    		<a style="font-size: 56%" href="/tags/#ScanImage">
+    		  ScanImage
+    		</a>
+		
+    		<a style="font-size: 56%" href="/tags/#jekyll">
+    		  jekyll
+    		</a>
+		
+
+		<BR>
+		<BR>
+
+		<section id="article">
+		  <span class="sidebar-nav-item">Links</span>
+		  &raquo; <a class="sidebarlink" href="http://robertcudmore.org">robertcudmore.org</a><BR>
+		  &raquo; <a class="sidebarlink" href="http://github.com/cudmore">github.com/cudmore</a><BR>
+		  &raquo; <a class="sidebarlink" href="http://www.flickr.com/cudmore">flickr.com/cudmore</a><BR>
+		</section>
+  
+	</div>
+<!--    </nav> -->
+
+  </div>
+</div>
+
+
+    <div class="content container">
+
+      <!-- added by bob -->
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Robert Cudmore</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/about">about</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/archive">archive</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/tags">tags</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/software">software</a></small>
+          
+
+
+        </h3>
+		<hr style="background:#202020; border:0; height:3px" />
+      </div>
+
+      <div class="post">
+  <h3 class="post-title">debian server</h1>
+  <span class="post-date">07 Nov 2015</span>
+  <p>Goal is to set up a home server running Debain Jessie.</p>
+
+<h2>0) The hardware is as follows</h2>
+
+<ul>
+<li>See my pcpartspicker <a href="http://pcpartpicker.com/p/PRq8Vn">inventory</a></li>
+<li>Processor: Intel Pentium G3258 3.2GHz Dual-Core Processor</li>
+<li>Motherboard: Gigabyte GA-H97N-WIFI Mini ITX LGA1150 Motherboard</li>
+<li>RAM: G.Skill Sniper Series 8GB (2 x 4GB) DDR3-1866 Memory</li>
+<li>Case: Cooler Master Elite 110 Mini ITX Tower Case</li>
+<li>Power: EVGA 430W 80+ Certified ATX</li>
+</ul>
+
+<h2>1) Download and install debian</h2>
+
+<ul>
+<li>Download debian jessie</li>
+<li>Make a usb key</li>
+<li>Install debian</li>
+<li>Check your debian version
+<code>
+cat /etc/debian_version 
+8.2
+</code></li>
+</ul>
+
+<h2>2) Configure debian jessie</h2>
+
+<h3>Update your repositories</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  apt-get update
+</code></pre></div>
+<h3>ssh</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  apt-get install openssh-server
+</code></pre></div>
+<ul>
+<li>Follow <a href="https://wiki.debian.org/SSH#Installation_of_the_server">this</a></li>
+</ul>
+
+<h3>Sudo</h3>
+
+<ul>
+<li>Use apt-get to install sudo. This is better then switching to su.</li>
+<li>Follow <a href="https://wiki.debian.org/sudo">this</a>.</li>
+</ul>
+
+<h3>Add in a second hard drive</h3>
+
+<ul>
+<li>partition</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  cfdisk /dev/sdb
+</code></pre></div>
+<ul>
+<li>format</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  mkfs.ext4 /dev/sdb1
+</code></pre></div>
+<ul>
+<li>Once disk is partitioned and formatted, this is what it looks like</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  cudmore@debian:~$ sudo fdisk -l /dev/sdb
+  Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
+  Units: sectors of 1 * 512 = 512 bytes
+  Sector size (logical/physical): 512 bytes / 512 bytes
+  I/O size (minimum/optimal): 512 bytes / 512 bytes
+  Disklabel type: gpt
+  Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
+
+  Device     Start        End    Sectors  Size Type
+  /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
+</code></pre></div>
+<ul>
+<li>Mount the second harddrive in a folder /movies</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  mkdir /movies # remember to set group and group rwx later
+  mount -t ext4 /dev/sdb1 /movies
+</code></pre></div>
+<ul>
+<li>blkid to get unique name for fstab entry</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  cudmore@debian:~$ sudo blkid
+  /dev/sda1: UUID=&quot;30EE-7B6B&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;1eae1e11-6902-45f9-9c27-55ab648972b3&quot;
+  /dev/sda2: UUID=&quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;15ac40fa-5874-423b-9282-209a8b88a60a&quot;
+  /dev/sda3: UUID=&quot;16a7a205-220c-4583-a758-4fcaf3eb0417&quot; TYPE=&quot;swap&quot; PARTUUID=&quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&quot;
+  /dev/sdb1: UUID=&quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&quot;
+</code></pre></div>
+<ul>
+<li>Append the new disk to /etc/fstab</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  cudmore@debian:~$ more /etc/fstab 
+  # /etc/fstab: static file system information.
+  #
+  # Use &#39;blkid&#39; to print the universally unique identifier for a
+  # device; this may be used with UUID= as a more robust way to name devices
+  # that works even if disks are added and removed. See fstab(5).
+  #
+  # &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+  # / was on /dev/sda2 during installation
+  UUID=2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    errors=remount-ro 0       1
+  # /boot/efi was on /dev/sda1 during installation
+  UUID=30EE-7B6B  /boot/efi       vfat    umask=0077      0       1
+  # swap was on /dev/sda3 during installation
+  UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
+  # 2tb drive for movies
+  UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
+</code></pre></div>
+<h3>Users and groups</h3>
+
+<ul>
+<li>Make a second user &#39;user2&#39;</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo adduser user2
+</code></pre></div>
+<ul>
+<li>Make a group &#39;movies&#39;</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo addgroup movies
+</code></pre></div>
+<ul>
+<li>Add myself (user1) and user2 to the &#39;movies&#39; group</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo usermod -a -G movies user1
+  sudo usermod -a -G movies user2
+</code></pre></div>
+<h3>Make second harddrive rwx for group &#39;movies&#39;</h3>
+
+<ul>
+<li>make sure the second hard drive has rwx permission for group &#39;movies&#39;</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  #the first &#39;movies&#39; is the name of the group, the second /movies is the folder
+  sudo chgrp -R movies /movies
+  sudo chmod -R g+rwx /movies
+</code></pre></div>
+<h3>afp</h3>
+
+<ul>
+<li><p>Follow <a href="http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie">debian jessie afp install guide</a></p></li>
+<li><p>I am using netatalk-3.1.7</p></li>
+<li><p>Modify /usr/local/etc/afp.conf</p></li>
+</ul>
+
+<p>The key here is to specify the name of the mount point using &#39;home name = $u_server&#39;. Otherwise your mount point becomes &#39;[[user]]&#39;s home&#39; and programs like Microsoft Word and Fiji will probably not find the path with the apostrophe in the name.</p>
+
+<p>$u is a variable that inserts the current username. It is defined in the <a href="http://netatalk.sourceforge.net/3.0/htmldocs/afp.conf.5.html">afp.conf</a> documentation.</p>
+
+<p>[movie_server] is a mount point that will mount my second hard drive from folder /movies.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  ;
+  ; Netatalk 3.x configuration file
+  ;
+
+  [Global]
+  ; Global server settings
+
+  [Homes]
+  ; basedir regex = /xxxx
+    ;user1 will mount as user1_server
+    home name = $u_server
+    basedir regex = /home
+
+  ; [My AFP Volume]
+  ; path = /path/to/volume
+
+  [movies_server]
+  path = /movies
+</code></pre></div>
+<h3>Remote desktop with vnc</h3>
+
+<ul>
+<li>This is not working. May be jessie bug?</li>
+<li><a href="http://linuxconfig.org/quick-vnc-server-client-setup-on-debian-linux-jessie-8">plagiarized guide</a></li>
+</ul>
+
+<h3>Install Anaconda</h3>
+
+<ul>
+<li>Download and follow <a href="http://docs.continuum.io/anaconda/install#linux-install">these</a> instructions on website</li>
+</ul>
+
+<h3>Configure <a href="https://www.duckdns.org">duckdns</a> to keep your external/router ip up to date</h3>
+
+<ul>
+<li>Follow <a href="https://www.duckdns.org/install.jsp">this</a></li>
+</ul>
+
+<h3>Install samba/smb</h3>
+
+<ul>
+<li>Follow something like <a href="https://wiki.debian.org/SambaServerSimple">this</a></li>
+<li>edit with &#39;sudo pico /etc/samba/smb.conf&#39;</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  [movies_server]
+   comment = movies on debian server
+   read only = no
+   locking = no
+   path = /path_to_our_files
+   guest ok = no
+</code></pre></div>
+<ul>
+<li>Restart samba
+<code>
+sudo /etc/init.d/samba restart
+</code></li>
+</ul>
+
+<h3>Get a python script to runat boot</h3>
+
+<ul>
+<li>This is very unclear to me</li>
+<li>Directly edit &#39;sudo pico /etc/crontab&#39;</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &gt;&gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&gt;&amp;1
+</code></pre></div>
+<ul>
+<li>I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my &#39;print&#39; statements as it runs?</li>
+</ul>
+
+</div>
+
+<div class="post-tags">
+  Tags: 
+  
+    
+  
+  
+  <a href="/tags/#osx">osx</a>,
+  
+  <a href="/tags/#linux">linux</a>
+  
+</div>
+
+
+<div class="post-tags">
+    <p><font size="-1rem">&copy;2015. <A HREF="http://robertcudmore.org">Robert Cudmore</A>.</font></p>
+</div>
+
+
+<span class="page-nav-item-left">
+    <a rel="prev" href="/post/2015/09/07/remote-sensors/" title="View remote sensors">&laquo; Older</a>
+</span>
+
+
+
+
+    </div>
+
+  </body>
+</html>

@@ -4,17 +4,236 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
-<<<<<<< HEAD
- <updated>2015-08-17T09:05:26-04:00</updated>
-=======
- <updated>2015-09-28T00:25:21-04:00</updated>
->>>>>>> origin/master
+ <updated>2015-11-07T13:39:36-05:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>debian server</title>
+   <link href="/post/2015/11/07/debian-server/"/>
+   <updated>2015-11-07T17:01:06-05:00</updated>
+   <id>/post/2015/11/07/debian-server</id>
+   <content type="html">&lt;p&gt;Goal is to set up a home server running Debain Jessie.&lt;/p&gt;
+
+&lt;h2&gt;0) The hardware is as follows&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;See my pcpartspicker &lt;a href=&quot;http://pcpartpicker.com/p/PRq8Vn&quot;&gt;inventory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Processor: Intel Pentium G3258 3.2GHz Dual-Core Processor&lt;/li&gt;
+&lt;li&gt;Motherboard: Gigabyte GA-H97N-WIFI Mini ITX LGA1150 Motherboard&lt;/li&gt;
+&lt;li&gt;RAM: G.Skill Sniper Series 8GB (2 x 4GB) DDR3-1866 Memory&lt;/li&gt;
+&lt;li&gt;Case: Cooler Master Elite 110 Mini ITX Tower Case&lt;/li&gt;
+&lt;li&gt;Power: EVGA 430W 80+ Certified ATX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;1) Download and install debian&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download debian jessie&lt;/li&gt;
+&lt;li&gt;Make a usb key&lt;/li&gt;
+&lt;li&gt;Install debian&lt;/li&gt;
+&lt;li&gt;Check your debian version
+&lt;code&gt;
+cat /etc/debian_version 
+8.2
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;2) Configure debian jessie&lt;/h2&gt;
+
+&lt;h3&gt;Update your repositories&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  apt-get update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;ssh&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  apt-get install openssh-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Follow &lt;a href=&quot;https://wiki.debian.org/SSH#Installation_of_the_server&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Sudo&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use apt-get to install sudo. This is better then switching to su.&lt;/li&gt;
+&lt;li&gt;Follow &lt;a href=&quot;https://wiki.debian.org/sudo&quot;&gt;this&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Add in a second hard drive&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;partition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  cfdisk /dev/sdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;format&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  mkfs.ext4 /dev/sdb1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Once disk is partitioned and formatted, this is what it looks like&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  cudmore@debian:~$ sudo fdisk -l /dev/sdb
+  Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
+  Units: sectors of 1 * 512 = 512 bytes
+  Sector size (logical/physical): 512 bytes / 512 bytes
+  I/O size (minimum/optimal): 512 bytes / 512 bytes
+  Disklabel type: gpt
+  Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
+
+  Device     Start        End    Sectors  Size Type
+  /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Mount the second harddrive in a folder /movies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  mkdir /movies # remember to set group and group rwx later
+  mount -t ext4 /dev/sdb1 /movies
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;blkid to get unique name for fstab entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  cudmore@debian:~$ sudo blkid
+  /dev/sda1: UUID=&amp;quot;30EE-7B6B&amp;quot; TYPE=&amp;quot;vfat&amp;quot; PARTUUID=&amp;quot;1eae1e11-6902-45f9-9c27-55ab648972b3&amp;quot;
+  /dev/sda2: UUID=&amp;quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&amp;quot; TYPE=&amp;quot;ext4&amp;quot; PARTUUID=&amp;quot;15ac40fa-5874-423b-9282-209a8b88a60a&amp;quot;
+  /dev/sda3: UUID=&amp;quot;16a7a205-220c-4583-a758-4fcaf3eb0417&amp;quot; TYPE=&amp;quot;swap&amp;quot; PARTUUID=&amp;quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&amp;quot;
+  /dev/sdb1: UUID=&amp;quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&amp;quot; TYPE=&amp;quot;ext4&amp;quot; PARTUUID=&amp;quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Append the new disk to /etc/fstab&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  cudmore@debian:~$ more /etc/fstab 
+  # /etc/fstab: static file system information.
+  #
+  # Use &amp;#39;blkid&amp;#39; to print the universally unique identifier for a
+  # device; this may be used with UUID= as a more robust way to name devices
+  # that works even if disks are added and removed. See fstab(5).
+  #
+  # &amp;lt;file system&amp;gt; &amp;lt;mount point&amp;gt;   &amp;lt;type&amp;gt;  &amp;lt;options&amp;gt;       &amp;lt;dump&amp;gt;  &amp;lt;pass&amp;gt;
+  # / was on /dev/sda2 during installation
+  UUID=2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    errors=remount-ro 0       1
+  # /boot/efi was on /dev/sda1 during installation
+  UUID=30EE-7B6B  /boot/efi       vfat    umask=0077      0       1
+  # swap was on /dev/sda3 during installation
+  UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
+  # 2tb drive for movies
+  UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Users and groups&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make a second user &amp;#39;user2&amp;#39;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo adduser user2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Make a group &amp;#39;movies&amp;#39;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo addgroup movies
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Add myself (user1) and user2 to the &amp;#39;movies&amp;#39; group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo usermod -a -G movies user1
+  sudo usermod -a -G movies user2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Make second harddrive rwx for group &amp;#39;movies&amp;#39;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;make sure the second hard drive has rwx permission for group &amp;#39;movies&amp;#39;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  #the first &amp;#39;movies&amp;#39; is the name of the group, the second /movies is the folder
+  sudo chgrp -R movies /movies
+  sudo chmod -R g+rwx /movies
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;afp&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Follow &lt;a href=&quot;http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie&quot;&gt;debian jessie afp install guide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I am using netatalk-3.1.7&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modify /usr/local/etc/afp.conf&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The key here is to specify the name of the mount point using &amp;#39;home name = $u_server&amp;#39;. Otherwise your mount point becomes &amp;#39;[[user]]&amp;#39;s home&amp;#39; and programs like Microsoft Word and Fiji will probably not find the path with the apostrophe in the name.&lt;/p&gt;
+
+&lt;p&gt;$u is a variable that inserts the current username. It is defined in the &lt;a href=&quot;http://netatalk.sourceforge.net/3.0/htmldocs/afp.conf.5.html&quot;&gt;afp.conf&lt;/a&gt; documentation.&lt;/p&gt;
+
+&lt;p&gt;[movie_server] is a mount point that will mount my second hard drive from folder /movies.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  ;
+  ; Netatalk 3.x configuration file
+  ;
+
+  [Global]
+  ; Global server settings
+
+  [Homes]
+  ; basedir regex = /xxxx
+    ;user1 will mount as user1_server
+    home name = $u_server
+    basedir regex = /home
+
+  ; [My AFP Volume]
+  ; path = /path/to/volume
+
+  [movies_server]
+  path = /movies
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Remote desktop with vnc&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is not working. May be jessie bug?&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://linuxconfig.org/quick-vnc-server-client-setup-on-debian-linux-jessie-8&quot;&gt;plagiarized guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Install Anaconda&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download and follow &lt;a href=&quot;http://docs.continuum.io/anaconda/install#linux-install&quot;&gt;these&lt;/a&gt; instructions on website&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Configure &lt;a href=&quot;https://www.duckdns.org&quot;&gt;duckdns&lt;/a&gt; to keep your external/router ip up to date&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Follow &lt;a href=&quot;https://www.duckdns.org/install.jsp&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Install samba/smb&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Follow something like &lt;a href=&quot;https://wiki.debian.org/SambaServerSimple&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;edit with &amp;#39;sudo pico /etc/samba/smb.conf&amp;#39;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  [movies_server]
+   comment = movies on debian server
+   read only = no
+   locking = no
+   path = /path_to_our_files
+   guest ok = no
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Restart samba
+&lt;code&gt;
+sudo /etc/init.d/samba restart
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Get a python script to runat boot&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is very unclear to me&lt;/li&gt;
+&lt;li&gt;Directly edit &amp;#39;sudo pico /etc/crontab&amp;#39;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &amp;gt;&amp;gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my &amp;#39;print&amp;#39; statements as it runs?&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>remote sensors</title>
