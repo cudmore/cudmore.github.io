@@ -175,27 +175,53 @@
       <div class="post">
   <h3 class="post-title">remote sensors</h1>
   <span class="post-date">07 Sep 2015</span>
-  <h3>Interface</h3>
-
-<p>Point your browser to the webpage <a href="http://cudmore.duckdns.org:5000">http://cudmore.duckdns.org:5000</a></p>
+  <p>A distributed client sensor to data server network.</p>
 
 <h3>Background</h3>
 
 <ul>
-<li>Temperature sensor on pi transmits data to any number of servers via http</li>
-<li>Server currently running on MacOS can receive data from a number of sensors</li>
-<li>Both sensors and server are running Python</li>
-<li>Server is running Flask</li>
+<li>Client sensors transmit to data server(s) via http/rest interface.</li>
+<li>Data servers receive client sensor data and log it to a file.</li>
+<li>Any number of client sensors can transmit to any number of data servers as long as the client sensors know the IP address of the servers.</li>
+<li>Data servers are agnostic to the identity of the client sensors. Each client sensor embeds its identity into the data sent to the server.</li>
+</ul>
+
+<h3>Interface</h3>
+
+<ul>
+<li>Point your browser to the webpage <a href="http://cudmore.duckdns.org:5000">http://cudmore.duckdns.org:5000</a></li>
+</ul>
+
+<h3>Hardware</h3>
+
+<ul>
+<li>Sensors clients can run on either a Raspberry Pi or an Arduino.</li>
+<li>Sensors clients can include: temperature, motion detection, light levels, or a camera.</li>
+<li>Data servers run on Linux Debian Jessie, OS X, or Raspberry Raspian.</li>
+<li>Both sensor clients and data servers are running Python. If sensor client is on Arduino, it runs Arduino code.</li>
+<li>Date servers run <a href="http://flask.pocoo.org">Flask</a> to serve the webpage and use <a href="https://flask-socketio.readthedocs.org/en/latest/">socket-io</a> for realtime updates of pages served.</li>
+</ul>
+
+<h3>Mix-n-match</h3>
+
+<ul>
+<li>A client sensor can also be running a data server. For example, a Raspberry Pi with a motion sensor client can also have a data server to receive motion events to trigger an image capture.</li>
+<li>Alternatively, a sensor client could have two sensors: a motion detector and a camera. In this case, motion would trigger an image capture and then transmit this as two events to a data server (a motion detection timestamp and an image).</li>
+</ul>
+
+<h3>&#39;Real world&#39; input</h3>
+
+<ul>
+<li>Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.</li>
 </ul>
 
 <h3>API</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/bokeh
 
-<p>/bokeh</p>
+/images/a
 
-<p>/images/a</p>
-
-<p>/system</p>
-
+/system
+</code></pre></div>
 </div>
 
 <div class="post-tags">
