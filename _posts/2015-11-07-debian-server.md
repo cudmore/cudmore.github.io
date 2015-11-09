@@ -216,3 +216,9 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   
   - I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my 'print' statements as it runs?
   
+###Install transmission
+
+  - sudo apt-get install transmission
+  - sudo apt-get install transmission-daemon
+  - - Follow very specific instructions [here](https://trac.transmissionbt.com/wiki/HeadlessUsage/General)
+  
