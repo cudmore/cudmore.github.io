@@ -10,7 +10,13 @@ tags:
 
 Goal is to set up a home server running Debain Jessie.
 
-##0) The hardware is as follows
+ - Share files with afp and smb
+ - Run an apache web server
+ - Run basic python scripts
+ - Run flask servers on various ports
+ - Run transmissions for torrent download
+
+###0) The hardware is as follows
   - See my pcpartspicker [inventory](http://pcpartpicker.com/p/PRq8Vn)
   - Processor: Intel Pentium G3258 3.2GHz Dual-Core Processor
   - Motherboard: Gigabyte GA-H97N-WIFI Mini ITX LGA1150 Motherboard
@@ -18,7 +24,7 @@ Goal is to set up a home server running Debain Jessie.
   - Case: Cooler Master Elite 110 Mini ITX Tower Case
   - Power: EVGA 430W 80+ Certified ATX
   
-##1) Download and install debian
+###1) Download and install debian
 
   - Download debian jessie
   - Make a usb key
@@ -29,15 +35,15 @@ Goal is to set up a home server running Debain Jessie.
   8.2
   ```
 
-##2) Configure debian jessie
+###2) Configure debian jessie
 
-###Update your repositories
+####Update your repositories
 
   ```
   apt-get update
   ```
 
-###ssh
+####ssh
 
   ```
   apt-get install openssh-server
@@ -45,11 +51,11 @@ Goal is to set up a home server running Debain Jessie.
   
   - Follow [this](https://wiki.debian.org/SSH#Installation_of_the_server)
     
-###Sudo
+####Sudo
   - Use apt-get to install sudo. This is better then switching to su.
   - Follow [this](https://wiki.debian.org/sudo).
 
-###Add in a second hard drive
+####Add in a second hard drive
   - partition
   
   ```
@@ -115,7 +121,7 @@ Goal is to set up a home server running Debain Jessie.
   UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
   ```
   
-###Users and groups
+####Users and groups
 
   - Make a second user 'user2'
 
@@ -135,7 +141,7 @@ Goal is to set up a home server running Debain Jessie.
   sudo usermod -a -G movies user2
   ```
 
-###Make second harddrive rwx for group 'movies'
+####Make second harddrive rwx for group 'movies'
   - make sure the second hard drive has rwx permission for group 'movies'
 
   ```
@@ -144,7 +150,7 @@ Goal is to set up a home server running Debain Jessie.
   sudo chmod -R g+rwx /movies
   ```
 
-###afp
+####Apple-File-Protocol (afp)
 
   - Follow [debian jessie afp install guide](http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie)
  
@@ -178,17 +184,17 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   path = /movies
   ```
 
-###Remote desktop with vnc
+####Remote desktop with vnc
   - This is not working. May be jessie bug?
   - [plagiarized guide](http://linuxconfig.org/quick-vnc-server-client-setup-on-debian-linux-jessie-8)
   
-###Install Anaconda
+####Install Anaconda (Python)
   - Download and follow [these](http://docs.continuum.io/anaconda/install#linux-install) instructions on website
   
-###Configure [duckdns](https://www.duckdns.org) to keep your external/router ip up to date
+####Configure [duckdns](https://www.duckdns.org) to keep your external/router ip up to date
   - Follow [this](https://www.duckdns.org/install.jsp)
 
-###Install samba/smb
+####Install samba/smb file sharing
   - Follow something like [this](https://wiki.debian.org/SambaServerSimple)
   - edit with 'sudo pico /etc/samba/smb.conf'
 
@@ -206,7 +212,7 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
    sudo /etc/init.d/samba restart
    ```
    
-###Get a python script to runat boot
+####Run python scripts at boot
   - This is very unclear to me
   - Directly edit 'sudo pico /etc/crontab'
   
@@ -216,7 +222,7 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   
   - I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my 'print' statements as it runs?
   
-###Install transmission
+####Transmission (torrent download)
 
   - sudo apt-get install transmission
   - sudo apt-get install transmission-daemon
