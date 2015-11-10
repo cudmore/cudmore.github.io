@@ -239,6 +239,11 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   ```
   sudo usermod -a -G movies transmission
   ```
+ - That didn't work (maybe I needed a -R). Fuck all this security.
+  '''
+  sudo chmod -R a+rwx /movies/transmission_download/
+  '''
+
   - Make sure to stop and then start daemon when editing the configuration
  
   ```
