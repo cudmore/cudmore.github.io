@@ -14,7 +14,7 @@ Goal is to set up a home server running Debain Jessie.
  - Run an apache web server
  - Run basic python scripts
  - Run flask servers on various ports
- - Run transmissions for torrent download
+ - Run transmission for torrent download
 
 ###0) The hardware is as follows
   - See my pcpartspicker [inventory](http://pcpartpicker.com/p/PRq8Vn)
@@ -244,9 +244,9 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
 
  - That didn't work (maybe I needed a -R). Fuck all this security.
 
-  '''
+  ```
   sudo chmod -R a+rwx /movies/transmission_download/
-  '''
+  ```
 
   - Make sure to stop and then start daemon when editing the configuration
  
