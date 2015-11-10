@@ -228,6 +228,17 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   - sudo apt-get install transmission-daemon
   - Follow very specific instructions [here](https://trac.transmissionbt.com/wiki/HeadlessUsage/General)
   - [this](https://help.ubuntu.com/community/TransmissionHowTo) might be more useful.
+  - Modify /var/lib/transmission-daemon/info/settings.json
+  ```
+    "download-dir": "/movies/transmission_download",
+    "rpc-whitelist": "127.0.0.1,192.168.*.*",
+    "rpc-authentication-required": false,
+
+  ```
+  - Maybe add transmissions user to 'movies' group? (movies group was made above)
+  ```
+  sudo usermod -a -G movies transmission
+  ```
   - Make sure to stop and then start daemon when editing the configuration
  
   ```
