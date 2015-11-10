@@ -228,3 +228,10 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   - sudo apt-get install transmission-daemon
   - Follow very specific instructions [here](https://trac.transmissionbt.com/wiki/HeadlessUsage/General)
   - [this](https://help.ubuntu.com/community/TransmissionHowTo) might be more useful.
+  - Make sure to stop and then start daemon when editing the configuration
+ 
+  ```
+  sudo service transmission-daemon stop
+  sudo nano /var/lib/transmission-daemon/info/settings.json
+  sudo service transmission-daemon start
+  ```
