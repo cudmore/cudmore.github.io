@@ -238,19 +238,19 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   "rpc-authentication-required": false,
   ```
   
-- Maybe add transmissions user to 'movies' group? (movies group was made above)
+  - Maybe add transmissions user to 'movies' group? (movies group was made above).
 
   ```
   sudo usermod -a -G movies transmission
   ```
 
- - That didn't work (maybe I needed a -R). Fuck all this security.
+  - That didn't work (maybe I needed a -R). Fuck all this security anyways.
 
   ```
   sudo chmod -R a+rwx /movies/transmission_download/
   ```
 
-  - Make sure to stop and then start daemon when editing the configuration
+  - Make sure to stop and then start daemon when editing the configuration file.
  
   ```
   sudo service transmission-daemon stop
