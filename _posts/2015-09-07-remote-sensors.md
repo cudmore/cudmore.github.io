@@ -11,6 +11,8 @@ tags:
 
 A distributed client sensor to data server network.
 
+###This is kind of bullshit
+
 ###Background
 
  - Client sensors transmit to data server(s) via http/rest interface.
