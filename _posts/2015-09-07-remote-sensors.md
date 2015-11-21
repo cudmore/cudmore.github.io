@@ -42,8 +42,15 @@ A distributed client sensor to data server network.
 
 ```
 /bokeh
-
+   plot with bokeh
+   
 /images/a
-
+   plot with matplotlib
+   
+/keen
+   plot with keen (pulls data from keen server)
+   
 /system
+   the type of system the server is running on 
+   
 ```
