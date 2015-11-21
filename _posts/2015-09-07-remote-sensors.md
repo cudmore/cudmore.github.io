@@ -11,7 +11,7 @@ tags:
 
 A distributed client sensor to data server network.
 
-###This is kind of bullshit
+###This description is becoming kind of bullshit
 
 ###Background
 
