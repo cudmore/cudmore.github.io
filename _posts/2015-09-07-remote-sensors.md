@@ -45,8 +45,10 @@ A distributed client sensor to data server network.
    plot with bokeh
 /images/a
    plot with matplotlib 
+/plotly
+   plot with plotly javascript (pure javascript pulling data off my server)
 /keen
-   plot with keen (pulls data from keen server)
+   plot with keen (pure javascript, pulling data from keen server)
 /system
    the type of system the server is running on 
 ```
