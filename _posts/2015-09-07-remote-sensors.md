@@ -42,9 +42,9 @@ A distributed client sensor to data server network.
 
 ```
 /bokeh
-   plot with bokeh
+   plot with bokeh (python generates javascript and plots off my server)
 /images/a
-   plot with matplotlib 
+   plot with matplotlib (generates a static image)
 /plotly
    plot with plotly javascript (pure javascript pulling data off my server)
 /keen
