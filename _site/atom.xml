@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-11-07T18:13:08-05:00</updated>
+ <updated>2015-12-04T20:34:42-05:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -13,13 +13,133 @@
 
  
  <entry>
+   <title>particle cloud</title>
+   <link href="/post/2015/12/01/particle-cloud-server/"/>
+   <updated>2015-12-01T17:01:06-05:00</updated>
+   <id>/post/2015/12/01/particle-cloud-server</id>
+   <content type="html">&lt;p&gt;Photon-B83V&lt;/p&gt;
+
+&lt;h4&gt;This is not working...&lt;/h4&gt;
+
+&lt;p&gt;The paticle photon is a great little wifi enabled arduino. The only problem I have is that all read/write using its REST API requires internet acces to a particle.io account. To get around this, you can run a particle cloud server locally.&lt;/p&gt;
+
+&lt;p&gt;I am doing all of this on a Debian Jessie server.&lt;/p&gt;
+
+&lt;h4&gt;install git&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;install nodejs (use su to enter su/root)&lt;/h4&gt;
+
+&lt;p&gt;Following: &lt;a href=&quot;https://github.com/nodesource/distributions&quot;&gt;https://github.com/nodesource/distributions&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;curl -sL https://deb.nodesource.com/setup_4.x | bash -
+apt-get install -y nodejs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Install particle cli&lt;/h4&gt;
+
+&lt;p&gt;Following: &lt;a href=&quot;https://github.com/spark/particle-cli&quot;&gt;https://github.com/spark/particle-cli&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo npm install -g particle-cli
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Install particle cloud server&lt;/h4&gt;
+
+&lt;p&gt;Following: &lt;a href=&quot;https://github.com/spark/spark-server/&quot;&gt;https://github.com/spark/spark-server/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git clone https://github.com/spark/spark-server.git
+cd spark-server
+npm install
+node main.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;node main.js&amp;#39; produced&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-------
+No users exist, you should create some users!
+-------
+connect.multipart() will be removed in connect 3.0
+visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+connect.limit() will be removed in connect 3.0
+Starting server, listening on 8080
+static class init!
+core keys directory didn&amp;#39;t exist, creating... /home/cudmore/spark-server/core_keys
+Creating NEW server key
+Loading server key from default_key.pem
+set server key
+server public key is:  -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz3oPu+QsNdQaVgk+e4nS
+zmTxop7vVamrKdIpio04yoY9pKPmkORAmM0VdFgYKinn094cHERm+LFdDhSAtWtn
+TIErdd3o2ntoyZoYLC30Q2Mwvb+AzvGRcrW7jk+72up6YbXMZi2lhRs9M5Qe7use
+mXy96PiRP7tYD+Yj+k0t3bDF+lfiWHuuG/yV2/hQaQ8ADfqtWvX4XyLMC9XS2m94
+HhFy83sWPcRcB7BZUr1A8w503vB+gZWlt8W+uPlbUmbF+P8LzZmE4Twn87EcMeTB
+qGvBxjWypHF95jDzZCie5/glZtunmH905Lb12y1eWLY29KPPk8BcpIzPJ5xc8mKk
+gQIDAQAB
+-----END PUBLIC KEY-----
+
+Your server IP address is: 192.168.1.200
+server started { host: &amp;#39;localhost&amp;#39;, port: 5683 }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Continue setting up particle server&lt;/h4&gt;
+
+&lt;p&gt;Install &lt;a href=&quot;http://dfu-util.sourceforge.net&quot;&gt;dfu-utils&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    #git clone git://git.code.sf.net/p/dfu-util/dfu-util
+    sudo apt-get build-dep dfu-util
+    sudo apt-get install libusb-1.0-0-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But that did not work so i did&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get upgrade dfu-til
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow &lt;a href=&quot;https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html&quot;&gt;this&lt;/a&gt; and edit /var/www/owncloud/config/config.php and set &amp;#39;maintenance&amp;#39; =&amp;gt; false,&amp;#39;. The next itme I logged into my owncloud server it triggered an update to 8.2.1&lt;/p&gt;
+
+&lt;p&gt;Try again with particle photon plugged in via usb&lt;/p&gt;
+
+&lt;p&gt;Still following: &lt;a href=&quot;https://github.com/spark/spark-server/&quot;&gt;https://github.com/spark/spark-server/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;particle keys server default_key.pub.pem 192.168.1.10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;gave&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
+running dfu-util -l
+Found DFU device 2b04:d006
+checking file  default_key.pub192_168_1_200.der
+spawning dfu-util -d 2b04:d006 -a 1 -i 0 -s 2082 -D default_key.pub192_168_1_200.der
+dfu-util 0.8
+
+Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+Copyright 2010-2014 Tormod Volden and Stefan Schmidt
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+Please report bugs to dfu-util@lists.gnumonks.org
+
+dfu-util: Invalid DFU suffix signature
+dfu-util: A valid DFU suffix will be required in a future dfu-util release!!!
+Opening DFU capable USB device...
+ID 2b04:d006
+Run-time device DFU version 011a
+Claiming USB DFU Interface...
+Setting Alternate Setting #1 ...
+Determining device status: state = dfuIDLE, status = 0
+dfuIDLE, continuing
+DFU mode device DFU version 011a
+Device returned transfer size 4096
+DfuSe interface name: &amp;quot;DCT Flash   &amp;quot;
+Downloading to address = 0x00000822, size = 1024
+Download    [=========================] 100%         1024 bytes
+Download done.
+File downloaded successfully
+Okay!  New keys in place, your device will not restart.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>debian server</title>
    <link href="/post/2015/11/07/debian-server/"/>
    <updated>2015-11-07T17:01:06-05:00</updated>
    <id>/post/2015/11/07/debian-server</id>
    <content type="html">&lt;p&gt;Goal is to set up a home server running Debain Jessie.&lt;/p&gt;
 
-&lt;h2&gt;0) The hardware is as follows&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Share files with afp and smb&lt;/li&gt;
+&lt;li&gt;Run basic python scripts&lt;/li&gt;
+&lt;li&gt;Run flask servers on various ports&lt;/li&gt;
+&lt;li&gt;Run an apache web server (not really set up)&lt;/li&gt;
+&lt;li&gt;Run owncloud (synch clients are still slow)&lt;/li&gt;
+&lt;li&gt;Run transmission for torrent download&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;0) The hardware is as follows&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;See my pcpartspicker &lt;a href=&quot;http://pcpartpicker.com/p/PRq8Vn&quot;&gt;inventory&lt;/a&gt;&lt;/li&gt;
@@ -30,7 +150,7 @@
 &lt;li&gt;Power: EVGA 430W 80+ Certified ATX&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;1) Download and install debian&lt;/h2&gt;
+&lt;h3&gt;1) Download and install debian&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Download debian jessie&lt;/li&gt;
@@ -43,26 +163,26 @@ cat /etc/debian_version
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;2) Configure debian jessie&lt;/h2&gt;
+&lt;h3&gt;2) Configure debian jessie&lt;/h3&gt;
 
-&lt;h3&gt;Update your repositories&lt;/h3&gt;
+&lt;h4&gt;Update your repositories&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  apt-get update
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;ssh&lt;/h3&gt;
+&lt;h4&gt;ssh&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  apt-get install openssh-server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Follow &lt;a href=&quot;https://wiki.debian.org/SSH#Installation_of_the_server&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Sudo&lt;/h3&gt;
+&lt;h4&gt;Sudo&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Use apt-get to install sudo. This is better then switching to su.&lt;/li&gt;
 &lt;li&gt;Follow &lt;a href=&quot;https://wiki.debian.org/sudo&quot;&gt;this&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Add in a second hard drive&lt;/h3&gt;
+&lt;h4&gt;Add in a second hard drive&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;partition&lt;/li&gt;
@@ -123,7 +243,7 @@ cat /etc/debian_version
   # 2tb drive for movies
   UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Users and groups&lt;/h3&gt;
+&lt;h4&gt;Users and groups&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Make a second user &amp;#39;user2&amp;#39;&lt;/li&gt;
@@ -141,7 +261,7 @@ cat /etc/debian_version
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo usermod -a -G movies user1
   sudo usermod -a -G movies user2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Make second harddrive rwx for group &amp;#39;movies&amp;#39;&lt;/h3&gt;
+&lt;h4&gt;Make second harddrive rwx for group &amp;#39;movies&amp;#39;&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;make sure the second hard drive has rwx permission for group &amp;#39;movies&amp;#39;&lt;/li&gt;
@@ -150,7 +270,7 @@ cat /etc/debian_version
   sudo chgrp -R movies /movies
   sudo chmod -R g+rwx /movies
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;afp&lt;/h3&gt;
+&lt;h4&gt;Apple-File-Protocol (afp)&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Follow &lt;a href=&quot;http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie&quot;&gt;debian jessie afp install guide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -182,26 +302,26 @@ cat /etc/debian_version
   [movies_server]
   path = /movies
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Remote desktop with vnc&lt;/h3&gt;
+&lt;h4&gt;Remote desktop with vnc&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;This is not working. May be jessie bug?&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://linuxconfig.org/quick-vnc-server-client-setup-on-debian-linux-jessie-8&quot;&gt;plagiarized guide&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Install Anaconda&lt;/h3&gt;
+&lt;h4&gt;Install Anaconda (Python)&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Download and follow &lt;a href=&quot;http://docs.continuum.io/anaconda/install#linux-install&quot;&gt;these&lt;/a&gt; instructions on website&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Configure &lt;a href=&quot;https://www.duckdns.org&quot;&gt;duckdns&lt;/a&gt; to keep your external/router ip up to date&lt;/h3&gt;
+&lt;h4&gt;Configure &lt;a href=&quot;https://www.duckdns.org&quot;&gt;duckdns&lt;/a&gt; to keep your external/router ip up to date&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Follow &lt;a href=&quot;https://www.duckdns.org/install.jsp&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Install samba/smb&lt;/h3&gt;
+&lt;h4&gt;Install samba/smb file sharing&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Follow something like &lt;a href=&quot;https://wiki.debian.org/SambaServerSimple&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
@@ -221,7 +341,7 @@ sudo /etc/init.d/samba restart
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Get a python script to runat boot&lt;/h3&gt;
+&lt;h4&gt;Run python scripts at boot&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;This is very unclear to me&lt;/li&gt;
@@ -232,6 +352,51 @@ sudo /etc/init.d/samba restart
 &lt;ul&gt;
 &lt;li&gt;I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my &amp;#39;print&amp;#39; statements as it runs?&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h4&gt;Transmission (torrent download)&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo apt-get install transmission
+  sudo apt-get install transmission-daemon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Follow very specific instructions &lt;a href=&quot;https://trac.transmissionbt.com/wiki/HeadlessUsage/General&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/TransmissionHowTo&quot;&gt;this&lt;/a&gt; might be more useful.&lt;/li&gt;
+&lt;li&gt;Modify /var/lib/transmission-daemon/info/settings.json&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  &amp;quot;download-dir&amp;quot;: &amp;quot;/movies/transmission_download&amp;quot;,
+  &amp;quot;rpc-whitelist&amp;quot;: &amp;quot;127.0.0.1,192.168.*.*&amp;quot;,
+  &amp;quot;rpc-authentication-required&amp;quot;: false,
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Maybe add transmissions user to &amp;#39;movies&amp;#39; group? (movies group was made above).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo usermod -a -G movies transmission
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;That didn&amp;#39;t work (maybe I needed a -R). Fuck all this security anyways.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo chmod -R a+rwx /movies/transmission_download/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Make sure to stop and then start daemon when editing the configuration file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  sudo service transmission-daemon stop
+  sudo nano /var/lib/transmission-daemon/info/settings.json
+  sudo service transmission-daemon start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Access transmissions via web interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;  http://192.168.1.200:9091
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission
+&lt;code&gt;
+sudo usermod -a -G debian-transmission cudmore 
+&lt;/code&gt;
+####Install particle cloud server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;see other blog post&lt;/p&gt;
 </content>
  </entry>
  

@@ -68,6 +68,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/11/07/debian-server/">debian server</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/09/07/remote-sensors/">remote sensors</a><BR>
@@ -75,8 +77,6 @@
 		      &raquo; <a class="sidebarlink" href="/post/2015/09/04/simple-form/">simple form in jekyll</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/08/14/PyQtGraph-to-display-a-stack/">pyqtGraph to display a .tif stack</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/">Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</a><BR>
 		    
 		</section>
 
@@ -108,7 +108,7 @@
     		  protocols
     		</a>
 		
-    		<a style="font-size: 90%" href="/tags/#osx">
+    		<a style="font-size: 106%" href="/tags/#osx">
     		  osx
     		</a>
 		
@@ -116,11 +116,11 @@
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 140%" href="/tags/#linux">
+    		<a style="font-size: 156%" href="/tags/#linux">
     		  linux
     		</a>
 		
-    		<a style="font-size: 73%" href="/tags/#arduino">
+    		<a style="font-size: 90%" href="/tags/#arduino">
     		  arduino
     		</a>
 		
@@ -177,7 +177,16 @@
   <span class="post-date">07 Nov 2015</span>
   <p>Goal is to set up a home server running Debain Jessie.</p>
 
-<h2>0) The hardware is as follows</h2>
+<ul>
+<li>Share files with afp and smb</li>
+<li>Run basic python scripts</li>
+<li>Run flask servers on various ports</li>
+<li>Run an apache web server (not really set up)</li>
+<li>Run owncloud (synch clients are still slow)</li>
+<li>Run transmission for torrent download</li>
+</ul>
+
+<h3>0) The hardware is as follows</h3>
 
 <ul>
 <li>See my pcpartspicker <a href="http://pcpartpicker.com/p/PRq8Vn">inventory</a></li>
@@ -188,7 +197,7 @@
 <li>Power: EVGA 430W 80+ Certified ATX</li>
 </ul>
 
-<h2>1) Download and install debian</h2>
+<h3>1) Download and install debian</h3>
 
 <ul>
 <li>Download debian jessie</li>
@@ -201,26 +210,26 @@ cat /etc/debian_version
 </code></li>
 </ul>
 
-<h2>2) Configure debian jessie</h2>
+<h3>2) Configure debian jessie</h3>
 
-<h3>Update your repositories</h3>
+<h4>Update your repositories</h4>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  apt-get update
 </code></pre></div>
-<h3>ssh</h3>
+<h4>ssh</h4>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  apt-get install openssh-server
 </code></pre></div>
 <ul>
 <li>Follow <a href="https://wiki.debian.org/SSH#Installation_of_the_server">this</a></li>
 </ul>
 
-<h3>Sudo</h3>
+<h4>Sudo</h4>
 
 <ul>
 <li>Use apt-get to install sudo. This is better then switching to su.</li>
 <li>Follow <a href="https://wiki.debian.org/sudo">this</a>.</li>
 </ul>
 
-<h3>Add in a second hard drive</h3>
+<h4>Add in a second hard drive</h4>
 
 <ul>
 <li>partition</li>
@@ -281,7 +290,7 @@ cat /etc/debian_version
   # 2tb drive for movies
   UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
 </code></pre></div>
-<h3>Users and groups</h3>
+<h4>Users and groups</h4>
 
 <ul>
 <li>Make a second user &#39;user2&#39;</li>
@@ -299,7 +308,7 @@ cat /etc/debian_version
 <div class="highlight"><pre><code class="language-text" data-lang="text">  sudo usermod -a -G movies user1
   sudo usermod -a -G movies user2
 </code></pre></div>
-<h3>Make second harddrive rwx for group &#39;movies&#39;</h3>
+<h4>Make second harddrive rwx for group &#39;movies&#39;</h4>
 
 <ul>
 <li>make sure the second hard drive has rwx permission for group &#39;movies&#39;</li>
@@ -308,7 +317,7 @@ cat /etc/debian_version
   sudo chgrp -R movies /movies
   sudo chmod -R g+rwx /movies
 </code></pre></div>
-<h3>afp</h3>
+<h4>Apple-File-Protocol (afp)</h4>
 
 <ul>
 <li><p>Follow <a href="http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie">debian jessie afp install guide</a></p></li>
@@ -340,26 +349,26 @@ cat /etc/debian_version
   [movies_server]
   path = /movies
 </code></pre></div>
-<h3>Remote desktop with vnc</h3>
+<h4>Remote desktop with vnc</h4>
 
 <ul>
 <li>This is not working. May be jessie bug?</li>
 <li><a href="http://linuxconfig.org/quick-vnc-server-client-setup-on-debian-linux-jessie-8">plagiarized guide</a></li>
 </ul>
 
-<h3>Install Anaconda</h3>
+<h4>Install Anaconda (Python)</h4>
 
 <ul>
 <li>Download and follow <a href="http://docs.continuum.io/anaconda/install#linux-install">these</a> instructions on website</li>
 </ul>
 
-<h3>Configure <a href="https://www.duckdns.org">duckdns</a> to keep your external/router ip up to date</h3>
+<h4>Configure <a href="https://www.duckdns.org">duckdns</a> to keep your external/router ip up to date</h4>
 
 <ul>
 <li>Follow <a href="https://www.duckdns.org/install.jsp">this</a></li>
 </ul>
 
-<h3>Install samba/smb</h3>
+<h4>Install samba/smb file sharing</h4>
 
 <ul>
 <li>Follow something like <a href="https://wiki.debian.org/SambaServerSimple">this</a></li>
@@ -379,7 +388,7 @@ sudo /etc/init.d/samba restart
 </code></li>
 </ul>
 
-<h3>Get a python script to runat boot</h3>
+<h4>Run python scripts at boot</h4>
 
 <ul>
 <li>This is very unclear to me</li>
@@ -390,6 +399,51 @@ sudo /etc/init.d/samba restart
 <ul>
 <li>I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my &#39;print&#39; statements as it runs?</li>
 </ul>
+
+<h4>Transmission (torrent download)</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo apt-get install transmission
+  sudo apt-get install transmission-daemon
+</code></pre></div>
+<ul>
+<li>Follow very specific instructions <a href="https://trac.transmissionbt.com/wiki/HeadlessUsage/General">here</a></li>
+<li><a href="https://help.ubuntu.com/community/TransmissionHowTo">this</a> might be more useful.</li>
+<li>Modify /var/lib/transmission-daemon/info/settings.json</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  &quot;download-dir&quot;: &quot;/movies/transmission_download&quot;,
+  &quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,
+  &quot;rpc-authentication-required&quot;: false,
+</code></pre></div>
+<ul>
+<li>Maybe add transmissions user to &#39;movies&#39; group? (movies group was made above).</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo usermod -a -G movies transmission
+</code></pre></div>
+<ul>
+<li>That didn&#39;t work (maybe I needed a -R). Fuck all this security anyways.</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo chmod -R a+rwx /movies/transmission_download/
+</code></pre></div>
+<ul>
+<li>Make sure to stop and then start daemon when editing the configuration file.</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  sudo service transmission-daemon stop
+  sudo nano /var/lib/transmission-daemon/info/settings.json
+  sudo service transmission-daemon start
+</code></pre></div>
+<ul>
+<li>Access transmissions via web interface</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  http://192.168.1.200:9091
+</code></pre></div>
+<ul>
+<li>My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission
+<code>
+sudo usermod -a -G debian-transmission cudmore 
+</code>
+####Install particle cloud server</li>
+</ul>
+
+<p>see other blog post</p>
 
 </div>
 
@@ -415,6 +469,10 @@ sudo /etc/init.d/samba restart
     <a rel="prev" href="/post/2015/09/07/remote-sensors/" title="View remote sensors">&laquo; Older</a>
 </span>
 
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/post/2015/12/01/particle-cloud-server/" title="View ">Newer &raquo;</a>
+</span>
 
 
 

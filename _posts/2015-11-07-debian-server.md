@@ -11,9 +11,10 @@ tags:
 Goal is to set up a home server running Debain Jessie.
 
  - Share files with afp and smb
- - Run an apache web server
  - Run basic python scripts
  - Run flask servers on various ports
+ - Run an apache web server (not really set up)
+ - Run owncloud (synch clients are still slow)
  - Run transmission for torrent download
 
 ###0) The hardware is as follows
@@ -257,3 +258,17 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   sudo nano /var/lib/transmission-daemon/info/settings.json
   sudo service transmission-daemon start
   ```
+
+  - Access transmissions via web interface
+  
+  ```
+  http://192.168.1.200:9091
+  ```
+  
+  - My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission
+  ```
+  sudo usermod -a -G debian-transmission cudmore 
+  ```
+####Install particle cloud server
+
+see other blog post
