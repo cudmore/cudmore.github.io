@@ -4,13 +4,82 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-12-06T23:51:58-05:00</updated>
+ <updated>2015-12-07T00:10:23-05:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Camera with a REST interface</title>
+   <link href="/post/2015/12/06/camera-with-a-rest-interface/"/>
+   <updated>2015-12-06T17:01:06-05:00</updated>
+   <id>/post/2015/12/06/camera-with-a-rest-interface</id>
+   <content type="html">&lt;p&gt;I&amp;#39;ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.&lt;/p&gt;
+
+&lt;p&gt;In this version I am trying to keep it simple and starting/stopping video and timelapse images with a REST api.&lt;/p&gt;
+
+&lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves &amp;#39;pre-triggered&amp;#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features.&lt;/p&gt;
+
+&lt;p&gt;To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;VideoServer.py, controls the camera with the following interface:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;startArm(), initializes the camera.&lt;/li&gt;
+&lt;li&gt;stopArm(), release the camera.&lt;/li&gt;
+&lt;li&gt;startVideo(), starts video recording.&lt;/li&gt;
+&lt;li&gt;stopVideo(), stops video recording&lt;/li&gt;
+&lt;li&gt;doTimelapse=1, starts acquiring timelapse images&lt;/li&gt;
+&lt;li&gt;doTimelapse=0, stops acquiring timelapse images&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;timelapse_app.py, starts a flask webserver which provides a REST api as a wrapper around VideoServer.py:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;     http://192.168.1.12:5010/startarm
+     http://192.168.1.12:5010/stoparm
+     http://192.168.1.12:5010/startvideo
+     http://192.168.1.12:5010/stopvideo
+     http://192.168.1.12:5010/timelapseon
+     http://192.168.1.12:5010/timelapseoff
+     http://192.168.1.12:5010/lastimage
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;To Do:&lt;/strong&gt; I still need to expose &amp;#39;bufferSeconds&amp;#39; and &amp;#39;stillinterval&amp;#39; to the REST API.&lt;/p&gt;
+
+&lt;h3&gt;Get the last timelapse image in a browser or with curl&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#display in browser
+http://192.168.1.12:5010/lastimage
+#save from command line
+curl -o http://192.168.1.12:5010/lastimage
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;rsync the images and video to a remote host&lt;/h3&gt;
+
+&lt;p&gt;Now I want to get the videos/images off the machine with the camera. There are more options than I can count but here are three:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Push the recorded video/images to another server from within Python/Flask. I&amp;#39;ve done this before with &lt;a href=&quot;http://www.paramiko.org&quot;&gt;Paramiko&lt;/a&gt; but have always had problems with the code hanging or exceptions thrown when a network connection is lost. &lt;/li&gt;
+&lt;li&gt;Have another machine (also running flask) pull the images off the camera machine. This can be done with the /lastimage REST path. This requires the other machine to be running server code itself and to have some sort of timer.&lt;/li&gt;
+&lt;li&gt;Use &lt;strong&gt;rsynch&lt;/strong&gt; on the machine running the camera to a push videos/images to a remote server and use &lt;strong&gt;cron&lt;/strong&gt; to do this at a regular interval.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I will use rsynch to push the images to a remote server. Follow &lt;a href=&quot;http://troy.jdmz.net/rsync/index.html&quot;&gt;this&lt;/a&gt; for a really thorough explanation.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#assuming you have a folder &amp;#39;securitycam&amp;#39; on remote host
+rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Make sure you can &lt;a href=&quot;http://127.0.0.1:4000/post/2015/05/04/Auto-login-to-ssh-server/&quot;&gt;login to remote server&lt;/a&gt; without entering a password&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;add this
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run rsynch command every 10 minutes with crontab&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;crontab -e
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;*/10 * * * * /usr/bin/rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Here is a gist with VideoServer.py and timelapse_app.py&lt;/h3&gt;
+
+&lt;script src=&quot;https://gist.github.com/cudmore/c4ab92d288cfd1778be5.js&quot;&gt;&lt;/script&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Raspberry Wifi</title>
