@@ -68,7 +68,9 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/06/camera-with-a-rest-interface/">Camera with a REST interface</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/11/07/debian-server/">debian server</a><BR>
 		    
@@ -76,15 +78,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/09/04/simple-form/">simple form in jekyll</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/08/14/PyQtGraph-to-display-a-stack/">pyqtGraph to display a .tif stack</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 90%" href="/tags/#flask">
+    		<a style="font-size: 106%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -112,11 +112,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 106%" href="/tags/#raspberry">
+    		<a style="font-size: 123%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 156%" href="/tags/#linux">
+    		<a style="font-size: 173%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -177,6 +177,8 @@
   <span class="post-date">07 Sep 2015</span>
   <p>A distributed client sensor to data server network.</p>
 
+<h3>This description is becoming kind of bullshit</h3>
+
 <h3>Background</h3>
 
 <ul>
@@ -217,10 +219,15 @@
 
 <h3>API</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">/bokeh
-
+   plot with bokeh (python generates javascript and plots off my server)
 /images/a
-
+   plot with matplotlib (generates a static image)
+/plotly
+   plot with plotly javascript (pure javascript pulling data off my server)
+/keen
+   plot with keen (pure javascript, pulling data from keen server)
 /system
+   the type of system the server is running on 
 </code></pre></div>
 </div>
 
