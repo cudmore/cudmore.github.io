@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2015-12-04T20:34:42-05:00</updated>
+ <updated>2015-12-06T23:51:58-05:00</updated>
  <id></id>
  <author>
    <name>Robert Cudmore</name>
@@ -13,13 +13,193 @@
 
  
  <entry>
-   <title>particle cloud</title>
+   <title>Raspberry Wifi</title>
+   <link href="/post/2015/12/05/raspberry-wifi/"/>
+   <updated>2015-12-05T17:01:06-05:00</updated>
+   <id>/post/2015/12/05/raspberry-wifi</id>
+   <content type="html">&lt;p&gt;Yet another blog post on getting the Raspberry Pi up on a wifi network.&lt;/p&gt;
+
+&lt;h3&gt;Configure /etc/network/interfaces&lt;/h3&gt;
+
+&lt;p&gt;The stock install of Raspian should already have this.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pico /etc/network/interfaces
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Edit wpa_supplicant.conf&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid=&amp;quot;NETGEAR28&amp;quot;
+    psk=&amp;quot;your_password_here&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Tell your router to assign an ip based on MAC address of wifi adapter&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ifconfig wlan0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The MAC address is listed as &amp;#39;HWaddr&amp;#39; and in this case is &amp;#39;00:0b:81:89:11:8a&amp;#39;.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
+          inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
+          TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk)&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#stop netatalk
+sudo /etc/init.d/netatalk stop
+
+#edit config file
+sudo nano /etc/netatalk/AppleVolumes.default
+
+#change this one line
+
+# By default all users have access to their home directories.
+#~/                     &amp;quot;Home Directory&amp;quot;
+~/                      &amp;quot;pi50&amp;quot;
+
+#restart netatalk
+sudo /etc/init.d/netatalk start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Startup mailer&lt;/h3&gt;
+
+&lt;p&gt;Purpose here is to have your Pi email you when it gets a network connection. This is very useful (and necessary) if the IP is changing with automatic DHCP.&lt;/p&gt;
+
+&lt;p&gt;This is startup_mailer.py (in all its crappy code style)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;import subprocess
+import smtplib
+import socket
+import os
+from email.mime.text import MIMEText
+import datetime
+import sys
+
+eventText = &amp;#39;&amp;#39;
+if len( sys.argv ) &amp;gt; 1:
+    eventText = sys.argv[1]
+# Change to your own account information
+to = &amp;#39;robert.cudmore@gmail.com&amp;#39;
+gmail_user = &amp;#39;cudmore.raspberry&amp;#39;
+gmail_password = &amp;#39;your_password_here&amp;#39;
+smtpserver = smtplib.SMTP(&amp;#39;smtp.gmail.com&amp;#39;, 587)
+smtpserver.ehlo()
+smtpserver.starttls()
+smtpserver.ehlo
+smtpserver.login(gmail_user, gmail_password)
+
+#a linux command line call
+arg=&amp;#39;ip route list&amp;#39;
+p=subprocess.Popen(arg,shell=True,stdout=subprocess.PIPE)
+data = p.communicate()
+split_data = data[0].split()
+
+ipaddr = split_data[split_data.index(&amp;#39;src&amp;#39;)+1]
+routerAddress = split_data[split_data.index(&amp;#39;via&amp;#39;)+1]
+
+#eventText is parameter to this function
+mail_body = &amp;#39;raspberrycam2 %s:\n&amp;#39; % eventText
+mail_body += &amp;#39;IP: %s\n&amp;#39; % ipaddr
+mail_body += &amp;#39;router: %s&amp;#39; % routerAddress
+
+today = datetime.date.today()
+timeStr = today.strftime(&amp;#39;%b %d %Y&amp;#39;)
+
+mail_subject = &amp;#39;pi50 booted at ip &amp;#39; + ipaddr + &amp;#39; &amp;#39; + eventText + &amp;#39; on %s&amp;#39; % time
+Str
+
+msg = MIMEText(mail_body)
+msg[&amp;#39;Subject&amp;#39;] = mail_subject
+msg[&amp;#39;From&amp;#39;] = gmail_user
+msg[&amp;#39;To&amp;#39;] = to
+smtpserver.sendmail(gmail_user, [to], msg.as_string())
+smtpserver.quit()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Another version of my startup_mailer.py&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;import subprocess
+import smtplib
+import socket
+import os
+from email.mime.text import MIMEText
+from datetime import datetime, date, time
+
+# Change to your own account information
+to = &amp;#39;robert.cudmore@gmail.com&amp;#39;
+gmail_user = &amp;#39;cudmore.raspberry@gmail.com&amp;#39;
+gmail_password = &amp;#39;your_password_here&amp;#39;
+smtpserver = smtplib.SMTP(&amp;#39;smtp.gmail.com&amp;#39;, 587)
+smtpserver.ehlo()
+smtpserver.starttls()
+smtpserver.ehlo
+smtpserver.login(gmail_user, gmail_password)
+
+dt=datetime.now()  
+
+# Very Linux Specific
+arg=&amp;#39;ip route list&amp;#39;
+p=subprocess.Popen(arg,shell=True,stdout=subprocess.PIPE)
+data = p.communicate()
+split_data = data[0].split()
+ipaddr = split_data[split_data.index(&amp;#39;src&amp;#39;)+1]
+mail_body = &amp;#39;raspberrycam2 booted with IP: %s&amp;#39; %  ipaddr
+msg = MIMEText(mail_body)
+msg[&amp;#39;Subject&amp;#39;] = &amp;#39;raspberrycam2 @ &amp;#39;+ipaddr+&amp;#39; BOOT on %s&amp;#39; % dt.strftime(&amp;#39;%b %d %Y, %H:%M:%S&amp;#39;)
+msg[&amp;#39;From&amp;#39;] = gmail_user
+msg[&amp;#39;To&amp;#39;] = to
+smtpserver.sendmail(gmail_user, [to], msg.as_string())
+smtpserver.quit()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Edit /etc/rc.local&lt;/h3&gt;
+
+&lt;p&gt;rc.local will run code each itme a user logs in.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will &amp;quot;exit 0&amp;quot; on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ &amp;quot;$_IP&amp;quot; ]; then
+  printf &amp;quot;My IP address is %s\n&amp;quot; &amp;quot;$_IP&amp;quot;
+  python /home/pi/code/startup_mailer.py
+fi
+
+exit 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Useful network commands&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#scan for available wifi networks
+sudo iwlist wlan0 scan
+#show network adapter status
+ifconfig wlan0
+#turn off and on network adapter
+sudo ifdown wlan0
+sudo ifup wlan0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>particle cloud server</title>
    <link href="/post/2015/12/01/particle-cloud-server/"/>
    <updated>2015-12-01T17:01:06-05:00</updated>
    <id>/post/2015/12/01/particle-cloud-server</id>
-   <content type="html">&lt;p&gt;Photon-B83V&lt;/p&gt;
-
-&lt;h4&gt;This is not working...&lt;/h4&gt;
+   <content type="html">&lt;h4&gt;This is not working ... as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.&lt;/h4&gt;
 
 &lt;p&gt;The paticle photon is a great little wifi enabled arduino. The only problem I have is that all read/write using its REST API requires internet acces to a particle.io account. To get around this, you can run a particle cloud server locally.&lt;/p&gt;
 
@@ -81,9 +261,9 @@ server started { host: &amp;#39;localhost&amp;#39;, port: 5683 }
     sudo apt-get install libusb-1.0-0-dev
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;But that did not work so i did&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get upgrade dfu-til
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get upgrade dfu-util
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow &lt;a href=&quot;https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html&quot;&gt;this&lt;/a&gt; and edit /var/www/owncloud/config/config.php and set &amp;#39;maintenance&amp;#39; =&amp;gt; false,&amp;#39;. The next itme I logged into my owncloud server it triggered an update to 8.2.1&lt;/p&gt;
+&lt;p&gt;This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow &lt;a href=&quot;https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html&quot;&gt;this&lt;/a&gt; and edit /var/www/owncloud/config/config.php and set &amp;#39;maintenance&amp;#39; =&amp;gt; false,&amp;#39;. The next time I logged into my owncloud server it triggered an update to 8.2.1&lt;/p&gt;
 
 &lt;p&gt;Try again with particle photon plugged in via usb&lt;/p&gt;
 
@@ -407,6 +587,8 @@ sudo usermod -a -G debian-transmission cudmore
    <id>/post/2015/09/07/remote-sensors</id>
    <content type="html">&lt;p&gt;A distributed client sensor to data server network.&lt;/p&gt;
 
+&lt;h3&gt;This description is becoming kind of bullshit&lt;/h3&gt;
+
 &lt;h3&gt;Background&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -447,10 +629,15 @@ sudo usermod -a -G debian-transmission cudmore
 
 &lt;h3&gt;API&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/bokeh
-
+   plot with bokeh (python generates javascript and plots off my server)
 /images/a
-
+   plot with matplotlib (generates a static image)
+/plotly
+   plot with plotly javascript (pure javascript pulling data off my server)
+/keen
+   plot with keen (pure javascript, pulling data from keen server)
 /system
+   the type of system the server is running on 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
  </entry>
  

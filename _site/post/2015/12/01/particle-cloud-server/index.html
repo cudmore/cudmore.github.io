@@ -11,7 +11,7 @@
 
   <title>
     
-      particle cloud &middot; Robert Cudmore
+      particle cloud server &middot; Robert Cudmore
     
   </title>
 
@@ -68,7 +68,9 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/11/07/debian-server/">debian server</a><BR>
 		    
@@ -76,60 +78,62 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/09/04/simple-form/">simple form in jekyll</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/08/14/PyQtGraph-to-display-a-stack/">pyqtGraph to display a .tif stack</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 90%" href="/tags/#flask">
+    		<a style="font-size: 86%" href="/tags/#flask">
     		  flask
     		</a>
 		
-    		<a style="font-size: 140%" href="/tags/#python">
+    		<a style="font-size: 132%" href="/tags/#python">
     		  python
     		</a>
 		
-    		<a style="font-size: 173%" href="/tags/#raspberry pi">
+    		<a style="font-size: 163%" href="/tags/#raspberry pi">
     		  raspberry pi
     		</a>
 		
-    		<a style="font-size: 106%" href="/tags/#data acquisition">
+    		<a style="font-size: 101%" href="/tags/#data acquisition">
     		  data acquisition
     		</a>
 		
-    		<a style="font-size: 56%" href="/tags/#bokeh">
+    		<a style="font-size: 55%" href="/tags/#bokeh">
     		  bokeh
     		</a>
 		
-    		<a style="font-size: 56%" href="/tags/#protocols">
+    		<a style="font-size: 55%" href="/tags/#protocols">
     		  protocols
     		</a>
 		
-    		<a style="font-size: 106%" href="/tags/#osx">
+    		<a style="font-size: 101%" href="/tags/#osx">
     		  osx
     		</a>
 		
-    		<a style="font-size: 106%" href="/tags/#raspberry">
+    		<a style="font-size: 116%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 156%" href="/tags/#linux">
+    		<a style="font-size: 163%" href="/tags/#linux">
     		  linux
     		</a>
 		
-    		<a style="font-size: 90%" href="/tags/#arduino">
+    		<a style="font-size: 86%" href="/tags/#arduino">
     		  arduino
     		</a>
 		
-    		<a style="font-size: 56%" href="/tags/#ScanImage">
+    		<a style="font-size: 55%" href="/tags/#ScanImage">
     		  ScanImage
     		</a>
 		
-    		<a style="font-size: 56%" href="/tags/#jekyll">
+    		<a style="font-size: 55%" href="/tags/#jekyll">
     		  jekyll
+    		</a>
+		
+    		<a style="font-size: 55%" href="/tags/#debian">
+    		  debian
     		</a>
 		
 
@@ -173,11 +177,9 @@
       </div>
 
       <div class="post">
-  <h3 class="post-title">particle cloud</h1>
+  <h3 class="post-title">particle cloud server</h1>
   <span class="post-date">01 Dec 2015</span>
-  <p>Photon-B83V</p>
-
-<h4>This is not working...</h4>
+  <h4>This is not working ... as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.</h4>
 
 <p>The paticle photon is a great little wifi enabled arduino. The only problem I have is that all read/write using its REST API requires internet acces to a particle.io account. To get around this, you can run a particle cloud server locally.</p>
 
@@ -239,9 +241,9 @@ server started { host: &#39;localhost&#39;, port: 5683 }
     sudo apt-get install libusb-1.0-0-dev
 </code></pre></div>
 <p>But that did not work so i did</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get upgrade dfu-til
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get upgrade dfu-util
 </code></pre></div>
-<p>This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow <a href="https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html">this</a> and edit /var/www/owncloud/config/config.php and set &#39;maintenance&#39; =&gt; false,&#39;. The next itme I logged into my owncloud server it triggered an update to 8.2.1</p>
+<p>This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow <a href="https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html">this</a> and edit /var/www/owncloud/config/config.php and set &#39;maintenance&#39; =&gt; false,&#39;. The next time I logged into my owncloud server it triggered an update to 8.2.1</p>
 
 <p>Try again with particle photon plugged in via usb</p>
 
@@ -305,6 +307,10 @@ Okay!  New keys in place, your device will not restart.
     <a rel="prev" href="/post/2015/11/07/debian-server/" title="View debian server">&laquo; Older</a>
 </span>
 
+
+<span class="page-nav-item-right">
+    <a rel="next" href="/post/2015/12/05/raspberry-wifi/" title="View ">Newer &raquo;</a>
+</span>
 
 
 
