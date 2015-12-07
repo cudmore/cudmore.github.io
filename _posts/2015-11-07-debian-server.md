@@ -266,9 +266,11 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   ```
   
   - My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission
+
   ```
   sudo usermod -a -G debian-transmission cudmore 
   ```
+  
 ####Install particle cloud server
 
-see other blog post
+see [other blog post](http://blog.cudmore.io/post/2015/12/01/particle-cloud-server/)
