@@ -13,7 +13,7 @@ I've written a few versions of this. In previous versions I would control everyt
 
 In this version I am trying to keep it simple and starting/stopping video and timelapse images with a REST api.
 
-VideoServer.py is using a circular stream such that when recording is started, it also saves 'pre-triggered' video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features.
+VideoServer.py is using a circular stream such that when recording is started, it also saves 'pre-triggered' video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I've written VideoServer as a class inheriting from [threading.Thread](https://docs.python.org/2/library/threading.html) so it can run daemonized as a background thread, otherwise it will block other code.
 
 To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.
 
