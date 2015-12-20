@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Robert Cudmore</title>
- <link href="/atom.xml" rel="self"/>
- <link href="/"/>
- <updated>2015-12-07T00:10:23-05:00</updated>
- <id></id>
+ <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
+ <link href="http://blog.cudmore.io/"/>
+ <updated>2015-12-19T23:19:21-05:00</updated>
+ <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
@@ -14,16 +14,16 @@
  
  <entry>
    <title>Camera with a REST interface</title>
-   <link href="/post/2015/12/06/camera-with-a-rest-interface/"/>
+   <link href="http://blog.cudmore.io/post/2015/12/06/camera-with-a-rest-interface/"/>
    <updated>2015-12-06T17:01:06-05:00</updated>
-   <id>/post/2015/12/06/camera-with-a-rest-interface</id>
+   <id>http://blog.cudmore.io/post/2015/12/06/camera-with-a-rest-interface</id>
    <content type="html">&lt;p&gt;I&amp;#39;ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.&lt;/p&gt;
 
 &lt;p&gt;In this version I am trying to keep it simple and starting/stopping video and timelapse images with a REST api.&lt;/p&gt;
 
-&lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves &amp;#39;pre-triggered&amp;#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features.&lt;/p&gt;
-
 &lt;p&gt;To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.&lt;/p&gt;
+
+&lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves &amp;#39;pre-triggered&amp;#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I&amp;#39;ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;VideoServer.py, controls the camera with the following interface:&lt;/p&gt;
@@ -83,9 +83,9 @@ rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
  
  <entry>
    <title>Raspberry Wifi</title>
-   <link href="/post/2015/12/05/raspberry-wifi/"/>
+   <link href="http://blog.cudmore.io/post/2015/12/05/raspberry-wifi/"/>
    <updated>2015-12-05T17:01:06-05:00</updated>
-   <id>/post/2015/12/05/raspberry-wifi</id>
+   <id>http://blog.cudmore.io/post/2015/12/05/raspberry-wifi</id>
    <content type="html">&lt;p&gt;Yet another blog post on getting the Raspberry Pi up on a wifi network.&lt;/p&gt;
 
 &lt;h3&gt;Configure /etc/network/interfaces&lt;/h3&gt;
@@ -265,9 +265,9 @@ sudo ifup wlan0
  
  <entry>
    <title>particle cloud server</title>
-   <link href="/post/2015/12/01/particle-cloud-server/"/>
+   <link href="http://blog.cudmore.io/post/2015/12/01/particle-cloud-server/"/>
    <updated>2015-12-01T17:01:06-05:00</updated>
-   <id>/post/2015/12/01/particle-cloud-server</id>
+   <id>http://blog.cudmore.io/post/2015/12/01/particle-cloud-server</id>
    <content type="html">&lt;h4&gt;This is not working ... as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.&lt;/h4&gt;
 
 &lt;p&gt;The paticle photon is a great little wifi enabled arduino. The only problem I have is that all read/write using its REST API requires internet acces to a particle.io account. To get around this, you can run a particle cloud server locally.&lt;/p&gt;
@@ -374,9 +374,9 @@ Okay!  New keys in place, your device will not restart.
  
  <entry>
    <title>debian server</title>
-   <link href="/post/2015/11/07/debian-server/"/>
+   <link href="http://blog.cudmore.io/post/2015/11/07/debian-server/"/>
    <updated>2015-11-07T17:01:06-05:00</updated>
-   <id>/post/2015/11/07/debian-server</id>
+   <id>http://blog.cudmore.io/post/2015/11/07/debian-server</id>
    <content type="html">&lt;p&gt;Goal is to set up a home server running Debain Jessie.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -651,9 +651,9 @@ sudo usermod -a -G debian-transmission cudmore
  
  <entry>
    <title>remote sensors</title>
-   <link href="/post/2015/09/07/remote-sensors/"/>
+   <link href="http://blog.cudmore.io/post/2015/09/07/remote-sensors/"/>
    <updated>2015-09-07T18:01:06-04:00</updated>
-   <id>/post/2015/09/07/remote-sensors</id>
+   <id>http://blog.cudmore.io/post/2015/09/07/remote-sensors</id>
    <content type="html">&lt;p&gt;A distributed client sensor to data server network.&lt;/p&gt;
 
 &lt;h3&gt;This description is becoming kind of bullshit&lt;/h3&gt;
@@ -712,9 +712,9 @@ sudo usermod -a -G debian-transmission cudmore
  
  <entry>
    <title>simple form in jekyll</title>
-   <link href="/post/2015/09/04/simple-form/"/>
+   <link href="http://blog.cudmore.io/post/2015/09/04/simple-form/"/>
    <updated>2015-09-04T18:01:06-04:00</updated>
-   <id>/post/2015/09/04/simple-form</id>
+   <id>http://blog.cudmore.io/post/2015/09/04/simple-form</id>
    <content type="html">&lt;p&gt;&lt;head&gt;
   &lt;style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
@@ -806,9 +806,9 @@ Message
  
  <entry>
    <title>pyqtGraph to display a .tif stack</title>
-   <link href="/post/2015/08/14/PyQtGraph-to-display-a-stack/"/>
+   <link href="http://blog.cudmore.io/post/2015/08/14/PyQtGraph-to-display-a-stack/"/>
    <updated>2015-08-14T18:01:06-04:00</updated>
-   <id>/post/2015/08/14/PyQtGraph-to-display-a-stack</id>
+   <id>http://blog.cudmore.io/post/2015/08/14/PyQtGraph-to-display-a-stack</id>
    <content type="html">&lt;p&gt;This will display a 3D .tif stack where slices can be viewed and contrast set.&lt;/p&gt;
 
 &lt;h4&gt;Install libraries&lt;/h4&gt;
@@ -849,9 +849,9 @@ pg.image(images)
  
  <entry>
    <title>Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</title>
-   <link href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/"/>
+   <link href="http://blog.cudmore.io/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/"/>
    <updated>2015-06-08T18:01:06-04:00</updated>
-   <id>/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image</id>
+   <id>http://blog.cudmore.io/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image</id>
    <content type="html">&lt;p&gt;Have a Raspberry Pi be the master control for a trial based experiment. Each trial is started by the Pi, the Pi triggers an Arduino and ScanImage (via TTL) and then saves Arduino based timestamped events to a file while recording real-time timestamped video.&lt;/p&gt;
 
 &lt;p&gt;See github code and full documentation at &lt;a href=&quot;https://github.com/cudmore/triggerserver&quot;&gt;https://github.com/cudmore/triggerserver&lt;/a&gt;.&lt;/p&gt;
@@ -860,9 +860,9 @@ pg.image(images)
  
  <entry>
    <title>Changing default mount name in Apple File Sharing</title>
-   <link href="/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/"/>
+   <link href="http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/"/>
    <updated>2015-06-07T18:01:06-04:00</updated>
-   <id>/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing</id>
+   <id>http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing</id>
    <content type="html">&lt;p&gt;I mount multiple Raspberry Pi&amp;#39;s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name &amp;#39;Home Directory&amp;#39;. There is no way to tell them apart once mounted (except for looking at what is in them).&lt;/p&gt;
 
 &lt;p&gt;Here is how you change the name of the default AFP mount point.&lt;/p&gt;
@@ -891,9 +891,9 @@ sudo /etc/init.d/netatalk start
  
  <entry>
    <title>Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging</title>
-   <link href="/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/"/>
+   <link href="http://blog.cudmore.io/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/"/>
    <updated>2015-05-24T18:01:06-04:00</updated>
-   <id>/post/2015/05/24/Non-blocking-stepper-motor-on-arduino</id>
+   <id>http://blog.cudmore.io/post/2015/05/24/Non-blocking-stepper-motor-on-arduino</id>
    <content type="html">&lt;p&gt;Goal here is to make an Arduino do four things simultaneously:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1012,9 +1012,9 @@ avrdude stk500_getsync(): not in sync&lt;/li&gt;
  
  <entry>
    <title>Mounting a USB drive at boot</title>
-   <link href="/post/2015/05/05/mounting-a-usb-drive-at-boot/"/>
+   <link href="http://blog.cudmore.io/post/2015/05/05/mounting-a-usb-drive-at-boot/"/>
    <updated>2015-05-05T18:01:06-04:00</updated>
-   <id>/post/2015/05/05/mounting-a-usb-drive-at-boot</id>
+   <id>http://blog.cudmore.io/post/2015/05/05/mounting-a-usb-drive-at-boot</id>
    <content type="html">&lt;p&gt;I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.&lt;/p&gt;
 
 &lt;h4&gt;Get a list of your USB devices to check if your USB drive is available&lt;/h4&gt;
@@ -1080,9 +1080,9 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
  
  <entry>
    <title>X11 on raspberry</title>
-   <link href="/post/2015/05/05/X11%20on%20Raspberry/"/>
+   <link href="http://blog.cudmore.io/post/2015/05/05/X11%20on%20Raspberry/"/>
    <updated>2015-05-05T18:01:06-04:00</updated>
-   <id>/post/2015/05/05/X11 on Raspberry</id>
+   <id>http://blog.cudmore.io/post/2015/05/05/X11 on Raspberry</id>
    <content type="html">&lt;p&gt;This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.&lt;/p&gt;
 
 &lt;p&gt;Any program you run on the Pi server that has a GUI should be piped to the display of your mac client.&lt;/p&gt;
@@ -1137,9 +1137,9 @@ leafpad&amp;amp;
  
  <entry>
    <title>Auto login to ssh servers</title>
-   <link href="/post/2015/05/04/Auto-login-to-ssh-server/"/>
+   <link href="http://blog.cudmore.io/post/2015/05/04/Auto-login-to-ssh-server/"/>
    <updated>2015-05-04T18:01:06-04:00</updated>
-   <id>/post/2015/05/04/Auto-login-to-ssh-server</id>
+   <id>http://blog.cudmore.io/post/2015/05/04/Auto-login-to-ssh-server</id>
    <content type="html">&lt;p&gt;In order to automatically login to an ssh server, you need to generate public/private rsa key pairs on a client and copy these keys to an ssh server. Next time you login from the client to the server, you won’t need to enter your password.&lt;/p&gt;
 
 &lt;p&gt;You should learn and understand a bit about ssh and its security implementations, mostly rsa. Your privacy is only as good as your ability to keep your keys secret, here is a recent example of a nifty ‘side channel attack‘ to obtain your secret keys.&lt;/p&gt;
@@ -1208,9 +1208,9 @@ The key&amp;#39;s randomart image is:
  
  <entry>
    <title>Python tricks</title>
-   <link href="/post/2015/04/30/python-tricks/"/>
+   <link href="http://blog.cudmore.io/post/2015/04/30/python-tricks/"/>
    <updated>2015-04-30T18:01:06-04:00</updated>
-   <id>/post/2015/04/30/python-tricks</id>
+   <id>http://blog.cudmore.io/post/2015/04/30/python-tricks</id>
    <content type="html">&lt;h4&gt;iPython auto reload imports&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;%load_ext autoreload
 %autoreload 2
@@ -1228,9 +1228,9 @@ c.InteractiveShellApp.exec_lines.append(&amp;#39;%autoreload 2&amp;#39;)
  
  <entry>
    <title>VNC on raspberry pi</title>
-   <link href="/post/2015/04/29/vnc-on-raspberry/"/>
+   <link href="http://blog.cudmore.io/post/2015/04/29/vnc-on-raspberry/"/>
    <updated>2015-04-29T18:01:06-04:00</updated>
-   <id>/post/2015/04/29/vnc-on-raspberry</id>
+   <id>http://blog.cudmore.io/post/2015/04/29/vnc-on-raspberry</id>
    <content type="html">&lt;h3&gt;Remote login to Raspberry with tightvnc&lt;/h3&gt;
 
 &lt;p&gt;See&lt;/p&gt;
@@ -1308,9 +1308,9 @@ export XKL_XMODMAP_DISABLE=1
  
  <entry>
    <title>Install OSX</title>
-   <link href="/post/2015/04/19/Install-OSX/"/>
+   <link href="http://blog.cudmore.io/post/2015/04/19/Install-OSX/"/>
    <updated>2015-04-19T18:01:06-04:00</updated>
-   <id>/post/2015/04/19/Install-OSX</id>
+   <id>http://blog.cudmore.io/post/2015/04/19/Install-OSX</id>
    <content type="html">&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
  - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br&gt;
  - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios&quot;&gt;F12&lt;/a&gt;&lt;br&gt;
@@ -1410,15 +1410,15 @@ gem install jekyll
  &lt;del&gt;- Requires manual setting of Safari security&lt;/del&gt;&lt;br&gt;
  - Complete bullshit amateur hack job&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://blog.cudmore.io/images/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Lab Protocols</title>
-   <link href="/post/2015/03/27/lab-protocols/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/27/lab-protocols/"/>
    <updated>2015-03-27T18:01:06-04:00</updated>
-   <id>/post/2015/03/27/lab-protocols</id>
+   <id>http://blog.cudmore.io/post/2015/03/27/lab-protocols</id>
    <content type="html">&lt;h4&gt;Dental cement, C&amp;amp;B-Metabond Adhesive Cement, Parkell Inc&lt;/h4&gt;
 
 &lt;ul&gt;
@@ -1433,9 +1433,9 @@ gem install jekyll
  
  <entry>
    <title>Fresh install of Raspian</title>
-   <link href="/post/2015/03/21/fresh-install-raspian/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/21/fresh-install-raspian/"/>
    <updated>2015-03-21T18:01:06-04:00</updated>
-   <id>/post/2015/03/21/fresh-install-raspian</id>
+   <id>http://blog.cudmore.io/post/2015/03/21/fresh-install-raspian</id>
    <content type="html">&lt;p&gt;This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.&lt;/p&gt;
 
 &lt;h3&gt;Preliminaries&lt;/h3&gt;
@@ -1705,9 +1705,9 @@ input_init() return value signals to exit
  
  <entry>
    <title>Raspberry Pi video controller</title>
-   <link href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/"/>
    <updated>2015-03-20T18:01:06-04:00</updated>
-   <id>/post/2015/03/20/Rapsberry Pi Video Controller</id>
+   <id>http://blog.cudmore.io/post/2015/03/20/Rapsberry Pi Video Controller</id>
    <content type="html">&lt;p&gt;This is a video server running on a raspberry Pi Linux computer. It provides a web interface to stream and record video.&lt;/p&gt;
 
 &lt;h3&gt;What it does&lt;/h3&gt;
@@ -1794,9 +1794,9 @@ input_init() return value signals to exit
  
  <entry>
    <title>mjpg-streamer on a Raspberry Pi</title>
-   <link href="/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/"/>
    <updated>2015-03-15T18:01:06-04:00</updated>
-   <id>/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi</id>
+   <id>http://blog.cudmore.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi</id>
    <content type="html">&lt;p&gt;This post covers downloading, installing and running mjp-streamer on a raspberry pi. There are two options for installation and streaming depending on if you stream from (1) a rapsberry pi camera module or (2) a USB camera.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1925,9 +1925,9 @@ sudo cp -R www /usr/local/www
  
  <entry>
    <title>Use OpenCV to acquire video</title>
-   <link href="/post/2015/03/07/use-opencv-to-acquire-video/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/07/use-opencv-to-acquire-video/"/>
    <updated>2015-03-07T17:01:06-05:00</updated>
-   <id>/post/2015/03/07/use-opencv-to-acquire-video</id>
+   <id>http://blog.cudmore.io/post/2015/03/07/use-opencv-to-acquire-video</id>
    <content type="html">&lt;h4&gt;Goals&lt;/h4&gt;
 
 &lt;ul&gt;
@@ -2046,9 +2046,9 @@ cap.release()
  
  <entry>
    <title>Plotting with bokeh on the Raspberry Pi</title>
-   <link href="/post/2015/03/05/bokeh-on-the-raspberry-pi/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/05/bokeh-on-the-raspberry-pi/"/>
    <updated>2015-03-05T17:01:06-05:00</updated>
-   <id>/post/2015/03/05/bokeh-on-the-raspberry-pi</id>
+   <id>http://blog.cudmore.io/post/2015/03/05/bokeh-on-the-raspberry-pi</id>
    <content type="html">&lt;p&gt;Goal is to get plotting with bokeh on the Raspberry Pi.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -2274,9 +2274,9 @@ while True:
  
  <entry>
    <title>Python calling bash to get drive space remaining</title>
-   <link href="/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/"/>
+   <link href="http://blog.cudmore.io/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/"/>
    <updated>2014-12-24T00:00:00-05:00</updated>
-   <id>/2014/12/24/Python-calling-bash-to-get-drive-space-remaining</id>
+   <id>http://blog.cudmore.io/2014/12/24/Python-calling-bash-to-get-drive-space-remaining</id>
    <content type="html">&lt;p&gt;I need to have some Python code tell me how much drive space is left. Here is what I came up with.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import subprocess as sub
 &amp;gt;&amp;gt;&amp;gt; checkPath = &amp;#39;~/video&amp;#39;
@@ -2292,9 +2292,9 @@ while True:
  
  <entry>
    <title>Monitoring mice in their home cage</title>
-   <link href="/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/"/>
+   <link href="http://blog.cudmore.io/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/"/>
    <updated>2014-02-14T17:01:06-05:00</updated>
-   <id>/post/2014/02/14/Monitoring mice in their home cage</id>
+   <id>http://blog.cudmore.io/post/2014/02/14/Monitoring mice in their home cage</id>
    <content type="html">&lt;p&gt;[Aug 4, 2014, updated]
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 

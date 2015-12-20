@@ -15,8 +15,8 @@ relative_permalinks: true
 # Setup
 title:            Robert Cudmore
 tagline:          ''
-#description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-#url:              http://hyde.getpoole.com
+description:      'Robert Cudmore Blog'
+url:              http://blog.cudmore.io
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project

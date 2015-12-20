@@ -31,6 +31,10 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- added 20151219 -->
+  <link rel="alternate" type="application/rss+xml" title="My Site RSS" href="/feed.xml" />
+
 </head>
 
 
@@ -183,9 +187,9 @@
 
 <p>In this version I am trying to keep it simple and starting/stopping video and timelapse images with a REST api.</p>
 
-<p>VideoServer.py is using a circular stream such that when recording is started, it also saves &#39;pre-triggered&#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features.</p>
-
 <p>To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.</p>
+
+<p>VideoServer.py is using a circular stream such that when recording is started, it also saves &#39;pre-triggered&#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I&#39;ve written VideoServer as a class inheriting from <a href="https://docs.python.org/2/library/threading.html">threading.Thread</a> so it can run daemonized as a background thread, otherwise it will block other code.</p>
 
 <ul>
 <li><p>VideoServer.py, controls the camera with the following interface:</p>
