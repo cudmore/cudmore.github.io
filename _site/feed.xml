@@ -8,6 +8,34 @@
     
       
       <item>
+        <title>Bit Torrent Sync</title>
+        
+          <description>&lt;p&gt;Once this is done, folders can be synchronized between machines running btsync. This could be done with open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool (as of January 2016) and neither of them will work on a LAN without a central server. This is the power of BitTorrent. An added perk is that I have a legitimate aliby if my ISP ever accuses me of pirating over the bittorrent network.&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 20 Jan 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>MQTT</title>
+        
+          <description>&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and Rest. They are different things and both provie some nice features. I like MQTT because:&lt;/p&gt;
+</description>
+        
+        <pubDate>Tue, 19 Jan 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/01/19/MQTT/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/01/19/MQTT/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Camera with a REST interface</title>
         
           <description>&lt;p&gt;I&amp;#39;ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.&lt;/p&gt;

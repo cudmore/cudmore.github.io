@@ -1,8 +1,11 @@
 ---
 layout: post
 title: Bit Torrent Sync
+category: post
+date: 2016-01-20 22:01:06
 tags:
 - debian
+- raspberry
 ---
 
 Once this is done, folders can be synchronized between machines running btsync. This could be done with open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool (as of January 2016) and neither of them will work on a LAN without a central server. This is the power of BitTorrent. An added perk is that I have a legitimate aliby if my ISP ever accuses me of pirating over the bittorrent network.
@@ -60,7 +63,7 @@ Once all of this is done you can interact with the btsync daemon:
 sudo /etc/init.d/btsync start
 sudo /etc/init.d/btsync stop
 sudo /etc/init.d/btsync status
-``
+```
 
 And configure your shares from a browser
 
@@ -72,6 +75,7 @@ http://192.168.1.200:8888
 
 ```
 sudo cp ./btsync /usr/bin/
+```
 
 ####Modify btsync daemon script
 

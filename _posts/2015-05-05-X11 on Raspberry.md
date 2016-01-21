@@ -17,7 +17,7 @@ Any program you run on the Pi server that has a GUI should be piped to the displ
 
  - Install stalls at about 80%, be patient
  - Requires logout and login
- - Download [here](1)
+ - Download [here][1]
 
 ####ssh to Raspberry using '-X'
 

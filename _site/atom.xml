@@ -4,13 +4,294 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2015-12-20T00:12:59-05:00</updated>
+ <updated>2016-01-20T23:43:14-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Bit Torrent Sync</title>
+   <link href="http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync/"/>
+   <updated>2016-01-20T17:01:06-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync</id>
+   <content type="html">&lt;p&gt;Once this is done, folders can be synchronized between machines running btsync. This could be done with open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool (as of January 2016) and neither of them will work on a LAN without a central server. This is the power of BitTorrent. An added perk is that I have a legitimate aliby if my ISP ever accuses me of pirating over the bittorrent network.&lt;/p&gt;
+
+&lt;p&gt;Benefits&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Neither OwnCloud or Dropbox have headless sync clients (as of January 2016)&lt;/li&gt;
+&lt;li&gt;There is no limit on drive space&lt;/li&gt;
+&lt;li&gt;btsync can work on a lan with no internet&lt;/li&gt;
+&lt;li&gt;btsync should be faster&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;See bittorrent sync&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;https://www.getsync.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Install bittorrent sync&lt;/h3&gt;
+
+&lt;h4&gt;Download&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#debian
+wget https://download-cdn.getsync.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz
+tar -zxvf BitTorrent-Sync_x64.tar.gz
+
+#raspberry/arm
+wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;install and run by hand&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#by default runs on localhost:8888, run as external ip (external meaning on my LAN)
+./btsync  --webui.listen 192.168.1.200:8888
+
+#kill daemon
+pkill btsync
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Making btsync run at boot (raspbian)&lt;/h4&gt;
+
+&lt;p&gt;Add the following to /etc/rc.local&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/home/pi/btsynch/btsync --webui.listen 192.168.1.60:8888
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Making btsync run at boot (debian)&lt;/h4&gt;
+
+&lt;p&gt;Way more complicated than Rasbian, but, following this perfect github gist:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/MendelGusmao/5398362&quot;&gt;https://gist.github.com/MendelGusmao/5398362&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once all of this is done you can interact with the btsync daemon:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo /etc/init.d/btsync start
+sudo /etc/init.d/btsync stop
+sudo /etc/init.d/btsync status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And configure your shares from a browser&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://192.168.1.200:8888
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Move btsync binary into place&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo cp ./btsync /usr/bin/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Modify btsync daemon script&lt;/h4&gt;
+
+&lt;p&gt;Careful here, different from btsync binary but SAME name&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mv btsync /etc/init.d/
+sudo chmod +x /etc/init.d/btsync
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ but it is not allowed to.&lt;/p&gt;
+
+&lt;h4&gt;Make a ~/.sync folder in your user directory&lt;/h4&gt;
+
+&lt;p&gt;This is my ~/.sync/config.json. Shared_folders will be specified in web ui. Changes from original gist include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;quot;device_name&amp;quot;: &amp;quot;debian&amp;quot;,&lt;/li&gt;
+&lt;li&gt;&amp;quot;storage_path&amp;quot;: &amp;quot;/home/cudmore/.sync&amp;quot;,&lt;/li&gt;
+&lt;li&gt;&amp;quot;listen&amp;quot;: &amp;quot;192.168.1.200:8888&amp;quot;,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;{
+  &amp;quot;device_name&amp;quot;: &amp;quot;debian&amp;quot;,
+  &amp;quot;listening_port&amp;quot;: 0,
+  &amp;quot;storage_path&amp;quot;: &amp;quot;/home/cudmore/.sync&amp;quot;,
+  &amp;quot;check_for_updates&amp;quot;: true, 
+  &amp;quot;use_upnp&amp;quot;: true,
+  &amp;quot;download_limit&amp;quot;: 0,                       
+  &amp;quot;upload_limit&amp;quot;: 0, 
+  &amp;quot;webui&amp;quot;: {
+    &amp;quot;listen&amp;quot;: &amp;quot;192.168.1.200:8888&amp;quot;,
+    &amp;quot;login&amp;quot; : &amp;quot;admin&amp;quot;,
+    &amp;quot;password&amp;quot; : &amp;quot;password&amp;quot;
+  },
+  &amp;quot;shared_folders&amp;quot;: []
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is my modified /etc/init.d/btsync daemon script. Well, not really modified except for changing BTSYNC_USER.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/sh
+### BEGIN INIT INFO
+# Provides: btsync
+# Required-Start: $local_fs $remote_fs
+# Required-Stop: $local_fs $remote_fs
+# Should-Start: $network
+# Should-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Multi-user daemonized version of btsync.
+# Description: Starts the btsync daemon for all registered users.
+### END INIT INFO
+
+# Replace with linux users you want to run BTSync clients for
+BTSYNC_USERS=&amp;quot;cudmore&amp;quot;
+DAEMON=/usr/bin/btsync
+
+start() {
+  for btsuser in $BTSYNC_USERS; do
+    HOMEDIR=`getent passwd $btsuser | cut -d: -f6`
+    config=$HOMEDIR/.sync/config.json
+    if [ -f $config ]; then
+      echo &amp;quot;Starting BTSync for $btsuser&amp;quot;
+      start-stop-daemon -b -o -c $btsuser -S -u $btsuser -x $DAEMON -- --config $config
+    else
+      echo &amp;quot;Couldn&amp;#39;t start BTSync for $btsuser (no $config found)&amp;quot;
+    fi
+  done
+}
+
+stop() {
+  for btsuser in $BTSYNC_USERS; do
+    dbpid=`pgrep -fu $btsuser $DAEMON`
+    if [ ! -z &amp;quot;$dbpid&amp;quot; ]; then
+      echo &amp;quot;Stopping btsync for $btsuser&amp;quot;
+      start-stop-daemon -o -c $btsuser -K -u $btsuser -x $DAEMON
+    fi
+  done
+}
+
+status() {
+  for btsuser in $BTSYNC_USERS; do
+    dbpid=`pgrep -fu $btsuser $DAEMON`
+    if [ -z &amp;quot;$dbpid&amp;quot; ]; then
+      echo &amp;quot;btsync for USER $btsuser: not running.&amp;quot;
+    else
+      echo &amp;quot;btsync for USER $btsuser: running (pid $dbpid)&amp;quot;
+    fi
+  done
+}
+
+case &amp;quot;$1&amp;quot; in
+ start)
+start
+;;
+stop)
+stop
+;;
+restart|reload|force-reload)
+stop
+start
+;;
+status)
+status
+;;
+*)
+echo &amp;quot;Usage: /etc/init.d/btsync {start|stop|reload|force-reload|restart|status}&amp;quot;
+exit 1
+esac
+
+exit 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>MQTT</title>
+   <link href="http://blog.cudmore.io/post/2016/01/19/MQTT/"/>
+   <updated>2016-01-19T17:01:06-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/01/19/MQTT</id>
+   <content type="html">&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and Rest. They are different things and both provie some nice features. I like MQTT because:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;My sensors (like an arduino) can push data without caring who will subscribe.&lt;/li&gt;
+&lt;li&gt;My data subscribers don&amp;#39;t need to know the ip/web address of a sensor, only the MQTT broker address.&lt;/li&gt;
+&lt;li&gt;Downside is this is all assuming and contingent on an MQTT broker (e.g. a server).&lt;/li&gt;
+&lt;li&gt;On the flip side, if I use REST then every device (including sensors) needs to be running a http server. Too many servers.&lt;/li&gt;
+&lt;li&gt;In the end, the best solution is a heterogeneous system with both REST and MQTT.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I will update this post as it evolves.&lt;/p&gt;
+
+&lt;h4&gt;Install &lt;a href=&quot;http://mosquitto.org&quot;&gt;mosquitto&lt;/a&gt; mqtt broker on debian server&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install mosquitto mosquitto-clients
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Start and stop mosquitto (Debian Jessie)&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo systemctl start mosquitto
+sudo systemctl stop mosquitto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;[To Do] Figure out how to run at startup???&lt;/h4&gt;
+
+&lt;p&gt;Following &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units&quot;&gt;this&lt;/a&gt; post I think it is just ...&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo systemctl enable application.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But I need to check this.&lt;/p&gt;
+
+&lt;h4&gt;[To Do] Get push/send and subscribe working on an Arduino&lt;/h4&gt;
+
+&lt;p&gt;Use the &lt;a href=&quot;http://pubsubclient.knolleary.net&quot;&gt;pubsubclient&lt;/a&gt; library. And get an &lt;a href=&quot;http://esp8266.com&quot;&gt;ESP8266&lt;/a&gt; wifi chip working. The ESP8266 is like a revolution. See chips from &lt;a href=&quot;https://www.sparkfun.com/products/13678&quot;&gt;Sparkfun&lt;/a&gt;, &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview&quot;&gt;Adafruit&lt;/a&gt;, and a writeup in &lt;a href=&quot;http://makezine.com/2015/04/01/esp8266-5-microcontroller-wi-fi-now-arduino-compatible/&quot;&gt;Make&lt;/a&gt;. For this chip I have taken the plunge and making my first direct from China purchases on &lt;a href=&quot;http://www.aliexpress.com/af/esp8266.html?ltype=wholesale&amp;amp;d=y&amp;amp;origin=n&amp;amp;isViewCP=y&amp;amp;catId=0&amp;amp;initiative_id=AS_20160120203616&amp;amp;SearchText=esp8266&quot;&gt;Ali Express&lt;/a&gt;. The chips at &lt;a href=&quot;http://www.aliexpress.com&quot;&gt;Ali Express&lt;/a&gt; are ~ 5x cheaper. I love this stuff.&lt;/p&gt;
+
+&lt;h4&gt;Python push/send script&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#send mqtt to server
+#20160118
+
+&amp;#39;&amp;#39;&amp;#39;
+#install mosquitto on debian
+sudo apt-get install mosquitto mosquitto-clients
+#start mosquitto (I am using Debian 8 Jessie)
+sudo systemctl start mosquitto
+&amp;#39;&amp;#39;&amp;#39;
+
+import paho.mqtt.client as paho
+import datetime, time
+
+mqttc = paho.Client()
+
+host = &amp;quot;192.168.1.200&amp;quot;
+topic= &amp;quot;loft/motion1&amp;quot;
+port = 1883
+
+def on_connect(mosq, obj, rc):
+    print(&amp;quot;on_connect() &amp;quot;+str(rc))
+
+mqttc.on_connect = on_connect
+
+# Connect
+print(&amp;quot;Connecting to &amp;quot; + host)
+mqttc.connect(host, port, 60)
+
+#if connection to broker is lost and then regained, on_connect() get called
+mqttc.loop_start()
+
+print &amp;#39;starting infinite loop&amp;#39;
+while 1:
+    #publish some data at a regular interval
+    now = datetime.datetime.now()
+    mqttc.publish(topic, now.strftime(&amp;#39;%H:%M:%S&amp;#39;))
+    time.sleep(1)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Python subscribe script&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#receive mqtt
+#20160118
+
+import paho.mqtt.client as paho
+
+mqttc = paho.Client()
+
+host = &amp;quot;192.168.1.200&amp;quot;
+topic= &amp;quot;loft/motion1&amp;quot;
+port = 1883
+
+def on_connect(mosq, obj, rc):
+    print(&amp;#39;on_connect() rc=&amp;#39; +str(rc))
+    print &amp;#39;   subscribing to&amp;#39;, topic
+    mqttc.subscribe(topic, 0)
+
+def on_subscribe(mosq, obj, mid, granted_qos):
+    print(&amp;quot;Subscribed OK&amp;quot;)
+
+def on_message(mosq, obj, msg):
+    print( &amp;quot;on_message() topic: &amp;quot; + msg.topic + &amp;quot; payload: &amp;quot;+str(msg.payload) + &amp;quot;\n&amp;quot;);
+
+mqttc.on_connect = on_connect
+mqttc.on_subscribe = on_subscribe
+mqttc.on_message = on_message
+
+# Connect and subscribe
+print(&amp;quot;Connecting to &amp;quot; + host)
+mqttc.connect(host, port, 60)
+
+#if connection to broker is lost and then regained, on_connect() get called
+mqttc.loop_start()
+
+print &amp;#39;starting infinite loop&amp;#39;
+while 1:
+    aaa = 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>Camera with a REST interface</title>
@@ -1092,7 +1373,7 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 &lt;ul&gt;
 &lt;li&gt;Install stalls at about 80%, be patient&lt;/li&gt;
 &lt;li&gt;Requires logout and login&lt;/li&gt;
-&lt;li&gt;Download &lt;a href=&quot;1&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download &lt;a href=&quot;http://xquartz.macosforge.org/landing/&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;ssh to Raspberry using &amp;#39;-X&amp;#39;&lt;/h4&gt;
