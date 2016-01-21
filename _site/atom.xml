@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-01-21T00:28:25-05:00</updated>
+ <updated>2016-01-21T00:30:45-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -212,10 +212,10 @@ sudo systemctl stop mosquitto
 
 &lt;p&gt;Use the &lt;a href=&quot;http://pubsubclient.knolleary.net&quot;&gt;pubsubclient&lt;/a&gt; library. And get an &lt;a href=&quot;http://esp8266.com&quot;&gt;ESP8266&lt;/a&gt; wifi chip working. The ESP8266 wifi chip is its own revolution. See chips from &lt;a href=&quot;https://www.sparkfun.com/products/13678&quot;&gt;Sparkfun&lt;/a&gt;, &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview&quot;&gt;Adafruit&lt;/a&gt;, and a writeup in &lt;a href=&quot;http://makezine.com/2015/04/01/esp8266-5-microcontroller-wi-fi-now-arduino-compatible/&quot;&gt;Make&lt;/a&gt;. For this chip I have taken the plunge and made my first direct from China purchases on &lt;a href=&quot;http://www.aliexpress.com/af/esp8266.html?ltype=wholesale&amp;amp;d=y&amp;amp;origin=n&amp;amp;isViewCP=y&amp;amp;catId=0&amp;amp;initiative_id=AS_20160120203616&amp;amp;SearchText=esp8266&quot;&gt;Ali Express&lt;/a&gt;. The chips at &lt;a href=&quot;http://www.aliexpress.com&quot;&gt;Ali Express&lt;/a&gt; are ~ 5x cheaper. I love this stuff.&lt;/p&gt;
 
-&lt;h4&gt;Python push/send script&lt;/h4&gt;
+&lt;h4&gt;Python publisher script&lt;/h4&gt;
 
 &lt;p&gt;This script publishes data (timestamps for now) every second into the loft/motion1 topic on a mqtt broker.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#send mqtt date to broker/server&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#post to an mqtt topic&lt;/span&gt;
 
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho.mqtt.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
@@ -244,10 +244,10 @@ sudo systemctl stop mosquitto
     &lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strftime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;%H:%M:%S&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Python subscribe script&lt;/h4&gt;
+&lt;h4&gt;Python subscriber script&lt;/h4&gt;
 
-&lt;p&gt;This script subscribes to a topic loft/motion1 on a mqtt broker. Whenever there is new data in the topic, on_message() gets called.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#subscribe to an mqtt feed&lt;/span&gt;
+&lt;p&gt;This script subscribes to the topic loft/motion1 on a mqtt broker. Whenever there is new data in the topic, on_message() gets called.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#subscribe to an mqtt topic&lt;/span&gt;
 
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho.mqtt.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho&lt;/span&gt;
 
