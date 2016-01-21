@@ -19,9 +19,7 @@ Benefits
   - There is no limit on drive space.
   - Bit Torrent Sync should be faster.
 
-###Install BitTorrent Sync
-
-####Download
+###Download
 ```
 #debian
 wget https://download-cdn.getsync.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz
@@ -31,7 +29,7 @@ tar -zxvf BitTorrent-Sync_x64.tar.gz
 wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
 ```
 
-####install and run by hand
+###install and run by hand
 
 ```
 #by default runs on localhost:8888, run as external ip (external meaning on my LAN)
@@ -41,7 +39,7 @@ wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.g
 pkill btsync
 ```
 
-####Making btsync run at boot (raspbian)
+###Making btsync run at boot (raspbian)
 
 Add the following to /etc/rc.local
 
@@ -49,7 +47,7 @@ Add the following to /etc/rc.local
 /home/pi/btsynch/btsync --webui.listen 192.168.1.60:8888
 ```
 
-####Making btsync run at boot (debian)
+###Making btsync run at boot (debian)
 
 Way more complicated than Rasbian, but, following this perfect github gist:
 
@@ -69,13 +67,13 @@ And configure your shares from a browser
 http://192.168.1.200:8888
 ```
 
-####Move btsync binary into place
+###Move btsync binary into place
 
 ```
 sudo cp ./btsync /usr/bin/
 ```
 
-####Modify btsync daemon script
+###Modify btsync daemon script
 
 See below for full script. Careful here, different from btsync binary but SAME name
 
@@ -86,7 +84,7 @@ sudo chmod +x /etc/init.d/btsync
 
 At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ folder but it is not allowed to do that there.
 
-####Make a ~/.sync folder in your user directory
+###Make a ~/.sync folder in your user directory
 
 This is my ~/.sync/config.json. Shared_folders will be specified in web ui. Changes from original gist include:
 

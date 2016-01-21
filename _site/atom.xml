@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-01-21T00:30:45-05:00</updated>
+ <updated>2016-01-21T00:33:41-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -30,9 +30,7 @@
 &lt;li&gt;Bit Torrent Sync should be faster.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Install BitTorrent Sync&lt;/h3&gt;
-
-&lt;h4&gt;Download&lt;/h4&gt;
+&lt;h3&gt;Download&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#debian
 wget https://download-cdn.getsync.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz
 tar -zxvf BitTorrent-Sync_x64.tar.gz
@@ -40,19 +38,19 @@ tar -zxvf BitTorrent-Sync_x64.tar.gz
 #raspberry/arm
 wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;install and run by hand&lt;/h4&gt;
+&lt;h3&gt;install and run by hand&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#by default runs on localhost:8888, run as external ip (external meaning on my LAN)
 ./btsync  --webui.listen 192.168.1.200:8888
 
 #kill daemon
 pkill btsync
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Making btsync run at boot (raspbian)&lt;/h4&gt;
+&lt;h3&gt;Making btsync run at boot (raspbian)&lt;/h3&gt;
 
 &lt;p&gt;Add the following to /etc/rc.local&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/home/pi/btsynch/btsync --webui.listen 192.168.1.60:8888
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Making btsync run at boot (debian)&lt;/h4&gt;
+&lt;h3&gt;Making btsync run at boot (debian)&lt;/h3&gt;
 
 &lt;p&gt;Way more complicated than Rasbian, but, following this perfect github gist:&lt;/p&gt;
 
@@ -66,10 +64,10 @@ sudo /etc/init.d/btsync status
 &lt;p&gt;And configure your shares from a browser&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://192.168.1.200:8888
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Move btsync binary into place&lt;/h4&gt;
+&lt;h3&gt;Move btsync binary into place&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo cp ./btsync /usr/bin/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Modify btsync daemon script&lt;/h4&gt;
+&lt;h3&gt;Modify btsync daemon script&lt;/h3&gt;
 
 &lt;p&gt;See below for full script. Careful here, different from btsync binary but SAME name&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mv btsync /etc/init.d/
@@ -77,7 +75,7 @@ sudo chmod +x /etc/init.d/btsync
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ folder but it is not allowed to do that there.&lt;/p&gt;
 
-&lt;h4&gt;Make a ~/.sync folder in your user directory&lt;/h4&gt;
+&lt;h3&gt;Make a ~/.sync folder in your user directory&lt;/h3&gt;
 
 &lt;p&gt;This is my ~/.sync/config.json. Shared_folders will be specified in web ui. Changes from original gist include:&lt;/p&gt;
 
@@ -194,25 +192,25 @@ status
 
 &lt;p&gt;I will update this post as it evolves.&lt;/p&gt;
 
-&lt;h4&gt;Install &lt;a href=&quot;http://mosquitto.org&quot;&gt;mosquitto&lt;/a&gt; mqtt broker on debian server&lt;/h4&gt;
+&lt;h3&gt;Install &lt;a href=&quot;http://mosquitto.org&quot;&gt;mosquitto&lt;/a&gt; mqtt broker on debian server&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install mosquitto mosquitto-clients
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Start and stop mosquitto (Debian Jessie)&lt;/h4&gt;
+&lt;h3&gt;Start and stop mosquitto (Debian Jessie)&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo systemctl start mosquitto
 sudo systemctl stop mosquitto
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;[To Do] Figure out how to run at startup???&lt;/h4&gt;
+&lt;h3&gt;[To Do] Figure out how to run at startup???&lt;/h3&gt;
 
 &lt;p&gt;Following &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units&quot;&gt;this&lt;/a&gt; post I think it is just ...&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo systemctl enable application.service
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;But I need to check this.&lt;/p&gt;
 
-&lt;h4&gt;[To Do] Get push/send and subscribe working on an Arduino&lt;/h4&gt;
+&lt;h3&gt;[To Do] Get push/send and subscribe working on an Arduino&lt;/h3&gt;
 
 &lt;p&gt;Use the &lt;a href=&quot;http://pubsubclient.knolleary.net&quot;&gt;pubsubclient&lt;/a&gt; library. And get an &lt;a href=&quot;http://esp8266.com&quot;&gt;ESP8266&lt;/a&gt; wifi chip working. The ESP8266 wifi chip is its own revolution. See chips from &lt;a href=&quot;https://www.sparkfun.com/products/13678&quot;&gt;Sparkfun&lt;/a&gt;, &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview&quot;&gt;Adafruit&lt;/a&gt;, and a writeup in &lt;a href=&quot;http://makezine.com/2015/04/01/esp8266-5-microcontroller-wi-fi-now-arduino-compatible/&quot;&gt;Make&lt;/a&gt;. For this chip I have taken the plunge and made my first direct from China purchases on &lt;a href=&quot;http://www.aliexpress.com/af/esp8266.html?ltype=wholesale&amp;amp;d=y&amp;amp;origin=n&amp;amp;isViewCP=y&amp;amp;catId=0&amp;amp;initiative_id=AS_20160120203616&amp;amp;SearchText=esp8266&quot;&gt;Ali Express&lt;/a&gt;. The chips at &lt;a href=&quot;http://www.aliexpress.com&quot;&gt;Ali Express&lt;/a&gt; are ~ 5x cheaper. I love this stuff.&lt;/p&gt;
 
-&lt;h4&gt;Python publisher script&lt;/h4&gt;
+&lt;h3&gt;Python publisher script&lt;/h3&gt;
 
 &lt;p&gt;This script publishes data (timestamps for now) every second into the loft/motion1 topic on a mqtt broker.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#post to an mqtt topic&lt;/span&gt;
@@ -244,7 +242,7 @@ sudo systemctl stop mosquitto
     &lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strftime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;%H:%M:%S&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;Python subscriber script&lt;/h4&gt;
+&lt;h3&gt;Python subscriber script&lt;/h3&gt;
 
 &lt;p&gt;This script subscribes to the topic loft/motion1 on a mqtt broker. Whenever there is new data in the topic, on_message() gets called.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#subscribe to an mqtt topic&lt;/span&gt;
