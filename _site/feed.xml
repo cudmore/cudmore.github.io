@@ -10,7 +10,7 @@
       <item>
         <title>Bit Torrent Sync</title>
         
-          <description>&lt;p&gt;Once this is done, folders can be synchronized between machines running btsync. This could be done with open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool (as of January 2016) and neither of them will work on a LAN without a central server. This is the power of BitTorrent. An added perk is that I have a legitimate aliby if my ISP ever accuses me of pirating over the bittorrent network.&lt;/p&gt;
+          <description>&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;BitTorrent Sync&lt;/a&gt; will synchronize folders between any number of machines on either a local LAN, over the internet, or via both. It synchronizes without using a central server as everyone is a peer, it is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Peer-to-peer&quot;&gt;peer-to-peer (P2P) network&lt;/a&gt;.&lt;/p&gt;
 </description>
         
         <pubDate>Wed, 20 Jan 2016 17:01:06 -0500</pubDate>
@@ -24,7 +24,7 @@
       <item>
         <title>MQTT</title>
         
-          <description>&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and Rest. They are different things and both provie some nice features. I like MQTT because:&lt;/p&gt;
+          <description>&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and &lt;a href=&quot;http://rest.elkstein.org&quot;&gt;Rest&lt;/a&gt;. They are different things and both provide some nice features. I like MQTT because:&lt;/p&gt;
 </description>
         
         <pubDate>Tue, 19 Jan 2016 17:01:06 -0500</pubDate>

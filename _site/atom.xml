@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-01-20T23:43:14-05:00</updated>
+ <updated>2016-01-21T00:28:25-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -17,22 +17,20 @@
    <link href="http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync/"/>
    <updated>2016-01-20T17:01:06-05:00</updated>
    <id>http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync</id>
-   <content type="html">&lt;p&gt;Once this is done, folders can be synchronized between machines running btsync. This could be done with open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool (as of January 2016) and neither of them will work on a LAN without a central server. This is the power of BitTorrent. An added perk is that I have a legitimate aliby if my ISP ever accuses me of pirating over the bittorrent network.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;BitTorrent Sync&lt;/a&gt; will synchronize folders between any number of machines on either a local LAN, over the internet, or via both. It synchronizes without using a central server as everyone is a peer, it is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Peer-to-peer&quot;&gt;peer-to-peer (P2P) network&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Folders can also be synchronized between machines using the open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool and neither of them will work on a LAN without a central server (they are not P2P). An added perk is that I now have a legitimate alibi if my ISP ever accuses me of pirating over the bittorrent network.&lt;/p&gt;
 
 &lt;p&gt;Benefits&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Neither OwnCloud or Dropbox have headless sync clients (as of January 2016)&lt;/li&gt;
-&lt;li&gt;There is no limit on drive space&lt;/li&gt;
-&lt;li&gt;btsync can work on a lan with no internet&lt;/li&gt;
-&lt;li&gt;btsync should be faster&lt;/li&gt;
+&lt;li&gt;Neither OwnCloud or Dropbox have headless sync clients (as of January 2016). I want to synchronize code between multiple Raspberry Pi computers and none of them are running a desktop GUI (this is intentional).&lt;/li&gt;
+&lt;li&gt;BitTorrent Sync can work on a local LAN with no internet and never needs a centralized server.&lt;/li&gt;
+&lt;li&gt;There is no limit on drive space.&lt;/li&gt;
+&lt;li&gt;Bit Torrent Sync should be faster.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;See bittorrent sync&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;https://www.getsync.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3&gt;Install bittorrent sync&lt;/h3&gt;
+&lt;h3&gt;Install BitTorrent Sync&lt;/h3&gt;
 
 &lt;h4&gt;Download&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#debian
@@ -73,11 +71,11 @@ sudo /etc/init.d/btsync status
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;Modify btsync daemon script&lt;/h4&gt;
 
-&lt;p&gt;Careful here, different from btsync binary but SAME name&lt;/p&gt;
+&lt;p&gt;See below for full script. Careful here, different from btsync binary but SAME name&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo mv btsync /etc/init.d/
 sudo chmod +x /etc/init.d/btsync
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ but it is not allowed to.&lt;/p&gt;
+&lt;p&gt;At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ folder but it is not allowed to do that there.&lt;/p&gt;
 
 &lt;h4&gt;Make a ~/.sync folder in your user directory&lt;/h4&gt;
 
@@ -105,77 +103,77 @@ sudo chmod +x /etc/init.d/btsync
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This is my modified /etc/init.d/btsync daemon script. Well, not really modified except for changing BTSYNC_USER.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/sh
-### BEGIN INIT INFO
-# Provides: btsync
-# Required-Start: $local_fs $remote_fs
-# Required-Stop: $local_fs $remote_fs
-# Should-Start: $network
-# Should-Stop: $network
-# Default-Start: 2 3 4 5
-# Default-Stop: 0 1 6
-# Short-Description: Multi-user daemonized version of btsync.
-# Description: Starts the btsync daemon for all registered users.
-### END INIT INFO
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Provides: btsync&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Required-Start: $local_fs $remote_fs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Required-Stop: $local_fs $remote_fs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Should-Start: $network&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Should-Stop: $network&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Default-Start: 2 3 4 5&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Default-Stop: 0 1 6&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Short-Description: Multi-user daemonized version of btsync.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Description: Starts the btsync daemon for all registered users.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### END INIT INFO&lt;/span&gt;
 
-# Replace with linux users you want to run BTSync clients for
-BTSYNC_USERS=&amp;quot;cudmore&amp;quot;
-DAEMON=/usr/bin/btsync
+&lt;span class=&quot;c&quot;&gt;# Replace with linux users you want to run BTSync clients for&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;BTSYNC_USERS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cudmore&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DAEMON&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/bin/btsync
 
-start() {
-  for btsuser in $BTSYNC_USERS; do
-    HOMEDIR=`getent passwd $btsuser | cut -d: -f6`
-    config=$HOMEDIR/.sync/config.json
-    if [ -f $config ]; then
-      echo &amp;quot;Starting BTSync for $btsuser&amp;quot;
-      start-stop-daemon -b -o -c $btsuser -S -u $btsuser -x $DAEMON -- --config $config
-    else
-      echo &amp;quot;Couldn&amp;#39;t start BTSync for $btsuser (no $config found)&amp;quot;
-    fi
-  done
-}
+start&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; btsuser in &lt;span class=&quot;nv&quot;&gt;$BTSYNC_USERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;HOMEDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;getent passwd &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cut -d: -f6&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOMEDIR&lt;/span&gt;/.sync/config.json
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -f &lt;span class=&quot;nv&quot;&gt;$config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Starting BTSync for $btsuser&amp;quot;&lt;/span&gt;
+      start-stop-daemon -b -o -c &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -S -u &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -x &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt; -- --config &lt;span class=&quot;nv&quot;&gt;$config&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Couldn&amp;#39;t start BTSync for $btsuser (no $config found)&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-stop() {
-  for btsuser in $BTSYNC_USERS; do
-    dbpid=`pgrep -fu $btsuser $DAEMON`
-    if [ ! -z &amp;quot;$dbpid&amp;quot; ]; then
-      echo &amp;quot;Stopping btsync for $btsuser&amp;quot;
-      start-stop-daemon -o -c $btsuser -K -u $btsuser -x $DAEMON
-    fi
-  done
-}
+stop&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; btsuser in &lt;span class=&quot;nv&quot;&gt;$BTSYNC_USERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;dbpid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;pgrep -fu &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;$dbpid&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Stopping btsync for $btsuser&amp;quot;&lt;/span&gt;
+      start-stop-daemon -o -c &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -K -u &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -x &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-status() {
-  for btsuser in $BTSYNC_USERS; do
-    dbpid=`pgrep -fu $btsuser $DAEMON`
-    if [ -z &amp;quot;$dbpid&amp;quot; ]; then
-      echo &amp;quot;btsync for USER $btsuser: not running.&amp;quot;
-    else
-      echo &amp;quot;btsync for USER $btsuser: running (pid $dbpid)&amp;quot;
-    fi
-  done
-}
+status&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; btsuser in &lt;span class=&quot;nv&quot;&gt;$BTSYNC_USERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;dbpid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;pgrep -fu &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;$dbpid&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;btsync for USER $btsuser: not running.&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;btsync for USER $btsuser: running (pid $dbpid)&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-case &amp;quot;$1&amp;quot; in
- start)
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$1&amp;quot;&lt;/span&gt; in
+ start&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 start
-;;
-stop)
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+stop&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 stop
-;;
-restart|reload|force-reload)
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+restart&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;reload&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;force-reload&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 stop
 start
-;;
-status)
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+status&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 status
-;;
-*)
-echo &amp;quot;Usage: /etc/init.d/btsync {start|stop|reload|force-reload|restart|status}&amp;quot;
-exit 1
-esac
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Usage: /etc/init.d/btsync {start|stop|reload|force-reload|restart|status}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
 
-exit 0
+&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
  </entry>
  
@@ -184,10 +182,10 @@ exit 0
    <link href="http://blog.cudmore.io/post/2016/01/19/MQTT/"/>
    <updated>2016-01-19T17:01:06-05:00</updated>
    <id>http://blog.cudmore.io/post/2016/01/19/MQTT</id>
-   <content type="html">&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and Rest. They are different things and both provie some nice features. I like MQTT because:&lt;/p&gt;
+   <content type="html">&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and &lt;a href=&quot;http://rest.elkstein.org&quot;&gt;Rest&lt;/a&gt;. They are different things and both provide some nice features. I like MQTT because:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;My sensors (like an arduino) can push data without caring who will subscribe.&lt;/li&gt;
+&lt;li&gt;My sensors (like an Arduino) can push data without caring who will subscribe.&lt;/li&gt;
 &lt;li&gt;My data subscribers don&amp;#39;t need to know the ip/web address of a sensor, only the MQTT broker address.&lt;/li&gt;
 &lt;li&gt;Downside is this is all assuming and contingent on an MQTT broker (e.g. a server).&lt;/li&gt;
 &lt;li&gt;On the flip side, if I use REST then every device (including sensors) needs to be running a http server. Too many servers.&lt;/li&gt;
@@ -212,84 +210,78 @@ sudo systemctl stop mosquitto
 
 &lt;h4&gt;[To Do] Get push/send and subscribe working on an Arduino&lt;/h4&gt;
 
-&lt;p&gt;Use the &lt;a href=&quot;http://pubsubclient.knolleary.net&quot;&gt;pubsubclient&lt;/a&gt; library. And get an &lt;a href=&quot;http://esp8266.com&quot;&gt;ESP8266&lt;/a&gt; wifi chip working. The ESP8266 is like a revolution. See chips from &lt;a href=&quot;https://www.sparkfun.com/products/13678&quot;&gt;Sparkfun&lt;/a&gt;, &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview&quot;&gt;Adafruit&lt;/a&gt;, and a writeup in &lt;a href=&quot;http://makezine.com/2015/04/01/esp8266-5-microcontroller-wi-fi-now-arduino-compatible/&quot;&gt;Make&lt;/a&gt;. For this chip I have taken the plunge and making my first direct from China purchases on &lt;a href=&quot;http://www.aliexpress.com/af/esp8266.html?ltype=wholesale&amp;amp;d=y&amp;amp;origin=n&amp;amp;isViewCP=y&amp;amp;catId=0&amp;amp;initiative_id=AS_20160120203616&amp;amp;SearchText=esp8266&quot;&gt;Ali Express&lt;/a&gt;. The chips at &lt;a href=&quot;http://www.aliexpress.com&quot;&gt;Ali Express&lt;/a&gt; are ~ 5x cheaper. I love this stuff.&lt;/p&gt;
+&lt;p&gt;Use the &lt;a href=&quot;http://pubsubclient.knolleary.net&quot;&gt;pubsubclient&lt;/a&gt; library. And get an &lt;a href=&quot;http://esp8266.com&quot;&gt;ESP8266&lt;/a&gt; wifi chip working. The ESP8266 wifi chip is its own revolution. See chips from &lt;a href=&quot;https://www.sparkfun.com/products/13678&quot;&gt;Sparkfun&lt;/a&gt;, &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview&quot;&gt;Adafruit&lt;/a&gt;, and a writeup in &lt;a href=&quot;http://makezine.com/2015/04/01/esp8266-5-microcontroller-wi-fi-now-arduino-compatible/&quot;&gt;Make&lt;/a&gt;. For this chip I have taken the plunge and made my first direct from China purchases on &lt;a href=&quot;http://www.aliexpress.com/af/esp8266.html?ltype=wholesale&amp;amp;d=y&amp;amp;origin=n&amp;amp;isViewCP=y&amp;amp;catId=0&amp;amp;initiative_id=AS_20160120203616&amp;amp;SearchText=esp8266&quot;&gt;Ali Express&lt;/a&gt;. The chips at &lt;a href=&quot;http://www.aliexpress.com&quot;&gt;Ali Express&lt;/a&gt; are ~ 5x cheaper. I love this stuff.&lt;/p&gt;
 
 &lt;h4&gt;Python push/send script&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#send mqtt to server
-#20160118
 
-&amp;#39;&amp;#39;&amp;#39;
-#install mosquitto on debian
-sudo apt-get install mosquitto mosquitto-clients
-#start mosquitto (I am using Debian 8 Jessie)
-sudo systemctl start mosquitto
-&amp;#39;&amp;#39;&amp;#39;
+&lt;p&gt;This script publishes data (timestamps for now) every second into the loft/motion1 topic on a mqtt broker.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#send mqtt date to broker/server&lt;/span&gt;
 
-import paho.mqtt.client as paho
-import datetime, time
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho.mqtt.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
 
-mqttc = paho.Client()
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paho&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
-host = &amp;quot;192.168.1.200&amp;quot;
-topic= &amp;quot;loft/motion1&amp;quot;
-port = 1883
+&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;192.168.1.200&amp;quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# the address of the mqtt broker&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;loft/motion1&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1883&lt;/span&gt;
 
-def on_connect(mosq, obj, rc):
-    print(&amp;quot;on_connect() &amp;quot;+str(rc))
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;on_connect() &amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-mqttc.on_connect = on_connect
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt;
 
-# Connect
-print(&amp;quot;Connecting to &amp;quot; + host)
-mqttc.connect(host, port, 60)
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Connecting to &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-#if connection to broker is lost and then regained, on_connect() get called
-mqttc.loop_start()
+&lt;span class=&quot;c&quot;&gt;#if connection to broker is lost and then regained, on_connect() gets called&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loop_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
-print &amp;#39;starting infinite loop&amp;#39;
-while 1:
-    #publish some data at a regular interval
-    now = datetime.datetime.now()
-    mqttc.publish(topic, now.strftime(&amp;#39;%H:%M:%S&amp;#39;))
-    time.sleep(1)
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;starting infinite loop&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#publish some data at a regular interval&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strftime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;%H:%M:%S&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;Python subscribe script&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#receive mqtt
-#20160118
 
-import paho.mqtt.client as paho
+&lt;p&gt;This script subscribes to a topic loft/motion1 on a mqtt broker. Whenever there is new data in the topic, on_message() gets called.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#subscribe to an mqtt feed&lt;/span&gt;
 
-mqttc = paho.Client()
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho.mqtt.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho&lt;/span&gt;
 
-host = &amp;quot;192.168.1.200&amp;quot;
-topic= &amp;quot;loft/motion1&amp;quot;
-port = 1883
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paho&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
-def on_connect(mosq, obj, rc):
-    print(&amp;#39;on_connect() rc=&amp;#39; +str(rc))
-    print &amp;#39;   subscribing to&amp;#39;, topic
-    mqttc.subscribe(topic, 0)
+&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;192.168.1.200&amp;quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# the address of the mqtt broker&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;loft/motion1&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1883&lt;/span&gt;
 
-def on_subscribe(mosq, obj, mid, granted_qos):
-    print(&amp;quot;Subscribed OK&amp;quot;)
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;on_connect() rc=&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;   subscribing to&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-def on_message(mosq, obj, msg):
-    print( &amp;quot;on_message() topic: &amp;quot; + msg.topic + &amp;quot; payload: &amp;quot;+str(msg.payload) + &amp;quot;\n&amp;quot;);
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;granted_qos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Subscribed OK&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-mqttc.on_connect = on_connect
-mqttc.on_subscribe = on_subscribe
-mqttc.on_message = on_message
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;on_message() topic: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot; payload: &amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-# Connect and subscribe
-print(&amp;quot;Connecting to &amp;quot; + host)
-mqttc.connect(host, port, 60)
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_subscribe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_subscribe&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_message&lt;/span&gt;
 
-#if connection to broker is lost and then regained, on_connect() get called
-mqttc.loop_start()
+&lt;span class=&quot;c&quot;&gt;# Connect and subscribe&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Connecting to &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-print &amp;#39;starting infinite loop&amp;#39;
-while 1:
-    aaa = 1
+&lt;span class=&quot;c&quot;&gt;#if connection to broker is lost and then regained, on_connect() get called&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loop_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;starting infinite loop&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;aaa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
  </entry>
  

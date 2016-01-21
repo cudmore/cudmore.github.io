@@ -8,20 +8,18 @@ tags:
 - raspberry
 ---
 
-Once this is done, folders can be synchronized between machines running btsync. This could be done with open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool (as of January 2016) and neither of them will work on a LAN without a central server. This is the power of BitTorrent. An added perk is that I have a legitimate aliby if my ISP ever accuses me of pirating over the bittorrent network.
+[BitTorrent Sync][1] will synchronize folders between any number of machines on either a local LAN, over the internet, or via both. It synchronizes without using a central server as everyone is a peer, it is a [peer-to-peer (P2P) network][2].
+
+Folders can also be synchronized between machines using the open source OwnCloud or paid Dropbox but neither of them have a command line (headless) synch tool and neither of them will work on a LAN without a central server (they are not P2P). An added perk is that I now have a legitimate alibi if my ISP ever accuses me of pirating over the bittorrent network.
 
 Benefits
 
-  - Neither OwnCloud or Dropbox have headless sync clients (as of January 2016)
-  - There is no limit on drive space
-  - btsync can work on a lan with no internet
-  - btsync should be faster
+  - Neither OwnCloud or Dropbox have headless sync clients (as of January 2016). I want to synchronize code between multiple Raspberry Pi computers and none of them are running a desktop GUI (this is intentional).
+  - BitTorrent Sync can work on a local LAN with no internet and never needs a centralized server.
+  - There is no limit on drive space.
+  - Bit Torrent Sync should be faster.
 
-See bittorrent sync
-
-https://www.getsync.com
-
-###Install bittorrent sync
+###Install BitTorrent Sync
 
 ####Download
 ```
@@ -79,14 +77,14 @@ sudo cp ./btsync /usr/bin/
 
 ####Modify btsync daemon script
 
-Careful here, different from btsync binary but SAME name
+See below for full script. Careful here, different from btsync binary but SAME name
 
 ```
 sudo mv btsync /etc/init.d/
 sudo chmod +x /etc/init.d/btsync
 ```
 
-At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ but it is not allowed to.
+At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ folder but it is not allowed to do that there.
 
 ####Make a ~/.sync folder in your user directory
 
@@ -116,7 +114,7 @@ This is my ~/.sync/config.json. Shared_folders will be specified in web ui. Chan
 
 This is my modified /etc/init.d/btsync daemon script. Well, not really modified except for changing BTSYNC_USER.
 
-```
+```bash
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides: btsync
@@ -189,3 +187,6 @@ esac
 
 exit 0
 ```
+
+[1]: https://www.getsync.com
+[2]: https://en.wikipedia.org/wiki/Peer-to-peer
