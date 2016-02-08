@@ -31,7 +31,7 @@ wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
 ```
 
-###Edit wpa_supplicant.conf
+### Edit wpa_supplicant.conf
 
 ```
 sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
