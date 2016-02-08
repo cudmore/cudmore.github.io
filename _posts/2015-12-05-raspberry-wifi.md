@@ -11,7 +11,7 @@ tags:
 
 Yet another blog post on getting the Raspberry Pi up on a wifi network.
 
-###Configure /etc/network/interfaces
+### Configure /etc/network/interfaces
 
 The stock install of Raspian should already have this.
 
