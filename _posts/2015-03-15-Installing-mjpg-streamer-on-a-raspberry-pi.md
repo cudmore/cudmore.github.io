@@ -166,4 +166,4 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so" -o "/usr/local/lib/output_http.so -w /usr/local/www"
     ~~~
     
-###
+### done
