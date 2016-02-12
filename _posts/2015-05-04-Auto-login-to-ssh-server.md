@@ -16,7 +16,7 @@ In what follows I am setting up automatic rsa authentication from a client to a 
 - client: OS X or Linux, cudmore$
 - server: Raspian, pi@192.168.1.70
 
-####[Client] Generate public/private rsa key pair
+#### [Client] Generate public/private rsa key pair
 
     ssh-keygen -t rsa
 
@@ -43,23 +43,23 @@ In what follows I am setting up automatic rsa authentication from a client to a 
 	|       .o..      |
 	+-----------------+
 
-####[Client] id_rsa.pub from the client to the ssh server (need to enter password)
+#### [Client] id_rsa.pub from the client to the ssh server (need to enter password)
 
     scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
 
-####[Client] Login to the ssh server (last time you will need a password)
+#### [Client] Login to the ssh server (last time you will need a password)
 
     ssh pi@192.168.1.70
 
-####[Server] Copy the key into the correct location (on the server)
+#### [Server] Copy the key into the correct location (on the server)
 
     cat id_rsa.pub >> ./.ssh/authorized_keys
 
-####[Server] Delete the original (on the server)
+#### [Server] Delete the original (on the server)
 
     rm ./id_rsa.pub
 
-####[Client] The next time you login you will not be asked for a password
+#### [Client] The next time you login you will not be asked for a password
 
     ssh pi@192.168.1.70
 
