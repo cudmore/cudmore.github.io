@@ -24,32 +24,32 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 
 - Preliminaries  
 
-	~~~bash
+	~~~
 	sudo apt-get update  
 	sudo apt-get upgrade  
 	~~~
     
 - Install dependencies
 
-    ~~~bash
+    ~~~
     sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
     ~~~
     
 - make symbolic link to changed library names. Thanks to Miguel Grinberg for [this](http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi])
     
-    ~~~bash
+    ~~~
     ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
     ~~~
     
 - download mjpg-streamer
 
-    ~~~bash
+    ~~~
     wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
     ~~~
     
 - unzip
 
-    ~~~bash
+    ~~~
     unzip mjpg-streamer-code-182.zip  
     ~~~
     
@@ -58,7 +58,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 ### (1) Raspberry Pi camera module
 - build and install for raspberry pi camera module.  
 
-    ~~~bash
+    ~~~
     # build with 'make'
     cd mjpg-streamer-code-182/mjpg-streamer  
     make mjpg_streamer input_file.so output_http.so  
@@ -70,7 +70,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
   
     FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS '**input_uvc.so**'.
     
-    ~~~bash
+    ~~~
     # build with 'make'
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
@@ -84,14 +84,14 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     
 - start the raspberry pi camera module
 
-    ~~~bash
+    ~~~
     mkdir /tmp/stream  
     raspistill --nopreview -w 640 -h 480 -q 5 -o /tmp/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 &  
     ~~~
     
 - start mjpg-streamer for raspberry pi camera module. This streams using '**input_file.so**'
 
-    ~~~bash
+    ~~~
     LD_LIBRARY_PATH=/usr/local/lib  
     mjpg_streamer -i "input_file.so -f /tmp/stream -n pic.jpg" -o "output_http.so -w /usr/local/www"
     ~~~
@@ -100,7 +100,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 
 - Plug in usb camera and verify it is automatically identified using 'lsusb'. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).  
 
-	~~~bash
+	~~~
 	pi@pi50 ~ $ lsusb  
 	Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp.  
 	Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
@@ -119,7 +119,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     
 - Check the parameters of our USB camera  
 	
-	~~~bash
+	~~~
 	v4l2-ctl --list-formats  
 	
 	ioctl: VIDIOC_ENUM_FMT  
@@ -133,7 +133,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 
 - Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to. 
      
-    ~~~bash
+    ~~~
     mjpg_streamer --input "input_uvc.so --help"
     # note, i am not showing the output here
     # important line in output is this:
@@ -142,7 +142,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 
 - build and install for usb camera. Critical thing here is '**input_uvc.so**'
 
-    ~~~bash
+    ~~~
     # build with 'make'
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
@@ -156,13 +156,13 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     
     My usb camera uses YUYV, thus the '-y'
     
-    ~~~bash
+    ~~~
     /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
     ~~~
 
     If my camera used MJPEG instead of YUYV, the command is the same without the '-y'.
     
-    ~~~bash
+    ~~~
     /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so" -o "/usr/local/lib/output_http.so -w /usr/local/www"
     ~~~
     
