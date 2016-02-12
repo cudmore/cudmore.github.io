@@ -31,34 +31,34 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     
 - Install dependencies
 
-    ~~~
+~~~
     sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
-    ~~~
+~~~
     
 - make symbolic link to changed library names. Thanks to Miguel Grinberg for [this](http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi])
     
-    ~~~
+~~~
     ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
-    ~~~
+~~~
     
 - download mjpg-streamer
 
-    ~~~
+~~~
     wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
-    ~~~
+~~~
     
 - unzip
 
-    ~~~
+~~~
     unzip mjpg-streamer-code-182.zip  
-    ~~~
+~~~
     
 #### Here is where the installation differs depending on if you are installing (1) a usb camera or (2) the raspberry pi camera module
 
 ### (1) Raspberry Pi camera module
 - build and install for raspberry pi camera module.  
 
-    ~~~
+~~~
     # build with 'make'
     cd mjpg-streamer-code-182/mjpg-streamer  
     make mjpg_streamer input_file.so output_http.so  
@@ -66,11 +66,11 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     sudo cp mjpg_streamer /usr/local/bin  
     sudo cp output_http.so input_file.so /usr/local/lib/  
     sudo cp -R www /usr/local/www      
-    ~~~
+~~~
   
     FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS '**input_uvc.so**'.
     
-    ~~~
+~~~
     # build with 'make'
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
@@ -78,23 +78,23 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     sudo cp mjpg_streamer /usr/local/bin
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
     sudo cp -R www /usr/local/www
-    ~~~
+~~~
   
     I GUESS YOU COULD JUST FOLLOW 'USB CAMERA' AND IT WOULD WORK FOR BOTH
     
 - start the raspberry pi camera module
 
-    ~~~
+~~~
     mkdir /tmp/stream  
     raspistill --nopreview -w 640 -h 480 -q 5 -o /tmp/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 &  
-    ~~~
+~~~
     
 - start mjpg-streamer for raspberry pi camera module. This streams using '**input_file.so**'
 
-    ~~~
+~~~
     LD_LIBRARY_PATH=/usr/local/lib  
     mjpg_streamer -i "input_file.so -f /tmp/stream -n pic.jpg" -o "output_http.so -w /usr/local/www"
-    ~~~
+~~~
     
 ### (2) build for usb camera
 
@@ -107,7 +107,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 	Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.  
 	Bus 001 Device 004: ID 1a40:0201 Terminus Technology Inc. FE 2.1 7-port Hub  
 	Bus 001 Device 005: ID 1415:2000 Nam Tai E&E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye  
-    ~~~
+~~~
 
     The last entry is my camera, a 'Sony Playstation Eye'.
     
@@ -127,22 +127,22 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
 		Type        : Video Capture  
 		Pixel Format: 'YUYV'  
 		Name        : YUYV  
-    ~~~
+~~~
     
     The YUYV is very important, I need to pass a -y option to jpg_streamer --input command. If you see MPEG you don't need this -y switch.
 
 - Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to. 
      
-    ~~~
+~~~
     mjpg_streamer --input "input_uvc.so --help"
     # note, i am not showing the output here
     # important line in output is this:
     #  [-y | --yuv ]..........: enable YUYV format and disable MJPEG mode
-    ~~~
+~~~
 
 - build and install for usb camera. Critical thing here is '**input_uvc.so**'
 
-    ~~~
+~~~
     # build with 'make'
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
@@ -150,20 +150,20 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     sudo cp mjpg_streamer /usr/local/bin
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
     sudo cp -R www /usr/local/www
-    ~~~
+~~~
     
 - run mjpg-streamer to stream from usb camera
     
     My usb camera uses YUYV, thus the '-y'
     
-    ~~~
+~~~
     /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
-    ~~~
+~~~
 
     If my camera used MJPEG instead of YUYV, the command is the same without the '-y'.
     
-    ~~~
+~~~
     /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so" -o "/usr/local/lib/output_http.so -w /usr/local/www"
-    ~~~
+~~~
     
 ### done
