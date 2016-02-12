@@ -185,7 +185,7 @@
   <span class="post-date">24 Dec 2014</span>
   <p>I need to have some Python code tell me how much drive space is left. Here is what I came up with.</p>
 
-<pre><code>&gt;&gt;&gt; import subprocess as sub
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; import subprocess as sub
 &gt;&gt;&gt; checkPath = '~/video'
 &gt;&gt;&gt; cmd = "df " + checkPath + " | awk '{ print $5 }' | tail -n 1"
 &gt;&gt;&gt; p = sub.Popen(cmd, stdout=sub.PIPE,stderr=sub.PIPE, shell=True)
@@ -195,13 +195,12 @@
 &gt;&gt;&gt; out.rstrip() # rstrip 'chomps' off newline
 '31%'
 </code></pre>
+</div>
 
 </div>
 
 <div class="post-tags">
   Tags: 
-  
-    
   
   
   <a href="/tags/#python">python</a>
@@ -215,7 +214,7 @@
 
 
 <span class="page-nav-item-left">
-    <a rel="prev" href="/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/" title="View Monitoring mice in their home cage">&laquo; Older</a>
+    <a rel="prev" href="/post/2014/02/14/Monitoring-mice-in-their-home-cage/" title="View Monitoring mice in their home cage">&laquo; Older</a>
 </span>
 
 

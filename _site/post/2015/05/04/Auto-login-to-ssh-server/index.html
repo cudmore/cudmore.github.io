@@ -196,7 +196,7 @@
 
 <h4 id="client-generate-publicprivate-rsa-key-pair">[Client] Generate public/private rsa key pair</h4>
 
-<pre><code>ssh-keygen -t rsa
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh-keygen -t rsa
 
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/cudmore/.ssh/id_rsa): 
@@ -221,31 +221,37 @@ The key's randomart image is:
 |       .o..      |
 +-----------------+
 </code></pre>
+</div>
 
 <h4 id="client-idrsapub-from-the-client-to-the-ssh-server-need-to-enter-password">[Client] id_rsa.pub from the client to the ssh server (need to enter password)</h4>
 
-<pre><code>scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
+<div class="highlighter-rouge"><pre class="highlight"><code>scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
 </code></pre>
+</div>
 
 <h4 id="client-login-to-the-ssh-server-last-time-you-will-need-a-password">[Client] Login to the ssh server (last time you will need a password)</h4>
 
-<pre><code>ssh pi@192.168.1.70
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh pi@192.168.1.70
 </code></pre>
+</div>
 
 <h4 id="server-copy-the-key-into-the-correct-location-on-the-server">[Server] Copy the key into the correct location (on the server)</h4>
 
-<pre><code>cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
+<div class="highlighter-rouge"><pre class="highlight"><code>cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
 </code></pre>
+</div>
 
 <h4 id="server-delete-the-original-on-the-server">[Server] Delete the original (on the server)</h4>
 
-<pre><code>rm ./id_rsa.pub
+<div class="highlighter-rouge"><pre class="highlight"><code>rm ./id_rsa.pub
 </code></pre>
+</div>
 
 <h4 id="client-the-next-time-you-login-you-will-not-be-asked-for-a-password">[Client] The next time you login you will not be asked for a password</h4>
 
-<pre><code>ssh pi@192.168.1.70
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh pi@192.168.1.70
 </code></pre>
+</div>
 
 <h4 id="notes">Notes</h4>
 
@@ -264,8 +270,6 @@ The key's randomart image is:
 <div class="post-tags">
   Tags: 
   
-    
-  
   
   <a href="/tags/#linux">linux</a>
   
@@ -283,7 +287,7 @@ The key's randomart image is:
 
 
 <span class="page-nav-item-right">
-    <a rel="next" href="/post/2015/05/05/X11%20on%20Raspberry/" title="View ">Newer &raquo;</a>
+    <a rel="next" href="/post/2015/05/05/X11-on-Raspberry/" title="View ">Newer &raquo;</a>
 </span>
 
 

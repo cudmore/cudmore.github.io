@@ -55,7 +55,7 @@ This post covers downloading, installing and running mjp-streamer on a raspberry
     
 #### Here is where the installation differs depending on if you are installing (1) a usb camera or (2) the raspberry pi camera module
 
-###(1) Raspberry Pi camera module
+### (1) Raspberry Pi camera module
 - build and install for raspberry pi camera module.  
 
     ~~~bash

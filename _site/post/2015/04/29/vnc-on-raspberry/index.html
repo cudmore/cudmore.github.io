@@ -187,38 +187,44 @@
 
 <p>See</p>
 
-<pre><code>https://www.raspberrypi.org/documentation/remote-access/vnc/
+<div class="highlighter-rouge"><pre class="highlight"><code>https://www.raspberrypi.org/documentation/remote-access/vnc/
 http://elinux.org/RPi_VNC_Server
 </code></pre>
+</div>
 
 <h3 id="install-tightvncserver-server-on-raspberry">Install tightvncserver server on Raspberry</h3>
 
-<pre><code>sudo apt-get install tightvncserver
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install tightvncserver
 </code></pre>
+</div>
 
 <h3 id="run-tightvncserver-to-set-password">Run tightvncserver to set password</h3>
 
-<pre><code>tightvncserver
+<div class="highlighter-rouge"><pre class="highlight"><code>tightvncserver
 </code></pre>
+</div>
 
 <h3 id="start-server-on-pi">Start server on pi</h3>
 
 <p>Use :1 if your Pi is running X11 by default (mine is)</p>
 
-<pre><code>vncserver :1 -geometry 1920x1080 -depth 24
+<div class="highlighter-rouge"><pre class="highlight"><code>vncserver :1 -geometry 1920x1080 -depth 24
 vncserver :1 -geometry 1280x800 -depth 24
 vncserver :1 -geometry 1024x768 -depth 24
 </code></pre>
+</div>
 
 <h3 id="kill-server">kill server</h3>
 
-<pre><code>vncserver -kill :1
+<div class="highlighter-rouge"><pre class="highlight"><code>vncserver -kill :1
 </code></pre>
+</div>
 
 <h3 id="install-realvnc-client-on-osx">Install realVNC client on OSX</h3>
 
-<pre><code>https://www.realvnc.com
+<div class="highlighter-rouge"><pre class="highlight"><code>https://www.realvnc.com
 </code></pre>
+</div>
 
 <h3 id="enable-copypaste-between-host-and-server">Enable copy/paste between host and server</h3>
 
@@ -226,7 +232,7 @@ vncserver :1 -geometry 1024x768 -depth 24
 
 <p>http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</p>
 
-<pre><code># install
+<div class="highlighter-rouge"><pre class="highlight"><code># install
 sudo apt-get install autocutsel
 
 # edit /home/pi/.vnc/xstartup
@@ -245,6 +251,7 @@ autocutsel -fork
 export XKL_XMODMAP_DISABLE=1
 /etc/X11/Xsession
 </code></pre>
+</div>
 
 <h3 id="alternative-is-to-use-x11vnc">Alternative is to use x11vnc</h3>
 
@@ -273,8 +280,6 @@ export XKL_XMODMAP_DISABLE=1
 
 <div class="post-tags">
   Tags: 
-  
-    
   
   
   <a href="/tags/#raspberry">raspberry</a>

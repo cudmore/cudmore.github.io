@@ -198,36 +198,34 @@
   <li>don’t install miniconda, just use stock raspian pytohn</li>
 </ul>
 
-<div class="highlighter-coderay"><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777"># this takes &gt; 1 hour on a Raspberry Pi Model B !!!</span>
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#777"># most of the time is spent in gcc cc1 command</span>
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>sudo pip install pandas --upgrade 
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#777"># after &gt; 1 hour I get an error</span>
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#777"># Successfully installed pandas python-dateutil pytz</span>
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span style="color:#777"># OSError: [Errno 39] Directory not empty: '/home/pi/build/pytz'</span>
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#777"># I am ignoring this pytz error (something to do with timezone library???)</span>
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#777">#</span>
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#777"># now i am sidetracked</span>
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>sudo pip install ipython
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#777"># ipython seems ok</span>
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span><span style="color:#777">#</span>
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span><span style="color:#777"># this next one may take awhile, started at 1:50pm</span>
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span>sudo pip install bokeh  
-<span class="line-numbers"><a href="#n15" name="n15">15</a></span><span style="color:#777"># seems ok, can import pandas in python but it gives error</span>
-<span class="line-numbers"><a href="#n16" name="n16">16</a></span><span style="color:#777">#</span>
-<span class="line-numbers"><a href="#n17" name="n17">17</a></span><span style="color:#777">#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used</span>
-<span class="line-numbers"><a href="#n18" name="n18">18</a></span><span style="color:#777">#    The minimum supported version is 2.1</span>
-<span class="line-numbers"><a href="#n19" name="n19">19</a></span><span style="color:#777">#</span>
-<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span><span style="color:#777"># fixed error with (hopefully does not cause other problems)</span>
-<span class="line-numbers"><a href="#n21" name="n21">21</a></span>sudo pip install numexpr --upgrade
-</pre></div>
-</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># this takes &gt; 1 hour on a Raspberry Pi Model B !!!</span>
+<span class="c"># most of the time is spent in gcc cc1 command</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="o">--</span><span class="n">upgrade</span> 
+<span class="c"># after &gt; 1 hour I get an error</span>
+<span class="c"># Successfully installed pandas python-dateutil pytz</span>
+<span class="c"># OSError: [Errno 39] Directory not empty: '/home/pi/build/pytz'</span>
+<span class="c"># I am ignoring this pytz error (something to do with timezone library???)</span>
+<span class="c">#</span>
+<span class="c"># now i am sidetracked</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">ipython</span>
+<span class="c"># ipython seems ok</span>
+<span class="c">#</span>
+<span class="c"># this next one may take awhile, started at 1:50pm</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">bokeh</span>  
+<span class="c"># seems ok, can import pandas in python but it gives error</span>
+<span class="c">#</span>
+<span class="c">#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used</span>
+<span class="c">#    The minimum supported version is 2.1</span>
+<span class="c">#</span>
+<span class="c"># fixed error with (hopefully does not cause other problems)</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">numexpr</span> <span class="o">--</span><span class="n">upgrade</span>
+</code></pre>
 </div>
 
 <p>[ORIGINAL POST STARTS HERE]</p>
 
 <h3 id="install-miniconda">Install miniconda</h3>
-<pre><code>pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
 pi@pi40 ~ $ bash Miniconda-3.5.5-Linux-armv6l.sh 
 
 Miniconda will now be installed into this location:
@@ -261,6 +259,7 @@ For this change to become active, you have to open a new terminal.
 
 Thank you for installing Miniconda!
 </code></pre>
+</div>
 
 <h3 id="make-sure-numpy-and-pandas-is-correct">Make sure numpy and pandas is correct</h3>
 
@@ -278,7 +277,7 @@ pip install pandas –upgrade  </p>
 
 <p>For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  </p>
 
-<pre><code>from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
+<div class="highlighter-rouge"><pre class="highlight"><code>from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
 Ideally, you should have the following libraries installed:
 
 NumPy
@@ -289,10 +288,11 @@ gevent
 gevent-websocket
 Pandas
 </code></pre>
+</div>
 
 <h3 id="currently-installed-with-pip">Currently installed with pip</h3>
 
-<pre><code>pi@pi40 ~ $ pip freeze
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@pi40 ~ $ pip freeze
 Flask==0.10.1
 Flask-Markdown==0.3
 Flask-Misaka==0.3.0
@@ -330,6 +330,7 @@ tornado==4.1
 websocket==0.2.1
 wsgiref==0.1.2
 </code></pre>
+</div>
 
 <h3 id="grab-some-example-plots-from-bokeh-github">Grab some example plots from bokeh github</h3>
 
@@ -346,7 +347,7 @@ wsgiref==0.1.2
 &gt; 
 &gt; bokeh-server –backend=memory –ip 0.0.0.0</p>
 
-<pre><code>pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
 No module named scipy
 
     Bokeh Server Configuration
@@ -361,12 +362,13 @@ No module named scipy
 /home/pi/miniconda/lib/python2.7/site-packages/bokeh/server/blaze/__init__.py:19: UserWarning: could not import multiuser blaze server No module named blaze.  This is fine if you do not intend to use blaze capabilities in the bokeh server
   warnings.warn(msg)
 </code></pre>
+</div>
 
 <h3 id="example-plots-i-have-working">Example plots I have working</h3>
 
 <p>line_animate.py</p>
 
-<pre><code># The plot server must be running
+<div class="highlighter-rouge"><pre class="highlight"><code># The plot server must be running
 # Go to http://localhost:5006/bokeh to view this plot
 
 import time
@@ -398,6 +400,7 @@ while True:
         cursession().store_objects(ds)
         time.sleep(0.05)
 </code></pre>
+</div>
 
 <h3 id="now-use-flask--bokeh-to-generate-a-single-html-page-no-bokeh-server">Now use Flask + bokeh to generate a single html page (no bokeh-server)</h3>
 <ul>
@@ -416,8 +419,6 @@ while True:
 
 <div class="post-tags">
   Tags: 
-  
-    
   
   
   <a href="/tags/#bokeh">bokeh</a>,

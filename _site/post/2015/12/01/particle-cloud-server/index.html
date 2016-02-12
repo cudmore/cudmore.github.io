@@ -190,34 +190,38 @@
 <p>I am doing all of this on a Debian Jessie server.</p>
 
 <h4 id="install-git">install git</h4>
-<pre><code>sudo apt-get install git
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install git
 </code></pre>
+</div>
 
 <h4 id="install-nodejs-use-su-to-enter-suroot">install nodejs (use su to enter su/root)</h4>
 <p>Following: https://github.com/nodesource/distributions</p>
 
-<pre><code>curl -sL https://deb.nodesource.com/setup_4.x | bash -
+<div class="highlighter-rouge"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_4.x | bash -
 apt-get install -y nodejs
 </code></pre>
+</div>
 
 <h4 id="install-particle-cli">Install particle cli</h4>
 <p>Following: https://github.com/spark/particle-cli</p>
 
-<pre><code>sudo npm install -g particle-cli
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo npm install -g particle-cli
 </code></pre>
+</div>
 
 <h4 id="install-particle-cloud-server">Install particle cloud server</h4>
 <p>Following: https://github.com/spark/spark-server/</p>
 
-<pre><code>git clone https://github.com/spark/spark-server.git
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/spark/spark-server.git
 cd spark-server
 npm install
 node main.js
 </code></pre>
+</div>
 
 <p>‘node main.js’ produced</p>
 
-<pre><code>-------
+<div class="highlighter-rouge"><pre class="highlight"><code>-------
 No users exist, you should create some users!
 -------
 connect.multipart() will be removed in connect 3.0
@@ -243,19 +247,22 @@ Your server IP address is: 192.168.1.200
 server started { host: 'localhost', port: 5683 }
 
 </code></pre>
+</div>
 
 <h4 id="continue-setting-up-particle-server">Continue setting up particle server</h4>
 <p>Install <a href="http://dfu-util.sourceforge.net">dfu-utils</a></p>
 
-<pre><code>	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
+<div class="highlighter-rouge"><pre class="highlight"><code>	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
 	sudo apt-get build-dep dfu-util
 	sudo apt-get install libusb-1.0-0-dev
 </code></pre>
+</div>
 
 <p>But that did not work so i did</p>
 
-<pre><code>sudo apt-get upgrade dfu-util
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get upgrade dfu-util
 </code></pre>
+</div>
 
 <p>This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow <a href="https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html">this</a> and edit /var/www/owncloud/config/config.php and set ‘maintenance’ =&gt; false,’. The next time I logged into my owncloud server it triggered an update to 8.2.1</p>
 
@@ -263,12 +270,13 @@ server started { host: 'localhost', port: 5683 }
 
 <p>Still following: https://github.com/spark/spark-server/</p>
 
-<pre><code>particle keys server default_key.pub.pem 192.168.1.10
+<div class="highlighter-rouge"><pre class="highlight"><code>particle keys server default_key.pub.pem 192.168.1.10
 </code></pre>
+</div>
 
 <p>gave</p>
 
-<pre><code>cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
+<div class="highlighter-rouge"><pre class="highlight"><code>cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
 running dfu-util -l
 Found DFU device 2b04:d006
 checking file  default_key.pub192_168_1_200.der
@@ -298,13 +306,12 @@ Download done.
 File downloaded successfully
 Okay!  New keys in place, your device will not restart.
 </code></pre>
+</div>
 
 </div>
 
 <div class="post-tags">
   Tags: 
-  
-    
   
   
   <a href="/tags/#osx">osx</a>,
