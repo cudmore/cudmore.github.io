@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -185,64 +185,103 @@
   <span class="post-date">05 May 2015</span>
   <p>I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.</p>
 
-<h4>Get a list of your USB devices to check if your USB drive is available</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">lsusb
+<h4 id="get-a-list-of-your-usb-devices-to-check-if-your-usb-drive-is-available">Get a list of your USB devices to check if your USB drive is available</h4>
+
+<pre><code>lsusb
 
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 13fe:5200 Kingston Technology Company Inc.
 Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
-</code></pre></div>
-<h4>Make a directory to mount your drive/volume into</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo mkdir /home/pi/crap
-</code></pre></div>
-<h4>Find the UUID of your drive</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo blkid
+</code></pre>
 
-/dev/mmcblk0p1: SEC_TYPE=&quot;msdos&quot; LABEL=&quot;boot&quot; UUID=&quot;2654-BFC0&quot; TYPE=&quot;vfat&quot;
-/dev/mmcblk0p2: UUID=&quot;548da502-ebde-45c0-9ab2-de5e2431ee0b&quot; TYPE=&quot;ext4&quot;
-/dev/sda1: LABEL=&quot;CRAP&quot; UUID=&quot;7CCD-19F2&quot; TYPE=&quot;vfat&quot;
-</code></pre></div>
+<h4 id="make-a-directory-to-mount-your-drivevolume-into">Make a directory to mount your drive/volume into</h4>
+
+<pre><code>sudo mkdir /home/pi/crap
+</code></pre>
+
+<h4 id="find-the-uuid-of-your-drive">Find the UUID of your drive</h4>
+
+<pre><code>sudo blkid
+
+/dev/mmcblk0p1: SEC_TYPE="msdos" LABEL="boot" UUID="2654-BFC0" TYPE="vfat"
+/dev/mmcblk0p2: UUID="548da502-ebde-45c0-9ab2-de5e2431ee0b" TYPE="ext4"
+/dev/sda1: LABEL="CRAP" UUID="7CCD-19F2" TYPE="vfat"
+</code></pre>
+
 <p>This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).</p>
 
-<h4>Edit your /etc/fstab file by appending a line for your dive</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pico /etc/fstab
+<h4 id="edit-your-etcfstab-file-by-appending-a-line-for-your-dive">Edit your /etc/fstab file by appending a line for your dive</h4>
+
+<pre><code>sudo pico /etc/fstab
 
 proc            /proc           proc    defaults          0       0
 /dev/mmcblk0p1  /boot           vfat    defaults          0       2
 /dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
 UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 # a swapfile is not a swap partition, so no using swapon|off from here on, use $
-</code></pre></div>
+</code></pre>
+
 <p>Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).</p>
 
-<h4>Remount Your drives and check the drive is mounted</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo mount -a
-</code></pre></div>
-<p>&#39;ls&#39; should show /video/ in blue to indicate it is mounted</p>
+<h4 id="remount-your-drives-and-check-the-drive-is-mounted">Remount Your drives and check the drive is mounted</h4>
+
+<pre><code>sudo mount -a
+</code></pre>
+
+<p>‘ls’ should show /video/ in blue to indicate it is mounted</p>
 
 <p>Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/crap’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.</p>
 
-<h4>Linux Commands</h4>
+<h4 id="linux-commands">Linux Commands</h4>
 
 <ul>
-<li><p>List your usb devices: lsusb</p></li>
-<li><p>List the Location, Label, UUID and Type of your USB devices: sudo blkid</p></li>
-<li><p>Unmount a volume: sudo umount /home/pi/crap</p></li>
-<li><p>Mount everybody in fstab: sudo mount -a</p></li>
-<li><p>Check if a drive is mounted: df | grep “/home/pi/video” | awk ‘{print $6}’</p></li>
+  <li>
+    <p>List your usb devices: lsusb</p>
+  </li>
+  <li>
+    <p>List the Location, Label, UUID and Type of your USB devices: sudo blkid</p>
+  </li>
+  <li>
+    <p>Unmount a volume: sudo umount /home/pi/crap</p>
+  </li>
+  <li>
+    <p>Mount everybody in fstab: sudo mount -a</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check if a drive is mounted: df</td>
+          <td>grep “/home/pi/video”</td>
+          <td>awk ‘{print $6}’</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
 
-<h4>To Do</h4>
+<h4 id="to-do">To Do</h4>
 
 <ul>
-<li><p>A problem I just had is that my USB drive did not get mounted at boot and the folder I have reserved for it is on my root file system, ‘/’,  with only 4 GB of space. I started writing tons of video files to the folder and quickly ran out of space on. Now, I need a way to test if the folder I am writing to is (I) a folder or (ii) an actual mount point. Tym, the bash guru in the lab and my go to person on these things suggested the following:</p>
+  <li>
+    <p>A problem I just had is that my USB drive did not get mounted at boot and the folder I have reserved for it is on my root file system, ‘/’,  with only 4 GB of space. I started writing tons of video files to the folder and quickly ran out of space on. Now, I need a way to test if the folder I am writing to is (I) a folder or (ii) an actual mount point. Tym, the bash guru in the lab and my go to person on these things suggested the following:</p>
 
-<p>df | grep “/home/pi/video” | awk ‘{print $6}’</p></li>
+    <table>
+      <tbody>
+        <tr>
+          <td>df</td>
+          <td>grep “/home/pi/video”</td>
+          <td>awk ‘{print $6}’</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
 
 <p>This will return an empty string if /home/pi/video is NOT mounted.</p>
+
 
 </div>
 

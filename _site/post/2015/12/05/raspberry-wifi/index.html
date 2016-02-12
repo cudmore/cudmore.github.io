@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -185,11 +185,14 @@
   <span class="post-date">05 Dec 2015</span>
   <p>Yet another blog post on getting the Raspberry Pi up on a wifi network.</p>
 
-<h3>Configure /etc/network/interfaces</h3>
+<h3 id="configure-etcnetworkinterfaces">Configure /etc/network/interfaces</h3>
 
 <p>The stock install of Raspian should already have this.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pico /etc/network/interfaces
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">auto lo
+
+<pre><code>sudo pico /etc/network/interfaces
+</code></pre>
+
+<pre><code>auto lo
 
 iface lo inet loopback
 iface eth0 inet dhcp
@@ -198,51 +201,63 @@ allow-hotplug wlan0
 iface wlan0 inet manual
 wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
-</code></pre></div>
-<h3>Edit wpa_supplicant.conf</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+</code></pre>
+
+<h3 id="edit-wpasupplicantconf">Edit wpa_supplicant.conf</h3>
+
+<pre><code>sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
+</code></pre>
+
+<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
 network={
-    ssid=&quot;NETGEAR28&quot;
-    psk=&quot;your_password_here&quot;
+    ssid="NETGEAR28"
+    psk="your_password_here"
 }
-</code></pre></div>
-<h3>Tell your router to assign an ip based on MAC address of wifi adapter</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">ifconfig wlan0
-</code></pre></div>
-<p>The MAC address is listed as &#39;HWaddr&#39; and in this case is &#39;00:0b:81:89:11:8a&#39;.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
+</code></pre>
+
+<h3 id="tell-your-router-to-assign-an-ip-based-on-mac-address-of-wifi-adapter">Tell your router to assign an ip based on MAC address of wifi adapter</h3>
+
+<pre><code>ifconfig wlan0
+</code></pre>
+
+<p>The MAC address is listed as ‘HWaddr’ and in this case is ‘00:0b:81:89:11:8a’.</p>
+
+<pre><code>wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
           inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
           TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
           RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
-</code></pre></div>
-<h3>Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk)</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">#stop netatalk
+</code></pre>
+
+<h3 id="change-the-default-name-of-your-pi-in-apple-file-protocol-eg-netatalk">Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk)</h3>
+
+<pre><code># stop netatalk
 sudo /etc/init.d/netatalk stop
 
-#edit config file
+# edit config file
 sudo nano /etc/netatalk/AppleVolumes.default
 
-#change this one line
+# change this one line
 
 # By default all users have access to their home directories.
-#~/                     &quot;Home Directory&quot;
-~/                      &quot;pi50&quot;
+#~/                     "Home Directory"
+~/                      "pi50"
 
-#restart netatalk
+# restart netatalk
 sudo /etc/init.d/netatalk start
-</code></pre></div>
-<h3>Startup mailer</h3>
+</code></pre>
+
+<h3 id="startup-mailer">Startup mailer</h3>
 
 <p>Purpose here is to have your Pi email you when it gets a network connection. This is very useful (and necessary) if the IP is changing with automatic DHCP.</p>
 
 <p>This is startup_mailer.py (in all its crappy code style)</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">import subprocess
+
+<pre><code>import subprocess
 import smtplib
 import socket
 import os
@@ -250,48 +265,50 @@ from email.mime.text import MIMEText
 import datetime
 import sys
 
-eventText = &#39;&#39;
+eventText = ''
 if len( sys.argv ) &gt; 1:
     eventText = sys.argv[1]
 # Change to your own account information
-to = &#39;robert.cudmore@gmail.com&#39;
-gmail_user = &#39;cudmore.raspberry&#39;
-gmail_password = &#39;your_password_here&#39;
-smtpserver = smtplib.SMTP(&#39;smtp.gmail.com&#39;, 587)
+to = 'robert.cudmore@gmail.com'
+gmail_user = 'cudmore.raspberry'
+gmail_password = 'your_password_here'
+smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 smtpserver.ehlo()
 smtpserver.starttls()
 smtpserver.ehlo
 smtpserver.login(gmail_user, gmail_password)
 
-#a linux command line call
-arg=&#39;ip route list&#39;
+# a linux command line call
+arg='ip route list'
 p=subprocess.Popen(arg,shell=True,stdout=subprocess.PIPE)
 data = p.communicate()
 split_data = data[0].split()
 
-ipaddr = split_data[split_data.index(&#39;src&#39;)+1]
-routerAddress = split_data[split_data.index(&#39;via&#39;)+1]
+ipaddr = split_data[split_data.index('src')+1]
+routerAddress = split_data[split_data.index('via')+1]
 
-#eventText is parameter to this function
-mail_body = &#39;raspberrycam2 %s:\n&#39; % eventText
-mail_body += &#39;IP: %s\n&#39; % ipaddr
-mail_body += &#39;router: %s&#39; % routerAddress
+# eventText is parameter to this function
+mail_body = 'raspberrycam2 %s:\n' % eventText
+mail_body += 'IP: %s\n' % ipaddr
+mail_body += 'router: %s' % routerAddress
 
 today = datetime.date.today()
-timeStr = today.strftime(&#39;%b %d %Y&#39;)
+timeStr = today.strftime('%b %d %Y')
 
-mail_subject = &#39;pi50 booted at ip &#39; + ipaddr + &#39; &#39; + eventText + &#39; on %s&#39; % time
+mail_subject = 'pi50 booted at ip ' + ipaddr + ' ' + eventText + ' on %s' % time
 Str
 
 msg = MIMEText(mail_body)
-msg[&#39;Subject&#39;] = mail_subject
-msg[&#39;From&#39;] = gmail_user
-msg[&#39;To&#39;] = to
+msg['Subject'] = mail_subject
+msg['From'] = gmail_user
+msg['To'] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
-</code></pre></div>
-<h3>Another version of my startup_mailer.py</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">import subprocess
+</code></pre>
+
+<h3 id="another-version-of-my-startupmailerpy">Another version of my startup_mailer.py</h3>
+
+<pre><code>import subprocess
 import smtplib
 import socket
 import os
@@ -299,10 +316,10 @@ from email.mime.text import MIMEText
 from datetime import datetime, date, time
 
 # Change to your own account information
-to = &#39;robert.cudmore@gmail.com&#39;
-gmail_user = &#39;cudmore.raspberry@gmail.com&#39;
-gmail_password = &#39;your_password_here&#39;
-smtpserver = smtplib.SMTP(&#39;smtp.gmail.com&#39;, 587)
+to = 'robert.cudmore@gmail.com'
+gmail_user = 'cudmore.raspberry@gmail.com'
+gmail_password = 'your_password_here'
+smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 smtpserver.ehlo()
 smtpserver.starttls()
 smtpserver.ehlo
@@ -311,28 +328,30 @@ smtpserver.login(gmail_user, gmail_password)
 dt=datetime.now()  
 
 # Very Linux Specific
-arg=&#39;ip route list&#39;
+arg='ip route list'
 p=subprocess.Popen(arg,shell=True,stdout=subprocess.PIPE)
 data = p.communicate()
 split_data = data[0].split()
-ipaddr = split_data[split_data.index(&#39;src&#39;)+1]
-mail_body = &#39;raspberrycam2 booted with IP: %s&#39; %  ipaddr
+ipaddr = split_data[split_data.index('src')+1]
+mail_body = 'raspberrycam2 booted with IP: %s' %  ipaddr
 msg = MIMEText(mail_body)
-msg[&#39;Subject&#39;] = &#39;raspberrycam2 @ &#39;+ipaddr+&#39; BOOT on %s&#39; % dt.strftime(&#39;%b %d %Y, %H:%M:%S&#39;)
-msg[&#39;From&#39;] = gmail_user
-msg[&#39;To&#39;] = to
+msg['Subject'] = 'raspberrycam2 @ '+ipaddr+' BOOT on %s' % dt.strftime('%b %d %Y, %H:%M:%S')
+msg['From'] = gmail_user
+msg['To'] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
-</code></pre></div>
-<h3>Edit /etc/rc.local</h3>
+</code></pre>
+
+<h3 id="edit-etcrclocal">Edit /etc/rc.local</h3>
 
 <p>rc.local will run code each itme a user logs in.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/sh -e
+
+<pre><code>#!/bin/sh -e
 #
 # rc.local
 #
 # This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will &quot;exit 0&quot; on success or any other
+# Make sure that the script will "exit 0" on success or any other
 # value on error.
 #
 # In order to enable or disable this script just change the execution
@@ -342,22 +361,26 @@ smtpserver.quit()
 
 # Print the IP address
 _IP=$(hostname -I) || true
-if [ &quot;$_IP&quot; ]; then
-  printf &quot;My IP address is %s\n&quot; &quot;$_IP&quot;
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
   python /home/pi/code/startup_mailer.py
 fi
 
 exit 0
-</code></pre></div>
-<h3>Useful network commands</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">#scan for available wifi networks
+</code></pre>
+
+<h3 id="useful-network-commands">Useful network commands</h3>
+
+<pre><code># scan for available wifi networks
 sudo iwlist wlan0 scan
-#show network adapter status
+# show network adapter status
 ifconfig wlan0
-#turn off and on network adapter
+# turn off and on network adapter
 sudo ifdown wlan0
 sudo ifup wlan0
-</code></pre></div>
+</code></pre>
+
+
 </div>
 
 <div class="post-tags">

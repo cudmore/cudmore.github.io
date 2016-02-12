@@ -22,7 +22,7 @@ Initially I wanted to log all this to Arduino memory but there is not enough on 
 
 For now I am having Arduino log all events to serial and am using python code (on a Raspberry Pi) to grab and save all serial events coming from Arduino. This seems to work well. The critical piece is that the serial logger on the Pi is stateless, you just 'set it and forget it' and it logs all events all day.
 
-###Install Arduino 1.6.x
+### Install Arduino 1.6.x
 
 Don't upgrade the system to Debian Jesse, just pull the Arduino 1.6 packages from Debian Jesse repository.
 
@@ -30,15 +30,15 @@ https://nicohood.wordpress.com/2015/01/24/installing-avr-gcc-4-8-1-and-arduino-i
 
 His site is moving to [github.com/NicoHood](https://github.com/NicoHood/Arduino-IDE-for-Raspberry). Another person who bailed on Wordpress, hard times for wordpress?
 
-###Motor controller
+### Motor controller
 
 I am using [EasyDriver](http://www.schmalzhaus.com/EasyDriver/)
 
-###Non blocking stepper motor on arduino
+### Non blocking stepper motor on arduino
 [AccelStepper](http://www.airspayce.com/mikem/arduino/AccelStepper/index.html) Arduino library.
 
 
-###Rotary encoder
+### Rotary encoder
 I have a 'Honeywell 600-128-cbl'. Looking at wires as they come out of encoder...
 
 - green - Ground
@@ -53,17 +53,17 @@ Mount with nut and lockwasher
 - Hex Mount Nut: 3/8 in x 32
 - Internal Tooth Lockwasher
     
-###Rotary encoder library
+### Rotary encoder library
 
 A non-blocking rotary encoder library for Arduino is made by [pjrc](http://www.pjrc.com/teensy/td_libs_Encoder.html).
 
 
-###Setting arbitrary interrupts on Arduino
+### Setting arbitrary interrupts on Arduino
 
 By default the Arduino Uno has low level interrupts on input pins 2 and 3. I need more interrupts. You can upgrade your Arduino board or just set low level interrupts on any input pin. I am setting A0/A1/A2 to accept [low level interrupts](http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html)
 
 
-###Plotting sensor data from arduino
+### Plotting sensor data from arduino
 
 This is tricky as parsing incoming serial data is slow. It is slow on any operating system and with any CPU chip including Pentium i7 running OSX or Window, Arm processor on Raspberry Pi. The serial parsing/reading eventually finishes but to get a legitimate real-time plot requires buffering a number of values and plotting them in a batch. This is particularly important for the high bandwidth of the rotary encoder.
 
@@ -74,29 +74,29 @@ I tried three different options and dedicating myself to pyqtgraph...
 - [PyQtGraph](http://www.pyqtgraph.org). Python based and designed to plot within an application. HIghly interactive.
 
 
-####Good code for python matplotlib
+#### Good code for python matplotlib
 
     https://www.lebsanft.org/?p=48
 
-####Processing on the pi
+#### Processing on the pi
 
 Installing Processing on the PI is a little tricky.
 
 http://cagewebdev.com/index.php/raspberry-pi-running-processing-on-your-raspi/
 
-####pyqtgraph
+#### pyqtgraph
     sudo pip install pyqtgraph
     
 
         
-###Gotchas
+### Gotchas
  - Don't connect pin 0 on Arduino, you will get arduino error
     avrdude stk500_getsync(): not in sync
  
-###Put Arduino libraries in
+### Put Arduino libraries in
     /usr/share/arduino/libraries/
   
-##Links
+## Links
   
 - AccellStepper Arduino library  
 http://www.airspayce.com/mikem/arduino/AccelStepper/index.html

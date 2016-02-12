@@ -10,7 +10,7 @@ tags:
 
 I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.
 
-####Get a list of your USB devices to check if your USB drive is available
+#### Get a list of your USB devices to check if your USB drive is available
 
     lsusb
 
@@ -20,11 +20,11 @@ I have a Fat32 formatted USB drive and I want to have it mounted when the Raspbe
 	Bus 001 Device 004: ID 13fe:5200 Kingston Technology Company Inc.
 	Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
 
-####Make a directory to mount your drive/volume into
+#### Make a directory to mount your drive/volume into
 
     sudo mkdir /home/pi/crap
 
-####Find the UUID of your drive
+#### Find the UUID of your drive
 
 	sudo blkid
 
@@ -34,7 +34,7 @@ I have a Fat32 formatted USB drive and I want to have it mounted when the Raspbe
 
 This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).
 
-####Edit your /etc/fstab file by appending a line for your dive
+#### Edit your /etc/fstab file by appending a line for your dive
 
 	sudo pico /etc/fstab
 
@@ -46,7 +46,7 @@ This tells me that my usb drive is in the device list at /dev/sda1, has the labe
 
 Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).
 
-####Remount Your drives and check the drive is mounted
+#### Remount Your drives and check the drive is mounted
 
 	sudo mount -a
 
@@ -54,7 +54,7 @@ Here, on the line starting with UUID, I have mounted a device using its UUID=7CC
 
 Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/crap’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.
 
-####Linux Commands
+#### Linux Commands
 
 - List your usb devices: lsusb
 
@@ -66,7 +66,7 @@ Important. When you make the directory where a drive will be mounted it MUST be 
 
 - Check if a drive is mounted: df | grep “/home/pi/video” | awk ‘{print $6}’
 
-####To Do
+#### To Do
 
 - A problem I just had is that my USB drive did not get mounted at boot and the folder I have reserved for it is on my root file system, ‘/’,  with only 4 GB of space. I started writing tons of video files to the folder and quickly ran out of space on. Now, I need a way to test if the folder I am writing to is (I) a folder or (ii) an actual mount point. Tym, the bash guru in the lab and my go to person on these things suggested the following:
 

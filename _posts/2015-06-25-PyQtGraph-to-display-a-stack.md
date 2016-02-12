@@ -9,12 +9,12 @@ tags:
 
 This will display a 3D .tif stack where slices can be viewed and contrast set.
 
-####Install libraries
+#### Install libraries
 
 	pip install pyqtgraph
 	pip install tifffile
 
-####Python code
+#### Python code
 
 	import pyqtgraph as pg
 	import tifffile
@@ -22,7 +22,7 @@ This will display a 3D .tif stack where slices can be viewed and contrast set.
 	images = tif.asarray()
 	pg.image(images)
 
-####To Do
+#### To Do
   - Not sure how this works for 2 channels.
   - See how easy it is to plugin custom python code into PyQtGraph.
     1. Remove the right contrast slider and bottom slice slider.
@@ -30,7 +30,7 @@ This will display a 3D .tif stack where slices can be viewed and contrast set.
     3. Overlay 3D annotations that are masked. Appear and disappear as a function of slices.
     4. Select a 3D annotation.
   
-####Links
+#### Links
 
   - [PyQtGraph](http://www.pyqtgraph.org)
   - TiffFile is provided by [Christoph Gohlke](http://www.lfd.uci.edu/%7Egohlke/) and is [here](http://www.lfd.uci.edu/~gohlke/code/tifffile.py.html)

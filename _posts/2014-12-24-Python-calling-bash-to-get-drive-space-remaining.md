@@ -7,7 +7,7 @@ tags:
 
 I need to have some Python code tell me how much drive space is left. Here is what I came up with.
 
-```
+~~~
 >>> import subprocess as sub
 >>> checkPath = '~/video'
 >>> cmd = "df " + checkPath + " | awk '{ print $5 }' | tail -n 1"
@@ -15,6 +15,6 @@ I need to have some Python code tell me how much drive space is left. Here is wh
 >>> (out, err) = p.communicate()
 >>> out
 '31%\n'
->>> out.rstrip() #rstrip 'chomps' off newline
+>>> out.rstrip() # rstrip 'chomps' off newline
 '31%'
-```
+~~~

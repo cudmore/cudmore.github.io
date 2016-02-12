@@ -8,9 +8,27 @@
     
       
       <item>
+        <title>Network attached camera</title>
+        
+          <description>&lt;ul&gt;
+  &lt;li&gt;camera&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sun, 07 Feb 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Bit Torrent Sync</title>
         
           <description>&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;BitTorrent Sync&lt;/a&gt; will synchronize folders between any number of machines on either a local LAN, over the internet, or via both. It synchronizes without using a central server as everyone is a peer, it is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Peer-to-peer&quot;&gt;peer-to-peer (P2P) network&lt;/a&gt;.&lt;/p&gt;
+
 </description>
         
         <pubDate>Wed, 20 Jan 2016 17:01:06 -0500</pubDate>
@@ -25,6 +43,7 @@
         <title>MQTT</title>
         
           <description>&lt;p&gt;Use &lt;a href=&quot;http://mqtt.org&quot;&gt;MQTT&lt;/a&gt; to send little packets of data around. My current thinking is that any sensor/data network should be a mixture of MQTT and &lt;a href=&quot;http://rest.elkstein.org&quot;&gt;Rest&lt;/a&gt;. They are different things and both provide some nice features. I like MQTT because:&lt;/p&gt;
+
 </description>
         
         <pubDate>Tue, 19 Jan 2016 17:01:06 -0500</pubDate>
@@ -38,7 +57,8 @@
       <item>
         <title>Camera with a REST interface</title>
         
-          <description>&lt;p&gt;I&amp;#39;ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.&lt;/p&gt;
+          <description>&lt;p&gt;I’ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.&lt;/p&gt;
+
 </description>
         
         <pubDate>Sun, 06 Dec 2015 17:01:06 -0500</pubDate>
@@ -53,6 +73,7 @@
         <title>Raspberry Wifi</title>
         
           <description>&lt;p&gt;Yet another blog post on getting the Raspberry Pi up on a wifi network.&lt;/p&gt;
+
 </description>
         
         <pubDate>Sat, 05 Dec 2015 17:01:06 -0500</pubDate>
@@ -66,7 +87,8 @@
       <item>
         <title>particle cloud server</title>
         
-          <description>&lt;h4&gt;This is not working ... as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.&lt;/h4&gt;
+          <description>&lt;h4 id=&quot;this-is-not-working--as-of-1232015-i-will-just-wait-for-the-particle-people-to-update-the-particle-server-with-better-support-for-the-photon-it-is-really-designed-for-the-particle&quot;&gt;This is not working … as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.&lt;/h4&gt;
+
 </description>
         
         <pubDate>Tue, 01 Dec 2015 17:01:06 -0500</pubDate>
@@ -81,6 +103,7 @@
         <title>debian server</title>
         
           <description>&lt;p&gt;Goal is to set up a home server running Debain Jessie.&lt;/p&gt;
+
 </description>
         
         <pubDate>Sat, 07 Nov 2015 17:01:06 -0500</pubDate>
@@ -95,6 +118,7 @@
         <title>remote sensors</title>
         
           <description>&lt;p&gt;A distributed client sensor to data server network.&lt;/p&gt;
+
 </description>
         
         <pubDate>Mon, 07 Sep 2015 18:01:06 -0400</pubDate>
@@ -108,11 +132,12 @@
       <item>
         <title>simple form in jekyll</title>
         
-          <description>&lt;p&gt;&lt;head&gt;
+          <description>&lt;head&gt;
   &lt;style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
 &lt;/style&gt;
-&lt;/head&gt;&lt;/p&gt;
+&lt;/head&gt;
+
 </description>
         
         <pubDate>Fri, 04 Sep 2015 18:01:06 -0400</pubDate>
@@ -127,6 +152,7 @@
         <title>pyqtGraph to display a .tif stack</title>
         
           <description>&lt;p&gt;This will display a 3D .tif stack where slices can be viewed and contrast set.&lt;/p&gt;
+
 </description>
         
         <pubDate>Fri, 14 Aug 2015 18:01:06 -0400</pubDate>
@@ -141,6 +167,7 @@
         <title>Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage</title>
         
           <description>&lt;p&gt;Have a Raspberry Pi be the master control for a trial based experiment. Each trial is started by the Pi, the Pi triggers an Arduino and ScanImage (via TTL) and then saves Arduino based timestamped events to a file while recording real-time timestamped video.&lt;/p&gt;
+
 </description>
         
         <pubDate>Mon, 08 Jun 2015 18:01:06 -0400</pubDate>
@@ -154,7 +181,8 @@
       <item>
         <title>Changing default mount name in Apple File Sharing</title>
         
-          <description>&lt;p&gt;I mount multiple Raspberry Pi&amp;#39;s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name &amp;#39;Home Directory&amp;#39;. There is no way to tell them apart once mounted (except for looking at what is in them).&lt;/p&gt;
+          <description>&lt;p&gt;I mount multiple Raspberry Pi’s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name ‘Home Directory’. There is no way to tell them apart once mounted (except for looking at what is in them).&lt;/p&gt;
+
 </description>
         
         <pubDate>Sun, 07 Jun 2015 18:01:06 -0400</pubDate>
@@ -169,6 +197,7 @@
         <title>Arduino + stepper motor + rotary encoder + scan image frame clock + serial logging</title>
         
           <description>&lt;p&gt;Goal here is to make an Arduino do four things simultaneously:&lt;/p&gt;
+
 </description>
         
         <pubDate>Sun, 24 May 2015 18:01:06 -0400</pubDate>
@@ -183,6 +212,7 @@
         <title>Mounting a USB drive at boot</title>
         
           <description>&lt;p&gt;I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.&lt;/p&gt;
+
 </description>
         
         <pubDate>Tue, 05 May 2015 18:01:06 -0400</pubDate>
@@ -197,6 +227,7 @@
         <title>X11 on raspberry</title>
         
           <description>&lt;p&gt;This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.&lt;/p&gt;
+
 </description>
         
         <pubDate>Tue, 05 May 2015 18:01:06 -0400</pubDate>
@@ -211,6 +242,7 @@
         <title>Auto login to ssh servers</title>
         
           <description>&lt;p&gt;In order to automatically login to an ssh server, you need to generate public/private rsa key pairs on a client and copy these keys to an ssh server. Next time you login from the client to the server, you won’t need to enter your password.&lt;/p&gt;
+
 </description>
         
         <pubDate>Mon, 04 May 2015 18:01:06 -0400</pubDate>
@@ -224,7 +256,8 @@
       <item>
         <title>Python tricks</title>
         
-          <description>&lt;h4&gt;iPython auto reload imports&lt;/h4&gt;
+          <description>&lt;h4 id=&quot;ipython-auto-reload-imports&quot;&gt;iPython auto reload imports&lt;/h4&gt;
+
 </description>
         
         <pubDate>Thu, 30 Apr 2015 18:01:06 -0400</pubDate>
@@ -238,7 +271,8 @@
       <item>
         <title>VNC on raspberry pi</title>
         
-          <description>&lt;h3&gt;Remote login to Raspberry with tightvnc&lt;/h3&gt;
+          <description>&lt;h3 id=&quot;remote-login-to-raspberry-with-tightvnc&quot;&gt;Remote login to Raspberry with tightvnc&lt;/h3&gt;
+
 </description>
         
         <pubDate>Wed, 29 Apr 2015 18:01:06 -0400</pubDate>
@@ -252,10 +286,11 @@
       <item>
         <title>Install OSX</title>
         
-          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br&gt;
- - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br&gt;
- - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios&quot;&gt;F12&lt;/a&gt;&lt;br&gt;
+          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br /&gt;
+ - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br /&gt;
+ - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;&lt;br /&gt;
  - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
+
 </description>
         
         <pubDate>Sun, 19 Apr 2015 18:01:06 -0400</pubDate>
@@ -269,13 +304,13 @@
       <item>
         <title>Lab Protocols</title>
         
-          <description>&lt;h4&gt;Dental cement, C&amp;amp;B-Metabond Adhesive Cement, Parkell Inc&lt;/h4&gt;
-
+          <description>&lt;h4 id=&quot;dental-cement-cb-metabond-adhesive-cement-parkell-inc&quot;&gt;Dental cement, C&amp;amp;B-Metabond Adhesive Cement, Parkell Inc&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;S396 (3g) Radiopaque Tooth-Shade L-Powder&lt;/li&gt;
-&lt;li&gt;S398 (10ml) C&amp;amp;B-Metabond Quick Base (blue)&lt;/li&gt;
-&lt;li&gt;S371 (0.7ml) Catalyst Gold Label&lt;/li&gt;
+  &lt;li&gt;S396 (3g) Radiopaque Tooth-Shade L-Powder&lt;/li&gt;
+  &lt;li&gt;S398 (10ml) C&amp;amp;B-Metabond Quick Base (blue)&lt;/li&gt;
+  &lt;li&gt;S371 (0.7ml) Catalyst Gold Label&lt;/li&gt;
 &lt;/ul&gt;
+
 </description>
         
         <pubDate>Fri, 27 Mar 2015 18:01:06 -0400</pubDate>
@@ -290,6 +325,7 @@
         <title>Fresh install of Raspian</title>
         
           <description>&lt;p&gt;This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.&lt;/p&gt;
+
 </description>
         
         <pubDate>Sat, 21 Mar 2015 18:01:06 -0400</pubDate>
@@ -304,6 +340,7 @@
         <title>Raspberry Pi video controller</title>
         
           <description>&lt;p&gt;This is a video server running on a raspberry Pi Linux computer. It provides a web interface to stream and record video.&lt;/p&gt;
+
 </description>
         
         <pubDate>Fri, 20 Mar 2015 18:01:06 -0400</pubDate>
@@ -318,6 +355,7 @@
         <title>mjpg-streamer on a Raspberry Pi</title>
         
           <description>&lt;p&gt;This post covers downloading, installing and running mjp-streamer on a raspberry pi. There are two options for installation and streaming depending on if you stream from (1) a rapsberry pi camera module or (2) a USB camera.&lt;/p&gt;
+
 </description>
         
         <pubDate>Sun, 15 Mar 2015 18:01:06 -0400</pubDate>
@@ -331,21 +369,20 @@
       <item>
         <title>Use OpenCV to acquire video</title>
         
-          <description>&lt;h4&gt;Goals&lt;/h4&gt;
-
+          <description>&lt;h4 id=&quot;goals&quot;&gt;Goals&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Use raspberry to record video from USB camera and stream to disk.&lt;/li&gt;
-&lt;li&gt;Use python and opencv&lt;/li&gt;
-&lt;li&gt;will save either as a sequence of .tif or as an uncompressed videofile&lt;/li&gt;
+  &lt;li&gt;Use raspberry to record video from USB camera and stream to disk.&lt;/li&gt;
+  &lt;li&gt;Use python and opencv&lt;/li&gt;
+  &lt;li&gt;will save either as a sequence of .tif or as an uncompressed videofile&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4&gt;Install opencv&lt;/h4&gt;
-
+&lt;h4 id=&quot;install-opencv&quot;&gt;Install opencv&lt;/h4&gt;
 &lt;blockquote&gt;
-&lt;p&gt;sudo apt-get update&lt;br&gt;
-sudo apt-get upgrade&lt;br&gt;
+  &lt;p&gt;sudo apt-get update&lt;br /&gt;
+sudo apt-get upgrade&lt;br /&gt;
 sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/blockquote&gt;
+
 </description>
         
         <pubDate>Sat, 07 Mar 2015 17:01:06 -0500</pubDate>
@@ -360,6 +397,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
         <title>Plotting with bokeh on the Raspberry Pi</title>
         
           <description>&lt;p&gt;Goal is to get plotting with bokeh on the Raspberry Pi.&lt;/p&gt;
+
 </description>
         
         <pubDate>Thu, 05 Mar 2015 17:01:06 -0500</pubDate>
@@ -374,6 +412,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
         <title>Python calling bash to get drive space remaining</title>
         
           <description>&lt;p&gt;I need to have some Python code tell me how much drive space is left. Here is what I came up with.&lt;/p&gt;
+
 </description>
         
         <pubDate>Wed, 24 Dec 2014 00:00:00 -0500</pubDate>
@@ -388,13 +427,10 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
         <title>Monitoring mice in their home cage</title>
         
           <description>&lt;p&gt;[Aug 4, 2014, updated]
-[March 2015, moved to cudmore.github.io]&lt;/p&gt;
+[March 2015, moved to cudmore.github.io]
+## Goal
+- videotape mice in their home cage.&lt;/p&gt;
 
-&lt;h2&gt;Goal&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;videotape mice in their home cage.&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         
         <pubDate>Fri, 14 Feb 2014 17:01:06 -0500</pubDate>

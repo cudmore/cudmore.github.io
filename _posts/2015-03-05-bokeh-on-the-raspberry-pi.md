@@ -21,7 +21,7 @@ Goal is to get plotting with bokeh on the Raspberry Pi.
 
 - don't install miniconda, just use stock raspian pytohn
 
-```python
+~~~python
 # this takes > 1 hour on a Raspberry Pi Model B !!!
 # most of the time is spent in gcc cc1 command
 sudo pip install pandas --upgrade 
@@ -43,11 +43,11 @@ sudo pip install bokeh
 #
 # fixed error with (hopefully does not cause other problems)
 sudo pip install numexpr --upgrade
-```
+~~~
 
 [ORIGINAL POST STARTS HERE]
 
-###Install miniconda
+### Install miniconda
 	pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
 	pi@pi40 ~ $ bash Miniconda-3.5.5-Linux-armv6l.sh 
 
@@ -82,12 +82,12 @@ sudo pip install numexpr --upgrade
 
 	Thank you for installing Miniconda!
 
-###Make sure numpy and pandas is correct
+### Make sure numpy and pandas is correct
 
 > pip install numpy --upgrade  
 > pip install pandas --upgrade  
 
-###Install bokeh
+### Install bokeh
 In general 'conda install bokeh' does not work on Pi, bokeh is not in repo?
 
 > pip install bokeh  
@@ -106,7 +106,7 @@ For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/
 	Pandas
 
 
-###Currently installed with pip
+### Currently installed with pip
 
 	pi@pi40 ~ $ pip freeze
 	Flask==0.10.1
@@ -146,13 +146,13 @@ For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/
 	websocket==0.2.1
 	wsgiref==0.1.2
 
-###Grab some example plots from bokeh github
+### Grab some example plots from bokeh github
 
 The bokeh example plots are at:
 
 > https://github.com/bokeh/bokeh/tree/master/examples/plotting/server
 
-###Run the bokeh-server
+### Run the bokeh-server
 Remember, this make temporary files in directory you run it in.
 
 --ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006  
@@ -174,7 +174,7 @@ Remember, this make temporary files in directory you run it in.
 	/home/pi/miniconda/lib/python2.7/site-packages/bokeh/server/blaze/__init__.py:19: UserWarning: could not import multiuser blaze server No module named blaze.  This is fine if you do not intend to use blaze capabilities in the bokeh server
 	  warnings.warn(msg)
 
-###Example plots I have working
+### Example plots I have working
 
 line_animate.py
 
@@ -196,8 +196,8 @@ line_animate.py
 
 	p = figure()
 
-	p.line(x, y, color="#3333ee", name="sin")
-	p.line([0,4*np.pi], [-1, 1], color="#ee3333")
+	p.line(x, y, color="# 3333ee", name="sin")
+	p.line([0,4*np.pi], [-1, 1], color="# ee3333")
 
 	show(p)
 
@@ -210,11 +210,11 @@ line_animate.py
 	        cursession().store_objects(ds)
 	        time.sleep(0.05)
 
-###Now use Flask + bokeh to generate a single html page (no bokeh-server)
+### Now use Flask + bokeh to generate a single html page (no bokeh-server)
 - eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)
 - simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple  
 - more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram
 
-###Links  
+### Links  
 - http://bokeh.pydata.org/en/latest/index.html  
 - http://docs.continuum.io/anaconda/install.html  

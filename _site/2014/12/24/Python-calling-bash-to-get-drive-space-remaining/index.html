@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -184,16 +184,18 @@
   <h3 class="post-title">Python calling bash to get drive space remaining</h1>
   <span class="post-date">24 Dec 2014</span>
   <p>I need to have some Python code tell me how much drive space is left. Here is what I came up with.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; import subprocess as sub
-&gt;&gt;&gt; checkPath = &#39;~/video&#39;
-&gt;&gt;&gt; cmd = &quot;df &quot; + checkPath + &quot; | awk &#39;{ print $5 }&#39; | tail -n 1&quot;
+
+<pre><code>&gt;&gt;&gt; import subprocess as sub
+&gt;&gt;&gt; checkPath = '~/video'
+&gt;&gt;&gt; cmd = "df " + checkPath + " | awk '{ print $5 }' | tail -n 1"
 &gt;&gt;&gt; p = sub.Popen(cmd, stdout=sub.PIPE,stderr=sub.PIPE, shell=True)
 &gt;&gt;&gt; (out, err) = p.communicate()
 &gt;&gt;&gt; out
-&#39;31%\n&#39;
-&gt;&gt;&gt; out.rstrip() #rstrip &#39;chomps&#39; off newline
-&#39;31%&#39;
-</code></pre></div>
+'31%\n'
+&gt;&gt;&gt; out.rstrip() # rstrip 'chomps' off newline
+'31%'
+</code></pre>
+
 </div>
 
 <div class="post-tags">

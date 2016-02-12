@@ -12,11 +12,11 @@ tags:
 
 [Aug 4, 2014, updated]
 [March 2015, moved to cudmore.github.io]
-##Goal
+## Goal
 - videotape mice in their home cage.
 
-###Parts
-####Computer
+### Parts
+#### Computer
 - Raspberry Pi, Model B 512MB RAM, [Adafruit 998](http://www.adafruit.com/products/998) target="_blank">Adafruit 998</a></li>
 	<li>4 GB SD Card, <a href="http://www.adafruit.com/products/102" target="_blank">Adafruit 102</a></li>
 	<li>USB 2 Wifi Dongle (802.11b/g/n), <a href="http://www.adafruit.com/products/814" target="_blank">Adafruit, 814</a></li>

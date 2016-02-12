@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -183,78 +183,91 @@
       <div class="post">
   <h3 class="post-title">VNC on raspberry pi</h1>
   <span class="post-date">29 Apr 2015</span>
-  <h3>Remote login to Raspberry with tightvnc</h3>
+  <h3 id="remote-login-to-raspberry-with-tightvnc">Remote login to Raspberry with tightvnc</h3>
 
 <p>See</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.raspberrypi.org/documentation/remote-access/vnc/
+
+<pre><code>https://www.raspberrypi.org/documentation/remote-access/vnc/
 http://elinux.org/RPi_VNC_Server
-</code></pre></div>
-<h3>Install tightvncserver server on Raspberry</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install tightvncserver
-</code></pre></div>
-<h3>Run tightvncserver to set password</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">tightvncserver
-</code></pre></div>
-<h3>Start server on pi</h3>
+</code></pre>
+
+<h3 id="install-tightvncserver-server-on-raspberry">Install tightvncserver server on Raspberry</h3>
+
+<pre><code>sudo apt-get install tightvncserver
+</code></pre>
+
+<h3 id="run-tightvncserver-to-set-password">Run tightvncserver to set password</h3>
+
+<pre><code>tightvncserver
+</code></pre>
+
+<h3 id="start-server-on-pi">Start server on pi</h3>
 
 <p>Use :1 if your Pi is running X11 by default (mine is)</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver :1 -geometry 1920x1080 -depth 24
+
+<pre><code>vncserver :1 -geometry 1920x1080 -depth 24
 vncserver :1 -geometry 1280x800 -depth 24
 vncserver :1 -geometry 1024x768 -depth 24
-</code></pre></div>
-<h3>kill server</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">vncserver -kill :1
-</code></pre></div>
-<h3>Install realVNC client on OSX</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://www.realvnc.com
-</code></pre></div>
-<h3>Enable copy/paste between host and server</h3>
+</code></pre>
+
+<h3 id="kill-server">kill server</h3>
+
+<pre><code>vncserver -kill :1
+</code></pre>
+
+<h3 id="install-realvnc-client-on-osx">Install realVNC client on OSX</h3>
+
+<pre><code>https://www.realvnc.com
+</code></pre>
+
+<h3 id="enable-copypaste-between-host-and-server">Enable copy/paste between host and server</h3>
 
 <p>See</p>
 
-<p><a href="http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi">http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</a></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># install
+<p>http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</p>
+
+<pre><code># install
 sudo apt-get install autocutsel
 
-#edit /home/pi/.vnc/xstartup
+# edit /home/pi/.vnc/xstartup
 pico .vnc/xstartup 
 
-#make it look like this
+# make it look like this
 #!/bin/sh
 
 xrdb $HOME/.Xresources
 xsetroot -solid grey
-#added 20150414 to get copy paste to work
+# added 20150414 to get copy paste to work
 autocutsel -fork
-#x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;
-#x-window-manager &amp;
+# x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &amp;
+# x-window-manager &amp;
 # Fix to make GNOME work
 export XKL_XMODMAP_DISABLE=1
 /etc/X11/Xsession
-</code></pre></div>
-<h3>Alternative is to use x11vnc</h3>
+</code></pre>
+
+<h3 id="alternative-is-to-use-x11vnc">Alternative is to use x11vnc</h3>
 
 <p>See</p>
 
-<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=108862">https://www.raspberrypi.org/forums/viewtopic.php?p=108862</a></p>
+<p>https://www.raspberrypi.org/forums/viewtopic.php?p=108862</p>
 
-<p><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600">https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600</a></p>
+<p>https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=19600</p>
 
-<h4>Pros</h4>
-
+<h4 id="pros">Pros</h4>
 <ul>
-<li>This will &#39;recycle&#39; your :0 display if you are booting with X11</li>
-<li>You will be able to see the same screen on direct HDMI/Video output and your remote connection simultaneously</li>
-<li>You will remote login (with realVNC) and get the same desktop</li>
-<li>Copy/Paste works by default</li>
+  <li>This will ‘recycle’ your :0 display if you are booting with X11</li>
+  <li>You will be able to see the same screen on direct HDMI/Video output and your remote connection simultaneously</li>
+  <li>You will remote login (with realVNC) and get the same desktop</li>
+  <li>Copy/Paste works by default</li>
 </ul>
 
-<h4>Cons</h4>
-
+<h4 id="cons">Cons</h4>
 <ul>
-<li>This would work if you always had a HDMI display at a desired resolution (or tweaked /boot/config.txt to force HDMI).</li>
-<li>Does not work well if you are throwing your display out an analog RCA jack, it is too low res and then your VNC connection just follows that low resolution. Maybe could fix this?</li>
+  <li>This would work if you always had a HDMI display at a desired resolution (or tweaked /boot/config.txt to force HDMI).</li>
+  <li>Does not work well if you are throwing your display out an analog RCA jack, it is too low res and then your VNC connection just follows that low resolution. Maybe could fix this?</li>
 </ul>
+
 
 </div>
 

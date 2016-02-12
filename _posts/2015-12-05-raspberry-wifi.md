@@ -15,11 +15,11 @@ Yet another blog post on getting the Raspberry Pi up on a wifi network.
 
 The stock install of Raspian should already have this.
 
-```
+~~~
 sudo pico /etc/network/interfaces
-```
+~~~
 
-```
+~~~
 auto lo
 
 iface lo inet loopback
@@ -29,15 +29,15 @@ allow-hotplug wlan0
 iface wlan0 inet manual
 wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
-```
+~~~
 
 ### Edit wpa_supplicant.conf
 
-```
+~~~
 sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
-```
+~~~
 
-```
+~~~
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
@@ -45,17 +45,17 @@ network={
     ssid="NETGEAR28"
     psk="your_password_here"
 }
-```
+~~~
 
-###Tell your router to assign an ip based on MAC address of wifi adapter
+### Tell your router to assign an ip based on MAC address of wifi adapter
 
-```
+~~~
 ifconfig wlan0
-```
+~~~
 
 The MAC address is listed as 'HWaddr' and in this case is '00:0b:81:89:11:8a'.
 
-```
+~~~
 wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
           inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -63,34 +63,34 @@ wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a
           TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
           RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
-```
+~~~
 
-###Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk) 
+### Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk) 
 
-```
-#stop netatalk
+~~~
+# stop netatalk
 sudo /etc/init.d/netatalk stop
 
-#edit config file
+# edit config file
 sudo nano /etc/netatalk/AppleVolumes.default
 
-#change this one line
+# change this one line
 
 # By default all users have access to their home directories.
 #~/                     "Home Directory"
 ~/                      "pi50"
 
-#restart netatalk
+# restart netatalk
 sudo /etc/init.d/netatalk start
-```
+~~~
 
-###Startup mailer
+### Startup mailer
 
 Purpose here is to have your Pi email you when it gets a network connection. This is very useful (and necessary) if the IP is changing with automatic DHCP.
 
 This is startup_mailer.py (in all its crappy code style)
 
-```
+~~~
 import subprocess
 import smtplib
 import socket
@@ -112,7 +112,7 @@ smtpserver.starttls()
 smtpserver.ehlo
 smtpserver.login(gmail_user, gmail_password)
 
-#a linux command line call
+# a linux command line call
 arg='ip route list'
 p=subprocess.Popen(arg,shell=True,stdout=subprocess.PIPE)
 data = p.communicate()
@@ -121,7 +121,7 @@ split_data = data[0].split()
 ipaddr = split_data[split_data.index('src')+1]
 routerAddress = split_data[split_data.index('via')+1]
 
-#eventText is parameter to this function
+# eventText is parameter to this function
 mail_body = 'raspberrycam2 %s:\n' % eventText
 mail_body += 'IP: %s\n' % ipaddr
 mail_body += 'router: %s' % routerAddress
@@ -138,11 +138,11 @@ msg['From'] = gmail_user
 msg['To'] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
-```
+~~~
 
-###Another version of my startup_mailer.py
+### Another version of my startup_mailer.py
 
-```
+~~~
 import subprocess
 import smtplib
 import socket
@@ -175,13 +175,13 @@ msg['From'] = gmail_user
 msg['To'] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
-```
+~~~
 
-###Edit /etc/rc.local 
+### Edit /etc/rc.local 
 
 rc.local will run code each itme a user logs in.
 
-```
+~~~
 #!/bin/sh -e
 #
 # rc.local
@@ -203,17 +203,17 @@ if [ "$_IP" ]; then
 fi
 
 exit 0
-```
+~~~
 
-###Useful network commands
+### Useful network commands
 
-```
-#scan for available wifi networks
+~~~
+# scan for available wifi networks
 sudo iwlist wlan0 scan
-#show network adapter status
+# show network adapter status
 ifconfig wlan0
-#turn off and on network adapter
+# turn off and on network adapter
 sudo ifdown wlan0
 sudo ifup wlan0
-```
+~~~
 

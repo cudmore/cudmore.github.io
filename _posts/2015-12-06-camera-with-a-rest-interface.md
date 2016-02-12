@@ -27,7 +27,7 @@ VideoServer.py is using a circular stream such that when recording is started, i
    
  - timelapse_app.py, starts a flask webserver which provides a REST api as a wrapper around VideoServer.py:
  
-```
+~~~
      http://192.168.1.12:5010/startarm
      http://192.168.1.12:5010/stoparm
      http://192.168.1.12:5010/startvideo
@@ -35,20 +35,20 @@ VideoServer.py is using a circular stream such that when recording is started, i
      http://192.168.1.12:5010/timelapseon
      http://192.168.1.12:5010/timelapseoff
      http://192.168.1.12:5010/lastimage
-```
+~~~
 
 **To Do:** I still need to expose 'bufferSeconds' and 'stillinterval' to the REST API.
 
-###Get the last timelapse image in a browser or with curl
+### Get the last timelapse image in a browser or with curl
 
-```
-#display in browser
+~~~
+# display in browser
 http://192.168.1.12:5010/lastimage
-#save from command line
+# save from command line
 curl -o http://192.168.1.12:5010/lastimage
-```
+~~~
 
-###rsync the images and video to a remote host
+### rsync the images and video to a remote host
 
 Now I want to get the videos/images off the machine with the camera. There are more options than I can count but here are three:
 
@@ -58,27 +58,27 @@ Now I want to get the videos/images off the machine with the camera. There are m
 
 I will use rsynch to push the images to a remote server. Follow [this](http://troy.jdmz.net/rsync/index.html) for a really thorough explanation.
 
-```
-#assuming you have a folder 'securitycam' on remote host
+~~~
+# assuming you have a folder 'securitycam' on remote host
 rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
-```
+~~~
 
 Make sure you can [login to remote server](http://127.0.0.1:4000/post/2015/05/04/Auto-login-to-ssh-server/) without entering a password
 
-```
+~~~
 add this
-```
+~~~
 
 Run rsynch command every 10 minutes with crontab
 
-```
+~~~
 crontab -e
-```
+~~~
 
-```
+~~~
 */10 * * * * /usr/bin/rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
-```
+~~~
 
-###Here is a gist with VideoServer.py and timelapse_app.py
+### Here is a gist with VideoServer.py and timelapse_app.py
 
 <script src="https://gist.github.com/cudmore/c4ab92d288cfd1778be5.js"></script>

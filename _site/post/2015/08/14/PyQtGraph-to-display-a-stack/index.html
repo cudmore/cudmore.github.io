@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -185,39 +185,42 @@
   <span class="post-date">14 Aug 2015</span>
   <p>This will display a 3D .tif stack where slices can be viewed and contrast set.</p>
 
-<h4>Install libraries</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">pip install pyqtgraph
+<h4 id="install-libraries">Install libraries</h4>
+
+<pre><code>pip install pyqtgraph
 pip install tifffile
-</code></pre></div>
-<h4>Python code</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">import pyqtgraph as pg
+</code></pre>
+
+<h4 id="python-code">Python code</h4>
+
+<pre><code>import pyqtgraph as pg
 import tifffile
-tif = tifffile.TiffFile(&#39;Desktop/zyF4107_d1_s0_ch1.tif&#39;)
+tif = tifffile.TiffFile('Desktop/zyF4107_d1_s0_ch1.tif')
 images = tif.asarray()
 pg.image(images)
-</code></pre></div>
-<h4>To Do</h4>
+</code></pre>
 
+<h4 id="to-do">To Do</h4>
 <ul>
-<li>Not sure how this works for 2 channels.</li>
-<li>See how easy it is to plugin custom python code into PyQtGraph.
-
-<ol>
-<li>Remove the right contrast slider and bottom slice slider.</li>
-<li>Swap mouse wheel from zooming image to scrolling slices.</li>
-<li>Overlay 3D annotations that are masked. Appear and disappear as a function of slices.</li>
-<li>Select a 3D annotation.</li>
-</ol></li>
+  <li>Not sure how this works for 2 channels.</li>
+  <li>See how easy it is to plugin custom python code into PyQtGraph.
+    <ol>
+      <li>Remove the right contrast slider and bottom slice slider.</li>
+      <li>Swap mouse wheel from zooming image to scrolling slices.</li>
+      <li>Overlay 3D annotations that are masked. Appear and disappear as a function of slices.</li>
+      <li>Select a 3D annotation.</li>
+    </ol>
+  </li>
 </ul>
 
-<h4>Links</h4>
+<h4 id="links">Links</h4>
 
 <ul>
-<li><a href="http://www.pyqtgraph.org">PyQtGraph</a></li>
-<li>TiffFile is provided by <a href="http://www.lfd.uci.edu/%7Egohlke/">Christoph Gohlke</a> and is <a href="http://www.lfd.uci.edu/%7Egohlke/code/tifffile.py.html">here</a></li>
+  <li><a href="http://www.pyqtgraph.org">PyQtGraph</a></li>
+  <li>TiffFile is provided by <a href="http://www.lfd.uci.edu/%7Egohlke/">Christoph Gohlke</a> and is <a href="http://www.lfd.uci.edu/~gohlke/code/tifffile.py.html">here</a></li>
 </ul>
 
-<p><IMG SRC="/images/example-pyqtgraph.png" width=800></p>
+<p>&lt;IMG SRC=”/images/example-pyqtgraph.png” width=800&gt;</p>
 
 </div>
 

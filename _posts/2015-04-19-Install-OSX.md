@@ -9,59 +9,59 @@ tags:
 ---
 
 Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  
- - Motherboard is [GA-Z77X-UP5-TH](http://www.gigabyte.com/products/product-page.aspx?pid=4279#ov)  
- - BIOS is [F12](http://www.gigabyte.com/products/product-page.aspx?pid=4279#bios)  
+ - Motherboard is [GA-Z77X-UP5-TH](http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov)  
+ - BIOS is [F12](http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios)  
  - Followed Tonymac post by [Stork](http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html)
 
 
-####Analysis  
+#### Analysis  
  - [Igor](http://www.wavemetrics.com/support/versions.htm)
  - [Fiji](http://fiji.sc/Downloads)
     - Using 'Fiji Life-Line version, 2014 November 25'. 
     - Fiji will not run until setting: Security & Privacy -> Allow apps downloaded from: Anywhere  
     - Installing Java SE 6
  
-####Development  
+#### Development  
  - [Macports](https://www.macports.org/install.php)
  - XCode command line tools   
-    ```
+    ~~~
     xcode-select --install
-    ```  
+    ~~~  
  - [Anaconda](http://continuum.io/downloads)
  - [Jekyll](http://jekyllrb.com/docs/installation/)   
-    ```
+    ~~~
     gem install jekyll
-    ```
+    ~~~
 
-####Synchronization  
+#### Synchronization  
  - [GitHub](https://mac.github.com)
  - [Unison](http://www.cis.upenn.edu/~bcpierce/unison/)
  
-####Utility  
+#### Utility  
  - [TextWrangler](http://www.barebones.com/products/textwrangler/download.html)
  - [iStat Menus](http://bjango.com/mac/istatmenus/)
  - [Unarchiver](http://unarchiver.c3.cx/unarchiver) - Handles .xz, .exe
  
-####Word processing and layout
+#### Word processing and layout
  - iWork
  - Adobe Illustrator CS6
  - Adobe reader (for digital signatures)
  
-####Web
+#### Web
  - Stock install of Safari
  - Chrome
 
-####Media
+#### Media
  - [VLC](http://www.videolan.org)
  
-####Torrent
+#### Torrent
  - [mu-torrent](http://www.utorrent.com/downloads/mac)
  
 
-####Remote desktop connection to Raspberry Pi
+#### Remote desktop connection to Raspberry Pi
  - [realVNC viewer](http://www.realvnc.com/download/viewer/)
  
-####myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)
+#### myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)
 
  - [FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]  
 

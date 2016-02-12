@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -188,6 +188,29 @@
 	  <hr style="background:#999; border:0; height:2px" >
 
     <h2 class="post-title">
+      <a href="/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/">
+        Behavioral data acquisition with Raspberry, Arduino, Video and ScanImage
+      </a>
+    </h2>
+  
+    <span class="post-date">08 Jun 2015</span>
+	
+	
+
+	<p>Have a Raspberry Pi be the master control for a trial based experiment. Each trial is started by the Pi, the Pi triggers an Arduino and ScanImage (via TTL) and then saves Arduino based timestamped events to a file while recording real-time timestamped video.</p>
+
+
+	
+	<br clear="all"/>
+	
+  </div>
+  
+  <div class="post">
+	
+
+	  <hr style="background:#999; border:0; height:2px" >
+
+    <h2 class="post-title">
       <a href="/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/">
         Changing default mount name in Apple File Sharing
       </a>
@@ -197,7 +220,8 @@
 	
 	
 
-	<p>I mount multiple Raspberry Pi&#39;s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name &#39;Home Directory&#39;. There is no way to tell them apart once mounted (except for looking at what is in them).</p>
+	<p>I mount multiple Raspberry Pi’s via Apple File Protocol (AFP). They each get mounted on my Mac as a hard-drive on the desktop but each one defaults to the same name ‘Home Directory’. There is no way to tell them apart once mounted (except for looking at what is in them).</p>
+
 
 	
 	<br clear="all"/>
@@ -221,6 +245,7 @@
 
 	<p>Goal here is to make an Arduino do four things simultaneously:</p>
 
+
 	
 	<br clear="all"/>
 	
@@ -242,6 +267,7 @@
 	
 
 	<p>I have a Fat32 formatted USB drive and I want to have it mounted when the Raspberry Pi boots. To do this I add an entry to my fstab file using the UUID of the drive and some permission.</p>
+
 
 	
 	<br clear="all"/>
@@ -265,27 +291,6 @@
 
 	<p>This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.</p>
 
-	
-	<br clear="all"/>
-	
-  </div>
-  
-  <div class="post">
-	
-
-	  <hr style="background:#999; border:0; height:2px" >
-
-    <h2 class="post-title">
-      <a href="/post/2015/05/04/Auto-login-to-ssh-server/">
-        Auto login to ssh servers
-      </a>
-    </h2>
-  
-    <span class="post-date">04 May 2015</span>
-	
-	
-
-	<p>In order to automatically login to an ssh server, you need to generate public/private rsa key pairs on a client and copy these keys to an ssh server. Next time you login from the client to the server, you won’t need to enter your password.</p>
 
 	
 	<br clear="all"/>

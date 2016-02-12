@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -186,43 +186,48 @@
   <p>Goal is to get plotting with bokeh on the Raspberry Pi.</p>
 
 <ul>
-<li>Install continuum anaconda python distribution</li>
-<li>Install bokeh plotting and get a plot server running</li>
-<li>be able to run bokeh examples</li>
+  <li>Install continuum anaconda python distribution</li>
+  <li>Install bokeh plotting and get a plot server running</li>
+  <li>be able to run bokeh examples</li>
 </ul>
 
 <p>[UPDATE August 16, 2015]
-[THIS IS NOT WORKING ... REWRITING]</p>
+[THIS IS NOT WORKING … REWRITING]</p>
 
 <ul>
-<li>don&#39;t install miniconda, just use stock raspian pytohn</li>
+  <li>don’t install miniconda, just use stock raspian pytohn</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># this takes &gt; 1 hour on a Raspberry Pi Model B !!!</span>
-<span class="c"># most of the time is spent in gcc cc1 command</span>
-<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="o">--</span><span class="n">upgrade</span> 
-<span class="c"># after &gt; 1 hour I get an error</span>
-<span class="c"># Successfully installed pandas python-dateutil pytz</span>
-<span class="c"># OSError: [Errno 39] Directory not empty: &#39;/home/pi/build/pytz&#39;</span>
-<span class="c"># I am ignoring this pytz error (something to do with timezone library???)</span>
-<span class="c">#</span>
-<span class="c"># now i am sidetracked</span>
-<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">ipython</span>
-<span class="c"># ipython seems ok</span>
-<span class="c">#</span>
-<span class="c"># this next one may take awhile, started at 1:50pm</span>
-<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">bokeh</span>  
-<span class="c"># seems ok, can import pandas in python but it gives error</span>
-<span class="c">#</span>
-<span class="c">#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used</span>
-<span class="c">#    The minimum supported version is 2.1</span>
-<span class="c">#</span>
-<span class="c"># fixed error with (hopefully does not cause other problems)</span>
-<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">numexpr</span> <span class="o">--</span><span class="n">upgrade</span>
-</code></pre></div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777"># this takes &gt; 1 hour on a Raspberry Pi Model B !!!</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#777"># most of the time is spent in gcc cc1 command</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>sudo pip install pandas --upgrade 
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#777"># after &gt; 1 hour I get an error</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#777"># Successfully installed pandas python-dateutil pytz</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span style="color:#777"># OSError: [Errno 39] Directory not empty: '/home/pi/build/pytz'</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#777"># I am ignoring this pytz error (something to do with timezone library???)</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#777">#</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#777"># now i am sidetracked</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>sudo pip install ipython
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#777"># ipython seems ok</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span><span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span><span style="color:#777"># this next one may take awhile, started at 1:50pm</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>sudo pip install bokeh  
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span><span style="color:#777"># seems ok, can import pandas in python but it gives error</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span><span style="color:#777">#</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span><span style="color:#777">#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used</span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span><span style="color:#777">#    The minimum supported version is 2.1</span>
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span><span style="color:#777">#</span>
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span><span style="color:#777"># fixed error with (hopefully does not cause other problems)</span>
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>sudo pip install numexpr --upgrade
+</pre></div>
+</div>
+</div>
+
 <p>[ORIGINAL POST STARTS HERE]</p>
 
-<h3>Install miniconda</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+<h3 id="install-miniconda">Install miniconda</h3>
+<pre><code>pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
 pi@pi40 ~ $ bash Miniconda-3.5.5-Linux-armv6l.sh 
 
 Miniconda will now be installed into this location:
@@ -255,24 +260,25 @@ A backup will be made to: /home/pi/.bashrc-miniconda.bak
 For this change to become active, you have to open a new terminal.
 
 Thank you for installing Miniconda!
-</code></pre></div>
-<h3>Make sure numpy and pandas is correct</h3>
+</code></pre>
+
+<h3 id="make-sure-numpy-and-pandas-is-correct">Make sure numpy and pandas is correct</h3>
 
 <blockquote>
-<p>pip install numpy --upgrade<br>
-pip install pandas --upgrade  </p>
+  <p>pip install numpy –upgrade<br />
+pip install pandas –upgrade  </p>
 </blockquote>
 
-<h3>Install bokeh</h3>
-
-<p>In general &#39;conda install bokeh&#39; does not work on Pi, bokeh is not in repo?</p>
+<h3 id="install-bokeh">Install bokeh</h3>
+<p>In general ‘conda install bokeh’ does not work on Pi, bokeh is not in repo?</p>
 
 <blockquote>
-<p>pip install bokeh  </p>
+  <p>pip install bokeh  </p>
 </blockquote>
 
-<p>For a list of required packages, see <a href="http://bokeh.pydata.org/en/latest/tutorial/quick_install.html">http://bokeh.pydata.org/en/latest/tutorial/quick_install.html</a>  </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
+<p>For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  </p>
+
+<pre><code>from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
 Ideally, you should have the following libraries installed:
 
 NumPy
@@ -282,9 +288,11 @@ Requests
 gevent
 gevent-websocket
 Pandas
-</code></pre></div>
-<h3>Currently installed with pip</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">pi@pi40 ~ $ pip freeze
+</code></pre>
+
+<h3 id="currently-installed-with-pip">Currently installed with pip</h3>
+
+<pre><code>pi@pi40 ~ $ pip freeze
 Flask==0.10.1
 Flask-Markdown==0.3
 Flask-Misaka==0.3.0
@@ -321,25 +329,24 @@ six==1.9.0
 tornado==4.1
 websocket==0.2.1
 wsgiref==0.1.2
-</code></pre></div>
-<h3>Grab some example plots from bokeh github</h3>
+</code></pre>
+
+<h3 id="grab-some-example-plots-from-bokeh-github">Grab some example plots from bokeh github</h3>
 
 <p>The bokeh example plots are at:</p>
 
 <blockquote>
-<p><a href="https://github.com/bokeh/bokeh/tree/master/examples/plotting/server">https://github.com/bokeh/bokeh/tree/master/examples/plotting/server</a></p>
+  <p>https://github.com/bokeh/bokeh/tree/master/examples/plotting/server</p>
 </blockquote>
 
-<h3>Run the bokeh-server</h3>
-
+<h3 id="run-the-bokeh-server">Run the bokeh-server</h3>
 <p>Remember, this make temporary files in directory you run it in.</p>
 
-<p>--ip 0.0.0.0 will redirect the server to your external IP, in my case <a href="http://192.168.1.40:5006">http://192.168.1.40:5006</a>  </p>
+<p>–ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006<br />
+&gt; 
+&gt; bokeh-server –backend=memory –ip 0.0.0.0</p>
 
-<blockquote>
-<p>bokeh-server --backend=memory --ip 0.0.0.0</p>
-</blockquote>
-<div class="highlight"><pre><code class="language-text" data-lang="text">pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
+<pre><code>pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
 No module named scipy
 
     Bokeh Server Configuration
@@ -350,14 +357,16 @@ No module named scipy
     backend        : memory
     python options : debug:OFF, verbose:OFF, filter-logs:OFF, multi-user:OFF
     js options     : splitjs:OFF, debugjs:OFF
-
+    
 /home/pi/miniconda/lib/python2.7/site-packages/bokeh/server/blaze/__init__.py:19: UserWarning: could not import multiuser blaze server No module named blaze.  This is fine if you do not intend to use blaze capabilities in the bokeh server
   warnings.warn(msg)
-</code></pre></div>
-<h3>Example plots I have working</h3>
+</code></pre>
+
+<h3 id="example-plots-i-have-working">Example plots I have working</h3>
 
 <p>line_animate.py</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># The plot server must be running
+
+<pre><code># The plot server must be running
 # Go to http://localhost:5006/bokeh to view this plot
 
 import time
@@ -371,37 +380,36 @@ N = 80
 x = np.linspace(0, 4*np.pi, N)
 y = np.sin(x)
 
-output_server(&quot;line_animate&quot;)
+output_server("line_animate")
 
 p = figure()
 
-p.line(x, y, color=&quot;#3333ee&quot;, name=&quot;sin&quot;)
-p.line([0,4*np.pi], [-1, 1], color=&quot;#ee3333&quot;)
+p.line(x, y, color="# 3333ee", name="sin")
+p.line([0,4*np.pi], [-1, 1], color="# ee3333")
 
 show(p)
 
-renderer = p.select(dict(name=&quot;sin&quot;))
+renderer = p.select(dict(name="sin"))
 ds = renderer[0].data_source
 
 while True:
     for i in np.hstack((np.linspace(1, -1, 100), np.linspace(-1, 1, 100))):
-        ds.data[&quot;y&quot;] = y * i
+        ds.data["y"] = y * i
         cursession().store_objects(ds)
         time.sleep(0.05)
-</code></pre></div>
-<h3>Now use Flask + bokeh to generate a single html page (no bokeh-server)</h3>
+</code></pre>
 
+<h3 id="now-use-flask--bokeh-to-generate-a-single-html-page-no-bokeh-server">Now use Flask + bokeh to generate a single html page (no bokeh-server)</h3>
 <ul>
-<li>eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)</li>
-<li>simple example that works: <a href="https://github.com/bokeh/bokeh/tree/master/examples/embed/simple">https://github.com/bokeh/bokeh/tree/master/examples/embed/simple</a><br></li>
-<li>more complex: <a href="https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram">https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram</a></li>
+  <li>eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)</li>
+  <li>simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple  </li>
+  <li>more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram</li>
 </ul>
 
-<h3>Links</h3>
-
+<h3 id="links">Links</h3>
 <ul>
-<li><a href="http://bokeh.pydata.org/en/latest/index.html">http://bokeh.pydata.org/en/latest/index.html</a><br></li>
-<li><a href="http://docs.continuum.io/anaconda/install.html">http://docs.continuum.io/anaconda/install.html</a><br></li>
+  <li>http://bokeh.pydata.org/en/latest/index.html  </li>
+  <li>http://docs.continuum.io/anaconda/install.html  </li>
 </ul>
 
 </div>

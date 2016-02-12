@@ -12,23 +12,23 @@ I mount multiple Raspberry Pi's via Apple File Protocol (AFP). They each get mou
 
 Here is how you change the name of the default AFP mount point.
 
-    #stop netatalk
+    # stop netatalk
     sudo /etc/init.d/netatalk stop
     
-    #edit config file
+    # edit config file
     sudo nano /etc/netatalk/AppleVolumes.default
 	
-	#change this one line
+	# change this one line
 	
 	# By default all users have access to their home directories.
 	#~/                     "Home Directory"
 	~/                      "pi50"
 
-    #restart netatalk
+    # restart netatalk
     sudo /etc/init.d/netatalk start
 
 This pi will now mount on my Mac desktop as a hard-drive named 'pi50'
 
-####Links
+#### Links
 
 I got this [from here](https://www.raspberrypi.org/forums/viewtopic.php?f=36&t=26826).

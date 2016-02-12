@@ -9,7 +9,7 @@ tags:
 
 This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.
 
-###Preliminaries
+### Preliminaries
 
     sudo raspi-config # configure pi with text menu
     
@@ -19,17 +19,17 @@ This is the procedure I follow to install a fresh raspbian system on a Raspberry
     
     sudo rpi-update # update firmware (requires reboot)
     
-###Apple-File-Protocol (afp)
+### Apple-File-Protocol (afp)
 
     sudo apt-get install netatalk
     
-###Unison file synchronization
+### Unison file synchronization
 
 See my post [here](http://www.robertcudmore.org/blog/?p=168)
 
     sudo apt-get install unison
-    #see link to set up auto authentication with rsa keys
-    unison #run once to make /home/pi/.unison
+    # see link to set up auto authentication with rsa keys
+    unison # run once to make /home/pi/.unison
     pico /home/pi/.unison/sites.prf    
 
     # This is contents of /home/pi/.unison/sites.prf
@@ -45,53 +45,53 @@ See my post [here](http://www.robertcudmore.org/blog/?p=168)
     ignore = Name *.htaccess
 
     # Be fast even on Windows
-    #fastcheck = yes
+    # fastcheck = yes
 
     servercmd=/home1/robertcu/unison
 
-###Startup mailer
+### Startup mailer
 See my post [here](http://www.robertcudmore.org/blog/?p=60).
 
 Use gmail 'cudmore.raspberry@gmail.com' to send  
     
      wget http://cudmore.github.io/downloads/startup_mailer.py
 
-###What is my ip
+### What is my ip
 
 Download whatismyip.py, run it and it will tell you your ip
 
      wget http://cudmore.github.io/downloads/whatismyip.py
     
-###python
+### python
 
     sudo apt-get install python-dev  
     
-###pip
+### pip
 
     sudo apt-get install python-pip  
     
-###Flask
+### Flask
 
 - Flask tutorial [here](http://mattrichardson.com/Raspberry-Pi-Flask/)  
 
     sudo pip install flask  
     
-###socketio for Flask
+### socketio for Flask
 
 - [socketio website](https://flask-socketio.readthedocs.org/en/latest/)  
 - [socketio tutorial](http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent)  
 
     sudo pip install flask-socketio  
     
-###pandas (this takes awhile)
+### pandas (this takes awhile)
 
     sudo apt-get install python-pandas  
     
-###subversion
+### subversion
 
     sudo apt-get install subversion
 
-###mjpg-streamer  
+### mjpg-streamer  
 
 See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/)
 
@@ -105,7 +105,7 @@ See my post [here](http://cudmore.github.io/post/2015/03/15/Installing-mjpg-stre
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/  
     sudo cp -R www /usr/local/www  
     
-    sudo apt-get install v4l-utils #this is to detect parameters of USB camera  
+    sudo apt-get install v4l-utils # this is to detect parameters of USB camera  
     
 Note, make 'input_uvc.so' is for usb cam and 'input_file' is for raspberry CSI camera  
 
@@ -113,35 +113,35 @@ If wget does not find mjpg-streamer, download it here
     
     wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
     
-###opencv
+### opencv
 
 See my post on open cv [here](http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/)  
 
     sudo apt-get install libopencv-dev python-opencv
     
-###PIL
+### PIL
 
 Not sure if there is apt-get install python-pil ???
 
     sudo pip install pil
     
-###Upgrade numpy (takes a long time)
+### Upgrade numpy (takes a long time)
 
 - required for pandas and bokeh
 
     sudo pip install numpy --upgrade  
 
-###Install pandas
+### Install pandas
 
     sudo apt-get install python-pandas  
 
-###Install bokeh
+### Install bokeh
 
 - To do, get an example running again  
 
     sudo pip install bokeh
 
-###Install [python-qt4](https://wiki.python.org/moin/PyQt)
+### Install [python-qt4](https://wiki.python.org/moin/PyQt)
 
 The list of qt libraries is huge, see [here](https://www.raspberrypi.org/forums/viewtopic.php?f=32&t=102028)
 
@@ -150,7 +150,7 @@ The list of qt libraries is huge, see [here](https://www.raspberrypi.org/forums/
     
 # !!! Stop Here !!!
 
-###Client side socket.io javascript
+### Client side socket.io javascript
 Client side needs socketio javascript: http://socket.io  
 Put this in your Flask project /static/js/  
 Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js  
@@ -159,14 +159,14 @@ Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js
 > cp socket.io.min.js Sites/iosserver/static/js/
 
 
-###Client side jquery
+### Client side jquery
 documentation at: http://jquery.com/download/  
 
 > wget wget http://code.jquery.com/jquery-1.11.2.min.js  
 > cp jquery-1.11.2.min.js Sites/iosserver/static/js/
 
 
-###miniconda
+### miniconda
 anaconda install tutorial http://docs.continuum.io/anaconda/install.html
 
 > wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
@@ -175,12 +175,12 @@ anaconda install tutorial http://docs.continuum.io/anaconda/install.html
 > conda update conda
 > conda update anaconda
 
-###bokeh
+### bokeh
 bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html
 make sure dependencies are installed: NumPy, Pandas, and Redis
 > pip install bokeh
 
-###Streaming from a webcam or camera module using mjpg streamer
+### Streaming from a webcam or camera module using mjpg streamer
 
 My home usb video camera shows up as
 
@@ -201,7 +201,7 @@ http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/
 
 http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi
 
-###my usb webcam has following output
+### my usb webcam has following output
 - v4l2-ctl --list-formats
 	pi@pi50 ~ $ v4l2-ctl --list-formats
 	ioctl: VIDIOC_ENUM_FMT
@@ -261,7 +261,7 @@ http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-ra
 
 	input_init() return value signals to exit
 
-#THIS WORKS FOR USB WEBCAM
+# THIS WORKS FOR USB WEBCAM
 
     /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 

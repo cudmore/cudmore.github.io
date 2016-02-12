@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -183,67 +183,80 @@
       <div class="post">
   <h3 class="post-title">Camera with a REST interface</h1>
   <span class="post-date">06 Dec 2015</span>
-  <p>I&#39;ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.</p>
+  <p>I’ve written a few versions of this. In previous versions I would control everything from a Python prompt, or a complex flask app, or use DIO to trigger video.</p>
 
 <p>In this version I am trying to keep it simple and starting/stopping video and timelapse images with a REST api.</p>
 
 <p>To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.</p>
 
-<p>VideoServer.py is using a circular stream such that when recording is started, it also saves &#39;pre-triggered&#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I&#39;ve written VideoServer as a class inheriting from <a href="https://docs.python.org/2/library/threading.html">threading.Thread</a> so it can run daemonized as a background thread, otherwise it will block other code.</p>
+<p>VideoServer.py is using a circular stream such that when recording is started, it also saves ‘pre-triggered’ video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I’ve written VideoServer as a class inheriting from <a href="https://docs.python.org/2/library/threading.html">threading.Thread</a> so it can run daemonized as a background thread, otherwise it will block other code.</p>
 
 <ul>
-<li><p>VideoServer.py, controls the camera with the following interface:</p>
-
-<ul>
-<li>startArm(), initializes the camera.</li>
-<li>stopArm(), release the camera.</li>
-<li>startVideo(), starts video recording.</li>
-<li>stopVideo(), stops video recording</li>
-<li>doTimelapse=1, starts acquiring timelapse images</li>
-<li>doTimelapse=0, stops acquiring timelapse images</li>
-</ul></li>
-<li><p>timelapse_app.py, starts a flask webserver which provides a REST api as a wrapper around VideoServer.py:</p></li>
+  <li>VideoServer.py, controls the camera with the following interface:
+    <ul>
+      <li>startArm(), initializes the camera.</li>
+      <li>stopArm(), release the camera.</li>
+      <li>startVideo(), starts video recording.</li>
+      <li>stopVideo(), stops video recording</li>
+      <li>doTimelapse=1, starts acquiring timelapse images</li>
+      <li>doTimelapse=0, stops acquiring timelapse images</li>
+    </ul>
+  </li>
+  <li>timelapse_app.py, starts a flask webserver which provides a REST api as a wrapper around VideoServer.py:</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">     http://192.168.1.12:5010/startarm
+
+<pre><code>     http://192.168.1.12:5010/startarm
      http://192.168.1.12:5010/stoparm
      http://192.168.1.12:5010/startvideo
      http://192.168.1.12:5010/stopvideo
      http://192.168.1.12:5010/timelapseon
      http://192.168.1.12:5010/timelapseoff
      http://192.168.1.12:5010/lastimage
-</code></pre></div>
-<p><strong>To Do:</strong> I still need to expose &#39;bufferSeconds&#39; and &#39;stillinterval&#39; to the REST API.</p>
+</code></pre>
 
-<h3>Get the last timelapse image in a browser or with curl</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">#display in browser
+<p><strong>To Do:</strong> I still need to expose ‘bufferSeconds’ and ‘stillinterval’ to the REST API.</p>
+
+<h3 id="get-the-last-timelapse-image-in-a-browser-or-with-curl">Get the last timelapse image in a browser or with curl</h3>
+
+<pre><code># display in browser
 http://192.168.1.12:5010/lastimage
-#save from command line
+# save from command line
 curl -o http://192.168.1.12:5010/lastimage
-</code></pre></div>
-<h3>rsync the images and video to a remote host</h3>
+</code></pre>
+
+<h3 id="rsync-the-images-and-video-to-a-remote-host">rsync the images and video to a remote host</h3>
 
 <p>Now I want to get the videos/images off the machine with the camera. There are more options than I can count but here are three:</p>
 
 <ul>
-<li>Push the recorded video/images to another server from within Python/Flask. I&#39;ve done this before with <a href="http://www.paramiko.org">Paramiko</a> but have always had problems with the code hanging or exceptions thrown when a network connection is lost. </li>
-<li>Have another machine (also running flask) pull the images off the camera machine. This can be done with the /lastimage REST path. This requires the other machine to be running server code itself and to have some sort of timer.</li>
-<li>Use <strong>rsynch</strong> on the machine running the camera to a push videos/images to a remote server and use <strong>cron</strong> to do this at a regular interval.</li>
+  <li>Push the recorded video/images to another server from within Python/Flask. I’ve done this before with <a href="http://www.paramiko.org">Paramiko</a> but have always had problems with the code hanging or exceptions thrown when a network connection is lost. </li>
+  <li>Have another machine (also running flask) pull the images off the camera machine. This can be done with the /lastimage REST path. This requires the other machine to be running server code itself and to have some sort of timer.</li>
+  <li>Use <strong>rsynch</strong> on the machine running the camera to a push videos/images to a remote server and use <strong>cron</strong> to do this at a regular interval.</li>
 </ul>
 
 <p>I will use rsynch to push the images to a remote server. Follow <a href="http://troy.jdmz.net/rsync/index.html">this</a> for a really thorough explanation.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">#assuming you have a folder &#39;securitycam&#39; on remote host
+
+<pre><code># assuming you have a folder 'securitycam' on remote host
 rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
-</code></pre></div>
+</code></pre>
+
 <p>Make sure you can <a href="http://127.0.0.1:4000/post/2015/05/04/Auto-login-to-ssh-server/">login to remote server</a> without entering a password</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">add this
-</code></pre></div>
+
+<pre><code>add this
+</code></pre>
+
 <p>Run rsynch command every 10 minutes with crontab</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">crontab -e
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">*/10 * * * * /usr/bin/rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
-</code></pre></div>
-<h3>Here is a gist with VideoServer.py and timelapse_app.py</h3>
+
+<pre><code>crontab -e
+</code></pre>
+
+<pre><code>*/10 * * * * /usr/bin/rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
+</code></pre>
+
+<h3 id="here-is-a-gist-with-videoserverpy-and-timelapseapppy">Here is a gist with VideoServer.py and timelapse_app.py</h3>
 
 <script src="https://gist.github.com/cudmore/c4ab92d288cfd1778be5.js"></script>
+
 
 </div>
 

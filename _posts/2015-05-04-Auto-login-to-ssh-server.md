@@ -63,12 +63,12 @@ In what follows I am setting up automatic rsa authentication from a client to a 
 
     ssh pi@192.168.1.70
 
-####Notes
+#### Notes
 
 - If your Raspberry does not have a ./.ssh directory you need to turn on ssh using ‘sudo raspi-config’ -> advanced options -> ssh
 - When you append to authorized_keys with ‘cat id_rsa.pub >> ./.ssh/authorized_keys’, the file will be created if it does not exist.
 - If your client is Mac OS X you will be asked for a passphrase when you generate your ssh public/private keys with ‘ssh-keygen -t rsa’. This is an extra level of security. The first time you login to your ssh server, OS X will ask for this passphrase. Again, your security is only as good as you keeping your passwords safe. Using a passphrase for your OSX keychain is convenient but if someone gets this passphrase, they in turn get all your passwords within your keychain. This may seem very circular and it is, the art is in being creative in breaking the loop.
 
-####Fun
+#### Fun
 
 -ssh -o VisualHostKey=yes pi@192.168.1.70

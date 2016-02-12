@@ -9,45 +9,45 @@ tags:
 - arduino
 ---
 
-####This is not working ... as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.
+#### This is not working ... as of 12/3/2015 I will just wait for the particle people to update the particle-server with better support for the photon (it is really designed for the particle.
 
 The paticle photon is a great little wifi enabled arduino. The only problem I have is that all read/write using its REST API requires internet acces to a particle.io account. To get around this, you can run a particle cloud server locally.
 
 I am doing all of this on a Debian Jessie server.
 
-####install git
-```
+#### install git
+~~~
 sudo apt-get install git
-```
+~~~
 
-####install nodejs (use su to enter su/root)
+#### install nodejs (use su to enter su/root)
 Following: https://github.com/nodesource/distributions
 
-```
+~~~
 curl -sL https://deb.nodesource.com/setup_4.x | bash -
 apt-get install -y nodejs
-```
+~~~
 
-####Install particle cli
+#### Install particle cli
 Following: https://github.com/spark/particle-cli
 
-```
+~~~
 sudo npm install -g particle-cli
-```
+~~~
 
-####Install particle cloud server
+#### Install particle cloud server
 Following: https://github.com/spark/spark-server/
 
-```
+~~~
 git clone https://github.com/spark/spark-server.git
 cd spark-server
 npm install
 node main.js
-```
+~~~
 
 'node main.js' produced
 
-```
+~~~
 -------
 No users exist, you should create some users!
 -------
@@ -73,22 +73,22 @@ gQIDAQAB
 Your server IP address is: 192.168.1.200
 server started { host: 'localhost', port: 5683 }
 
-```
+~~~
 
-####Continue setting up particle server
+#### Continue setting up particle server
 Install [dfu-utils](http://dfu-util.sourceforge.net)
 
-```
-	#git clone git://git.code.sf.net/p/dfu-util/dfu-util
+~~~
+	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
 	sudo apt-get build-dep dfu-util
 	sudo apt-get install libusb-1.0-0-dev
-```
+~~~
 
 But that did not work so i did
 
-```
+~~~
 sudo apt-get upgrade dfu-util
-```
+~~~
 
 This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow [this](https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html) and edit /var/www/owncloud/config/config.php and set 'maintenance' => false,'. The next time I logged into my owncloud server it triggered an update to 8.2.1
 
@@ -98,13 +98,13 @@ Try again with particle photon plugged in via usb
 Still following: https://github.com/spark/spark-server/
 
 
-```
+~~~
 particle keys server default_key.pub.pem 192.168.1.10
-```
+~~~
 
 gave
 
-```
+~~~
 cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
 running dfu-util -l
 Found DFU device 2b04:d006
@@ -123,7 +123,7 @@ Opening DFU capable USB device...
 ID 2b04:d006
 Run-time device DFU version 011a
 Claiming USB DFU Interface...
-Setting Alternate Setting #1 ...
+Setting Alternate Setting # 1 ...
 Determining device status: state = dfuIDLE, status = 0
 dfuIDLE, continuing
 DFU mode device DFU version 011a
@@ -134,4 +134,4 @@ Download	[=========================] 100%         1024 bytes
 Download done.
 File downloaded successfully
 Okay!  New keys in place, your device will not restart.
-```
+~~~

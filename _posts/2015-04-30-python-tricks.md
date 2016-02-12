@@ -7,14 +7,14 @@ tags:
 - python
 ---
 
-####iPython auto reload imports
+#### iPython auto reload imports
 
     %load_ext autoreload
     %autoreload 2
 
 To autoload these options, see:
 
-http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython/10472712#10472712
+http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython/10472712# 10472712
 
     ipython profile create
     

@@ -72,6 +72,8 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Recent posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/19/MQTT/">MQTT</a><BR>
@@ -80,15 +82,13 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
-		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tag cloud</span>
 		
-    		<a style="font-size: 101%" href="/tags/#flask">
+    		<a style="font-size: 116%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -116,11 +116,11 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 163%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 178%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
@@ -187,52 +187,71 @@
 
 <p>Any program you run on the Pi server that has a GUI should be piped to the display of your mac client.</p>
 
-<h4>Install XQuartz on OSX</h4>
+<h4 id="install-xquartz-on-osx">Install XQuartz on OSX</h4>
 
 <ul>
-<li>Install stalls at about 80%, be patient</li>
-<li>Requires logout and login</li>
-<li>Download <a href="http://xquartz.macosforge.org/landing/">here</a></li>
+  <li>Install stalls at about 80%, be patient</li>
+  <li>Requires logout and login</li>
+  <li>Download <a href="http://xquartz.macosforge.org/landing/">here</a></li>
 </ul>
 
-<h4>ssh to Raspberry using &#39;-X&#39;</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">ssh -X pi@10.16.79.145
-</code></pre></div>
-<h4>On Raspberry server</h4>
+<h4 id="ssh-to-raspberry-using--x">ssh to Raspberry using ‘-X’</h4>
+
+<pre><code>ssh -X pi@10.16.79.145
+</code></pre>
+
+<h4 id="on-raspberry-server">On Raspberry server</h4>
 
 <ul>
-<li><p>This allows &#39;sudo python&#39; to work with things like Tk()</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo cp ~/.Xauthority ~root/
-</code></pre></div></li>
-<li><p>This tells X11 on the Pi server to send its windows to your mac client (when you remote ssh with -X)</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">export DISPLAY=&quot;127.0.0.1:10.0&quot;
-</code></pre></div></li>
+  <li>
+    <p>This allows ‘sudo python’ to work with things like Tk()</p>
+
+    <pre><code> sudo cp ~/.Xauthority ~root/
+</code></pre>
+  </li>
+  <li>
+    <p>This tells X11 on the Pi server to send its windows to your mac client (when you remote ssh with -X)</p>
+
+    <pre><code> export DISPLAY="127.0.0.1:10.0"
+</code></pre>
+  </li>
 </ul>
 
-<h4>Check that xeyes works</h4>
+<h4 id="check-that-xeyes-works">Check that xeyes works</h4>
+<ul>
+  <li>
+    <p>install</p>
+
+    <pre><code> sudo apt-get install x11-apps
+</code></pre>
+  </li>
+  <li>
+    <p>run</p>
+
+    <pre><code> xeyes&amp;
+ xclock&amp;
+ leafpad&amp;
+</code></pre>
+  </li>
+</ul>
+
+<h4 id="if-this-doesnt-work">If this doesn’t work</h4>
 
 <ul>
-<li><p>install</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install x11-apps
-</code></pre></div></li>
-<li><p>run</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">xeyes&amp;
-xclock&amp;
-leafpad&amp;
-</code></pre></div></li>
+  <li>
+    <p>open up X11 to everybody</p>
+
+    <pre><code>  xhost +
+</code></pre>
+  </li>
 </ul>
 
-<h4>If this doesn&#39;t work</h4>
+<h4 id="run-arduino-ide">Run Arduino ide</h4>
 
-<ul>
-<li><p>open up X11 to everybody</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">xhost +
-</code></pre></div></li>
-</ul>
+<pre><code>/usr/bin/arduino&amp;
+</code></pre>
 
-<h4>Run Arduino ide</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">/usr/bin/arduino&amp;
-</code></pre></div>
+
 </div>
 
 <div class="post-tags">
