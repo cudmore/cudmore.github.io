@@ -28,7 +28,7 @@
 		
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
-		    {% for post in site.posts offset: 0 limit: 5 %}
+		    {% for post in site.posts offset: 0 limit: 7 %}
 		      &raquo; <a class="sidebarlink" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><BR>
 		    {% endfor %}
 		</section>

@@ -330,7 +330,7 @@ tbody tr:nth-child(odd) th {
 
 .page,
 .post {
-  margin-bottom: 4em; //was 4
+  margin-bottom: 1em; //was 4
 }
 
 /* Blog post or page title */
