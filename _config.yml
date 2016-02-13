@@ -45,8 +45,9 @@ github:
 #following http://joshualande.com/jekyll-github-pages-poole/
 pages_list:       
   #Home: '/index.html'
-  about: '/about'
+  #about: '/about'
   archive: '/archive'
   tags: '/tags'
+  search: '/search'
   software: '/software'
   #feed: '/atom.xml'

@@ -3,9 +3,11 @@ jQuery(function() {
   // a boost of 10 to indicate matches on this field are more important.
   window.idx = lunr(function () {
     this.field('id');
-    this.field('title', { boost: 10 });
+    this.field('title');
+    this.field('content', { boost: 10 });
     this.field('author');
     this.field('category');
+    this.field('date');
   });
 
   // Download the data from the JSON file we generated
@@ -43,7 +45,7 @@ jQuery(function() {
           var item = loaded_data[result.ref];
 
           // Build a snippet of HTML for this result
-          var appendString = '<li><a href="' + item.url + '">' + item.title + '</a></li>';
+          var appendString = item.date + ' - <a href="' + item.url + '">' + item.title + '</a><BR>';
 
           // Add it to the results
           $search_results.append(appendString);

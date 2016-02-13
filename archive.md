@@ -17,7 +17,7 @@ title: Archive
       {% endif %}
     {% endunless %}
 
-    {{ post.date | date:"%b %d" }}, <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+    {{ post.date | date:"%b %d" }} - <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
     <BR>
     	
   {% endfor %}
