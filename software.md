@@ -5,7 +5,7 @@ tags:
 - software
 ---
 
-This is software I have developed since 2009. It is designed to allow me to perform in vivo two-photon imaging and to analyze the resultant 3D image volumes. It is currently being used in a few labs around Johns Hopkins but is not ready, in any way, to be distributed to the general public. This is not because I am being secretive (it is all documented freely on the interweb), it is just not ready to be used by others without my day-to-day help.
+This is software I have developed since 2009. It is designed to allow me to perform in vivo two-photon imaging and to analyze the resultant 3D image volumes. It is currently being used in a few labs around Johns Hopkins but is not ready to be distributed to the general public.
 
 #### [Igor Pro](http://www.wavemetrics.com) software
 

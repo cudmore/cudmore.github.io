@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-02-12T00:18:03-05:00</updated>
+ <updated>2016-02-12T20:46:44-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -2496,89 +2496,96 @@ input_init() return value signals to exit
   &lt;li&gt;
     &lt;p&gt;Preliminaries  &lt;/p&gt;
 
-    &lt;p&gt;~~~bash
+    &lt;p&gt;~~~
   sudo apt-get update&lt;br /&gt;
   sudo apt-get upgrade&lt;br /&gt;
   ~~~&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Install dependencies&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
-  ~~~&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;make symbolic link to changed library names. Thanks to Miguel Grinberg for &lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi]&quot;&gt;this&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
-  ~~~&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;download mjpg-streamer&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
-  ~~~&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;unzip&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  unzip mjpg-streamer-code-182.zip&lt;br /&gt;
-  ~~~&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;make symbolic link to changed library names. Thanks to Miguel Grinberg for &lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi]&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;download mjpg-streamer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;unzip&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    unzip mjpg-streamer-code-182.zip  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;here-is-where-the-installation-differs-depending-on-if-you-are-installing-1-a-usb-camera-or-2-the-raspberry-pi-camera-module&quot;&gt;Here is where the installation differs depending on if you are installing (1) a usb camera or (2) the raspberry pi camera module&lt;/h4&gt;
 
 &lt;h3 id=&quot;raspberry-pi-camera-module&quot;&gt;(1) Raspberry Pi camera module&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;build and install for raspberry pi camera module.  &lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  # build with ‘make’
-  cd mjpg-streamer-code-182/mjpg-streamer&lt;br /&gt;
-  make mjpg_streamer input_file.so output_http.so&lt;br /&gt;
-  # install by copying files
-  sudo cp mjpg_streamer /usr/local/bin&lt;br /&gt;
-  sudo cp output_http.so input_file.so /usr/local/lib/&lt;br /&gt;
-  sudo cp -R www /usr/local/www    &lt;br /&gt;
-  ~~~&lt;/p&gt;
-
-    &lt;p&gt;FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS ‘&lt;strong&gt;input_uvc.so&lt;/strong&gt;’.&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  # build with ‘make’
-  cd mjpg-streamer
-  make mjpg_streamer input_file.so input_uvc.so output_http.so
-  # install by copying
-  sudo cp mjpg_streamer /usr/local/bin
-  sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
-  sudo cp -R www /usr/local/www
-  ~~~&lt;/p&gt;
-
-    &lt;p&gt;I GUESS YOU COULD JUST FOLLOW ‘USB CAMERA’ AND IT WOULD WORK FOR BOTH&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;start the raspberry pi camera module&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  mkdir /tmp/stream&lt;br /&gt;
-  raspistill –nopreview -w 640 -h 480 -q 5 -o /tmp/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 &amp;amp;&lt;br /&gt;
-  ~~~&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;start mjpg-streamer for raspberry pi camera module. This streams using ‘&lt;strong&gt;input_file.so&lt;/strong&gt;’&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  LD_LIBRARY_PATH=/usr/local/lib&lt;br /&gt;
-  mjpg_streamer -i “input_file.so -f /tmp/stream -n pic.jpg” -o “output_http.so -w /usr/local/www”
-  ~~~&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;build and install for raspberry pi camera module.  &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
+    cd mjpg-streamer-code-182/mjpg-streamer  
+    make mjpg_streamer input_file.so output_http.so  
+    # install by copying files
+    sudo cp mjpg_streamer /usr/local/bin  
+    sudo cp output_http.so input_file.so /usr/local/lib/  
+    sudo cp -R www /usr/local/www      
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS &#39;**input_uvc.so**&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
+    cd mjpg-streamer
+    make mjpg_streamer input_file.so input_uvc.so output_http.so
+    # install by copying
+    sudo cp mjpg_streamer /usr/local/bin
+    sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
+    sudo cp -R www /usr/local/www
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I GUESS YOU COULD JUST FOLLOW &#39;USB CAMERA&#39; AND IT WOULD WORK FOR BOTH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;start the raspberry pi camera module&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    mkdir /tmp/stream  
+    raspistill --nopreview -w 640 -h 480 -q 5 -o /tmp/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 &amp;amp;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;start mjpg-streamer for raspberry pi camera module. This streams using ‘&lt;strong&gt;input_file.so&lt;/strong&gt;’&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    LD_LIBRARY_PATH=/usr/local/lib  
+    mjpg_streamer -i &quot;input_file.so -f /tmp/stream -n pic.jpg&quot; -o &quot;output_http.so -w /usr/local/www&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;build-for-usb-camera&quot;&gt;(2) build for usb camera&lt;/h3&gt;
 
@@ -2586,14 +2593,14 @@ input_init() return value signals to exit
   &lt;li&gt;
     &lt;p&gt;Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).  &lt;/p&gt;
 
-    &lt;p&gt;~~~bash
+    &lt;p&gt;~~~
   pi@pi50 ~ $ lsusb&lt;br /&gt;
   Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp.&lt;br /&gt;
   Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&lt;br /&gt;
   Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.&lt;br /&gt;
   Bus 001 Device 004: ID 1a40:0201 Terminus Technology Inc. FE 2.1 7-port Hub&lt;br /&gt;
   Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye&lt;br /&gt;
-  ~~~&lt;/p&gt;
+~~~&lt;/p&gt;
 
     &lt;p&gt;The last entry is my camera, a ‘Sony Playstation Eye’.&lt;/p&gt;
   &lt;/li&gt;
@@ -2607,7 +2614,7 @@ input_init() return value signals to exit
   &lt;li&gt;
     &lt;p&gt;Check the parameters of our USB camera  &lt;/p&gt;
 
-    &lt;p&gt;~~~bash
+    &lt;p&gt;~~~
   v4l2-ctl –list-formats  &lt;/p&gt;
 
     &lt;p&gt;ioctl: VIDIOC_ENUM_FMT&lt;br /&gt;
@@ -2615,51 +2622,57 @@ input_init() return value signals to exit
       Type        : Video Capture&lt;br /&gt;
       Pixel Format: ‘YUYV’&lt;br /&gt;
       Name        : YUYV&lt;br /&gt;
-  ~~~&lt;/p&gt;
+~~~&lt;/p&gt;
 
     &lt;p&gt;The YUYV is very important, I need to pass a -y option to jpg_streamer –input command. If you see MPEG you don’t need this -y switch.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to. &lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  mjpg_streamer –input “input_uvc.so –help”
-  # note, i am not showing the output here
-  # important line in output is this:
-  #  [-y | –yuv ]……….: enable YUYV format and disable MJPEG mode
-  ~~~&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;build and install for usb camera. Critical thing here is ‘&lt;strong&gt;input_uvc.so&lt;/strong&gt;’&lt;/p&gt;
+&lt;/ul&gt;
 
-    &lt;p&gt;~~~bash
-  # build with ‘make’
-  cd mjpg-streamer
-  make mjpg_streamer input_file.so input_uvc.so output_http.so
-  # install by copying
-  sudo cp mjpg_streamer /usr/local/bin
-  sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
-  sudo cp -R www /usr/local/www
-  ~~~&lt;/p&gt;
-  &lt;/li&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    mjpg_streamer --input &quot;input_uvc.so --help&quot;
+    # note, i am not showing the output here
+    # important line in output is this:
+    #  [-y | --yuv ]..........: enable YUYV format and disable MJPEG mode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;build and install for usb camera. Critical thing here is ‘&lt;strong&gt;input_uvc.so&lt;/strong&gt;’&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
+    cd mjpg-streamer
+    make mjpg_streamer input_file.so input_uvc.so output_http.so
+    # install by copying
+    sudo cp mjpg_streamer /usr/local/bin
+    sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
+    sudo cp -R www /usr/local/www
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;run mjpg-streamer to stream from usb camera&lt;/p&gt;
 
     &lt;p&gt;My usb camera uses YUYV, thus the ‘-y’&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  /usr/local/bin/mjpg_streamer -i “/usr/local/lib/input_uvc.so -y” -o “/usr/local/lib/output_http.so -w /usr/local/www”
-  ~~~&lt;/p&gt;
-
-    &lt;p&gt;If my camera used MJPEG instead of YUYV, the command is the same without the ‘-y’.&lt;/p&gt;
-
-    &lt;p&gt;~~~bash
-  /usr/local/bin/mjpg_streamer -i “/usr/local/lib/input_uvc.so” -o “/usr/local/lib/output_http.so -w /usr/local/www”
-  ~~~&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;#&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;If my camera used MJPEG instead of YUYV, the command is the same without the &#39;-y&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;done&quot;&gt;done&lt;/h3&gt;
 </content>
  </entry>
  
