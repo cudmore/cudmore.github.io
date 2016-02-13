@@ -8,23 +8,6 @@
     
       
       <item>
-        <title>Network attached camera</title>
-        
-          <description>&lt;ul&gt;
-  &lt;li&gt;camera&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        
-        <pubDate>Sun, 07 Feb 2016 17:01:06 -0500</pubDate>
-        <link>
-        http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>Bit Torrent Sync</title>
         
           <description>&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;BitTorrent Sync&lt;/a&gt; will synchronize folders between any number of machines on either a local LAN, over the internet, or via both. It synchronizes without using a central server as everyone is a peer, it is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Peer-to-peer&quot;&gt;peer-to-peer (P2P) network&lt;/a&gt;.&lt;/p&gt;
