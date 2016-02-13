@@ -210,16 +210,16 @@
 	  
 	  
     <h2 class="post-title">
-      <a href="/post/2015/04/30/python-tricks/">
-        Python tricks
+      <a href="/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">
+        mjpg-streamer on a Raspberry Pi
       </a>
     </h2>
   
-    <span class="post-date">30 Apr 2015</span>
+    <span class="post-date">15 Mar 2015</span>
 	
 	
 
-	<h4 id="ipython-auto-reload-imports">iPython auto reload imports</h4>
+	<p>This post covers downloading, installing and running mjp-streamer on a raspberry pi. There are two options for installation and streaming depending on if you stream from (1) a rapsberry pi camera module or (2) a USB camera.</p>
 
 
 	
@@ -235,79 +235,29 @@
 	  
 	  
     <h2 class="post-title">
-      <a href="/post/2015/04/29/vnc-on-raspberry/">
-        VNC on raspberry pi
+      <a href="/post/2015/03/07/use-opencv-to-acquire-video/">
+        Use OpenCV to acquire video
       </a>
     </h2>
   
-    <span class="post-date">29 Apr 2015</span>
+    <span class="post-date">07 Mar 2015</span>
 	
 	
 
-	<h3 id="remote-login-to-raspberry-with-tightvnc">Remote login to Raspberry with tightvnc</h3>
-
-
-	
-	<br clear="all"/>
-	
-  </div>
-  
-  <div class="post">
-	
-
-     
-	  <hr style="background:#999; border:0; height:2px" >
-	  
-	  
-    <h2 class="post-title">
-      <a href="/post/2015/04/19/Install-OSX/">
-        Install OSX
-      </a>
-    </h2>
-  
-    <span class="post-date">19 Apr 2015</span>
-	
-	
-	<img src="images/i-can-see-you-black-flag-v2.png" height=160px; align="left" style="PADDING-RIGHT: 7px"/>
-	
-
-	<p>Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.<br />
- - Motherboard is <a href="http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov">GA-Z77X-UP5-TH</a><br />
- - BIOS is <a href="http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios">F12</a><br />
- - Followed Tonymac post by <a href="http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html">Stork</a></p>
-
-
-	
-	<br clear="all"/>
-	
-  </div>
-  
-  <div class="post">
-	
-
-     
-	  <hr style="background:#999; border:0; height:2px" >
-	  
-	  
-    <h2 class="post-title">
-      <a href="/post/2015/03/27/lab-protocols/">
-        Lab Protocols
-      </a>
-    </h2>
-  
-    <span class="post-date">27 Mar 2015</span>
-	
-	
-	<img src="https://farm1.staticflickr.com/1/3934032_d7262dd389_q.jpg" height=160px; align="left" style="PADDING-RIGHT: 7px"/>
-	
-
-	<h4 id="dental-cement-cb-metabond-adhesive-cement-parkell-inc">Dental cement, C&amp;B-Metabond Adhesive Cement, Parkell Inc</h4>
+	<h4 id="goals">Goals</h4>
 <ul>
-  <li>S396 (3g) Radiopaque Tooth-Shade L-Powder</li>
-  <li>S398 (10ml) C&amp;B-Metabond Quick Base (blue)</li>
-  <li>S371 (0.7ml) Catalyst Gold Label</li>
+  <li>Use raspberry to record video from USB camera and stream to disk.</li>
+  <li>Use python and opencv</li>
+  <li>will save either as a sequence of .tif or as an uncompressed videofile</li>
 </ul>
 
+<h4 id="install-opencv">Install opencv</h4>
+<blockquote>
+  <p>sudo apt-get update<br />
+sudo apt-get upgrade<br />
+sudo apt-get install libopencv-dev python-opencv</p>
+</blockquote>
+
 
 	
 	<br clear="all"/>
@@ -322,16 +272,67 @@
 	  
 	  
     <h2 class="post-title">
-      <a href="/post/2015/03/21/fresh-install-raspian/">
-        Fresh install of Raspian
+      <a href="/post/2015/03/05/bokeh-on-the-raspberry-pi/">
+        Plotting with bokeh on the Raspberry Pi
       </a>
     </h2>
   
-    <span class="post-date">21 Mar 2015</span>
+    <span class="post-date">05 Mar 2015</span>
 	
 	
 
-	<p>This is the procedure I follow to install a fresh raspbian system on a Raspberry Pi.</p>
+	<p>Goal is to get plotting with bokeh on the Raspberry Pi.</p>
+
+
+	
+	<br clear="all"/>
+	
+  </div>
+  
+  <div class="post">
+	
+
+     
+	  <hr style="background:#999; border:0; height:2px" >
+	  
+	  
+    <h2 class="post-title">
+      <a href="/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/">
+        Python calling bash to get drive space remaining
+      </a>
+    </h2>
+  
+    <span class="post-date">24 Dec 2014</span>
+	
+	
+
+	<p>I need to have some Python code tell me how much drive space is left. Here is what I came up with.</p>
+
+
+	
+	<br clear="all"/>
+	
+  </div>
+  
+  <div class="post">
+	
+
+     
+	  
+    <h2 class="post-title">
+      <a href="/post/2014/02/14/Monitoring-mice-in-their-home-cage/">
+        Monitoring mice in their home cage
+      </a>
+    </h2>
+  
+    <span class="post-date">14 Feb 2014</span>
+	
+	
+
+	<p>[Aug 4, 2014, updated]
+[March 2015, moved to cudmore.github.io]
+## Goal
+- videotape mice in their home cage.</p>
 
 
 	
@@ -343,7 +344,7 @@
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page5">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     

@@ -33,10 +33,10 @@ author:
   name:           'Robert Cudmore'
   url:            http://robertcudmore.org
 
-paginate:         5
+paginate:         7
 
 # Custom vars
-version:          0.1
+version:          0.2
 
 github:
   repo:           https://github.com/cudmore/cudmore.github.io
