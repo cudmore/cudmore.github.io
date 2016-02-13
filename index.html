@@ -7,10 +7,6 @@ title: Home
   {% for post in paginator.posts %}
   <div class="post">
 	
-
-     {% if post.previous %}
-	  <hr style="background:#999; border:0; height:2px" >
-	  {% endif %}
 	  
     <h2 class="post-title">
       <a href="{{ site.baseurl }}{{ post.url }}">
@@ -28,6 +24,10 @@ title: Home
 	
 	<br clear="all"/>
 	
+     {% if post.previous %}
+	  <hr style="background:#999; border:0; height:2px" >
+     {% endif %}
+
   </div>
   {% endfor %}
 </div>
