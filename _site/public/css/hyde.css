@@ -56,13 +56,13 @@ html {
  */
 
 .sidebar {
-	display:none !important
-  //text-align: center;
-  //width: 16em;
-  ////padding: 2rem 1rem;
-  //padding: 0 1em 0 2em;
-  //color: rgba(255,255,255,.5);
-  //background-color: #202020;
+  //display:none !important
+  text-align: center;
+  width: 16em;
+  //padding: 2rem 1rem;
+  padding: 0 1em 0 2em;
+  color: rgba(255,255,255,.5);
+  background-color: #202020;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -73,6 +73,12 @@ html {
     width: 18rem;
     text-align: left;
   }
+}
+
+@media only screen and (max-width: 1026px) {
+    .sidebar {
+        display: none;
+    }
 }
 
 /* Sidebar links */
