@@ -76,6 +76,7 @@ html {
   }
 }
 
+/* hide sidebar on phones. 20160213 */
 @media (max-width: 48em) {
     .sidebar {
         display: none;
