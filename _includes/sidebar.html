@@ -1,5 +1,5 @@
 <div class="sidebar">
-  <div class="container sidebar-sticky">
+  <!-- <div class="container sidebar-sticky"> %} -->
 
     {% comment %}
     <div class="sidebar-about">
@@ -22,9 +22,12 @@
       {% endcomment %}
 
 	  <!-- {% include my_google_search.html %} -->
-
+		
+		<BR>
+		<BR>
+		
 		<section id="article">
-		  <span class="sidebar-nav-item">Recent posts</span>
+		  <span class="sidebar-nav-item">Posts</span>
 		    {% for post in site.posts offset: 0 limit: 5 %}
 		      &raquo; <a class="sidebarlink" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><BR>
 		    {% endfor %}
@@ -32,7 +35,7 @@
 
 		<BR>
 
-		<span class="sidebar-nav-item">Tag cloud</span>
+		<span class="sidebar-nav-item">Tags</span>
 		{% for tag in site.tags %}
     		<a style="font-size: {{ tag | last | size | times: 200 | divided_by: site.tags.size | plus: 40  }}%" href="{{ site.baseurl }}/tags/#{{ tag | first | slugize }}">
     		  {{ tag | first }}
@@ -52,5 +55,5 @@
 	</div>
 <!--    </nav> -->
 
-  </div>
+  <!-- </div> %} -->
 </div>

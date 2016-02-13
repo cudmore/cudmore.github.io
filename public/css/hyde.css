@@ -111,7 +111,7 @@ a.sidebar-nav-item:focus {
 
 @media (min-width: 48em) {
   .sidebar-sticky {
-    position: absolute;
+    //position: absolute; //this is what snaps it to the bottom
     right:  1rem;
     bottom: 1rem;
     left:   1rem;
