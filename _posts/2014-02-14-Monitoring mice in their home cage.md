@@ -12,18 +12,21 @@ tags:
 
 [Aug 4, 2014, updated]
 [March 2015, moved to cudmore.github.io]
+
 ## Goal
 - videotape mice in their home cage.
 
 ### Parts
 #### Computer
-- Raspberry Pi, Model B 512MB RAM, [Adafruit 998](http://www.adafruit.com/products/998) target="_blank">Adafruit 998</a></li>
+<UL>
+<LI>Raspberry Pi, Model B 512MB RAM, [Adafruit 998](http://www.adafruit.com/products/998) target="_blank">Adafruit 998</a></li>
 	<li>4 GB SD Card, <a href="http://www.adafruit.com/products/102" target="_blank">Adafruit 102</a></li>
 	<li>USB 2 Wifi Dongle (802.11b/g/n), <a href="http://www.adafruit.com/products/814" target="_blank">Adafruit, 814</a></li>
 	<li>USB 2 Powered Hub, 5V 2A, <a href="http://www.adafruit.com/products/961" target="_blank">Adafruit, 961</a></li>
 	<li>USB 2 hard-drive, Old laptop drive with a SATA to USB 2 connector</li>
 	<li>5V 1A AC to DC converter, <a href="http://www.adafruit.com/products/501" target="_blank">Adafruit, 501</a></li>
 </ul>
+
 <h4>Video</h4>
 <ul>
 	<li>Raspberry Pi NoIR camera, <a href="http://www.adafruit.com/products/1567" target="_blank">Adafruit, 1567</a></li>
@@ -32,6 +35,7 @@ tags:
 	<li>Mini Ball Head, <a href="http://www.bhphotovideo.com/c/product/221096-REG/Giottos_MH1004_320_MH_1004_Mini_Ball.html" target="_blank">B&amp;H Giottos MH1004</a></li>
 	<li>1/2" hollow aluminum tubes, these are cheap and easily cut with hack-saw, <a href="http://www.homedepot.com/p/Allied-Tube-Conduit-1-2-in-x-10-ft-Electric-Metallic-Tube-Conduit-101543/100400405" target="_blank">Home Depot</a></li>
 </ul>
+
 <strong>Lights</strong>
 <ul>
 	<li>2x LED Driver, 12VDC 700 MA, <a href="https://www.superbrightleds.com/moreinfo/led-drivers/700ma-constant-current-led-driver/1323/3045/" target="_blank">SuperBrightLeds, CCD-700</a></li>
@@ -43,23 +47,27 @@ tags:
 	<li>2x LED Light Bar - White (SMD), <a href="https://www.sparkfun.com/products/12014" target="_blank">Sparkfun, COM-12014</a></li>
 	<li>Light Holders,<b> </b>25 lb circular magnets, 3 foot threaded rods, screws, washers (Ace Hardware)</li>
 </ul>
+
 <h4>Running Wheels</h4>
 <ul>
 	<li>Empty running wheels from <a href="http://www.med-associates.com/product/low-profile-wireless-running-wheel-for-mouse/" target="_blank">Med Associates</a> (find cheaper solution)</li>
 	<li>2 Hall Effect sensors per wheel (Optek/TT O090U), <a href="http://www.mouser.com/ProductDetail/Optek-TT-electronics/OH090U/?qs=MYMjFsmMg9Zxhz344sS0jg==" target="_blank">Mouser 828-OH090U</a></li>
 </ul>
+
 <h4>Miscellaneous Sensors</h4>
 <ul>
 	<li>Visible light sensor (Vishay, TEPT5600), <a href="http://www.mouser.com/ProductDetail/Vishay/TEPT5600/?qs=%2fha2pyFadujUHPassviAP51fh4B6FFdxq%2fQn0JoB63RFxPBe7%2ffCXA%3d%3d" target="_blank">Mouser 782-TEPT5600</a></li>
 	<li>IR sensor (Vishay BPW83), <a href="http://www.mouser.com/ProductDetail/Vishay/BPW83/?qs=%2fha2pyFaduiEcAuMy5rpt15ObB2haiIvhq3aASHM7R0%3d" target="_blank">Mouser 782-BPW83</a></li>
 	<li>Temperature and Humidity Sensor (AM2302 wired DHT22), <a href="http://www.adafruit.com/products/393" target="_blank">Adafruit 393</a></li>
 </ul>
+
 <strong>Acquisition Software (</strong>Python scripts running in Pi)
 
 Script 1:
 <ul>
 	<li>Acquires sequential 5 minute videos and save each to a timestamped .h264 file.</li>
 </ul>
+
 Script 2:
 <ul>
 	<li>Turns IR and White lights on and off, uses time-of-day from Raspberry Linux.</li>
@@ -69,6 +77,7 @@ Script 2:
 	<li>Logs all of this to text file locally on Raspberry.</li>
 	<li>Pushes all of this to online web server so I can check if the mice have been running. <del>Remote webserver has a PHP script to accept and save name/value pairs of data</del>. Now using mySQL on external web server.</li>
 </ul>
+
 <strong>Software Analysis</strong>
 <ul>
 	<li>Python/OpenCV motion detection using a modified version of <a href="http://derek.simkowiak.net/motion-tracking-with-python/" target="_blank">this</a> (Thanks to Derek Simkowiak). Motion detection does not run on Pi, runs offline on desktop/laptop (OS X)</li>
@@ -76,6 +85,7 @@ Script 2:
 	<li><a title="Setting up Python, OpenCV and ffmpeg in OSX" href="http://www.robertcudmore.org/blog/?p=183" target="_blank">How to install Python/OpenCV/ffmpeg on OSX</a></li>
 	<li>Another project to monitor a hamster in their cage, <a href="http://www.raspberrypi.org/learning/hamster-party-cam/">the hamster party-cam</a> (from the Raspberry people).</li>
 </ul>
+
 =====================================================================
 <h3>Wish List</h3>
 <strong>Sensors</strong>

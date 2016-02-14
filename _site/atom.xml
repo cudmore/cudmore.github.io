@@ -4,13 +4,253 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-02-13T16:12:43-05:00</updated>
+ <updated>2016-02-14T00:24:30-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Raspberry + p5.js + node + arduino</title>
+   <link href="http://blog.cudmore.io/post/2016/02/13/Raspberry-p5js-node-arduino/"/>
+   <updated>2016-02-13T17:01:06-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/02/13/Raspberry-p5js-node-arduino</id>
+   <content type="html">&lt;p&gt;Goal is to read analog input from arduino and plot it in a browser using p5.js.&lt;/p&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Following this tutorial&lt;/p&gt;
+
+&lt;p&gt;https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-serial-input-to-the-p5-js-ide/&lt;/p&gt;
+
+&lt;p&gt;And this github&lt;/p&gt;
+
+&lt;p&gt;https://github.com/vanevery/p5.serialport&lt;/p&gt;
+
+&lt;h3 id=&quot;update-the-pi&quot;&gt;Update the pi&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get upgrade
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;download-and-install-node1&quot;&gt;Download and install &lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;node&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://nodejs.org/dist/v4.3.0/node-v4.3.0-linux-armv7l.tar.xz
+tar -xvf node-v4.3.0-linux-armv7l.tar.gz 
+cd node-v4.3.0-linux-armv7l
+sudo cp -R * /usr/local/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;check the version of node with&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node -v
+v4.3.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;that did not work. serialport does not seem to work with node 4.x&lt;/p&gt;
+
+&lt;p&gt;found node-v0.12.7-linux-arm-v7.tar.gz&lt;/p&gt;
+
+&lt;p&gt;http://conoroneill.net/node-v01040-and-v0127-for-arm-v7-raspberry-pi-2-banana-pi-odroid-c1-available/&lt;/p&gt;
+
+&lt;p&gt;first try to upgrade&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm update ws
+npm update serialport
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;install some node libraries&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo npm install ws
+sudo npm install serialport
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Arduino cli using platformio</title>
+   <link href="http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/"/>
+   <updated>2016-02-13T17:01:06-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino ide cli</id>
+   <content type="html">&lt;p&gt;This post describes how to install and run &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to compile and upload arduino code via a command line interface (CLI). This is a major breakthrough as it allows writing, compiling, and uploading arduino code on an ARM processor (e.g. Raspberry Pi) and on a Debian server. This allows me to program arduino(s) physically connected to headless machines and circumvents all sorts of silliness around the lack of an Arduino IDE for the ARM platform (shame on you arduino).&lt;/p&gt;
+
+&lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Install and use &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to upload code to an Arduino connected by serial.&lt;/li&gt;
+  &lt;li&gt;Next post will read form this serial to plot sensor data in a web page using &lt;a href=&quot;http://p5js.org/&quot;&gt;p5.js&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-this-is-big-news&quot;&gt;Why this is big news&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A major advancement here is that platformio comes preconfigured to talk to boards like the &lt;a href=&quot;https://www.pjrc.com/store/teensy32.html&quot;&gt;teensy&lt;/a&gt;, &lt;a href=&quot;https://www.adafruit.com/products/2471&quot;&gt;eps8266&lt;/a&gt;, and &lt;a href=&quot;http://nodemcu.com/index_en.html#fr_54747361d775ef1a3600000f&quot;&gt;node mcu&lt;/a&gt;. I have some of these boards lying around and could never use them with the pi (too much of a hack to get gui arduino ide installed) and never even considered using them on a headless debian server.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Running the gui arduino ide on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine. &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;install-platformio&quot;&gt;Install platformio&lt;/h3&gt;
+
+&lt;p&gt;Platformio is written in python, so all you need is&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo pip install -U platformio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;make-a-new-project-directory-and-initialize-an-empty-project&quot;&gt;Make a new project directory and initialize an empty project&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir Sites/p5js_plot
+cd Sites/p5js_plot
+platformio init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will create&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;/src&lt;/li&gt;
+  &lt;li&gt;/lib&lt;/li&gt;
+  &lt;li&gt;platformio.ini&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;configure-platformioini-with-boards&quot;&gt;Configure platformio.ini with boards&lt;/h3&gt;
+
+&lt;p&gt;Populate platformio.ini with an uno board&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio init --board=uno
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;platformio.ini looks something like this&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;; Project Configuration File
+; Docs: http://docs.platformio.org/en/latest/projectconf.html
+
+[env:uno]
+platform = atmelavr
+framework = arduino
+board = uno
+
+[env:nodemcu]
+platform = espressif
+framework = arduino
+board = nodemcu
+build_flags = -D LED_BUILTIN=BUILTIN_LED
+
+[env:teensy31]
+platform = teensy
+framework = arduino
+board = teensy31
+
+[env:lpmsp430g2553]
+platform = timsp430
+framework = energia
+board = lpmsp430g2553
+build_flags = -D LED_BUILTIN=RED_LED
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;put-some-arduino-code-in-srcmaincpp&quot;&gt;Put some arduino code in src/main.cpp&lt;/h3&gt;
+
+&lt;p&gt;Debugging is not as pretty as with a GUI but this is not a problem as arduino code is usually simple and short. The whole arduino gui thing is just overkill in the first place. It is nice to simplify things by returning to a command line.&lt;/p&gt;
+
+&lt;p&gt;Remember, we are programming in C++, NOT the arduino language.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/*
+ * Blink
+ * Turns on an LED on for one second,
+ * then off for one second, repeatedly.
+ */
+#include &quot;Arduino.h&quot;
+
+void setup()
+{
+  // initialize LED digital pin as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop()
+{
+  // turn the LED on (HIGH is the voltage level)
+  digitalWrite(LED_BUILTIN, HIGH);
+  // wait for a second
+  delay(1000);
+  // turn the LED off by making the voltage LOW
+  digitalWrite(LED_BUILTIN, LOW);
+   // wait for a second
+  delay(1000);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-code-to-arduino&quot;&gt;Upload code to arduino&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# not sure what this does (website says this &#39;processes the source code&#39;, maybe it compiles?
+platformio run
+# upload the firmware
+platformio run --target upload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The first time this is run, platformio automatically downloads the necessary arduino libraries. On a Raspberry Pi 2, the first run took 10.5 seconds, subsequent runs took 2.5 seconds. This is a HUGE time savings over the GUI Arduino IDE.&lt;/p&gt;
+
+&lt;h3 id=&quot;additional-info&quot;&gt;Additional info&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docs.platformio.org/en/latest/userguide/cmd_serialports.html&quot;&gt;Serial ports&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My arduino is on serial port ttyACM0&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# list serial ports
+platformio serialports list
+# a Miniterm style serial port monitor (&#39;ctrl+]&#39; to quit)
+platformio serialports monitor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Network attached camera</title>
+   <link href="http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/"/>
+   <updated>2016-02-07T17:01:06-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;camera&lt;/p&gt;
+
+    &lt;p&gt;DLink DCS-930L&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;On the network&lt;/p&gt;
+
+    &lt;p&gt;F0:7D:68:03:60:B8
+192.168.1.12&lt;/p&gt;
+
+    &lt;p&gt;pw: admin
+pass: &lt;blank&gt; as in none&lt;/blank&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;get an image&lt;/p&gt;
+
+    &lt;p&gt;http://192.168.1.12/image/jpeg.cgi&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Bit Torrent Sync</title>
@@ -3037,19 +3277,24 @@ while True:
    <updated>2014-02-14T17:01:06-05:00</updated>
    <id>http://blog.cudmore.io/post/2014/02/14/Monitoring mice in their home cage</id>
    <content type="html">&lt;p&gt;[Aug 4, 2014, updated]
-[March 2015, moved to cudmore.github.io]
-## Goal
-- videotape mice in their home cage.&lt;/p&gt;
+[March 2015, moved to cudmore.github.io]&lt;/p&gt;
+
+&lt;h2 id=&quot;goal&quot;&gt;Goal&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;videotape mice in their home cage.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;parts&quot;&gt;Parts&lt;/h3&gt;
-&lt;p&gt;#### Computer
-- Raspberry Pi, Model B 512MB RAM, &lt;a href=&quot;http://www.adafruit.com/products/998&quot;&gt;Adafruit 998&lt;/a&gt; target=”_blank”&amp;gt;Adafruit 998&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-	&amp;lt;li&amp;gt;4 GB SD Card, &lt;a href=&quot;http://www.adafruit.com/products/102&quot; target=&quot;_blank&quot;&gt;Adafruit 102&lt;/a&gt;&amp;lt;/li&amp;gt;
-	&amp;lt;li&amp;gt;USB 2 Wifi Dongle (802.11b/g/n), &lt;a href=&quot;http://www.adafruit.com/products/814&quot; target=&quot;_blank&quot;&gt;Adafruit, 814&lt;/a&gt;&amp;lt;/li&amp;gt;
-	&amp;lt;li&amp;gt;USB 2 Powered Hub, 5V 2A, &lt;a href=&quot;http://www.adafruit.com/products/961&quot; target=&quot;_blank&quot;&gt;Adafruit, 961&lt;/a&gt;&amp;lt;/li&amp;gt;
-	&amp;lt;li&amp;gt;USB 2 hard-drive, Old laptop drive with a SATA to USB 2 connector&amp;lt;/li&amp;gt;
-	&amp;lt;li&amp;gt;5V 1A AC to DC converter, &lt;a href=&quot;http://www.adafruit.com/products/501&quot; target=&quot;_blank&quot;&gt;Adafruit, 501&lt;/a&gt;&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;&lt;/p&gt;
+&lt;p&gt;#### Computer&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi, Model B 512MB RAM, [Adafruit 998](http://www.adafruit.com/products/998) target=&quot;_blank&quot;&amp;gt;Adafruit 998&lt;/li&gt;
+	&lt;li&gt;4 GB SD Card, &lt;a href=&quot;http://www.adafruit.com/products/102&quot; target=&quot;_blank&quot;&gt;Adafruit 102&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;USB 2 Wifi Dongle (802.11b/g/n), &lt;a href=&quot;http://www.adafruit.com/products/814&quot; target=&quot;_blank&quot;&gt;Adafruit, 814&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;USB 2 Powered Hub, 5V 2A, &lt;a href=&quot;http://www.adafruit.com/products/961&quot; target=&quot;_blank&quot;&gt;Adafruit, 961&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;USB 2 hard-drive, Old laptop drive with a SATA to USB 2 connector&lt;/li&gt;
+	&lt;li&gt;5V 1A AC to DC converter, &lt;a href=&quot;http://www.adafruit.com/products/501&quot; target=&quot;_blank&quot;&gt;Adafruit, 501&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h4&gt;Video&lt;/h4&gt;
 &lt;ul&gt;
 	&lt;li&gt;Raspberry Pi NoIR camera, &lt;a href=&quot;http://www.adafruit.com/products/1567&quot; target=&quot;_blank&quot;&gt;Adafruit, 1567&lt;/a&gt;&lt;/li&gt;
@@ -3058,6 +3303,7 @@ while True:
 	&lt;li&gt;Mini Ball Head, &lt;a href=&quot;http://www.bhphotovideo.com/c/product/221096-REG/Giottos_MH1004_320_MH_1004_Mini_Ball.html&quot; target=&quot;_blank&quot;&gt;B&amp;amp;H Giottos MH1004&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;1/2&quot; hollow aluminum tubes, these are cheap and easily cut with hack-saw, &lt;a href=&quot;http://www.homedepot.com/p/Allied-Tube-Conduit-1-2-in-x-10-ft-Electric-Metallic-Tube-Conduit-101543/100400405&quot; target=&quot;_blank&quot;&gt;Home Depot&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;&lt;strong&gt;Lights&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;2x LED Driver, 12VDC 700 MA, &lt;a href=&quot;https://www.superbrightleds.com/moreinfo/led-drivers/700ma-constant-current-led-driver/1323/3045/&quot; target=&quot;_blank&quot;&gt;SuperBrightLeds, CCD-700&lt;/a&gt;&lt;/li&gt;
@@ -3069,23 +3315,27 @@ while True:
 	&lt;li&gt;2x LED Light Bar - White (SMD), &lt;a href=&quot;https://www.sparkfun.com/products/12014&quot; target=&quot;_blank&quot;&gt;Sparkfun, COM-12014&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;Light Holders,&lt;b&gt; &lt;/b&gt;25 lb circular magnets, 3 foot threaded rods, screws, washers (Ace Hardware)&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;h4&gt;Running Wheels&lt;/h4&gt;
 &lt;ul&gt;
 	&lt;li&gt;Empty running wheels from &lt;a href=&quot;http://www.med-associates.com/product/low-profile-wireless-running-wheel-for-mouse/&quot; target=&quot;_blank&quot;&gt;Med Associates&lt;/a&gt; (find cheaper solution)&lt;/li&gt;
 	&lt;li&gt;2 Hall Effect sensors per wheel (Optek/TT O090U), &lt;a href=&quot;http://www.mouser.com/ProductDetail/Optek-TT-electronics/OH090U/?qs=MYMjFsmMg9Zxhz344sS0jg==&quot; target=&quot;_blank&quot;&gt;Mouser 828-OH090U&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;h4&gt;Miscellaneous Sensors&lt;/h4&gt;
 &lt;ul&gt;
 	&lt;li&gt;Visible light sensor (Vishay, TEPT5600), &lt;a href=&quot;http://www.mouser.com/ProductDetail/Vishay/TEPT5600/?qs=%2fha2pyFadujUHPassviAP51fh4B6FFdxq%2fQn0JoB63RFxPBe7%2ffCXA%3d%3d&quot; target=&quot;_blank&quot;&gt;Mouser 782-TEPT5600&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;IR sensor (Vishay BPW83), &lt;a href=&quot;http://www.mouser.com/ProductDetail/Vishay/BPW83/?qs=%2fha2pyFaduiEcAuMy5rpt15ObB2haiIvhq3aASHM7R0%3d&quot; target=&quot;_blank&quot;&gt;Mouser 782-BPW83&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;Temperature and Humidity Sensor (AM2302 wired DHT22), &lt;a href=&quot;http://www.adafruit.com/products/393&quot; target=&quot;_blank&quot;&gt;Adafruit 393&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;&lt;strong&gt;Acquisition Software (&lt;/strong&gt;Python scripts running in Pi)&lt;/p&gt;
 
 &lt;p&gt;Script 1:&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;Acquires sequential 5 minute videos and save each to a timestamped .h264 file.&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;Script 2:&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;Turns IR and White lights on and off, uses time-of-day from Raspberry Linux.&lt;/li&gt;
@@ -3095,6 +3345,7 @@ while True:
 	&lt;li&gt;Logs all of this to text file locally on Raspberry.&lt;/li&gt;
 	&lt;li&gt;Pushes all of this to online web server so I can check if the mice have been running. &lt;del&gt;Remote webserver has a PHP script to accept and save name/value pairs of data&lt;/del&gt;. Now using mySQL on external web server.&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;&lt;strong&gt;Software Analysis&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 	&lt;li&gt;Python/OpenCV motion detection using a modified version of &lt;a href=&quot;http://derek.simkowiak.net/motion-tracking-with-python/&quot; target=&quot;_blank&quot;&gt;this&lt;/a&gt; (Thanks to Derek Simkowiak). Motion detection does not run on Pi, runs offline on desktop/laptop (OS X)&lt;/li&gt;
@@ -3102,6 +3353,7 @@ while True:
 	&lt;li&gt;&lt;a title=&quot;Setting up Python, OpenCV and ffmpeg in OSX&quot; href=&quot;http://www.robertcudmore.org/blog/?p=183&quot; target=&quot;_blank&quot;&gt;How to install Python/OpenCV/ffmpeg on OSX&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;Another project to monitor a hamster in their cage, &lt;a href=&quot;http://www.raspberrypi.org/learning/hamster-party-cam/&quot;&gt;the hamster party-cam&lt;/a&gt; (from the Raspberry people).&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;=====================================================================&lt;/p&gt;
 &lt;h3&gt;Wish List&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Sensors&lt;/strong&gt;&lt;/p&gt;

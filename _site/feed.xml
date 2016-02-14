@@ -8,6 +8,53 @@
     
       
       <item>
+        <title>Raspberry + p5.js + node + arduino</title>
+        
+          <description>&lt;p&gt;Goal is to read analog input from arduino and plot it in a browser using p5.js.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 13 Feb 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/02/13/Raspberry-p5js-node-arduino/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/Raspberry-p5js-node-arduino/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Arduino cli using platformio</title>
+        
+          <description>&lt;p&gt;This post describes how to install and run &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to compile and upload arduino code via a command line interface (CLI). This is a major breakthrough as it allows writing, compiling, and uploading arduino code on an ARM processor (e.g. Raspberry Pi) and on a Debian server. This allows me to program arduino(s) physically connected to headless machines and circumvents all sorts of silliness around the lack of an Arduino IDE for the ARM platform (shame on you arduino).&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 13 Feb 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Network attached camera</title>
+        
+          <description>&lt;ul&gt;
+  &lt;li&gt;camera&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sun, 07 Feb 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Bit Torrent Sync</title>
         
           <description>&lt;p&gt;&lt;a href=&quot;https://www.getsync.com&quot;&gt;BitTorrent Sync&lt;/a&gt; will synchronize folders between any number of machines on either a local LAN, over the internet, or via both. It synchronizes without using a central server as everyone is a peer, it is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Peer-to-peer&quot;&gt;peer-to-peer (P2P) network&lt;/a&gt;.&lt;/p&gt;
@@ -410,9 +457,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
         <title>Monitoring mice in their home cage</title>
         
           <description>&lt;p&gt;[Aug 4, 2014, updated]
-[March 2015, moved to cudmore.github.io]
-## Goal
-- videotape mice in their home cage.&lt;/p&gt;
+[March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
 </description>
         
