@@ -75,11 +75,11 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/Raspberry-p5js-node-arduino/">Raspberry + p5.js + node + arduino</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/">Raspberry + p5.js + node + arduino</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/PlatformIO-an-arduino-ide-cli/">Arduino cli using platformio</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/">Arduino cli using platformio</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/2016-02-07-Network-Attached-Camera/">Network attached camera</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
@@ -216,7 +216,7 @@
 
 <h3 id="preliminaries">Preliminaries</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo raspi-config # configure pi with text menu
+<pre><code>sudo raspi-config # configure pi with text menu
 
 sudo apt-get update # update database
 
@@ -224,19 +224,17 @@ sudo apt-get upgrade # update userspace
 
 sudo rpi-update # update firmware (requires reboot)
 </code></pre>
-</div>
 
 <h3 id="apple-file-protocol-afp">Apple-File-Protocol (afp)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install netatalk
+<pre><code>sudo apt-get install netatalk
 </code></pre>
-</div>
 
 <h3 id="unison-file-synchronization">Unison file synchronization</h3>
 
 <p>See my post <a href="http://www.robertcudmore.org/blog/?p=168">here</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install unison
+<pre><code>sudo apt-get install unison
 # see link to set up auto authentication with rsa keys
 unison # run once to make /home/pi/.unison
 pico /home/pi/.unison/sites.prf    
@@ -258,75 +256,68 @@ ignore = Name *.htaccess
 
 servercmd=/home1/robertcu/unison
 </code></pre>
-</div>
 
 <h3 id="startup-mailer">Startup mailer</h3>
 <p>See my post <a href="http://www.robertcudmore.org/blog/?p=60">here</a>.</p>
 
-<p>Use gmail ‘cudmore.raspberry@gmail.com’ to send  </p>
+<p>Use gmail ‘cudmore.raspberry@gmail.com’ to send</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> wget http://cudmore.github.io/downloads/startup_mailer.py
+<pre><code> wget http://cudmore.github.io/downloads/startup_mailer.py
 </code></pre>
-</div>
 
 <h3 id="what-is-my-ip">What is my ip</h3>
 
 <p>Download whatismyip.py, run it and it will tell you your ip</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> wget http://cudmore.github.io/downloads/whatismyip.py
+<pre><code> wget http://cudmore.github.io/downloads/whatismyip.py
 </code></pre>
-</div>
 
 <h3 id="python">python</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-dev  
+<pre><code>sudo apt-get install python-dev  
 </code></pre>
-</div>
 
 <h3 id="pip">pip</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-pip  
+<pre><code>sudo apt-get install python-pip  
 </code></pre>
-</div>
 
 <h3 id="flask">Flask</h3>
 
 <ul>
   <li>
-    <p>Flask tutorial <a href="http://mattrichardson.com/Raspberry-Pi-Flask/">here</a>  </p>
+    <p>Flask tutorial <a href="http://mattrichardson.com/Raspberry-Pi-Flask/">here</a></p>
 
-    <p>sudo pip install flask  </p>
+    <p>sudo pip install flask</p>
   </li>
 </ul>
 
 <h3 id="socketio-for-flask">socketio for Flask</h3>
 
 <ul>
-  <li><a href="https://flask-socketio.readthedocs.org/en/latest/">socketio website</a>  </li>
+  <li><a href="https://flask-socketio.readthedocs.org/en/latest/">socketio website</a></li>
   <li>
-    <p><a href="http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent">socketio tutorial</a>  </p>
+    <p><a href="http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent">socketio tutorial</a></p>
 
-    <p>sudo pip install flask-socketio  </p>
+    <p>sudo pip install flask-socketio</p>
   </li>
 </ul>
 
 <h3 id="pandas-this-takes-awhile">pandas (this takes awhile)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-pandas  
+<pre><code>sudo apt-get install python-pandas  
 </code></pre>
-</div>
 
 <h3 id="subversion">subversion</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install subversion
+<pre><code>sudo apt-get install subversion
 </code></pre>
-</div>
 
 <h3 id="mjpg-streamer">mjpg-streamer</h3>
 
 <p>See my post <a href="http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/">here</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get -y install libjpeg8-dev imagemagick libv4l-dev  
+<pre><code>sudo apt-get -y install libjpeg8-dev imagemagick libv4l-dev  
 sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h  
 wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip  
 unzip mjpg-streamer-code-182.zip  
@@ -338,31 +329,27 @@ sudo cp -R www /usr/local/www
 
 sudo apt-get install v4l-utils # this is to detect parameters of USB camera  
 </code></pre>
-</div>
 
-<p>Note, make ‘input_uvc.so’ is for usb cam and ‘input_file’ is for raspberry CSI camera  </p>
+<p>Note, make ‘input_uvc.so’ is for usb cam and ‘input_file’ is for raspberry CSI camera</p>
 
-<p>If wget does not find mjpg-streamer, download it here  </p>
+<p>If wget does not find mjpg-streamer, download it here</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
+<pre><code>wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
 </code></pre>
-</div>
 
 <h3 id="opencv">opencv</h3>
 
-<p>See my post on open cv <a href="http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/">here</a>  </p>
+<p>See my post on open cv <a href="http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/">here</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install libopencv-dev python-opencv
+<pre><code>sudo apt-get install libopencv-dev python-opencv
 </code></pre>
-</div>
 
 <h3 id="pil">PIL</h3>
 
 <p>Not sure if there is apt-get install python-pil ???</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo pip install pil
+<pre><code>sudo pip install pil
 </code></pre>
-</div>
 
 <h3 id="upgrade-numpy-takes-a-long-time">Upgrade numpy (takes a long time)</h3>
 
@@ -370,21 +357,20 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
   <li>
     <p>required for pandas and bokeh</p>
 
-    <p>sudo pip install numpy –upgrade  </p>
+    <p>sudo pip install numpy –upgrade</p>
   </li>
 </ul>
 
 <h3 id="install-pandas">Install pandas</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-pandas  
+<pre><code>sudo apt-get install python-pandas  
 </code></pre>
-</div>
 
 <h3 id="install-bokeh">Install bokeh</h3>
 
 <ul>
   <li>
-    <p>To do, get an example running again  </p>
+    <p>To do, get an example running again</p>
 
     <p>sudo pip install bokeh</p>
   </li>
@@ -394,17 +380,16 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
 
 <p>The list of qt libraries is huge, see <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=32&amp;t=102028">here</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-qt4
+<pre><code>sudo apt-get install python-qt4
 sudo apt-get install python-qt4-dev
 </code></pre>
-</div>
 
 <h1 id="stop-here-">!!! Stop Here !!!</h1>
 
 <h3 id="client-side-socketio-javascript">Client side socket.io javascript</h3>
 <p>Client side needs socketio javascript: http://socket.io<br />
 Put this in your Flask project /static/js/<br />
-Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js  </p>
+Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js</p>
 
 <blockquote>
   <p>wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js<br />
@@ -412,7 +397,7 @@ cp socket.io.min.js Sites/iosserver/static/js/</p>
 </blockquote>
 
 <h3 id="client-side-jquery">Client side jquery</h3>
-<p>documentation at: http://jquery.com/download/  </p>
+<p>documentation at: http://jquery.com/download/</p>
 
 <blockquote>
   <p>wget wget http://code.jquery.com/jquery-1.11.2.min.js<br />
@@ -441,14 +426,13 @@ make sure dependencies are installed: NumPy, Pandas, and Redis
 
 <p>My home usb video camera shows up as</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>pi@pi50 ~/Sites/iosserver $ lsusb
+<pre><code>pi@pi50 ~/Sites/iosserver $ lsusb
 Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp. 
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
 Bus 001 Device 004: ID 1a40:0201 Terminus Technology Inc. FE 2.1 7-port Hub
 Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye
 </code></pre>
-</div>
 
 <p>Source code for mjpg streamer</p>
 
@@ -477,7 +461,7 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
 
     <p>User Controls</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>                   brightness (int)    : min=0 max=255 step=1 default=0 value=0 flags=slider
+    <pre><code>                   brightness (int)    : min=0 max=255 step=1 default=0 value=0 flags=slider
                      contrast (int)    : min=0 max=255 step=1 default=32 value=32 flags=slider
                    saturation (int)    : min=0 max=255 step=1 default=64 value=64 flags=slider
                           hue (int)    : min=-90 max=90 step=1 default=0 value=0 flags=slider
@@ -490,13 +474,11 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
          power_line_frequency (menu)   : min=0 max=1 default=0 value=0
                     sharpness (int)    : min=0 max=63 step=1 default=0 value=0 flags=slider
 </code></pre>
-    </div>
 
     <p>Camera Controls</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>                auto_exposure (menu)   : min=0 max=1 default=0 value=0 flags=update
+    <pre><code>                auto_exposure (menu)   : min=0 max=1 default=0 value=0 flags=update
 </code></pre>
-    </div>
   </li>
 </ul>
 
@@ -508,7 +490,7 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
 	 —————————————————————
 	 The following parameters can be passed to this plugin:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> [-d | --device ].......: video device to open (your camera)
+<pre><code> [-d | --device ].......: video device to open (your camera)
  [-r | --resolution ]...: the resolution of the video device,
 						  can be one of the following strings:
 						  QSIF QCIF CGA QVGA CIF VGA 
@@ -529,22 +511,22 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
 
 input_init() return value signals to exit
 </code></pre>
-</div>
 
 <h1 id="this-works-for-usb-webcam">THIS WORKS FOR USB WEBCAM</h1>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
+<pre><code>/usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 
 /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 
 /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 </code></pre>
-</div>
 
 </div>
 
 <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#raspberry pi">raspberry pi</a>
@@ -558,7 +540,7 @@ input_init() return value signals to exit
 
 
 <span class="page-nav-item-left">
-    <a rel="prev" href="/post/2015/03/20/Rapsberry-Pi-Video-Controller/" title="View Raspberry Pi video controller">&laquo; Older</a>
+    <a rel="prev" href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/" title="View Raspberry Pi video controller">&laquo; Older</a>
 </span>
 
 

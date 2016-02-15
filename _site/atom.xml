@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-02-14T00:24:30-05:00</updated>
+ <updated>2016-02-14T11:56:51-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Raspberry + p5.js + node + arduino</title>
-   <link href="http://blog.cudmore.io/post/2016/02/13/Raspberry-p5js-node-arduino/"/>
+   <link href="http://blog.cudmore.io/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/"/>
    <updated>2016-02-13T17:01:06-05:00</updated>
-   <id>http://blog.cudmore.io/post/2016/02/13/Raspberry-p5js-node-arduino</id>
+   <id>http://blog.cudmore.io/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino</id>
    <content type="html">&lt;p&gt;Goal is to read analog input from arduino and plot it in a browser using p5.js.&lt;/p&gt;
 
 &lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
@@ -31,26 +31,23 @@
 
 &lt;h3 id=&quot;update-the-pi&quot;&gt;Update the pi&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
 sudo apt-get upgrade
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;download-and-install-node1&quot;&gt;Download and install &lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;node&lt;/a&gt;&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://nodejs.org/dist/v4.3.0/node-v4.3.0-linux-armv7l.tar.xz
+&lt;pre&gt;&lt;code&gt;wget https://nodejs.org/dist/v4.3.0/node-v4.3.0-linux-armv7l.tar.xz
 tar -xvf node-v4.3.0-linux-armv7l.tar.gz 
 cd node-v4.3.0-linux-armv7l
 sudo cp -R * /usr/local/
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;check the version of node with&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node -v
+&lt;pre&gt;&lt;code&gt;node -v
 v4.3.0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;that did not work. serialport does not seem to work with node 4.x&lt;/p&gt;
 
@@ -60,26 +57,24 @@ v4.3.0
 
 &lt;p&gt;first try to upgrade&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm update ws
+&lt;pre&gt;&lt;code&gt;npm update ws
 npm update serialport
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;install some node libraries&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo npm install ws
+&lt;pre&gt;&lt;code&gt;sudo npm install ws
 sudo npm install serialport
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
  
  <entry>
    <title>Arduino cli using platformio</title>
-   <link href="http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/"/>
+   <link href="http://blog.cudmore.io/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/"/>
    <updated>2016-02-13T17:01:06-05:00</updated>
-   <id>http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino ide cli</id>
+   <id>http://blog.cudmore.io/post/2016/02/13/2016-02-13-PlatformIO-an-arduino ide cli</id>
    <content type="html">&lt;p&gt;This post describes how to install and run &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to compile and upload arduino code via a command line interface (CLI). This is a major breakthrough as it allows writing, compiling, and uploading arduino code on an ARM processor (e.g. Raspberry Pi) and on a Debian server. This allows me to program arduino(s) physically connected to headless machines and circumvents all sorts of silliness around the lack of an Arduino IDE for the ARM platform (shame on you arduino).&lt;/p&gt;
 
 &lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
@@ -96,7 +91,7 @@ sudo npm install serialport
     &lt;p&gt;A major advancement here is that platformio comes preconfigured to talk to boards like the &lt;a href=&quot;https://www.pjrc.com/store/teensy32.html&quot;&gt;teensy&lt;/a&gt;, &lt;a href=&quot;https://www.adafruit.com/products/2471&quot;&gt;eps8266&lt;/a&gt;, and &lt;a href=&quot;http://nodemcu.com/index_en.html#fr_54747361d775ef1a3600000f&quot;&gt;node mcu&lt;/a&gt;. I have some of these boards lying around and could never use them with the pi (too much of a hack to get gui arduino ide installed) and never even considered using them on a headless debian server.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Running the gui arduino ide on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine. &lt;/p&gt;
+    &lt;p&gt;Running the gui arduino ide on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -104,17 +99,15 @@ sudo npm install serialport
 
 &lt;p&gt;Platformio is written in python, so all you need is&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo pip install -U platformio
+&lt;pre&gt;&lt;code&gt; sudo pip install -U platformio
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;make-a-new-project-directory-and-initialize-an-empty-project&quot;&gt;Make a new project directory and initialize an empty project&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir Sites/p5js_plot
+&lt;pre&gt;&lt;code&gt;mkdir Sites/p5js_plot
 cd Sites/p5js_plot
 platformio init
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;This will create&lt;/p&gt;
 
@@ -128,13 +121,12 @@ platformio init
 
 &lt;p&gt;Populate platformio.ini with an uno board&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio init --board=uno
+&lt;pre&gt;&lt;code&gt;platformio init --board=uno
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;platformio.ini looks something like this&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;; Project Configuration File
+&lt;pre&gt;&lt;code&gt;; Project Configuration File
 ; Docs: http://docs.platformio.org/en/latest/projectconf.html
 
 [env:uno]
@@ -159,7 +151,6 @@ framework = energia
 board = lpmsp430g2553
 build_flags = -D LED_BUILTIN=RED_LED
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;put-some-arduino-code-in-srcmaincpp&quot;&gt;Put some arduino code in src/main.cpp&lt;/h3&gt;
 
@@ -167,7 +158,7 @@ build_flags = -D LED_BUILTIN=RED_LED
 
 &lt;p&gt;Remember, we are programming in C++, NOT the arduino language.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/*
+&lt;pre&gt;&lt;code&gt;/*
  * Blink
  * Turns on an LED on for one second,
  * then off for one second, repeatedly.
@@ -192,16 +183,14 @@ void loop()
   delay(1000);
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;upload-code-to-arduino&quot;&gt;Upload code to arduino&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# not sure what this does (website says this &#39;processes the source code&#39;, maybe it compiles?
+&lt;pre&gt;&lt;code&gt;# not sure what this does (website says this &#39;processes the source code&#39;, maybe it compiles?
 platformio run
 # upload the firmware
 platformio run --target upload
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The first time this is run, platformio automatically downloads the necessary arduino libraries. On a Raspberry Pi 2, the first run took 10.5 seconds, subsequent runs took 2.5 seconds. This is a HUGE time savings over the GUI Arduino IDE.&lt;/p&gt;
 
@@ -213,21 +202,20 @@ platformio run --target upload
 
 &lt;p&gt;My arduino is on serial port ttyACM0&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# list serial ports
+&lt;pre&gt;&lt;code&gt;# list serial ports
 platformio serialports list
 # a Miniterm style serial port monitor (&#39;ctrl+]&#39; to quit)
 platformio serialports monitor
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
  
  <entry>
    <title>Network attached camera</title>
-   <link href="http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera/"/>
+   <link href="http://blog.cudmore.io/post/2016/02/07/2016-02-07-Network-Attached-Camera/"/>
    <updated>2016-02-07T17:01:06-05:00</updated>
-   <id>http://blog.cudmore.io/post/2016/02/07/Network-Attached-Camera</id>
+   <id>http://blog.cudmore.io/post/2016/02/07/2016-02-07-Network-Attached-Camera</id>
    <content type="html">&lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;camera&lt;/p&gt;
@@ -271,32 +259,29 @@ pass: &lt;blank&gt; as in none&lt;/blank&gt;&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# debian
+&lt;pre&gt;&lt;code&gt;# debian
 wget https://download-cdn.getsync.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz
 tar -zxvf BitTorrent-Sync_x64.tar.gz
 
 # raspberry/arm
 wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;install-and-run-by-hand&quot;&gt;install and run by hand&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# by default runs on localhost:8888, run as external ip (external meaning on my LAN)
+&lt;pre&gt;&lt;code&gt;# by default runs on localhost:8888, run as external ip (external meaning on my LAN)
 ./btsync  --webui.listen 192.168.1.200:8888
 
 # kill daemon
 pkill btsync
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;making-btsync-run-at-boot-raspbian&quot;&gt;Making btsync run at boot (raspbian)&lt;/h3&gt;
 
 &lt;p&gt;Add the following to /etc/rc.local&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home/pi/btsynch/btsync --webui.listen 192.168.1.60:8888
+&lt;pre&gt;&lt;code&gt;/home/pi/btsynch/btsync --webui.listen 192.168.1.60:8888
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;making-btsync-run-at-boot-debian&quot;&gt;Making btsync run at boot (debian)&lt;/h3&gt;
 
@@ -306,32 +291,28 @@ pkill btsync
 
 &lt;p&gt;Once all of this is done you can interact with the btsync daemon:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/init.d/btsync start
+&lt;pre&gt;&lt;code&gt;sudo /etc/init.d/btsync start
 sudo /etc/init.d/btsync stop
 sudo /etc/init.d/btsync status
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;And configure your shares from a browser&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://192.168.1.200:8888
+&lt;pre&gt;&lt;code&gt;http://192.168.1.200:8888
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;move-btsync-binary-into-place&quot;&gt;Move btsync binary into place&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo cp ./btsync /usr/bin/
+&lt;pre&gt;&lt;code&gt;sudo cp ./btsync /usr/bin/
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;modify-btsync-daemon-script&quot;&gt;Modify btsync daemon script&lt;/h3&gt;
 
 &lt;p&gt;See below for full script. Careful here, different from btsync binary but SAME name&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mv btsync /etc/init.d/
+&lt;pre&gt;&lt;code&gt;sudo mv btsync /etc/init.d/
 sudo chmod +x /etc/init.d/btsync
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;At this point I thought I could run the daemon without specifying a ~/.sync/config.json file but this does NOT work because the daemon will run inside /etc/init.d/ and try to create a .sync/ folder but it is not allowed to do that there.&lt;/p&gt;
 
@@ -345,99 +326,97 @@ sudo chmod +x /etc/init.d/btsync
   &lt;li&gt;“listen”: “192.168.1.200:8888”,&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;device_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;debian&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;listening_port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;storage_path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/home/cudmore/.sync&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;check_for_updates&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;use_upnp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;download_limit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                       
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;upload_limit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;webui&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;listen&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;192.168.1.200:8888&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;login&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;admin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;shared_folders&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &quot;device_name&quot;: &quot;debian&quot;,
+  &quot;listening_port&quot;: 0,
+  &quot;storage_path&quot;: &quot;/home/cudmore/.sync&quot;,
+  &quot;check_for_updates&quot;: true, 
+  &quot;use_upnp&quot;: true,
+  &quot;download_limit&quot;: 0,                       
+  &quot;upload_limit&quot;: 0, 
+  &quot;webui&quot;: {
+    &quot;listen&quot;: &quot;192.168.1.200:8888&quot;,
+    &quot;login&quot; : &quot;admin&quot;,
+    &quot;password&quot; : &quot;password&quot;
+  },
+  &quot;shared_folders&quot;: []
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This is my modified /etc/init.d/btsync daemon script. Well, not really modified except for changing BTSYNC_USER.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Provides: btsync&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Required-Start: $local_fs $remote_fs&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Required-Stop: $local_fs $remote_fs&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Should-Start: $network&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Should-Stop: $network&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Default-Start: 2 3 4 5&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Default-Stop: 0 1 6&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Short-Description: Multi-user daemonized version of btsync.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Description: Starts the btsync daemon for all registered users.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;### END INIT INFO&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+### BEGIN INIT INFO
+# Provides: btsync
+# Required-Start: $local_fs $remote_fs
+# Required-Stop: $local_fs $remote_fs
+# Should-Start: $network
+# Should-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Multi-user daemonized version of btsync.
+# Description: Starts the btsync daemon for all registered users.
+### END INIT INFO
 
-&lt;span class=&quot;c&quot;&gt;# Replace with linux users you want to run BTSync clients for&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;BTSYNC_USERS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;cudmore&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DAEMON&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/bin/btsync
+# Replace with linux users you want to run BTSync clients for
+BTSYNC_USERS=&quot;cudmore&quot;
+DAEMON=/usr/bin/btsync
 
-start&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;btsuser &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BTSYNC_USERS&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
-    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOMEDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;getent passwd &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; | cut -d: -f6&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOMEDIR&lt;/span&gt;/.sync/config.json
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -f &lt;span class=&quot;nv&quot;&gt;$config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting BTSync for &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-      start-stop-daemon -b -o -c &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -S -u &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -x &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt; -- --config &lt;span class=&quot;nv&quot;&gt;$config&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else
-      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Couldn&#39;t start BTSync for &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; (no &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$config&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; found)&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fi
-  done&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+start() {
+  for btsuser in $BTSYNC_USERS; do
+    HOMEDIR=`getent passwd $btsuser | cut -d: -f6`
+    config=$HOMEDIR/.sync/config.json
+    if [ -f $config ]; then
+      echo &quot;Starting BTSync for $btsuser&quot;
+      start-stop-daemon -b -o -c $btsuser -S -u $btsuser -x $DAEMON -- --config $config
+    else
+      echo &quot;Couldn&#39;t start BTSync for $btsuser (no $config found)&quot;
+    fi
+  done
+}
 
-stop&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;btsuser &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BTSYNC_USERS&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
-    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dbpid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;pgrep -fu &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -z &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dbpid&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Stopping btsync for &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-      start-stop-daemon -o -c &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -K -u &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; -x &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fi
-  done&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+stop() {
+  for btsuser in $BTSYNC_USERS; do
+    dbpid=`pgrep -fu $btsuser $DAEMON`
+    if [ ! -z &quot;$dbpid&quot; ]; then
+      echo &quot;Stopping btsync for $btsuser&quot;
+      start-stop-daemon -o -c $btsuser -K -u $btsuser -x $DAEMON
+    fi
+  done
+}
 
-status&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;btsuser &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$BTSYNC_USERS&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
-    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dbpid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;pgrep -fu &lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DAEMON&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dbpid&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;btsync for USER &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: not running.&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else
-      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;btsync for USER &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$btsuser&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: running (pid &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dbpid&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fi
-  done&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+status() {
+  for btsuser in $BTSYNC_USERS; do
+    dbpid=`pgrep -fu $btsuser $DAEMON`
+    if [ -z &quot;$dbpid&quot; ]; then
+      echo &quot;btsync for USER $btsuser: not running.&quot;
+    else
+      echo &quot;btsync for USER $btsuser: running (pid $dbpid)&quot;
+    fi
+  done
+}
 
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in
- &lt;/span&gt;start&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+case &quot;$1&quot; in
+ start)
 start
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-stop&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+;;
+stop)
 stop
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-restart|reload|force-reload&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+;;
+restart|reload|force-reload)
 stop
 start
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-status&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+;;
+status)
 status
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Usage: /etc/init.d/btsync {start|stop|reload|force-reload|restart|status}&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
-&lt;span class=&quot;k&quot;&gt;esac
+;;
+*)
+echo &quot;Usage: /etc/init.d/btsync {start|stop|reload|force-reload|restart|status}&quot;
+exit 1
+esac
 
-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+exit 0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
@@ -461,24 +440,21 @@ status
 
 &lt;h3 id=&quot;install-mosquitto2-mqtt-broker-on-debian-server&quot;&gt;Install &lt;a href=&quot;http://mosquitto.org&quot;&gt;mosquitto&lt;/a&gt; mqtt broker on debian server&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install mosquitto mosquitto-clients
+&lt;pre&gt;&lt;code&gt;sudo apt-get install mosquitto mosquitto-clients
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;start-and-stop-mosquitto-debian-jessie&quot;&gt;Start and stop mosquitto (Debian Jessie)&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl start mosquitto
+&lt;pre&gt;&lt;code&gt;sudo systemctl start mosquitto
 sudo systemctl stop mosquitto
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;to-do-figure-out-how-to-run-at-startup&quot;&gt;[To Do] Figure out how to run at startup???&lt;/h3&gt;
 
 &lt;p&gt;Following &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units&quot;&gt;this&lt;/a&gt; post I think it is just …&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl enable application.service
+&lt;pre&gt;&lt;code&gt;sudo systemctl enable application.service
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;But I need to check this.&lt;/p&gt;
 
@@ -490,78 +466,76 @@ sudo systemctl stop mosquitto
 
 &lt;p&gt;This script publishes data (timestamps for now) every second into the loft/motion1 topic on a mqtt broker.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# post to an mqtt topic&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;# post to an mqtt topic
 
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho.mqtt.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+import paho.mqtt.client as paho
+import datetime, time
 
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paho&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+mqttc = paho.Client()
  
-&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;192.168.1.200&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# the address of the mqtt broker&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;loft/motion1&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1883&lt;/span&gt;
+host = &quot;192.168.1.200&quot; # the address of the mqtt broker
+topic= &quot;loft/motion1&quot;
+port = 1883
  
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;on_connect() &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+def on_connect(mosq, obj, rc):
+    print(&quot;on_connect() &quot;+str(rc))
  
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt;
+mqttc.on_connect = on_connect
  
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Connecting to &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print(&quot;Connecting to &quot; + host)
+mqttc.connect(host, port, 60)
 
-&lt;span class=&quot;c&quot;&gt;# if connection to broker is lost and then regained, on_connect() gets called&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loop_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+# if connection to broker is lost and then regained, on_connect() gets called
+mqttc.loop_start()
 
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;starting infinite loop&#39;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# publish some data at a regular interval&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strftime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;H:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;M:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;S&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+print &#39;starting infinite loop&#39;
+while 1:
+    # publish some data at a regular interval
+    now = datetime.datetime.now()
+    mqttc.publish(topic, now.strftime(&#39;%H:%M:%S&#39;))
+    time.sleep(1)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;python-subscriber-script&quot;&gt;Python subscriber script&lt;/h3&gt;
 
 &lt;p&gt;This script subscribes to the topic loft/motion1 on a mqtt broker. Whenever there is new data in the topic, on_message() gets called.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# subscribe to an mqtt topic&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;# subscribe to an mqtt topic
 
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho.mqtt.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paho&lt;/span&gt;
+import paho.mqtt.client as paho
 
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;paho&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+mqttc = paho.Client()
 
-&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;192.168.1.200&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# the address of the mqtt broker&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;loft/motion1&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1883&lt;/span&gt;
+host = &quot;192.168.1.200&quot; # the address of the mqtt broker
+topic= &quot;loft/motion1&quot;
+port = 1883
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;on_connect() rc=&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;   subscribing to&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+def on_connect(mosq, obj, rc):
+    print(&#39;on_connect() rc=&#39; +str(rc))
+    print &#39;   subscribing to&#39;, topic
+    mqttc.subscribe(topic, 0)
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;granted_qos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Subscribed OK&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+def on_subscribe(mosq, obj, mid, granted_qos):
+    print(&quot;Subscribed OK&quot;)
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mosq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;on_message() topic: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; payload: &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+def on_message(mosq, obj, msg):
+    print( &quot;on_message() topic: &quot; + msg.topic + &quot; payload: &quot;+str(msg.payload) + &quot;\n&quot;);
 
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_connect&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_subscribe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_subscribe&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on_message&lt;/span&gt;
+mqttc.on_connect = on_connect
+mqttc.on_subscribe = on_subscribe
+mqttc.on_message = on_message
 
-&lt;span class=&quot;c&quot;&gt;# Connect and subscribe&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Connecting to &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+# Connect and subscribe
+print(&quot;Connecting to &quot; + host)
+mqttc.connect(host, port, 60)
 
-&lt;span class=&quot;c&quot;&gt;# if connection to broker is lost and then regained, on_connect() get called&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mqttc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loop_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+# if connection to broker is lost and then regained, on_connect() get called
+mqttc.loop_start()
 
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;starting infinite loop&#39;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;aaa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+print &#39;starting infinite loop&#39;
+while 1:
+    aaa = 1
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
@@ -593,7 +567,7 @@ sudo systemctl stop mosquitto
   &lt;li&gt;timelapse_app.py, starts a flask webserver which provides a REST api as a wrapper around VideoServer.py:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     http://192.168.1.12:5010/startarm
+&lt;pre&gt;&lt;code&gt;     http://192.168.1.12:5010/startarm
      http://192.168.1.12:5010/stoparm
      http://192.168.1.12:5010/startvideo
      http://192.168.1.12:5010/stopvideo
@@ -601,51 +575,45 @@ sudo systemctl stop mosquitto
      http://192.168.1.12:5010/timelapseoff
      http://192.168.1.12:5010/lastimage
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;To Do:&lt;/strong&gt; I still need to expose ‘bufferSeconds’ and ‘stillinterval’ to the REST API.&lt;/p&gt;
 
 &lt;h3 id=&quot;get-the-last-timelapse-image-in-a-browser-or-with-curl&quot;&gt;Get the last timelapse image in a browser or with curl&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# display in browser
+&lt;pre&gt;&lt;code&gt;# display in browser
 http://192.168.1.12:5010/lastimage
 # save from command line
 curl -o http://192.168.1.12:5010/lastimage
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;rsync-the-images-and-video-to-a-remote-host&quot;&gt;rsync the images and video to a remote host&lt;/h3&gt;
 
 &lt;p&gt;Now I want to get the videos/images off the machine with the camera. There are more options than I can count but here are three:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Push the recorded video/images to another server from within Python/Flask. I’ve done this before with &lt;a href=&quot;http://www.paramiko.org&quot;&gt;Paramiko&lt;/a&gt; but have always had problems with the code hanging or exceptions thrown when a network connection is lost. &lt;/li&gt;
+  &lt;li&gt;Push the recorded video/images to another server from within Python/Flask. I’ve done this before with &lt;a href=&quot;http://www.paramiko.org&quot;&gt;Paramiko&lt;/a&gt; but have always had problems with the code hanging or exceptions thrown when a network connection is lost.&lt;/li&gt;
   &lt;li&gt;Have another machine (also running flask) pull the images off the camera machine. This can be done with the /lastimage REST path. This requires the other machine to be running server code itself and to have some sort of timer.&lt;/li&gt;
   &lt;li&gt;Use &lt;strong&gt;rsynch&lt;/strong&gt; on the machine running the camera to a push videos/images to a remote server and use &lt;strong&gt;cron&lt;/strong&gt; to do this at a regular interval.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I will use rsynch to push the images to a remote server. Follow &lt;a href=&quot;http://troy.jdmz.net/rsync/index.html&quot;&gt;this&lt;/a&gt; for a really thorough explanation.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# assuming you have a folder &#39;securitycam&#39; on remote host
+&lt;pre&gt;&lt;code&gt;# assuming you have a folder &#39;securitycam&#39; on remote host
 rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Make sure you can &lt;a href=&quot;http://127.0.0.1:4000/post/2015/05/04/Auto-login-to-ssh-server/&quot;&gt;login to remote server&lt;/a&gt; without entering a password&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;add this
+&lt;pre&gt;&lt;code&gt;add this
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Run rsynch command every 10 minutes with crontab&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crontab -e
+&lt;pre&gt;&lt;code&gt;crontab -e
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*/10 * * * * /usr/bin/rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
+&lt;pre&gt;&lt;code&gt;*/10 * * * * /usr/bin/rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;here-is-a-gist-with-videoserverpy-and-timelapseapppy&quot;&gt;Here is a gist with VideoServer.py and timelapse_app.py&lt;/h3&gt;
 
@@ -665,11 +633,10 @@ rsync -avz /home/pi/video/20151206/ -e ssh cudmore@192.168.1.200:securitycam
 
 &lt;p&gt;The stock install of Raspian should already have this.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/network/interfaces
+&lt;pre&gt;&lt;code&gt;sudo pico /etc/network/interfaces
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;auto lo
+&lt;pre&gt;&lt;code&gt;auto lo
 
 iface lo inet loopback
 iface eth0 inet dhcp
@@ -679,15 +646,13 @@ iface wlan0 inet manual
 wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;edit-wpasupplicantconf&quot;&gt;Edit wpa_supplicant.conf&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
+&lt;pre&gt;&lt;code&gt;sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+&lt;pre&gt;&lt;code&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
 network={
@@ -695,17 +660,15 @@ network={
     psk=&quot;your_password_here&quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;tell-your-router-to-assign-an-ip-based-on-mac-address-of-wifi-adapter&quot;&gt;Tell your router to assign an ip based on MAC address of wifi adapter&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig wlan0
+&lt;pre&gt;&lt;code&gt;ifconfig wlan0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The MAC address is listed as ‘HWaddr’ and in this case is ‘00:0b:81:89:11:8a’.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
+&lt;pre&gt;&lt;code&gt;wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
           inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
@@ -713,11 +676,10 @@ network={
           collisions:0 txqueuelen:1000 
           RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;change-the-default-name-of-your-pi-in-apple-file-protocol-eg-netatalk&quot;&gt;Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk)&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# stop netatalk
+&lt;pre&gt;&lt;code&gt;# stop netatalk
 sudo /etc/init.d/netatalk stop
 
 # edit config file
@@ -732,7 +694,6 @@ sudo nano /etc/netatalk/AppleVolumes.default
 # restart netatalk
 sudo /etc/init.d/netatalk start
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;startup-mailer&quot;&gt;Startup mailer&lt;/h3&gt;
 
@@ -740,7 +701,7 @@ sudo /etc/init.d/netatalk start
 
 &lt;p&gt;This is startup_mailer.py (in all its crappy code style)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import subprocess
+&lt;pre&gt;&lt;code&gt;import subprocess
 import smtplib
 import socket
 import os
@@ -788,11 +749,10 @@ msg[&#39;To&#39;] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;another-version-of-my-startupmailerpy&quot;&gt;Another version of my startup_mailer.py&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import subprocess
+&lt;pre&gt;&lt;code&gt;import subprocess
 import smtplib
 import socket
 import os
@@ -825,39 +785,37 @@ msg[&#39;To&#39;] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;edit-etcrclocal&quot;&gt;Edit /etc/rc.local&lt;/h3&gt;
 
 &lt;p&gt;rc.local will run code each itme a user logs in.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh -e&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# rc.local&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# This script is executed at the end of each multiuser runlevel.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Make sure that the script will &quot;exit 0&quot; on success or any other&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# value on error.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# In order to enable or disable this script just change the execution&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# bits.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# By default this script does nothing.&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will &quot;exit 0&quot; on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
 
-&lt;span class=&quot;c&quot;&gt;# Print the IP address&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;hostname -I&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;My IP address is %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ &quot;$_IP&quot; ]; then
+  printf &quot;My IP address is %s\n&quot; &quot;$_IP&quot;
   python /home/pi/code/startup_mailer.py
-&lt;span class=&quot;k&quot;&gt;fi
+fi
 
-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+exit 0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;useful-network-commands&quot;&gt;Useful network commands&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# scan for available wifi networks
+&lt;pre&gt;&lt;code&gt;# scan for available wifi networks
 sudo iwlist wlan0 scan
 # show network adapter status
 ifconfig wlan0
@@ -865,7 +823,6 @@ ifconfig wlan0
 sudo ifdown wlan0
 sudo ifup wlan0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
@@ -882,38 +839,34 @@ sudo ifup wlan0
 &lt;p&gt;I am doing all of this on a Debian Jessie server.&lt;/p&gt;
 
 &lt;h4 id=&quot;install-git&quot;&gt;install git&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install git
+&lt;pre&gt;&lt;code&gt;sudo apt-get install git
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;install-nodejs-use-su-to-enter-suroot&quot;&gt;install nodejs (use su to enter su/root)&lt;/h4&gt;
 &lt;p&gt;Following: https://github.com/nodesource/distributions&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL https://deb.nodesource.com/setup_4.x | bash -
+&lt;pre&gt;&lt;code&gt;curl -sL https://deb.nodesource.com/setup_4.x | bash -
 apt-get install -y nodejs
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;install-particle-cli&quot;&gt;Install particle cli&lt;/h4&gt;
 &lt;p&gt;Following: https://github.com/spark/particle-cli&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo npm install -g particle-cli
+&lt;pre&gt;&lt;code&gt;sudo npm install -g particle-cli
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;install-particle-cloud-server&quot;&gt;Install particle cloud server&lt;/h4&gt;
 &lt;p&gt;Following: https://github.com/spark/spark-server/&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/spark/spark-server.git
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/spark/spark-server.git
 cd spark-server
 npm install
 node main.js
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;‘node main.js’ produced&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-------
+&lt;pre&gt;&lt;code&gt;-------
 No users exist, you should create some users!
 -------
 connect.multipart() will be removed in connect 3.0
@@ -939,22 +892,19 @@ Your server IP address is: 192.168.1.200
 server started { host: &#39;localhost&#39;, port: 5683 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;continue-setting-up-particle-server&quot;&gt;Continue setting up particle server&lt;/h4&gt;
 &lt;p&gt;Install &lt;a href=&quot;http://dfu-util.sourceforge.net&quot;&gt;dfu-utils&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
+&lt;pre&gt;&lt;code&gt;	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
 	sudo apt-get build-dep dfu-util
 	sudo apt-get install libusb-1.0-0-dev
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;But that did not work so i did&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get upgrade dfu-util
+&lt;pre&gt;&lt;code&gt;sudo apt-get upgrade dfu-util
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow &lt;a href=&quot;https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html&quot;&gt;this&lt;/a&gt; and edit /var/www/owncloud/config/config.php and set ‘maintenance’ =&amp;gt; false,’. The next time I logged into my owncloud server it triggered an update to 8.2.1&lt;/p&gt;
 
@@ -962,13 +912,12 @@ server started { host: &#39;localhost&#39;, port: 5683 }
 
 &lt;p&gt;Still following: https://github.com/spark/spark-server/&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;particle keys server default_key.pub.pem 192.168.1.10
+&lt;pre&gt;&lt;code&gt;particle keys server default_key.pub.pem 192.168.1.10
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;gave&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
+&lt;pre&gt;&lt;code&gt;cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
 running dfu-util -l
 Found DFU device 2b04:d006
 checking file  default_key.pub192_168_1_200.der
@@ -998,7 +947,6 @@ Download done.
 File downloaded successfully
 Okay!  New keys in place, your device will not restart.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 </content>
  </entry>
  
@@ -1377,7 +1325,7 @@ Okay!  New keys in place, your device will not restart.
 
 &lt;h3 id=&quot;api&quot;&gt;API&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/bokeh
+&lt;pre&gt;&lt;code&gt;/bokeh
    plot with bokeh (python generates javascript and plots off my server)
 /images/a
    plot with matplotlib (generates a static image)
@@ -1388,7 +1336,6 @@ Okay!  New keys in place, your device will not restart.
 /system
    the type of system the server is running on 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 </content>
  </entry>
  
@@ -1493,20 +1440,18 @@ Message
 
 &lt;h4 id=&quot;install-libraries&quot;&gt;Install libraries&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install pyqtgraph
+&lt;pre&gt;&lt;code&gt;pip install pyqtgraph
 pip install tifffile
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;python-code&quot;&gt;Python code&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pyqtgraph as pg
+&lt;pre&gt;&lt;code&gt;import pyqtgraph as pg
 import tifffile
 tif = tifffile.TiffFile(&#39;Desktop/zyF4107_d1_s0_ch1.tif&#39;)
 images = tif.asarray()
 pg.image(images)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;to-do&quot;&gt;To Do&lt;/h4&gt;
 &lt;ul&gt;
@@ -1553,7 +1498,7 @@ pg.image(images)
 
 &lt;p&gt;Here is how you change the name of the default AFP mount point.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# stop netatalk
+&lt;pre&gt;&lt;code&gt;# stop netatalk
 sudo /etc/init.d/netatalk stop
 
 # edit config file
@@ -1568,7 +1513,6 @@ sudo nano /etc/netatalk/AppleVolumes.default
 # restart netatalk
 sudo /etc/init.d/netatalk start
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;This pi will now mount on my Mac desktop as a hard-drive named ‘pi50’&lt;/p&gt;
 
@@ -1651,9 +1595,8 @@ sudo /etc/init.d/netatalk start
 
 &lt;h4 id=&quot;good-code-for-python-matplotlib&quot;&gt;Good code for python matplotlib&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.lebsanft.org/?p=48
+&lt;pre&gt;&lt;code&gt;https://www.lebsanft.org/?p=48
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;processing-on-the-pi&quot;&gt;Processing on the pi&lt;/h4&gt;
 
@@ -1662,9 +1605,8 @@ sudo /etc/init.d/netatalk start
 &lt;p&gt;http://cagewebdev.com/index.php/raspberry-pi-running-processing-on-your-raspi/&lt;/p&gt;
 
 &lt;h4 id=&quot;pyqtgraph&quot;&gt;pyqtgraph&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pip install pyqtgraph
+&lt;pre&gt;&lt;code&gt;sudo pip install pyqtgraph
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;gotchas&quot;&gt;Gotchas&lt;/h3&gt;
 &lt;ul&gt;
@@ -1673,9 +1615,8 @@ sudo /etc/init.d/netatalk start
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;put-arduino-libraries-in&quot;&gt;Put Arduino libraries in&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/share/arduino/libraries/
+&lt;pre&gt;&lt;code&gt;/usr/share/arduino/libraries/
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
 
@@ -1726,7 +1667,7 @@ https://github.com/adafruit/AccelStepper&lt;/p&gt;
 
 &lt;h4 id=&quot;get-a-list-of-your-usb-devices-to-check-if-your-usb-drive-is-available&quot;&gt;Get a list of your USB devices to check if your USB drive is available&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lsusb
+&lt;pre&gt;&lt;code&gt;lsusb
 
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
@@ -1734,29 +1675,26 @@ Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 13fe:5200 Kingston Technology Company Inc.
 Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;make-a-directory-to-mount-your-drivevolume-into&quot;&gt;Make a directory to mount your drive/volume into&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mkdir /home/pi/crap
+&lt;pre&gt;&lt;code&gt;sudo mkdir /home/pi/crap
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;find-the-uuid-of-your-drive&quot;&gt;Find the UUID of your drive&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo blkid
+&lt;pre&gt;&lt;code&gt;sudo blkid
 
 /dev/mmcblk0p1: SEC_TYPE=&quot;msdos&quot; LABEL=&quot;boot&quot; UUID=&quot;2654-BFC0&quot; TYPE=&quot;vfat&quot;
 /dev/mmcblk0p2: UUID=&quot;548da502-ebde-45c0-9ab2-de5e2431ee0b&quot; TYPE=&quot;ext4&quot;
 /dev/sda1: LABEL=&quot;CRAP&quot; UUID=&quot;7CCD-19F2&quot; TYPE=&quot;vfat&quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).&lt;/p&gt;
 
 &lt;h4 id=&quot;edit-your-etcfstab-file-by-appending-a-line-for-your-dive&quot;&gt;Edit your /etc/fstab file by appending a line for your dive&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/fstab
+&lt;pre&gt;&lt;code&gt;sudo pico /etc/fstab
 
 proc            /proc           proc    defaults          0       0
 /dev/mmcblk0p1  /boot           vfat    defaults          0       2
@@ -1764,15 +1702,13 @@ proc            /proc           proc    defaults          0       0
 UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 # a swapfile is not a swap partition, so no using swapon|off from here on, use $
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).&lt;/p&gt;
 
 &lt;h4 id=&quot;remount-your-drives-and-check-the-drive-is-mounted&quot;&gt;Remount Your drives and check the drive is mounted&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mount -a
+&lt;pre&gt;&lt;code&gt;sudo mount -a
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;‘ls’ should show /video/ in blue to indicate it is mounted&lt;/p&gt;
 
@@ -1831,7 +1767,7 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
  
  <entry>
    <title>X11 on raspberry</title>
-   <link href="http://blog.cudmore.io/post/2015/05/05/X11-on-Raspberry/"/>
+   <link href="http://blog.cudmore.io/post/2015/05/05/X11%20on%20Raspberry/"/>
    <updated>2015-05-05T18:01:06-04:00</updated>
    <id>http://blog.cudmore.io/post/2015/05/05/X11 on Raspberry</id>
    <content type="html">&lt;p&gt;This is how I set up X11 on Raspberry server to serve individual windows to a Mac OSX client.&lt;/p&gt;
@@ -1848,9 +1784,8 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 
 &lt;h4 id=&quot;ssh-to-raspberry-using--x&quot;&gt;ssh to Raspberry using ‘-X’&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh -X pi@10.16.79.145
+&lt;pre&gt;&lt;code&gt;ssh -X pi@10.16.79.145
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;on-raspberry-server&quot;&gt;On Raspberry server&lt;/h4&gt;
 
@@ -1858,16 +1793,14 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
   &lt;li&gt;
     &lt;p&gt;This allows ‘sudo python’ to work with things like Tk()&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo cp ~/.Xauthority ~root/
+    &lt;pre&gt;&lt;code&gt; sudo cp ~/.Xauthority ~root/
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;This tells X11 on the Pi server to send its windows to your mac client (when you remote ssh with -X)&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; export DISPLAY=&quot;127.0.0.1:10.0&quot;
+    &lt;pre&gt;&lt;code&gt; export DISPLAY=&quot;127.0.0.1:10.0&quot;
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1876,18 +1809,16 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
   &lt;li&gt;
     &lt;p&gt;install&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo apt-get install x11-apps
+    &lt;pre&gt;&lt;code&gt; sudo apt-get install x11-apps
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;run&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; xeyes&amp;amp;
+    &lt;pre&gt;&lt;code&gt; xeyes&amp;amp;
  xclock&amp;amp;
  leafpad&amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1897,17 +1828,15 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
   &lt;li&gt;
     &lt;p&gt;open up X11 to everybody&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  xhost +
+    &lt;pre&gt;&lt;code&gt;  xhost +
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;run-arduino-ide&quot;&gt;Run Arduino ide&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/arduino&amp;amp;
+&lt;pre&gt;&lt;code&gt;/usr/bin/arduino&amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
@@ -1930,7 +1859,7 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 
 &lt;h4 id=&quot;client-generate-publicprivate-rsa-key-pair&quot;&gt;[Client] Generate public/private rsa key pair&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-keygen -t rsa
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa
 
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/cudmore/.ssh/id_rsa): 
@@ -1955,37 +1884,31 @@ The key&#39;s randomart image is:
 |       .o..      |
 +-----------------+
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;client-idrsapub-from-the-client-to-the-ssh-server-need-to-enter-password&quot;&gt;[Client] id_rsa.pub from the client to the ssh server (need to enter password)&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
+&lt;pre&gt;&lt;code&gt;scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;client-login-to-the-ssh-server-last-time-you-will-need-a-password&quot;&gt;[Client] Login to the ssh server (last time you will need a password)&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@192.168.1.70
+&lt;pre&gt;&lt;code&gt;ssh pi@192.168.1.70
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;server-copy-the-key-into-the-correct-location-on-the-server&quot;&gt;[Server] Copy the key into the correct location (on the server)&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat id_rsa.pub &amp;gt;&amp;gt; ./.ssh/authorized_keys
+&lt;pre&gt;&lt;code&gt;cat id_rsa.pub &amp;gt;&amp;gt; ./.ssh/authorized_keys
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;server-delete-the-original-on-the-server&quot;&gt;[Server] Delete the original (on the server)&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rm ./id_rsa.pub
+&lt;pre&gt;&lt;code&gt;rm ./id_rsa.pub
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;client-the-next-time-you-login-you-will-not-be-asked-for-a-password&quot;&gt;[Client] The next time you login you will not be asked for a password&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@192.168.1.70
+&lt;pre&gt;&lt;code&gt;ssh pi@192.168.1.70
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;notes&quot;&gt;Notes&lt;/h4&gt;
 
@@ -2008,22 +1931,20 @@ The key&#39;s randomart image is:
    <id>http://blog.cudmore.io/post/2015/04/30/python-tricks</id>
    <content type="html">&lt;h4 id=&quot;ipython-auto-reload-imports&quot;&gt;iPython auto reload imports&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%load_ext autoreload
+&lt;pre&gt;&lt;code&gt;%load_ext autoreload
 %autoreload 2
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;To autoload these options, see:&lt;/p&gt;
 
 &lt;p&gt;http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython/10472712# 10472712&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ipython profile create
+&lt;pre&gt;&lt;code&gt;ipython profile create
 
 c.InteractiveShellApp.exec_lines = []
 c.InteractiveShellApp.exec_lines.append(&#39;%load_ext autoreload&#39;)
 c.InteractiveShellApp.exec_lines.append(&#39;%autoreload 2&#39;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
@@ -2037,44 +1958,38 @@ c.InteractiveShellApp.exec_lines.append(&#39;%autoreload 2&#39;)
 
 &lt;p&gt;See&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.raspberrypi.org/documentation/remote-access/vnc/
+&lt;pre&gt;&lt;code&gt;https://www.raspberrypi.org/documentation/remote-access/vnc/
 http://elinux.org/RPi_VNC_Server
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;install-tightvncserver-server-on-raspberry&quot;&gt;Install tightvncserver server on Raspberry&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install tightvncserver
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tightvncserver
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;run-tightvncserver-to-set-password&quot;&gt;Run tightvncserver to set password&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tightvncserver
+&lt;pre&gt;&lt;code&gt;tightvncserver
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;start-server-on-pi&quot;&gt;Start server on pi&lt;/h3&gt;
 
 &lt;p&gt;Use :1 if your Pi is running X11 by default (mine is)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vncserver :1 -geometry 1920x1080 -depth 24
+&lt;pre&gt;&lt;code&gt;vncserver :1 -geometry 1920x1080 -depth 24
 vncserver :1 -geometry 1280x800 -depth 24
 vncserver :1 -geometry 1024x768 -depth 24
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;kill-server&quot;&gt;kill server&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vncserver -kill :1
+&lt;pre&gt;&lt;code&gt;vncserver -kill :1
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;install-realvnc-client-on-osx&quot;&gt;Install realVNC client on OSX&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.realvnc.com
+&lt;pre&gt;&lt;code&gt;https://www.realvnc.com
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;enable-copypaste-between-host-and-server&quot;&gt;Enable copy/paste between host and server&lt;/h3&gt;
 
@@ -2082,7 +1997,7 @@ vncserver :1 -geometry 1024x768 -depth 24
 
 &lt;p&gt;http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# install
+&lt;pre&gt;&lt;code&gt;# install
 sudo apt-get install autocutsel
 
 # edit /home/pi/.vnc/xstartup
@@ -2101,7 +2016,6 @@ autocutsel -fork
 export XKL_XMODMAP_DISABLE=1
 /etc/X11/Xsession
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;alternative-is-to-use-x11vnc&quot;&gt;Alternative is to use x11vnc&lt;/h3&gt;
 
@@ -2143,8 +2057,8 @@ export XKL_XMODMAP_DISABLE=1
   &lt;li&gt;&lt;a href=&quot;http://www.wavemetrics.com/support/versions.htm&quot;&gt;Igor&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://fiji.sc/Downloads&quot;&gt;Fiji&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;Using ‘Fiji Life-Line version, 2014 November 25’. &lt;/li&gt;
-      &lt;li&gt;Fiji will not run until setting: Security &amp;amp; Privacy -&amp;gt; Allow apps downloaded from: Anywhere  &lt;/li&gt;
+      &lt;li&gt;Using ‘Fiji Life-Line version, 2014 November 25’.&lt;/li&gt;
+      &lt;li&gt;Fiji will not run until setting: Security &amp;amp; Privacy -&amp;gt; Allow apps downloaded from: Anywhere&lt;/li&gt;
       &lt;li&gt;Installing Java SE 6&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -2156,7 +2070,7 @@ export XKL_XMODMAP_DISABLE=1
   &lt;li&gt;XCode command line tools &lt;br /&gt;
  ~~~
  xcode-select –install
- ~~~  &lt;/li&gt;
+ ~~~&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://continuum.io/downloads&quot;&gt;Anaconda&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;Jekyll&lt;/a&gt; &lt;br /&gt;
  ~~~
@@ -2208,16 +2122,16 @@ export XKL_XMODMAP_DISABLE=1
 &lt;h4 id=&quot;myjhu-vpn-this-is-the-part-that-is-always-fucking-impossible&quot;&gt;myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;[FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]  &lt;/li&gt;
+  &lt;li&gt;[FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;~~- Start by going &lt;a href=&quot;https://jhpulse.johnshopkins.edu.&quot;&gt;here&lt;/a&gt;~~&lt;br /&gt;
- ~~- https://jhpulse.johnshopkins.edu.~~  &lt;/p&gt;
+ ~~- https://jhpulse.johnshopkins.edu.~~&lt;/p&gt;
 
-&lt;p&gt;~~- Forces install of Java 8u45~~  &lt;/p&gt;
+&lt;p&gt;~~- Forces install of Java 8u45~~&lt;/p&gt;
 
 &lt;p&gt;~~- https://www.java.com/en/download/mac_download.jsp~~&lt;br /&gt;
-~~- jre-8u45-macosx-x64.dmg~~  &lt;/p&gt;
+~~- jre-8u45-macosx-x64.dmg~~&lt;/p&gt;
 
 &lt;p&gt;~~- Install Junos Pulse (twice)~~&lt;br /&gt;
  ~~- Requires manual setting of Safari security~~&lt;br /&gt;
@@ -2252,7 +2166,7 @@ export XKL_XMODMAP_DISABLE=1
 
 &lt;h3 id=&quot;preliminaries&quot;&gt;Preliminaries&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo raspi-config # configure pi with text menu
+&lt;pre&gt;&lt;code&gt;sudo raspi-config # configure pi with text menu
 
 sudo apt-get update # update database
 
@@ -2260,19 +2174,17 @@ sudo apt-get upgrade # update userspace
 
 sudo rpi-update # update firmware (requires reboot)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (afp)&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install netatalk
+&lt;pre&gt;&lt;code&gt;sudo apt-get install netatalk
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;unison-file-synchronization&quot;&gt;Unison file synchronization&lt;/h3&gt;
 
 &lt;p&gt;See my post &lt;a href=&quot;http://www.robertcudmore.org/blog/?p=168&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install unison
+&lt;pre&gt;&lt;code&gt;sudo apt-get install unison
 # see link to set up auto authentication with rsa keys
 unison # run once to make /home/pi/.unison
 pico /home/pi/.unison/sites.prf    
@@ -2294,75 +2206,68 @@ ignore = Name *.htaccess
 
 servercmd=/home1/robertcu/unison
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;startup-mailer&quot;&gt;Startup mailer&lt;/h3&gt;
 &lt;p&gt;See my post &lt;a href=&quot;http://www.robertcudmore.org/blog/?p=60&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Use gmail ‘cudmore.raspberry@gmail.com’ to send  &lt;/p&gt;
+&lt;p&gt;Use gmail ‘cudmore.raspberry@gmail.com’ to send&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; wget http://cudmore.github.io/downloads/startup_mailer.py
+&lt;pre&gt;&lt;code&gt; wget http://cudmore.github.io/downloads/startup_mailer.py
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;what-is-my-ip&quot;&gt;What is my ip&lt;/h3&gt;
 
 &lt;p&gt;Download whatismyip.py, run it and it will tell you your ip&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; wget http://cudmore.github.io/downloads/whatismyip.py
+&lt;pre&gt;&lt;code&gt; wget http://cudmore.github.io/downloads/whatismyip.py
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;python&quot;&gt;python&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-dev  
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-dev  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;pip&quot;&gt;pip&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-pip  
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-pip  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;flask&quot;&gt;Flask&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Flask tutorial &lt;a href=&quot;http://mattrichardson.com/Raspberry-Pi-Flask/&quot;&gt;here&lt;/a&gt;  &lt;/p&gt;
+    &lt;p&gt;Flask tutorial &lt;a href=&quot;http://mattrichardson.com/Raspberry-Pi-Flask/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;sudo pip install flask  &lt;/p&gt;
+    &lt;p&gt;sudo pip install flask&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;socketio-for-flask&quot;&gt;socketio for Flask&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://flask-socketio.readthedocs.org/en/latest/&quot;&gt;socketio website&lt;/a&gt;  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://flask-socketio.readthedocs.org/en/latest/&quot;&gt;socketio website&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent&quot;&gt;socketio tutorial&lt;/a&gt;  &lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent&quot;&gt;socketio tutorial&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;sudo pip install flask-socketio  &lt;/p&gt;
+    &lt;p&gt;sudo pip install flask-socketio&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;pandas-this-takes-awhile&quot;&gt;pandas (this takes awhile)&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-pandas  
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-pandas  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;subversion&quot;&gt;subversion&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install subversion
+&lt;pre&gt;&lt;code&gt;sudo apt-get install subversion
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;mjpg-streamer&quot;&gt;mjpg-streamer&lt;/h3&gt;
 
 &lt;p&gt;See my post &lt;a href=&quot;http://cudmore.github.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get -y install libjpeg8-dev imagemagick libv4l-dev  
+&lt;pre&gt;&lt;code&gt;sudo apt-get -y install libjpeg8-dev imagemagick libv4l-dev  
 sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h  
 wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip  
 unzip mjpg-streamer-code-182.zip  
@@ -2374,31 +2279,27 @@ sudo cp -R www /usr/local/www
 
 sudo apt-get install v4l-utils # this is to detect parameters of USB camera  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;Note, make ‘input_uvc.so’ is for usb cam and ‘input_file’ is for raspberry CSI camera  &lt;/p&gt;
+&lt;p&gt;Note, make ‘input_uvc.so’ is for usb cam and ‘input_file’ is for raspberry CSI camera&lt;/p&gt;
 
-&lt;p&gt;If wget does not find mjpg-streamer, download it here  &lt;/p&gt;
+&lt;p&gt;If wget does not find mjpg-streamer, download it here&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
+&lt;pre&gt;&lt;code&gt;wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;opencv&quot;&gt;opencv&lt;/h3&gt;
 
-&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libopencv-dev python-opencv
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libopencv-dev python-opencv
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;pil&quot;&gt;PIL&lt;/h3&gt;
 
 &lt;p&gt;Not sure if there is apt-get install python-pil ???&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pip install pil
+&lt;pre&gt;&lt;code&gt;sudo pip install pil
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;upgrade-numpy-takes-a-long-time&quot;&gt;Upgrade numpy (takes a long time)&lt;/h3&gt;
 
@@ -2406,21 +2307,20 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
   &lt;li&gt;
     &lt;p&gt;required for pandas and bokeh&lt;/p&gt;
 
-    &lt;p&gt;sudo pip install numpy –upgrade  &lt;/p&gt;
+    &lt;p&gt;sudo pip install numpy –upgrade&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;install-pandas&quot;&gt;Install pandas&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-pandas  
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-pandas  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;install-bokeh&quot;&gt;Install bokeh&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;To do, get an example running again  &lt;/p&gt;
+    &lt;p&gt;To do, get an example running again&lt;/p&gt;
 
     &lt;p&gt;sudo pip install bokeh&lt;/p&gt;
   &lt;/li&gt;
@@ -2430,17 +2330,16 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
 
 &lt;p&gt;The list of qt libraries is huge, see &lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?f=32&amp;amp;t=102028&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install python-qt4
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-qt4
 sudo apt-get install python-qt4-dev
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h1 id=&quot;stop-here-&quot;&gt;!!! Stop Here !!!&lt;/h1&gt;
 
 &lt;h3 id=&quot;client-side-socketio-javascript&quot;&gt;Client side socket.io javascript&lt;/h3&gt;
 &lt;p&gt;Client side needs socketio javascript: http://socket.io&lt;br /&gt;
 Put this in your Flask project /static/js/&lt;br /&gt;
-Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js  &lt;/p&gt;
+Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js&lt;br /&gt;
@@ -2448,7 +2347,7 @@ cp socket.io.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;client-side-jquery&quot;&gt;Client side jquery&lt;/h3&gt;
-&lt;p&gt;documentation at: http://jquery.com/download/  &lt;/p&gt;
+&lt;p&gt;documentation at: http://jquery.com/download/&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;wget wget http://code.jquery.com/jquery-1.11.2.min.js&lt;br /&gt;
@@ -2477,14 +2376,13 @@ make sure dependencies are installed: NumPy, Pandas, and Redis
 
 &lt;p&gt;My home usb video camera shows up as&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@pi50 ~/Sites/iosserver $ lsusb
+&lt;pre&gt;&lt;code&gt;pi@pi50 ~/Sites/iosserver $ lsusb
 Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp. 
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
 Bus 001 Device 004: ID 1a40:0201 Terminus Technology Inc. FE 2.1 7-port Hub
 Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Source code for mjpg streamer&lt;/p&gt;
 
@@ -2513,7 +2411,7 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
 
     &lt;p&gt;User Controls&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                   brightness (int)    : min=0 max=255 step=1 default=0 value=0 flags=slider
+    &lt;pre&gt;&lt;code&gt;                   brightness (int)    : min=0 max=255 step=1 default=0 value=0 flags=slider
                      contrast (int)    : min=0 max=255 step=1 default=32 value=32 flags=slider
                    saturation (int)    : min=0 max=255 step=1 default=64 value=64 flags=slider
                           hue (int)    : min=-90 max=90 step=1 default=0 value=0 flags=slider
@@ -2526,13 +2424,11 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
          power_line_frequency (menu)   : min=0 max=1 default=0 value=0
                     sharpness (int)    : min=0 max=63 step=1 default=0 value=0 flags=slider
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
 
     &lt;p&gt;Camera Controls&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                auto_exposure (menu)   : min=0 max=1 default=0 value=0 flags=update
+    &lt;pre&gt;&lt;code&gt;                auto_exposure (menu)   : min=0 max=1 default=0 value=0 flags=update
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2544,7 +2440,7 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
 	 —————————————————————
 	 The following parameters can be passed to this plugin:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; [-d | --device ].......: video device to open (your camera)
+&lt;pre&gt;&lt;code&gt; [-d | --device ].......: video device to open (your camera)
  [-r | --resolution ]...: the resolution of the video device,
 						  can be one of the following strings:
 						  QSIF QCIF CGA QVGA CIF VGA 
@@ -2565,23 +2461,21 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
 
 input_init() return value signals to exit
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h1 id=&quot;this-works-for-usb-webcam&quot;&gt;THIS WORKS FOR USB WEBCAM&lt;/h1&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
+&lt;pre&gt;&lt;code&gt;/usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
 
 /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
 
 /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 </content>
  </entry>
  
  <entry>
    <title>Raspberry Pi video controller</title>
-   <link href="http://blog.cudmore.io/post/2015/03/20/Rapsberry-Pi-Video-Controller/"/>
+   <link href="http://blog.cudmore.io/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/"/>
    <updated>2015-03-20T18:01:06-04:00</updated>
    <id>http://blog.cudmore.io/post/2015/03/20/Rapsberry Pi Video Controller</id>
    <content type="html">&lt;p&gt;This is a video server running on a raspberry Pi Linux computer. It provides a web interface to stream and record video.&lt;/p&gt;
@@ -2589,8 +2483,8 @@ input_init() return value signals to exit
 &lt;h3 id=&quot;what-it-does&quot;&gt;What it does&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Arm&lt;/strong&gt; - Start video recording when a TTL is received. Hook up the ScanImage frame clock to the Pi and this will start a video recording at the start of each stack or timeseries. &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Record&lt;/strong&gt; - Record a one time video. &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Arm&lt;/strong&gt; - Start video recording when a TTL is received. Hook up the ScanImage frame clock to the Pi and this will start a video recording at the start of each stack or timeseries.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Record&lt;/strong&gt; - Record a one time video.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Stream&lt;/strong&gt; - Stream the video to your web browser so you can see a live feed.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Stop&lt;/strong&gt; - Stop any video streaming or recording.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;IR On/Off&lt;/strong&gt; - Turn one set of LEDs on/off. The brightness of the LED is set with the slider. This is usually hooked up to a bank of IR LEDs.&lt;/li&gt;
@@ -2620,9 +2514,8 @@ input_init() return value signals to exit
 
 &lt;h3 id=&quot;running-the-server&quot;&gt;Running the server&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo python iosserver.py
+&lt;pre&gt;&lt;code&gt;sudo python iosserver.py
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;This will tell you the IP adress you use to login to the server.&lt;/p&gt;
 
@@ -2630,9 +2523,8 @@ input_init() return value signals to exit
 
 &lt;p&gt;Just point any browser to the server address.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://192.168.1.60:5000
+&lt;pre&gt;&lt;code&gt;http://192.168.1.60:5000
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h2 id=&quot;extra-details&quot;&gt;Extra Details&lt;/h2&gt;
 
@@ -2640,38 +2532,36 @@ input_init() return value signals to exit
 
 &lt;p&gt;Python code running on any other internet-connected device can ‘inject’ values into the iosserver and they will show up in real-time inside all client browsers. Here is example code on another Pi that has its own temperature and humidity sensor.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# send to iosserver&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;timestamp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thisTimestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;insideTemp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;insideHum&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;outsideTemp&#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outsidetemp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;outsideHum&#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outsidehumidity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;http://192.168.1.60:5000/_add_numbers&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;sent to 192.168.1.60 !!!&#39;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;-------- error sending to iosserver ---------&#39;&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;# send to iosserver
+import requests
+try:
+	payload = {&#39;timestamp&#39;: thisTimestamp, &#39;insideTemp&#39;: temp, &#39;insideHum&#39;: hum, &#39;outsideTemp&#39; : outsidetemp, &#39;outsideHum&#39; : outsidehumidity}
+	r=requests.get(&#39;http://192.168.1.60:5000/_add_numbers&#39;, params=payload)
+	print &#39;sent to 192.168.1.60 !!!&#39;
+	print payload
+except:
+	print &#39;-------- error sending to iosserver ---------&#39;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The iosserver receives this GET request with a little function decorator.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;/_add_numbers&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;timestamp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# defaults to &#39;&#39;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;insideTemp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;insideTemp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;insideHum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;insideHum&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;outsideTemp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;outsideTemp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;outsideHum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;outsideHum&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;timestamp=&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# myVideo is another python class that handles all runtime&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# it is not detailed in this example&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;myVideo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insideTemp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insideTemp&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;myVideo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insideHum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insideHum&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;myVideo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outsideTemp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outsideTemp&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;myVideo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outsideHum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outsideHum&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;add_nummbers() received &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insideTemp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insideHum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outsideTemp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outsideHum&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;@app.route(&#39;/_add_numbers&#39;)
+def add_numbers():
+    timestamp = request.args.get(&#39;timestamp&#39;, &#39;&#39;) # defaults to &#39;&#39;
+    insideTemp = request.args.get(&#39;insideTemp&#39;, &#39;&#39;)
+    insideHum = request.args.get(&#39;insideHum&#39;, &#39;&#39;)
+    outsideTemp = request.args.get(&#39;outsideTemp&#39;, &#39;&#39;)
+    outsideHum = request.args.get(&#39;outsideHum&#39;, &#39;&#39;)
+    print &#39;timestamp=&#39;, timestamp
+    # myVideo is another python class that handles all runtime
+    # it is not detailed in this example
+    myVideo.insideTemp = timestamp + &#39; &#39; + insideTemp
+    myVideo.insideHum = insideHum
+    myVideo.outsideTemp = outsideTemp
+    myVideo.outsideHum = outsideHum
+    print &#39;add_nummbers() received &#39;, timestamp, &#39; &#39;, insideTemp, &#39; &#39;, insideHum, &#39; &#39;, outsideTemp, &#39; &#39;, outsideHum
+    return &#39;&#39;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;There are a few more steps including some javascript and html. This is not a Flask or Socket-IO tutorial. Have a look a &lt;a href=&quot;https://flask-socketio.readthedocs.org/en/latest/&quot;&gt;socket-io for Flask&lt;/a&gt;.&lt;/p&gt;
 
@@ -2691,7 +2581,7 @@ input_init() return value signals to exit
   &lt;a href=&quot;http://sourceforge.net/projects/mjpg-streamer/&quot;&gt;http://sourceforge.net/projects/mjpg-streamer/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Tutorials  &lt;/p&gt;
+    &lt;p&gt;Tutorials&lt;/p&gt;
 
     &lt;p&gt;In what follows I am following this blog post …&lt;br /&gt;
   &lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&quot;&gt;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&lt;/a&gt;&lt;/p&gt;
@@ -2705,7 +2595,7 @@ input_init() return value signals to exit
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Preliminaries  &lt;/p&gt;
+    &lt;p&gt;Preliminaries&lt;/p&gt;
 
     &lt;p&gt;~~~
   sudo apt-get update&lt;br /&gt;
@@ -2717,42 +2607,38 @@ input_init() return value signals to exit
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;make symbolic link to changed library names. Thanks to Miguel Grinberg for &lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi]&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
+&lt;pre&gt;&lt;code&gt;    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;download mjpg-streamer&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
+&lt;pre&gt;&lt;code&gt;    wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;unzip&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    unzip mjpg-streamer-code-182.zip  
+&lt;pre&gt;&lt;code&gt;    unzip mjpg-streamer-code-182.zip  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;here-is-where-the-installation-differs-depending-on-if-you-are-installing-1-a-usb-camera-or-2-the-raspberry-pi-camera-module&quot;&gt;Here is where the installation differs depending on if you are installing (1) a usb camera or (2) the raspberry pi camera module&lt;/h4&gt;
 
 &lt;h3 id=&quot;raspberry-pi-camera-module&quot;&gt;(1) Raspberry Pi camera module&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;build and install for raspberry pi camera module.  &lt;/li&gt;
+  &lt;li&gt;build and install for raspberry pi camera module.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
+&lt;pre&gt;&lt;code&gt;    # build with &#39;make&#39;
     cd mjpg-streamer-code-182/mjpg-streamer  
     make mjpg_streamer input_file.so output_http.so  
     # install by copying files
@@ -2760,13 +2646,11 @@ input_init() return value signals to exit
     sudo cp output_http.so input_file.so /usr/local/lib/  
     sudo cp -R www /usr/local/www      
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS &#39;**input_uvc.so**&#39;.
+&lt;pre&gt;&lt;code&gt;FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS &#39;**input_uvc.so**&#39;.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
+&lt;pre&gt;&lt;code&gt;    # build with &#39;make&#39;
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
     # install by copying
@@ -2774,35 +2658,31 @@ input_init() return value signals to exit
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
     sudo cp -R www /usr/local/www
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I GUESS YOU COULD JUST FOLLOW &#39;USB CAMERA&#39; AND IT WOULD WORK FOR BOTH
+&lt;pre&gt;&lt;code&gt;I GUESS YOU COULD JUST FOLLOW &#39;USB CAMERA&#39; AND IT WOULD WORK FOR BOTH
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;start the raspberry pi camera module&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    mkdir /tmp/stream  
+&lt;pre&gt;&lt;code&gt;    mkdir /tmp/stream  
     raspistill --nopreview -w 640 -h 480 -q 5 -o /tmp/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 &amp;amp;  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;start mjpg-streamer for raspberry pi camera module. This streams using ‘&lt;strong&gt;input_file.so&lt;/strong&gt;’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    LD_LIBRARY_PATH=/usr/local/lib  
+&lt;pre&gt;&lt;code&gt;    LD_LIBRARY_PATH=/usr/local/lib  
     mjpg_streamer -i &quot;input_file.so -f /tmp/stream -n pic.jpg&quot; -o &quot;output_http.so -w /usr/local/www&quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;build-for-usb-camera&quot;&gt;(2) build for usb camera&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).  &lt;/p&gt;
+    &lt;p&gt;Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).&lt;/p&gt;
 
     &lt;p&gt;~~~
   pi@pi50 ~ $ lsusb&lt;br /&gt;
@@ -2823,10 +2703,10 @@ input_init() return value signals to exit
   &amp;gt; sudo apt-get install uv4l2 uv4l2-raspicam&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Check the parameters of our USB camera  &lt;/p&gt;
+    &lt;p&gt;Check the parameters of our USB camera&lt;/p&gt;
 
     &lt;p&gt;~~~
-  v4l2-ctl –list-formats  &lt;/p&gt;
+  v4l2-ctl –list-formats&lt;/p&gt;
 
     &lt;p&gt;ioctl: VIDIOC_ENUM_FMT&lt;br /&gt;
       Index       : 0&lt;br /&gt;
@@ -2838,22 +2718,21 @@ input_init() return value signals to exit
     &lt;p&gt;The YUYV is very important, I need to pass a -y option to jpg_streamer –input command. If you see MPEG you don’t need this -y switch.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to. &lt;/p&gt;
+    &lt;p&gt;Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    mjpg_streamer --input &quot;input_uvc.so --help&quot;
+&lt;pre&gt;&lt;code&gt;    mjpg_streamer --input &quot;input_uvc.so --help&quot;
     # note, i am not showing the output here
     # important line in output is this:
     #  [-y | --yuv ]..........: enable YUYV format and disable MJPEG mode
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;build and install for usb camera. Critical thing here is ‘&lt;strong&gt;input_uvc.so&lt;/strong&gt;’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
+&lt;pre&gt;&lt;code&gt;    # build with &#39;make&#39;
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
     # install by copying
@@ -2861,7 +2740,6 @@ input_init() return value signals to exit
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
     sudo cp -R www /usr/local/www
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -2871,17 +2749,14 @@ input_init() return value signals to exit
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
+&lt;pre&gt;&lt;code&gt;    /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so -y&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;If my camera used MJPEG instead of YUYV, the command is the same without the &#39;-y&#39;.
+&lt;pre&gt;&lt;code&gt;If my camera used MJPEG instead of YUYV, the command is the same without the &#39;-y&#39;.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
+&lt;pre&gt;&lt;code&gt;    /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/input_uvc.so&quot; -o &quot;/usr/local/lib/output_http.so -w /usr/local/www&quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;done&quot;&gt;done&lt;/h3&gt;
 </content>
@@ -2912,7 +2787,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;check-opencv-install&quot;&gt;Check opencv install&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@pi40 ~ $ /usr/bin/python  
+&lt;pre&gt;&lt;code&gt;pi@pi40 ~ $ /usr/bin/python  
 Python 2.7.3 (default, Mar 18 2014, 05:13:23) 
 [GCC 4.6.3] on linux2  
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.  
@@ -2920,7 +2795,6 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 &amp;gt;&amp;gt;&amp;gt; cv2.__version__  
 &#39;2.4.1&#39;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h4 id=&quot;install-usb-thumb-drive--usb-camera&quot;&gt;Install USB thumb drive + usb camera&lt;/h4&gt;
 &lt;ul&gt;
@@ -2932,7 +2806,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
   Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&lt;br /&gt;
   Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
   Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye&lt;br /&gt;
-  Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.  &lt;/p&gt;
+  Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2952,7 +2826,7 @@ http://linuxtv.org/wiki/index.php/Stk1160# Making_it_Work&lt;/li&gt;
 
 &lt;h4 id=&quot;here-is-the-code&quot;&gt;Here is the code&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#/usr/bin/python
+&lt;pre&gt;&lt;code&gt;#/usr/bin/python
 
 import numpy as np
 import cv2
@@ -3006,7 +2880,6 @@ while(cap.isOpened()):
 # Release camera
 cap.release()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </content>
  </entry>
@@ -3031,34 +2904,33 @@ cap.release()
   &lt;li&gt;don’t install miniconda, just use stock raspian pytohn&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# this takes &amp;gt; 1 hour on a Raspberry Pi Model B !!!&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# most of the time is spent in gcc cc1 command&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upgrade&lt;/span&gt; 
-&lt;span class=&quot;c&quot;&gt;# after &amp;gt; 1 hour I get an error&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Successfully installed pandas python-dateutil pytz&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# OSError: [Errno 39] Directory not empty: &#39;/home/pi/build/pytz&#39;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# I am ignoring this pytz error (something to do with timezone library???)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# now i am sidetracked&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ipython&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ipython seems ok&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# this next one may take awhile, started at 1:50pm&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bokeh&lt;/span&gt;  
-&lt;span class=&quot;c&quot;&gt;# seems ok, can import pandas in python but it gives error&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#    The minimum supported version is 2.1&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# fixed error with (hopefully does not cause other problems)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numexpr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upgrade&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;# this takes &amp;gt; 1 hour on a Raspberry Pi Model B !!!
+# most of the time is spent in gcc cc1 command
+sudo pip install pandas --upgrade 
+# after &amp;gt; 1 hour I get an error
+# Successfully installed pandas python-dateutil pytz
+# OSError: [Errno 39] Directory not empty: &#39;/home/pi/build/pytz&#39;
+# I am ignoring this pytz error (something to do with timezone library???)
+#
+# now i am sidetracked
+sudo pip install ipython
+# ipython seems ok
+#
+# this next one may take awhile, started at 1:50pm
+sudo pip install bokeh  
+# seems ok, can import pandas in python but it gives error
+#
+#    /usr/local/lib/python2.7/dist-packages/pandas/computation/expressions.py:21: UserWarning: The installed version of numexpr 2.0.1 is not supported in pandas and will be not be used
+#    The minimum supported version is 2.1
+#
+# fixed error with (hopefully does not cause other problems)
+sudo pip install numexpr --upgrade
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;[ORIGINAL POST STARTS HERE]&lt;/p&gt;
 
 &lt;h3 id=&quot;install-miniconda&quot;&gt;Install miniconda&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+&lt;pre&gt;&lt;code&gt;pi@pi40 ~ $ wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
 pi@pi40 ~ $ bash Miniconda-3.5.5-Linux-armv6l.sh 
 
 Miniconda will now be installed into this location:
@@ -3092,25 +2964,24 @@ For this change to become active, you have to open a new terminal.
 
 Thank you for installing Miniconda!
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;make-sure-numpy-and-pandas-is-correct&quot;&gt;Make sure numpy and pandas is correct&lt;/h3&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;pip install numpy –upgrade&lt;br /&gt;
-pip install pandas –upgrade  &lt;/p&gt;
+pip install pandas –upgrade&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;install-bokeh&quot;&gt;Install bokeh&lt;/h3&gt;
 &lt;p&gt;In general ‘conda install bokeh’ does not work on Pi, bokeh is not in repo?&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;pip install bokeh  &lt;/p&gt;
+  &lt;p&gt;pip install bokeh&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  &lt;/p&gt;
+&lt;p&gt;For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
+&lt;pre&gt;&lt;code&gt;from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
 Ideally, you should have the following libraries installed:
 
 NumPy
@@ -3121,11 +2992,10 @@ gevent
 gevent-websocket
 Pandas
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;currently-installed-with-pip&quot;&gt;Currently installed with pip&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@pi40 ~ $ pip freeze
+&lt;pre&gt;&lt;code&gt;pi@pi40 ~ $ pip freeze
 Flask==0.10.1
 Flask-Markdown==0.3
 Flask-Misaka==0.3.0
@@ -3163,7 +3033,6 @@ tornado==4.1
 websocket==0.2.1
 wsgiref==0.1.2
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;grab-some-example-plots-from-bokeh-github&quot;&gt;Grab some example plots from bokeh github&lt;/h3&gt;
 
@@ -3180,7 +3049,7 @@ wsgiref==0.1.2
 &amp;gt; 
 &amp;gt; bokeh-server –backend=memory –ip 0.0.0.0&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
+&lt;pre&gt;&lt;code&gt;pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
 No module named scipy
 
     Bokeh Server Configuration
@@ -3195,13 +3064,12 @@ No module named scipy
 /home/pi/miniconda/lib/python2.7/site-packages/bokeh/server/blaze/__init__.py:19: UserWarning: could not import multiuser blaze server No module named blaze.  This is fine if you do not intend to use blaze capabilities in the bokeh server
   warnings.warn(msg)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;example-plots-i-have-working&quot;&gt;Example plots I have working&lt;/h3&gt;
 
 &lt;p&gt;line_animate.py&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# The plot server must be running
+&lt;pre&gt;&lt;code&gt;# The plot server must be running
 # Go to http://localhost:5006/bokeh to view this plot
 
 import time
@@ -3233,19 +3101,18 @@ while True:
         cursession().store_objects(ds)
         time.sleep(0.05)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;now-use-flask--bokeh-to-generate-a-single-html-page-no-bokeh-server&quot;&gt;Now use Flask + bokeh to generate a single html page (no bokeh-server)&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)&lt;/li&gt;
-  &lt;li&gt;simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple  &lt;/li&gt;
+  &lt;li&gt;simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple&lt;/li&gt;
   &lt;li&gt;more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;http://bokeh.pydata.org/en/latest/index.html  &lt;/li&gt;
-  &lt;li&gt;http://docs.continuum.io/anaconda/install.html  &lt;/li&gt;
+  &lt;li&gt;http://bokeh.pydata.org/en/latest/index.html&lt;/li&gt;
+  &lt;li&gt;http://docs.continuum.io/anaconda/install.html&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
@@ -3257,7 +3124,7 @@ while True:
    <id>http://blog.cudmore.io/2014/12/24/Python-calling-bash-to-get-drive-space-remaining</id>
    <content type="html">&lt;p&gt;I need to have some Python code tell me how much drive space is left. Here is what I came up with.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import subprocess as sub
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import subprocess as sub
 &amp;gt;&amp;gt;&amp;gt; checkPath = &#39;~/video&#39;
 &amp;gt;&amp;gt;&amp;gt; cmd = &quot;df &quot; + checkPath + &quot; | awk &#39;{ print $5 }&#39; | tail -n 1&quot;
 &amp;gt;&amp;gt;&amp;gt; p = sub.Popen(cmd, stdout=sub.PIPE,stderr=sub.PIPE, shell=True)
@@ -3267,13 +3134,12 @@ while True:
 &amp;gt;&amp;gt;&amp;gt; out.rstrip() # rstrip &#39;chomps&#39; off newline
 &#39;31%&#39;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 </content>
  </entry>
  
  <entry>
    <title>Monitoring mice in their home cage</title>
-   <link href="http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/"/>
+   <link href="http://blog.cudmore.io/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/"/>
    <updated>2014-02-14T17:01:06-05:00</updated>
    <id>http://blog.cudmore.io/post/2014/02/14/Monitoring mice in their home cage</id>
    <content type="html">&lt;p&gt;[Aug 4, 2014, updated]

@@ -75,11 +75,11 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/Raspberry-p5js-node-arduino/">Raspberry + p5.js + node + arduino</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/">Raspberry + p5.js + node + arduino</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/PlatformIO-an-arduino-ide-cli/">Arduino cli using platformio</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/">Arduino cli using platformio</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/Network-Attached-Camera/">Network attached camera</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/2016-02-07-Network-Attached-Camera/">Network attached camera</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
@@ -218,11 +218,10 @@
 
 <p>The stock install of Raspian should already have this.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo pico /etc/network/interfaces
+<pre><code>sudo pico /etc/network/interfaces
 </code></pre>
-</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>auto lo
+<pre><code>auto lo
 
 iface lo inet loopback
 iface eth0 inet dhcp
@@ -232,15 +231,13 @@ iface wlan0 inet manual
 wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
 </code></pre>
-</div>
 
 <h3 id="edit-wpasupplicantconf">Edit wpa_supplicant.conf</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
+<pre><code>sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
 </code></pre>
-</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
 network={
@@ -248,17 +245,15 @@ network={
     psk="your_password_here"
 }
 </code></pre>
-</div>
 
 <h3 id="tell-your-router-to-assign-an-ip-based-on-mac-address-of-wifi-adapter">Tell your router to assign an ip based on MAC address of wifi adapter</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ifconfig wlan0
+<pre><code>ifconfig wlan0
 </code></pre>
-</div>
 
 <p>The MAC address is listed as ‘HWaddr’ and in this case is ‘00:0b:81:89:11:8a’.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
+<pre><code>wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
           inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
@@ -266,11 +261,10 @@ network={
           collisions:0 txqueuelen:1000 
           RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
 </code></pre>
-</div>
 
 <h3 id="change-the-default-name-of-your-pi-in-apple-file-protocol-eg-netatalk">Change the default name of your Pi in Apple-File-Protocol (e.g. Netatalk)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># stop netatalk
+<pre><code># stop netatalk
 sudo /etc/init.d/netatalk stop
 
 # edit config file
@@ -285,7 +279,6 @@ sudo nano /etc/netatalk/AppleVolumes.default
 # restart netatalk
 sudo /etc/init.d/netatalk start
 </code></pre>
-</div>
 
 <h3 id="startup-mailer">Startup mailer</h3>
 
@@ -293,7 +286,7 @@ sudo /etc/init.d/netatalk start
 
 <p>This is startup_mailer.py (in all its crappy code style)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import subprocess
+<pre><code>import subprocess
 import smtplib
 import socket
 import os
@@ -341,11 +334,10 @@ msg['To'] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
 </code></pre>
-</div>
 
 <h3 id="another-version-of-my-startupmailerpy">Another version of my startup_mailer.py</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import subprocess
+<pre><code>import subprocess
 import smtplib
 import socket
 import os
@@ -378,39 +370,37 @@ msg['To'] = to
 smtpserver.sendmail(gmail_user, [to], msg.as_string())
 smtpserver.quit()
 </code></pre>
-</div>
 
 <h3 id="edit-etcrclocal">Edit /etc/rc.local</h3>
 
 <p>rc.local will run code each itme a user logs in.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh -e</span>
-<span class="c">#</span>
-<span class="c"># rc.local</span>
-<span class="c">#</span>
-<span class="c"># This script is executed at the end of each multiuser runlevel.</span>
-<span class="c"># Make sure that the script will "exit 0" on success or any other</span>
-<span class="c"># value on error.</span>
-<span class="c">#</span>
-<span class="c"># In order to enable or disable this script just change the execution</span>
-<span class="c"># bits.</span>
-<span class="c">#</span>
-<span class="c"># By default this script does nothing.</span>
+<pre><code>#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
 
-<span class="c"># Print the IP address</span>
-<span class="nv">_IP</span><span class="o">=</span><span class="k">$(</span>hostname -I<span class="k">)</span> <span class="o">||</span> <span class="nb">true
-</span><span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$_IP</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
-  </span><span class="nb">printf</span> <span class="s2">"My IP address is %s</span><span class="se">\n</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$_IP</span><span class="s2">"</span>
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
   python /home/pi/code/startup_mailer.py
-<span class="k">fi
+fi
 
-</span><span class="nb">exit </span>0
+exit 0
 </code></pre>
-</div>
 
 <h3 id="useful-network-commands">Useful network commands</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># scan for available wifi networks
+<pre><code># scan for available wifi networks
 sudo iwlist wlan0 scan
 # show network adapter status
 ifconfig wlan0
@@ -418,13 +408,14 @@ ifconfig wlan0
 sudo ifdown wlan0
 sudo ifup wlan0
 </code></pre>
-</div>
 
 
 </div>
 
 <div class="post-tags">
   Tags: 
+  
+    
   
   
   <a href="/tags/#debian">debian</a>,
