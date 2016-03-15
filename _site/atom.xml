@@ -2,10 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Robert Cudmore</title>
+<<<<<<< Updated upstream
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
  <updated>2016-03-26T11:30:14-04:00</updated>
  <id>http://blog.cudmore.io</id>
+=======
+ <link href="/atom.xml" rel="self"/>
+ <link href="/"/>
+ <updated>2015-12-09T12:20:15-05:00</updated>
+ <id></id>
+>>>>>>> Stashed changes
  <author>
    <name>Robert Cudmore</name>
    <email></email>
@@ -606,7 +613,14 @@ sudo systemctl stop mosquitto
 
 &lt;p&gt;To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.&lt;/p&gt;
 
+<<<<<<< Updated upstream
 &lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves ‘pre-triggered’ video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I’ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
+=======
+&lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves &amp;#39;pre-triggered&amp;#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I&amp;#39;ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;VideoServer.py, controls the camera with the following interface:&lt;/p&gt;
+>>>>>>> Stashed changes
 
 &lt;ul&gt;
   &lt;li&gt;VideoServer.py, controls the camera with the following interface:
