@@ -50,6 +50,7 @@ Populate platformio.ini with an uno board
 
 ~~~
 platformio init --board=uno
+platformio init --board nodemcuv2
 ~~~
 
 platformio.ini looks something like this
@@ -128,14 +129,27 @@ The first time this is run, platformio automatically downloads the necessary ard
 ### Additional info
 
  - [Serial ports][7]
- 
- My arduino is on serial port ttyACM0
- 
+  
 ~~~
 # list serial ports
 platformio serialports list
 # a Miniterm style serial port monitor ('ctrl+]' to quit)
 platformio serialports monitor
+~~~
+
+~~~
+'/dev/ttyACM0' #uno on debian
+'/dev/ttyUSB0' #node mcu on debian
+'/dev/cu.SLAB_USBtoUART' #node mcu on osx
+~~~
+
+platformio.ini for nodemcu needs to know the serial port
+~~~
+[env:nodemcuv2]
+platform = espressif
+framework = arduino
+board = nodemcuv2
+upload_port = /dev/ttyUSB0
 ~~~
 
 [1]: http://platformio.org/
