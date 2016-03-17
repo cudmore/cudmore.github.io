@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-16T23:22:43-04:00</updated>
+ <updated>2016-03-16T23:59:52-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -948,6 +948,7 @@ Okay!  New keys in place, your device will not restart.
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;the-hardware-is-as-follows&quot;&gt;0) The hardware is as follows&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;See my pcpartspicker &lt;a href=&quot;http://pcpartpicker.com/p/PRq8Vn&quot;&gt;inventory&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Processor: Intel Pentium G3258 3.2GHz Dual-Core Processor&lt;/li&gt;
@@ -963,26 +964,27 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;Download debian jessie&lt;/li&gt;
   &lt;li&gt;Make a usb key&lt;/li&gt;
   &lt;li&gt;Install debian&lt;/li&gt;
-  &lt;li&gt;Check your debian version
-  ~~~
+  &lt;li&gt;Check your debian version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   cat /etc/debian_version 
   8.2
-  ~~~&lt;/li&gt;
-&lt;/ul&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;configure-debian-jessie&quot;&gt;2) Configure debian jessie&lt;/h3&gt;
 
 &lt;h4 id=&quot;update-your-repositories&quot;&gt;Update your repositories&lt;/h4&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   apt-get update
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;ssh&quot;&gt;ssh&lt;/h4&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   apt-get install openssh-server
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Follow &lt;a href=&quot;https://wiki.debian.org/SSH# Installation_of_the_server&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
@@ -999,23 +1001,23 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;partition&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   cfdisk /dev/sdb
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;format&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   mkfs.ext4 /dev/sdb1
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Once disk is partitioned and formatted, this is what it looks like&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;```
   cudmore@debian:~$ sudo fdisk -l /dev/sdb
   Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
   Units: sectors of 1 * 512 = 512 bytes
@@ -1026,42 +1028,42 @@ Okay!  New keys in place, your device will not restart.
 
 &lt;p&gt;Device     Start        End    Sectors  Size Type
   /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
-  ~~~&lt;/p&gt;
+  ```&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Mount the second harddrive in a folder /movies&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   mkdir /movies # remember to set group and group rwx later
   mount -t ext4 /dev/sdb1 /movies
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;blkid to get unique name for fstab entry&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   cudmore@debian:~$ sudo blkid
-  /dev/sda1: UUID=”30EE-7B6B” TYPE=”vfat” PARTUUID=”1eae1e11-6902-45f9-9c27-55ab648972b3”
-  /dev/sda2: UUID=”2cf97347-1baf-4abf-a297-650ebf4dfdff” TYPE=”ext4” PARTUUID=”15ac40fa-5874-423b-9282-209a8b88a60a”
-  /dev/sda3: UUID=”16a7a205-220c-4583-a758-4fcaf3eb0417” TYPE=”swap” PARTUUID=”fa435c81-ab1e-4192-97ba-e55c08ceb932”
-  /dev/sdb1: UUID=”f6b5096b-188b-4204-92aa-31e8c58e0eb6” TYPE=”ext4” PARTUUID=”61e5434f-7975-45a8-a8c4-6148fb56f9b4”
-  ~~~&lt;/p&gt;
+  /dev/sda1: UUID=&quot;30EE-7B6B&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;1eae1e11-6902-45f9-9c27-55ab648972b3&quot;
+  /dev/sda2: UUID=&quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;15ac40fa-5874-423b-9282-209a8b88a60a&quot;
+  /dev/sda3: UUID=&quot;16a7a205-220c-4583-a758-4fcaf3eb0417&quot; TYPE=&quot;swap&quot; PARTUUID=&quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&quot;
+  /dev/sdb1: UUID=&quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&quot;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Append the new disk to /etc/fstab&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   cudmore@debian:~$ more /etc/fstab 
   # /etc/fstab: static file system information.
   #
-  # Use ‘blkid’ to print the universally unique identifier for a
+  # Use &#39;blkid&#39; to print the universally unique identifier for a
   # device; this may be used with UUID= as a more robust way to name devices
   # that works even if disks are added and removed. See fstab(5).
   #
-  # &lt;file system=&quot;&quot;&gt; &lt;mount point=&quot;&quot;&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+  # &amp;lt;file system&amp;gt; &amp;lt;mount point&amp;gt;   &amp;lt;type&amp;gt;  &amp;lt;options&amp;gt;       &amp;lt;dump&amp;gt;  &amp;lt;pass&amp;gt;
   # / was on /dev/sda2 during installation
   UUID=2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    errors=remount-ro 0       1
   # /boot/efi was on /dev/sda1 during installation
@@ -1070,7 +1072,7 @@ Okay!  New keys in place, your device will not restart.
   UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
   # 2tb drive for movies
   UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
-  ~~~&lt;/pass&gt;&lt;/dump&gt;&lt;/options&gt;&lt;/type&gt;&lt;/mount&gt;&lt;/file&gt;&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;users-and-groups&quot;&gt;Users and groups&lt;/h4&gt;
 
@@ -1078,34 +1080,34 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;Make a second user ‘user2’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo adduser user2
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Make a group ‘movies’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo addgroup movies
-  ~~~
+ &lt;/code&gt;
   - Add myself (user1) and user2 to the ‘movies’ group&lt;/p&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo usermod -a -G movies user1
   sudo usermod -a -G movies user2
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;make-second-harddrive-rwx-for-group-movies&quot;&gt;Make second harddrive rwx for group ‘movies’&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;make sure the second hard drive has rwx permission for group ‘movies’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
-  # the first ‘movies’ is the name of the group, the second /movies is the folder
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+  # the first &#39;movies&#39; is the name of the group, the second /movies is the folder
   sudo chgrp -R movies /movies
   sudo chmod -R g+rwx /movies
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (afp)&lt;/h4&gt;
 
@@ -1123,7 +1125,7 @@ Okay!  New keys in place, your device will not restart.
 
 &lt;p&gt;[movie_server] is a mount point that will mount my second hard drive from folder /movies.&lt;/p&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;```
   ;
   ; Netatalk 3.x configuration file
   ;&lt;/p&gt;
@@ -1142,7 +1144,7 @@ Okay!  New keys in place, your device will not restart.
 
 &lt;p&gt;[movies_server]
   path = /movies
-  ~~~&lt;/p&gt;
+  ```&lt;/p&gt;
 
 &lt;h4 id=&quot;remote-desktop-with-vnc&quot;&gt;Remote desktop with vnc&lt;/h4&gt;
 &lt;ul&gt;
@@ -1166,20 +1168,20 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;edit with ‘sudo pico /etc/samba/smb.conf’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   [movies_server]
    comment = movies on debian server
    read only = no
    locking = no
    path = /path_to_our_files
    guest ok = no
-   ~~~&lt;/p&gt;
+  &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Restart samba
-   ~~~
+   &lt;code class=&quot;highlighter-rouge&quot;&gt;
    sudo /etc/init.d/samba restart
-   ~~~&lt;/li&gt;
+  &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;run-python-scripts-at-boot&quot;&gt;Run python scripts at boot&lt;/h4&gt;
@@ -1188,9 +1190,9 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;Directly edit ‘sudo pico /etc/crontab’&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
-  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py » /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
-  ~~~&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &amp;gt;&amp;gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my ‘print’ statements as it runs?&lt;/li&gt;
@@ -1198,61 +1200,61 @@ Okay!  New keys in place, your device will not restart.
 
 &lt;h4 id=&quot;transmission-torrent-download&quot;&gt;Transmission (torrent download)&lt;/h4&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo apt-get install transmission
   sudo apt-get install transmission-daemon
-  ~~~
+ &lt;/code&gt;
   - Follow very specific instructions &lt;a href=&quot;https://trac.transmissionbt.com/wiki/HeadlessUsage/General&quot;&gt;here&lt;/a&gt;
   - &lt;a href=&quot;https://help.ubuntu.com/community/TransmissionHowTo&quot;&gt;this&lt;/a&gt; might be more useful.
   - Modify /var/lib/transmission-daemon/info/settings.json&lt;/p&gt;
 
-&lt;p&gt;~~~
-  “download-dir”: “/movies/transmission_download”,
-  “rpc-whitelist”: “127.0.0.1,192.168.&lt;em&gt;.&lt;/em&gt;”,
-  “rpc-authentication-required”: false,
-  ~~~&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+  &quot;download-dir&quot;: &quot;/movies/transmission_download&quot;,
+  &quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,
+  &quot;rpc-authentication-required&quot;: false,
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Maybe add transmissions user to ‘movies’ group? (movies group was made above).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo usermod -a -G movies transmission
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;That didn’t work (maybe I needed a -R). Fuck all this security anyways.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo chmod -R a+rwx /movies/transmission_download/
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Make sure to stop and then start daemon when editing the configuration file.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo service transmission-daemon stop
   sudo nano /var/lib/transmission-daemon/info/settings.json
   sudo service transmission-daemon start
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Access transmissions via web interface&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   http://192.168.1.200:9091
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~~
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo usermod -a -G debian-transmission cudmore 
-  ~~~&lt;/p&gt;
+ &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;install-particle-cloud-server&quot;&gt;Install particle cloud server&lt;/h4&gt;
 

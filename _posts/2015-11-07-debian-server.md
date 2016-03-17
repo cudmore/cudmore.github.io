@@ -32,24 +32,25 @@ Goal is to set up a home server running Debain Jessie.
   - Make a usb key
   - Install debian
   - Check your debian version
-  ~~~
+  
+  ```
   cat /etc/debian_version 
   8.2
-  ~~~
+  ```
 
 ### 2) Configure debian jessie
 
 #### Update your repositories
 
-  ~~~
+  ```
   apt-get update
-  ~~~
+  ```
 
 #### ssh
 
-  ~~~
+  ```
   apt-get install openssh-server
-  ~~~
+  ```
   
   - Follow [this](https://wiki.debian.org/SSH# Installation_of_the_server)
     
@@ -60,19 +61,19 @@ Goal is to set up a home server running Debain Jessie.
 #### Add in a second hard drive
   - partition
   
-  ~~~
+  ```
   cfdisk /dev/sdb
-  ~~~
+  ```
 
   - format
 
-  ~~~
+  ```
   mkfs.ext4 /dev/sdb1
-  ~~~
+  ```
 
   - Once disk is partitioned and formatted, this is what it looks like
   
-  ~~~
+  ```
   cudmore@debian:~$ sudo fdisk -l /dev/sdb
   Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
   Units: sectors of 1 * 512 = 512 bytes
@@ -83,28 +84,28 @@ Goal is to set up a home server running Debain Jessie.
   
   Device     Start        End    Sectors  Size Type
   /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
-  ~~~
+  ```
 
   - Mount the second harddrive in a folder /movies
 
-  ~~~
+  ```
   mkdir /movies # remember to set group and group rwx later
   mount -t ext4 /dev/sdb1 /movies
-  ~~~
+  ```
 
   - blkid to get unique name for fstab entry
   
-  ~~~
+  ```
   cudmore@debian:~$ sudo blkid
   /dev/sda1: UUID="30EE-7B6B" TYPE="vfat" PARTUUID="1eae1e11-6902-45f9-9c27-55ab648972b3"
   /dev/sda2: UUID="2cf97347-1baf-4abf-a297-650ebf4dfdff" TYPE="ext4" PARTUUID="15ac40fa-5874-423b-9282-209a8b88a60a"
   /dev/sda3: UUID="16a7a205-220c-4583-a758-4fcaf3eb0417" TYPE="swap" PARTUUID="fa435c81-ab1e-4192-97ba-e55c08ceb932"
   /dev/sdb1: UUID="f6b5096b-188b-4204-92aa-31e8c58e0eb6" TYPE="ext4" PARTUUID="61e5434f-7975-45a8-a8c4-6148fb56f9b4"
-  ~~~
+  ```
 
   - Append the new disk to /etc/fstab
 
-  ~~~
+  ```
   cudmore@debian:~$ more /etc/fstab 
   # /etc/fstab: static file system information.
   #
@@ -121,36 +122,36 @@ Goal is to set up a home server running Debain Jessie.
   UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
   # 2tb drive for movies
   UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
-  ~~~
+  ```
   
 #### Users and groups
 
   - Make a second user 'user2'
 
-  ~~~
+  ```
   sudo adduser user2
-  ~~~
+  ```
 
   - Make a group 'movies'
 
-  ~~~
+  ```
   sudo addgroup movies
-  ~~~
+  ```
   - Add myself (user1) and user2 to the 'movies' group
 
-  ~~~
+  ```
   sudo usermod -a -G movies user1
   sudo usermod -a -G movies user2
-  ~~~
+  ```
 
 #### Make second harddrive rwx for group 'movies'
   - make sure the second hard drive has rwx permission for group 'movies'
 
-  ~~~
+  ```
   # the first 'movies' is the name of the group, the second /movies is the folder
   sudo chgrp -R movies /movies
   sudo chmod -R g+rwx /movies
-  ~~~
+  ```
 
 #### Apple-File-Protocol (afp)
 
@@ -165,7 +166,7 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
 
 [movie_server] is a mount point that will mount my second hard drive from folder /movies.
 
-  ~~~
+  ```
   ;
   ; Netatalk 3.x configuration file
   ;
@@ -184,7 +185,7 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   
   [movies_server]
   path = /movies
-  ~~~
+  ```
 
 #### Remote desktop with vnc
   - This is not working. May be jessie bug?
@@ -200,77 +201,77 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
   - Follow something like [this](https://wiki.debian.org/SambaServerSimple)
   - edit with 'sudo pico /etc/samba/smb.conf'
 
-  ~~~
+  ```
   [movies_server]
    comment = movies on debian server
    read only = no
    locking = no
    path = /path_to_our_files
    guest ok = no
-   ~~~
+   ```
 
    - Restart samba
-   ~~~
+   ```
    sudo /etc/init.d/samba restart
-   ~~~
+   ```
    
 #### Run python scripts at boot
   - This is very unclear to me
   - Directly edit 'sudo pico /etc/crontab'
   
-  ~~~
+  ```
   @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py >> /home/cudmore/Sites/temperatureserver/temperatureserver.log 2>&1
-  ~~~
+  ```
   
   - I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my 'print' statements as it runs?
   
 #### Transmission (torrent download)
 
-  ~~~
+  ```
   sudo apt-get install transmission
   sudo apt-get install transmission-daemon
-  ~~~
+  ```
   - Follow very specific instructions [here](https://trac.transmissionbt.com/wiki/HeadlessUsage/General)
   - [this](https://help.ubuntu.com/community/TransmissionHowTo) might be more useful.
   - Modify /var/lib/transmission-daemon/info/settings.json
   
-  ~~~
+  ```
   "download-dir": "/movies/transmission_download",
   "rpc-whitelist": "127.0.0.1,192.168.*.*",
   "rpc-authentication-required": false,
-  ~~~
+  ```
   
   - Maybe add transmissions user to 'movies' group? (movies group was made above).
 
-  ~~~
+  ```
   sudo usermod -a -G movies transmission
-  ~~~
+  ```
 
   - That didn't work (maybe I needed a -R). Fuck all this security anyways.
 
-  ~~~
+  ```
   sudo chmod -R a+rwx /movies/transmission_download/
-  ~~~
+  ```
 
   - Make sure to stop and then start daemon when editing the configuration file.
  
-  ~~~
+  ```
   sudo service transmission-daemon stop
   sudo nano /var/lib/transmission-daemon/info/settings.json
   sudo service transmission-daemon start
-  ~~~
+  ```
 
   - Access transmissions via web interface
   
-  ~~~
+  ```
   http://192.168.1.200:9091
-  ~~~
+  ```
   
   - My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission
 
-  ~~~
+  ```
   sudo usermod -a -G debian-transmission cudmore 
-  ~~~
+  ```
   
 #### Install particle cloud server
 
