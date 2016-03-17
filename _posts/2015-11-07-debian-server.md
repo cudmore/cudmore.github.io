@@ -17,7 +17,8 @@ Goal is to set up a home server running Debain Jessie.
  - Run owncloud (synch clients are still slow)
  - Run transmission for torrent download
 
-###0) The hardware is as follows
+### 0) The hardware is as follows
+
   - See my pcpartspicker [inventory](http://pcpartpicker.com/p/PRq8Vn)
   - Processor: Intel Pentium G3258 3.2GHz Dual-Core Processor
   - Motherboard: Gigabyte GA-H97N-WIFI Mini ITX LGA1150 Motherboard
