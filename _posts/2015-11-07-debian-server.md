@@ -33,10 +33,10 @@ Goal is to set up a home server running Debain Jessie.
   - Install debian
   - Check your debian version
   
-  ```
-  cat /etc/debian_version 
-  8.2
-  ```
+    ```
+    cat /etc/debian_version 
+    8.2
+    ```
 
 ### 2) Configure debian jessie
 
@@ -65,6 +65,12 @@ Goal is to set up a home server running Debain Jessie.
   cfdisk /dev/sdb
   ```
 
+    ss
+        
+           ss
+        
+              ss
+
   - format
 
   ```
@@ -72,20 +78,22 @@ Goal is to set up a home server running Debain Jessie.
   ```
 
   - Once disk is partitioned and formatted, this is what it looks like
-  
-  ```
-  cudmore@debian:~$ sudo fdisk -l /dev/sdb
-  Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
-  Units: sectors of 1 * 512 = 512 bytes
-  Sector size (logical/physical): 512 bytes / 512 bytes
-  I/O size (minimum/optimal): 512 bytes / 512 bytes
-  Disklabel type: gpt
-  Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
-  
-  Device     Start        End    Sectors  Size Type
-  /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
-  ```
 
+```
+
+    cudmore@debian:~$ sudo fdisk -l /dev/sdb
+    Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
+    Units: sectors of 1 * 512 = 512 bytes
+    Sector size (logical/physical): 512 bytes / 512 bytes
+    I/O size (minimum/optimal): 512 bytes / 512 bytes
+    Disklabel type: gpt
+    Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
+  
+    Device     Start        End    Sectors  Size Type
+    /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
+
+```
+  
   - Mount the second harddrive in a folder /movies
 
   ```

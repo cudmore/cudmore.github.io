@@ -1,12 +1,4 @@
-# Dependencies
-# markdown:         redcarpet
-#redcarpet:
-#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
-# highlighter:      pygments
-
-# may 2015, this was causing problems on osx
-#gems:
-#  - jekyll-sitemap
+markdown: kramdown
 
 #added for jekyll3 20160212
 gems:
@@ -15,7 +7,6 @@ gems:
  
 # Permalinks
 permalink:        pretty
-# relative_permalinks: true
 
 # Setup
 title:            Robert Cudmore
@@ -26,8 +17,6 @@ url:              http://blog.cudmore.io
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
 baseurl: ''
-# was this
-#baseurl:          /
 
 author:
   name:           'Robert Cudmore'
