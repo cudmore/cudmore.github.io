@@ -75,11 +75,7 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/">Raspberry + p5.js + node + arduino</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/">Arduino cli using platformio</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/2016-02-07-Network-Attached-Camera/">Network attached camera</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/PlatformIO-an-arduino-ide-cli/">Arduino cli using platformio</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
@@ -89,13 +85,17 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/11/07/debian-server/">debian server</a><BR>
+		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tags</span>
 		
-    		<a style="font-size: 116%" href="/tags/#flask">
+    		<a style="font-size: 101%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -123,15 +123,15 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 209%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 224%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
-    		<a style="font-size: 132%" href="/tags/#arduino">
+    		<a style="font-size: 116%" href="/tags/#arduino">
     		  arduino
     		</a>
 		
@@ -220,7 +220,7 @@
   <a href="http://sourceforge.net/projects/mjpg-streamer/">http://sourceforge.net/projects/mjpg-streamer/</a></p>
   </li>
   <li>
-    <p>Tutorials</p>
+    <p>Tutorials  </p>
 
     <p>In what follows I am following this blog post …<br />
   <a href="http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi">http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi</a></p>
@@ -234,7 +234,7 @@
 
 <ul>
   <li>
-    <p>Preliminaries</p>
+    <p>Preliminaries  </p>
 
     <p>~~~
   sudo apt-get update<br />
@@ -246,38 +246,42 @@
   </li>
 </ul>
 
-<pre><code>    sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
+<div class="highlighter-rouge"><pre class="highlight"><code>    sudo apt-get install libjpeg8-dev imagemagick libv4l-dev
 </code></pre>
+</div>
 
 <ul>
   <li>make symbolic link to changed library names. Thanks to Miguel Grinberg for <a href="http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi]">this</a></li>
 </ul>
 
-<pre><code>    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
+<div class="highlighter-rouge"><pre class="highlight"><code>    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
 </code></pre>
+</div>
 
 <ul>
   <li>download mjpg-streamer</li>
 </ul>
 
-<pre><code>    wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
+<div class="highlighter-rouge"><pre class="highlight"><code>    wget http://sourceforge.net/code-snapshots/svn/m/mj/mjpg-streamer/code/mjpg-streamer-code-182.zip
 </code></pre>
+</div>
 
 <ul>
   <li>unzip</li>
 </ul>
 
-<pre><code>    unzip mjpg-streamer-code-182.zip  
+<div class="highlighter-rouge"><pre class="highlight"><code>    unzip mjpg-streamer-code-182.zip  
 </code></pre>
+</div>
 
 <h4 id="here-is-where-the-installation-differs-depending-on-if-you-are-installing-1-a-usb-camera-or-2-the-raspberry-pi-camera-module">Here is where the installation differs depending on if you are installing (1) a usb camera or (2) the raspberry pi camera module</h4>
 
 <h3 id="raspberry-pi-camera-module">(1) Raspberry Pi camera module</h3>
 <ul>
-  <li>build and install for raspberry pi camera module.</li>
+  <li>build and install for raspberry pi camera module.  </li>
 </ul>
 
-<pre><code>    # build with 'make'
+<div class="highlighter-rouge"><pre class="highlight"><code>    # build with 'make'
     cd mjpg-streamer-code-182/mjpg-streamer  
     make mjpg_streamer input_file.so output_http.so  
     # install by copying files
@@ -285,11 +289,13 @@
     sudo cp output_http.so input_file.so /usr/local/lib/  
     sudo cp -R www /usr/local/www      
 </code></pre>
+</div>
 
-<pre><code>FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS '**input_uvc.so**'.
+<div class="highlighter-rouge"><pre class="highlight"><code>FOR COMPARISON, HERE IS SAME FOR USB CAMERA. IMPORTANT THING HERE IS '**input_uvc.so**'.
 </code></pre>
+</div>
 
-<pre><code>    # build with 'make'
+<div class="highlighter-rouge"><pre class="highlight"><code>    # build with 'make'
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
     # install by copying
@@ -297,31 +303,35 @@
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
     sudo cp -R www /usr/local/www
 </code></pre>
+</div>
 
-<pre><code>I GUESS YOU COULD JUST FOLLOW 'USB CAMERA' AND IT WOULD WORK FOR BOTH
+<div class="highlighter-rouge"><pre class="highlight"><code>I GUESS YOU COULD JUST FOLLOW 'USB CAMERA' AND IT WOULD WORK FOR BOTH
 </code></pre>
+</div>
 
 <ul>
   <li>start the raspberry pi camera module</li>
 </ul>
 
-<pre><code>    mkdir /tmp/stream  
+<div class="highlighter-rouge"><pre class="highlight"><code>    mkdir /tmp/stream  
     raspistill --nopreview -w 640 -h 480 -q 5 -o /tmp/stream/pic.jpg -tl 100 -t 9999999 -th 0:0:0 &amp;  
 </code></pre>
+</div>
 
 <ul>
   <li>start mjpg-streamer for raspberry pi camera module. This streams using ‘<strong>input_file.so</strong>’</li>
 </ul>
 
-<pre><code>    LD_LIBRARY_PATH=/usr/local/lib  
+<div class="highlighter-rouge"><pre class="highlight"><code>    LD_LIBRARY_PATH=/usr/local/lib  
     mjpg_streamer -i "input_file.so -f /tmp/stream -n pic.jpg" -o "output_http.so -w /usr/local/www"
 </code></pre>
+</div>
 
 <h3 id="build-for-usb-camera">(2) build for usb camera</h3>
 
 <ul>
   <li>
-    <p>Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).</p>
+    <p>Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).  </p>
 
     <p>~~~
   pi@pi50 ~ $ lsusb<br />
@@ -342,10 +352,10 @@
   &gt; sudo apt-get install uv4l2 uv4l2-raspicam</p>
   </li>
   <li>
-    <p>Check the parameters of our USB camera</p>
+    <p>Check the parameters of our USB camera  </p>
 
     <p>~~~
-  v4l2-ctl –list-formats</p>
+  v4l2-ctl –list-formats  </p>
 
     <p>ioctl: VIDIOC_ENUM_FMT<br />
       Index       : 0<br />
@@ -357,21 +367,22 @@
     <p>The YUYV is very important, I need to pass a -y option to jpg_streamer –input command. If you see MPEG you don’t need this -y switch.</p>
   </li>
   <li>
-    <p>Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to.</p>
+    <p>Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to. </p>
   </li>
 </ul>
 
-<pre><code>    mjpg_streamer --input "input_uvc.so --help"
+<div class="highlighter-rouge"><pre class="highlight"><code>    mjpg_streamer --input "input_uvc.so --help"
     # note, i am not showing the output here
     # important line in output is this:
     #  [-y | --yuv ]..........: enable YUYV format and disable MJPEG mode
 </code></pre>
+</div>
 
 <ul>
   <li>build and install for usb camera. Critical thing here is ‘<strong>input_uvc.so</strong>’</li>
 </ul>
 
-<pre><code>    # build with 'make'
+<div class="highlighter-rouge"><pre class="highlight"><code>    # build with 'make'
     cd mjpg-streamer
     make mjpg_streamer input_file.so input_uvc.so output_http.so
     # install by copying
@@ -379,6 +390,7 @@
     sudo cp output_http.so input_file.so input_uvc.so /usr/local/lib/
     sudo cp -R www /usr/local/www
 </code></pre>
+</div>
 
 <ul>
   <li>
@@ -388,14 +400,17 @@
   </li>
 </ul>
 
-<pre><code>    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
+<div class="highlighter-rouge"><pre class="highlight"><code>    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so -y" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 </code></pre>
+</div>
 
-<pre><code>If my camera used MJPEG instead of YUYV, the command is the same without the '-y'.
+<div class="highlighter-rouge"><pre class="highlight"><code>If my camera used MJPEG instead of YUYV, the command is the same without the '-y'.
 </code></pre>
+</div>
 
-<pre><code>    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so" -o "/usr/local/lib/output_http.so -w /usr/local/www"
+<div class="highlighter-rouge"><pre class="highlight"><code>    /usr/local/bin/mjpg_streamer -i "/usr/local/lib/input_uvc.so" -o "/usr/local/lib/output_http.so -w /usr/local/www"
 </code></pre>
+</div>
 
 <h3 id="done">done</h3>
 
@@ -403,8 +418,6 @@
 
 <div class="post-tags">
   Tags: 
-  
-    
   
   
   <a href="/tags/#raspberry pi">raspberry pi</a>
@@ -423,7 +436,7 @@
 
 
 <span class="page-nav-item-right">
-    <a rel="next" href="/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/" title="View ">Newer &raquo;</a>
+    <a rel="next" href="/post/2015/03/20/Rapsberry-Pi-Video-Controller/" title="View ">Newer &raquo;</a>
 </span>
 
 

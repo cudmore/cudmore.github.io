@@ -144,6 +144,7 @@ platformio serialports monitor
 ~~~
 
 platformio.ini for nodemcu needs to know the serial port
+
 ~~~
 [env:nodemcuv2]
 platform = espressif

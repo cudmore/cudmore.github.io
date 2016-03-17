@@ -8,21 +8,6 @@
     
       
       <item>
-        <title>Raspberry + p5.js + node + arduino</title>
-        
-          <description>&lt;p&gt;Goal is to read analog input from arduino and plot it in a browser using p5.js.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Sat, 13 Feb 2016 17:01:06 -0500</pubDate>
-        <link>
-        http://blog.cudmore.io/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>Arduino cli using platformio</title>
         
           <description>&lt;p&gt;This post describes how to install and run &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to compile and upload arduino code via a command line interface (CLI). This is a major breakthrough as it allows writing, compiling, and uploading arduino code on an ARM processor (e.g. Raspberry Pi) and on a Debian server. This allows me to program arduino(s) physically connected to headless machines and circumvents all sorts of silliness around the lack of an Arduino IDE for the ARM platform (shame on you arduino).&lt;/p&gt;
@@ -31,25 +16,8 @@
         
         <pubDate>Sat, 13 Feb 2016 17:01:06 -0500</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Network attached camera</title>
-        
-          <description>&lt;ul&gt;
-  &lt;li&gt;camera&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        
-        <pubDate>Sun, 07 Feb 2016 17:01:06 -0500</pubDate>
-        <link>
-        http://blog.cudmore.io/post/2016/02/07/2016-02-07-Network-Attached-Camera/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/07/2016-02-07-Network-Attached-Camera/</guid>
+        http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/</guid>
       </item>
       
     
@@ -262,8 +230,8 @@
         
         <pubDate>Tue, 05 May 2015 18:01:06 -0400</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/05/05/X11%20on%20Raspberry/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/05/05/X11%20on%20Raspberry/</guid>
+        http://blog.cudmore.io/post/2015/05/05/X11-on-Raspberry/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/05/05/X11-on-Raspberry/</guid>
       </item>
       
     
@@ -375,8 +343,8 @@
         
         <pubDate>Fri, 20 Mar 2015 18:01:06 -0400</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/20/Rapsberry%20Pi%20Video%20Controller/</guid>
+        http://blog.cudmore.io/post/2015/03/20/Rapsberry-Pi-Video-Controller/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/20/Rapsberry-Pi-Video-Controller/</guid>
       </item>
       
     
@@ -463,8 +431,8 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
         
         <pubDate>Fri, 14 Feb 2014 17:01:06 -0500</pubDate>
         <link>
-        http://blog.cudmore.io/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2014/02/14/Monitoring%20mice%20in%20their%20home%20cage/</guid>
+        http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/</guid>
       </item>
       
     

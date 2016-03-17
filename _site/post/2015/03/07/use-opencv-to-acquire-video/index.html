@@ -75,11 +75,7 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-Raspberry-p5js-node-arduino/">Raspberry + p5.js + node + arduino</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/2016-02-13-PlatformIO-an-arduino%20ide%20cli/">Arduino cli using platformio</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2016/02/07/2016-02-07-Network-Attached-Camera/">Network attached camera</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2016/02/13/PlatformIO-an-arduino-ide-cli/">Arduino cli using platformio</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/01/20/BitTorrent-Sync/">Bit Torrent Sync</a><BR>
 		    
@@ -89,13 +85,17 @@
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2015/12/05/raspberry-wifi/">Raspberry Wifi</a><BR>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/12/01/particle-cloud-server/">particle cloud server</a><BR>
+		    
+		      &raquo; <a class="sidebarlink" href="/post/2015/11/07/debian-server/">debian server</a><BR>
+		    
 		</section>
 
 		<BR>
 
 		<span class="sidebar-nav-item">Tags</span>
 		
-    		<a style="font-size: 116%" href="/tags/#flask">
+    		<a style="font-size: 101%" href="/tags/#flask">
     		  flask
     		</a>
 		
@@ -123,15 +123,15 @@
     		  osx
     		</a>
 		
-    		<a style="font-size: 209%" href="/tags/#raspberry">
+    		<a style="font-size: 178%" href="/tags/#raspberry">
     		  raspberry
     		</a>
 		
-    		<a style="font-size: 224%" href="/tags/#linux">
+    		<a style="font-size: 193%" href="/tags/#linux">
     		  linux
     		</a>
 		
-    		<a style="font-size: 132%" href="/tags/#arduino">
+    		<a style="font-size: 116%" href="/tags/#arduino">
     		  arduino
     		</a>
 		
@@ -232,7 +232,7 @@ sudo apt-get install libopencv-dev python-opencv</p>
 </ul>
 
 <h4 id="check-opencv-install">Check opencv install</h4>
-<pre><code>pi@pi40 ~ $ /usr/bin/python  
+<div class="highlighter-rouge"><pre class="highlight"><code>pi@pi40 ~ $ /usr/bin/python  
 Python 2.7.3 (default, Mar 18 2014, 05:13:23) 
 [GCC 4.6.3] on linux2  
 Type "help", "copyright", "credits" or "license" for more information.  
@@ -240,6 +240,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt; cv2.__version__  
 '2.4.1'
 </code></pre>
+</div>
 
 <h4 id="install-usb-thumb-drive--usb-camera">Install USB thumb drive + usb camera</h4>
 <ul>
@@ -251,7 +252,7 @@ Type "help", "copyright", "credits" or "license" for more information.
   Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
   Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
   Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye<br />
-  Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.</p>
+  Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.  </p>
   </li>
 </ul>
 
@@ -271,7 +272,7 @@ http://linuxtv.org/wiki/index.php/Stk1160# Making_it_Work</li>
 
 <h4 id="here-is-the-code">Here is the code</h4>
 
-<pre><code>#/usr/bin/python
+<div class="highlighter-rouge"><pre class="highlight"><code>#/usr/bin/python
 
 import numpy as np
 import cv2
@@ -325,14 +326,13 @@ while(cap.isOpened()):
 # Release camera
 cap.release()
 </code></pre>
+</div>
 
 
 </div>
 
 <div class="post-tags">
   Tags: 
-  
-    
   
   
   <a href="/tags/#data acquisition">data acquisition</a>
