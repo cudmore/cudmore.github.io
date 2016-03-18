@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-17T00:44:53-04:00</updated>
+ <updated>2016-03-17T21:21:56-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -967,10 +967,10 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;
     &lt;p&gt;Check your debian version&lt;/p&gt;
 
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-cat /etc/debian_version 
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat /etc/debian_version 
 8.2
-&lt;/code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -999,129 +999,120 @@ cat /etc/debian_version
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;add-in-a-second-hard-drive&quot;&gt;Add in a second hard drive&lt;/h4&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;partition&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;partition&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cfdisk /dev/sdb
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ss
-    
-       ss
-    
-          ss
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cfdisk /dev/sdb
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;format&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;format&lt;/li&gt;
-&lt;/ul&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkfs.ext4 /dev/sdb1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once disk is partitioned and formatted, this is what it looks like&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  mkfs.ext4 /dev/sdb1
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Once disk is partitioned and formatted, this is what it looks like&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;```&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cudmore@debian:~$ sudo fdisk -l /dev/sdb
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;cudmore@debian:~$ &lt;/span&gt;sudo fdisk -l /dev/sdb
 Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: gpt
+Units: sectors of 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 512 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 512 bytes
+Sector size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;logical/physical&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 512 bytes / 512 bytes
+I/O size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;minimum/optimal&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 512 bytes / 512 bytes
+Disklabel &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;: gpt
 Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
   
 Device     Start        End    Sectors  Size Type
 /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Mount the second harddrive in a folder /movies&lt;/p&gt;
 
-&lt;p&gt;```&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir /movies &lt;span class=&quot;c&quot;&gt;# remember to set group and group rwx later&lt;/span&gt;
+mount -t ext4 /dev/sdb1 /movies
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;blkid to get unique name for fstab entry&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Mount the second harddrive in a folder /movies&lt;/li&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;cudmore@debian:~$ &lt;/span&gt;sudo blkid
+/dev/sda1: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;30EE-7B6B&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vfat&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1eae1e11-6902-45f9-9c27-55ab648972b3&quot;&lt;/span&gt;
+/dev/sda2: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ext4&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;15ac40fa-5874-423b-9282-209a8b88a60a&quot;&lt;/span&gt;
+/dev/sda3: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;16a7a205-220c-4583-a758-4fcaf3eb0417&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;swap&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&quot;&lt;/span&gt;
+/dev/sdb1: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ext4&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Append the new disk to /etc/fstab&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;cudmore@debian:~$ &lt;/span&gt;more /etc/fstab 
+&lt;span class=&quot;c&quot;&gt;# /etc/fstab: static file system information.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Use &#39;blkid&#39; to print the universally unique identifier for a&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# device; this may be used with UUID= as a more robust way to name devices&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# that works even if disks are added and removed. See fstab(5).&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# &amp;lt;file system&amp;gt; &amp;lt;mount point&amp;gt;   &amp;lt;type&amp;gt;  &amp;lt;options&amp;gt;       &amp;lt;dump&amp;gt;  &amp;lt;pass&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# / was on /dev/sda2 during installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    &lt;span class=&quot;nv&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;remount-ro 0       1
+&lt;span class=&quot;c&quot;&gt;# /boot/efi was on /dev/sda1 during installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;30EE-7B6B  /boot/efi       vfat    &lt;span class=&quot;nb&quot;&gt;umask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0077      0       1
+&lt;span class=&quot;c&quot;&gt;# swap was on /dev/sda3 during installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
+&lt;span class=&quot;c&quot;&gt;# 2tb drive for movies&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 &lt;span class=&quot;nv&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;remount-ro 0 1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  mkdir /movies # remember to set group and group rwx later
-  mount -t ext4 /dev/sdb1 /movies
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;blkid to get unique name for fstab entry&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cudmore@debian:~$ sudo blkid
-  /dev/sda1: UUID=&quot;30EE-7B6B&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;1eae1e11-6902-45f9-9c27-55ab648972b3&quot;
-  /dev/sda2: UUID=&quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;15ac40fa-5874-423b-9282-209a8b88a60a&quot;
-  /dev/sda3: UUID=&quot;16a7a205-220c-4583-a758-4fcaf3eb0417&quot; TYPE=&quot;swap&quot; PARTUUID=&quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&quot;
-  /dev/sdb1: UUID=&quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&quot;
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Append the new disk to /etc/fstab&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cudmore@debian:~$ more /etc/fstab 
-  # /etc/fstab: static file system information.
-  #
-  # Use &#39;blkid&#39; to print the universally unique identifier for a
-  # device; this may be used with UUID= as a more robust way to name devices
-  # that works even if disks are added and removed. See fstab(5).
-  #
-  # &amp;lt;file system&amp;gt; &amp;lt;mount point&amp;gt;   &amp;lt;type&amp;gt;  &amp;lt;options&amp;gt;       &amp;lt;dump&amp;gt;  &amp;lt;pass&amp;gt;
-  # / was on /dev/sda2 during installation
-  UUID=2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    errors=remount-ro 0       1
-  # /boot/efi was on /dev/sda1 during installation
-  UUID=30EE-7B6B  /boot/efi       vfat    umask=0077      0       1
-  # swap was on /dev/sda3 during installation
-  UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
-  # 2tb drive for movies
-  UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;users-and-groups&quot;&gt;Users and groups&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Make a second user ‘user2’&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make a second user ‘user2’&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo adduser user2
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make a group ‘movies’&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo addgroup movies
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add myself (user1) and user2 to the ‘movies’ group&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -a -G movies user1
+sudo usermod -a -G movies user2
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo adduser user2
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Make a group ‘movies’&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo addgroup movies
- &lt;/code&gt;
-  - Add myself (user1) and user2 to the ‘movies’ group&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo usermod -a -G movies user1
-  sudo usermod -a -G movies user2
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;make-second-harddrive-rwx-for-group-movies&quot;&gt;Make second harddrive rwx for group ‘movies’&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;make sure the second hard drive has rwx permission for group ‘movies’&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;make sure the second hard drive has rwx permission for group ‘movies’&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  # the first &#39;movies&#39; is the name of the group, the second /movies is the folder
-  sudo chgrp -R movies /movies
-  sudo chmod -R g+rwx /movies
- &lt;/code&gt;&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# the first &#39;movies&#39; is the name of the group, the second /movies is the folder
+sudo chgrp -R movies /movies
+sudo chmod -R g+rwx /movies
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (afp)&lt;/h4&gt;
 
@@ -1139,25 +1130,25 @@ Device     Start        End    Sectors  Size Type
 
 &lt;p&gt;[movie_server] is a mount point that will mount my second hard drive from folder /movies.&lt;/p&gt;
 
-&lt;p&gt;```
-  ;
-  ; Netatalk 3.x configuration file
+&lt;p&gt;```&lt;br /&gt;
+  ;&lt;br /&gt;
+  ; Netatalk 3.x configuration file&lt;br /&gt;
   ;&lt;/p&gt;
 
-&lt;p&gt;[Global]
+&lt;p&gt;[Global]&lt;br /&gt;
   ; Global server settings&lt;/p&gt;
 
-&lt;p&gt;[Homes]
-  ; basedir regex = /xxxx
-    ;user1 will mount as user1_server
-    home name = $u_server
+&lt;p&gt;[Homes]&lt;br /&gt;
+  ; basedir regex = /xxxx&lt;br /&gt;
+    ;user1 will mount as user1_server&lt;br /&gt;
+    home name = $u_server&lt;br /&gt;
     basedir regex = /home&lt;/p&gt;
 
-&lt;p&gt;; [My AFP Volume]
+&lt;p&gt;; [My AFP Volume]&lt;br /&gt;
   ; path = /path/to/volume&lt;/p&gt;
 
-&lt;p&gt;[movies_server]
-  path = /movies
+&lt;p&gt;[movies_server]&lt;br /&gt;
+  path = /movies&lt;br /&gt;
   ```&lt;/p&gt;
 
 &lt;h4 id=&quot;remote-desktop-with-vnc&quot;&gt;Remote desktop with vnc&lt;/h4&gt;
@@ -1179,36 +1170,34 @@ Device     Start        End    Sectors  Size Type
 &lt;h4 id=&quot;install-sambasmb-file-sharing&quot;&gt;Install samba/smb file sharing&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;Follow something like &lt;a href=&quot;https://wiki.debian.org/SambaServerSimple&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;edit with ‘sudo pico /etc/samba/smb.conf’&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;edit with ‘sudo pico /etc/samba/smb.conf’&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  [movies_server]
-   comment = movies on debian server
-   read only = no
-   locking = no
-   path = /path_to_our_files
-   guest ok = no
-  &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Restart samba
-   &lt;code class=&quot;highlighter-rouge&quot;&gt;
-   sudo /etc/init.d/samba restart
-  &lt;/code&gt;&lt;/li&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[movies_server]
+comment = movies on debian server
+read only = no
+locking = no
+path = /path_to_our_files
+guest ok = no
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Restart samba&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+sudo /etc/init.d/samba restart
+&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;run-python-scripts-at-boot&quot;&gt;Run python scripts at boot&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;This is very unclear to me&lt;/li&gt;
-  &lt;li&gt;Directly edit ‘sudo pico /etc/crontab’&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Directly edit ‘sudo pico /etc/crontab’&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &amp;gt;&amp;gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &amp;gt;&amp;gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
   &lt;li&gt;I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my ‘print’ statements as it runs?&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1217,58 +1206,58 @@ Device     Start        End    Sectors  Size Type
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo apt-get install transmission
   sudo apt-get install transmission-daemon
- &lt;/code&gt;
-  - Follow very specific instructions &lt;a href=&quot;https://trac.transmissionbt.com/wiki/HeadlessUsage/General&quot;&gt;here&lt;/a&gt;
-  - &lt;a href=&quot;https://help.ubuntu.com/community/TransmissionHowTo&quot;&gt;this&lt;/a&gt; might be more useful.
-  - Modify /var/lib/transmission-daemon/info/settings.json&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  &quot;download-dir&quot;: &quot;/movies/transmission_download&quot;,
-  &quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,
-  &quot;rpc-authentication-required&quot;: false,
  &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Maybe add transmissions user to ‘movies’ group? (movies group was made above).&lt;/li&gt;
+  &lt;li&gt;Follow very specific instructions &lt;a href=&quot;https://trac.transmissionbt.com/wiki/HeadlessUsage/General&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/TransmissionHowTo&quot;&gt;this&lt;/a&gt; might be more useful.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Modify /var/lib/transmission-daemon/info/settings.json&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;download-dir&quot;: &quot;/movies/transmission_download&quot;,
+&quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,
+&quot;rpc-authentication-required&quot;: false,
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Maybe add transmissions user to ‘movies’ group? (movies group was made above).&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -a -G movies transmission
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;That didn’t work (maybe I needed a -R). Fuck all this security anyways.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chmod -R a+rwx /movies/transmission_download/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure to stop and then start daemon when editing the configuration file.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo service transmission-daemon stop
+sudo nano /var/lib/transmission-daemon/info/settings.json
+sudo service transmission-daemon start
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Access transmissions via web interface&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://192.168.1.200:9091
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -a -G debian-transmission cudmore 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo usermod -a -G movies transmission
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;That didn’t work (maybe I needed a -R). Fuck all this security anyways.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo chmod -R a+rwx /movies/transmission_download/
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Make sure to stop and then start daemon when editing the configuration file.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo service transmission-daemon stop
-  sudo nano /var/lib/transmission-daemon/info/settings.json
-  sudo service transmission-daemon start
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Access transmissions via web interface&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  http://192.168.1.200:9091
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo usermod -a -G debian-transmission cudmore 
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;install-particle-cloud-server&quot;&gt;Install particle cloud server&lt;/h4&gt;
 
@@ -1315,10 +1304,8 @@ Device     Start        End    Sectors  Size Type
   &lt;li&gt;Alternatively, a sensor client could have two sensors: a motion detector and a camera. In this case, motion would trigger an image capture and then transmit this as two events to a data server (a motion detection timestamp and an image).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;real-world-input&quot;&gt;‘Real world’ input&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;###’Real world’ input&lt;br /&gt;
+ - Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.&lt;/p&gt;
 
 &lt;h3 id=&quot;api&quot;&gt;API&lt;/h3&gt;
 
@@ -1348,8 +1335,8 @@ Device     Start        End    Sectors  Size Type
 &lt;/style&gt;
 &lt;/head&gt;
 
-&lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;br /&gt;
 ### Software request form&lt;/p&gt;
 
 &lt;form action=&quot;//formspree.io/robert.cudmore@gmail.com&quot; method=&quot;POST&quot;&gt;
@@ -1570,8 +1557,8 @@ sudo /etc/init.d/netatalk start
 
 &lt;p&gt;Pinouts are in &lt;a href=&quot;http://www.farnell.com/datasheets/1712854.pdf&quot;&gt;.pdf on farnell website&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Mount with nut and lockwasher
-- Hex Mount Nut: 3/8 in x 32
+&lt;p&gt;Mount with nut and lockwasher&lt;br /&gt;
+- Hex Mount Nut: 3/8 in x 32&lt;br /&gt;
 - Internal Tooth Lockwasher&lt;/p&gt;
 
 &lt;h3 id=&quot;rotary-encoder-library&quot;&gt;Rotary encoder library&lt;/h3&gt;
@@ -1613,7 +1600,7 @@ sudo /etc/init.d/netatalk start
 
 &lt;h3 id=&quot;gotchas&quot;&gt;Gotchas&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Don’t connect pin 0 on Arduino, you will get arduino error
+  &lt;li&gt;Don’t connect pin 0 on Arduino, you will get arduino error&lt;br /&gt;
  avrdude stk500_getsync(): not in sync&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1626,33 +1613,33 @@ sudo /etc/init.d/netatalk start
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;AccellStepper Arduino library&lt;br /&gt;
+    &lt;p&gt;AccellStepper Arduino library  &lt;br /&gt;
 http://www.airspayce.com/mikem/arduino/AccelStepper/index.html&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Non blocking rotary encoder library for Arduino&lt;br /&gt;
+    &lt;p&gt;Non blocking rotary encoder library for Arduino  &lt;br /&gt;
 http://www.pjrc.com/teensy/td_libs_Encoder.html&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Setting any pin as a low level interrupt on Arduino&lt;br /&gt;
+    &lt;p&gt;Setting any pin as a low level interrupt on Arduino  &lt;br /&gt;
 http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;easy driver motor controller&lt;br /&gt;
-http://www.schmalzhaus.com/EasyDriver/
+    &lt;p&gt;easy driver motor controller  &lt;br /&gt;
+http://www.schmalzhaus.com/EasyDriver/&lt;br /&gt;
 http://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;pinouts for ‘Honeywell 600-128-cbl’ rotary encoder&lt;br /&gt;
+    &lt;p&gt;pinouts for ‘Honeywell 600-128-cbl’ rotary encoder  &lt;br /&gt;
 http://www.farnell.com/datasheets/1712854.pdf&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;EasyDriver Tutorials&lt;br /&gt;
-http://bildr.org/2012/11/big-easy-driver-arduino/
+    &lt;p&gt;EasyDriver Tutorials  &lt;br /&gt;
+http://bildr.org/2012/11/big-easy-driver-arduino/&lt;br /&gt;
 http://bildr.org/2012/11/big-easy-driver-arduino/&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;[not useful] A small fork of AccelStepper v1.3 with AF_motor (Adafruit motor shield) support&lt;br /&gt;
+    &lt;p&gt;[not useful] A small fork of AccelStepper v1.3 with AF_motor (Adafruit motor shield) support  &lt;br /&gt;
 https://github.com/adafruit/AccelStepper&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://matplotlib.org&quot;&gt;Matplotlib&lt;/a&gt;.&lt;/li&gt;
@@ -2078,9 +2065,9 @@ export XKL_XMODMAP_DISABLE=1
    <link href="http://blog.cudmore.io/post/2015/04/19/Install-OSX/"/>
    <updated>2015-04-19T18:01:06-04:00</updated>
    <id>http://blog.cudmore.io/post/2015/04/19/Install-OSX</id>
-   <content type="html">&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br /&gt;
- - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br /&gt;
- - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;&lt;br /&gt;
+   <content type="html">&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  &lt;br /&gt;
+ - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;  &lt;br /&gt;
+ - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;  &lt;br /&gt;
  - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;analysis&quot;&gt;Analysis&lt;/h4&gt;
@@ -2098,14 +2085,14 @@ export XKL_XMODMAP_DISABLE=1
 &lt;h4 id=&quot;development&quot;&gt;Development&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.macports.org/install.php&quot;&gt;Macports&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;XCode command line tools &lt;br /&gt;
- ~~~
- xcode-select –install
+  &lt;li&gt;XCode command line tools   &lt;br /&gt;
+ ~~~&lt;br /&gt;
+ xcode-select –install&lt;br /&gt;
  ~~~&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://continuum.io/downloads&quot;&gt;Anaconda&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;Jekyll&lt;/a&gt; &lt;br /&gt;
- ~~~
- gem install jekyll
+  &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;Jekyll&lt;/a&gt;   &lt;br /&gt;
+ ~~~&lt;br /&gt;
+ gem install jekyll&lt;br /&gt;
  ~~~&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2156,16 +2143,16 @@ export XKL_XMODMAP_DISABLE=1
   &lt;li&gt;[FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~- Start by going &lt;a href=&quot;https://jhpulse.johnshopkins.edu.&quot;&gt;here&lt;/a&gt;~~&lt;br /&gt;
- ~~- https://jhpulse.johnshopkins.edu.~~&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;- Start by going &lt;a href=&quot;https://jhpulse.johnshopkins.edu.&quot;&gt;here&lt;/a&gt;&lt;/del&gt;  &lt;br /&gt;
+ &lt;del&gt;- https://jhpulse.johnshopkins.edu.&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;~~- Forces install of Java 8u45~~&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;- Forces install of Java 8u45&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;~~- https://www.java.com/en/download/mac_download.jsp~~&lt;br /&gt;
-~~- jre-8u45-macosx-x64.dmg~~&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;- https://www.java.com/en/download/mac_download.jsp&lt;/del&gt;  &lt;br /&gt;
+&lt;del&gt;- jre-8u45-macosx-x64.dmg&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;~~- Install Junos Pulse (twice)~~&lt;br /&gt;
- ~~- Requires manual setting of Safari security~~&lt;br /&gt;
+&lt;p&gt;&lt;del&gt;- Install Junos Pulse (twice)&lt;/del&gt;  &lt;br /&gt;
+ &lt;del&gt;- Requires manual setting of Safari security&lt;/del&gt;  &lt;br /&gt;
  - Complete bullshit amateur hack job&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://blog.cudmore.io/images/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
@@ -2383,12 +2370,12 @@ sudo apt-get install python-qt4-dev
 &lt;h1 id=&quot;stop-here-&quot;&gt;!!! Stop Here !!!&lt;/h1&gt;
 
 &lt;h3 id=&quot;client-side-socketio-javascript&quot;&gt;Client side socket.io javascript&lt;/h3&gt;
-&lt;p&gt;Client side needs socketio javascript: http://socket.io&lt;br /&gt;
-Put this in your Flask project /static/js/&lt;br /&gt;
+&lt;p&gt;Client side needs socketio javascript: http://socket.io  &lt;br /&gt;
+Put this in your Flask project /static/js/  &lt;br /&gt;
 Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js&lt;br /&gt;
+  &lt;p&gt;wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js  &lt;br /&gt;
 cp socket.io.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2396,7 +2383,7 @@ cp socket.io.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;p&gt;documentation at: http://jquery.com/download/&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;wget wget http://code.jquery.com/jquery-1.11.2.min.js&lt;br /&gt;
+  &lt;p&gt;wget wget http://code.jquery.com/jquery-1.11.2.min.js  &lt;br /&gt;
 cp jquery-1.11.2.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2404,18 +2391,18 @@ cp jquery-1.11.2.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;p&gt;anaconda install tutorial http://docs.continuum.io/anaconda/install.html&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
+  &lt;p&gt;wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh&lt;br /&gt;
 bash Miniconda-3.5.5-Linux-armv6l.sh&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;conda update conda
+  &lt;p&gt;conda update conda&lt;br /&gt;
 conda update anaconda&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;bokeh&quot;&gt;bokeh&lt;/h3&gt;
-&lt;p&gt;bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html
-make sure dependencies are installed: NumPy, Pandas, and Redis
+&lt;p&gt;bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html&lt;br /&gt;
+make sure dependencies are installed: NumPy, Pandas, and Redis&lt;br /&gt;
 &amp;gt; pip install bokeh&lt;/p&gt;
 
 &lt;h3 id=&quot;streaming-from-a-webcam-or-camera-module-using-mjpg-streamer&quot;&gt;Streaming from a webcam or camera module using mjpg streamer&lt;/h3&gt;
@@ -2444,16 +2431,16 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
 &lt;h3 id=&quot;my-usb-webcam-has-following-output&quot;&gt;my usb webcam has following output&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;v4l2-ctl –list-formats
-  pi@pi50 ~ $ v4l2-ctl –list-formats
-  ioctl: VIDIOC_ENUM_FMT
-      Index       : 0
-      Type        : Video Capture
-      Pixel Format: ‘YUYV’
+    &lt;p&gt;v4l2-ctl –list-formats&lt;br /&gt;
+  pi@pi50 ~ $ v4l2-ctl –list-formats&lt;br /&gt;
+  ioctl: VIDIOC_ENUM_FMT&lt;br /&gt;
+      Index       : 0&lt;br /&gt;
+      Type        : Video Capture&lt;br /&gt;
+      Pixel Format: ‘YUYV’&lt;br /&gt;
       Name        : YUYV&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;v4l2-ctl –list-ctrls
+    &lt;p&gt;v4l2-ctl –list-ctrls&lt;br /&gt;
   pi@pi50 ~ $ v4l2-ctl –list-ctrls&lt;/p&gt;
 
     &lt;p&gt;User Controls&lt;/p&gt;
@@ -2481,12 +2468,12 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;-mjpg_streamer –input “input_uvc.so –help”
-	pi@pi50 ~ $ mjpg_streamer –input “input_uvc.so –help”
-	MJPG Streamer Version: svn rev: Unversioned directory
-	 —————————————————————
-	 Help for input plugin..: UVC webcam grabber
-	 —————————————————————
+&lt;p&gt;-mjpg_streamer –input “input_uvc.so –help”&lt;br /&gt;
+	pi@pi50 ~ $ mjpg_streamer –input “input_uvc.so –help”&lt;br /&gt;
+	MJPG Streamer Version: svn rev: Unversioned directory&lt;br /&gt;
+	 —————————————————————&lt;br /&gt;
+	 Help for input plugin..: UVC webcam grabber&lt;br /&gt;
+	 —————————————————————&lt;br /&gt;
 	 The following parameters can be passed to this plugin:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; [-d | --device ].......: video device to open (your camera)
@@ -2632,16 +2619,16 @@ input_init() return value signals to exit
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Sourcecode for mjpg-streamer&lt;br /&gt;
+    &lt;p&gt;Sourcecode for mjpg-streamer  &lt;br /&gt;
   &lt;a href=&quot;http://sourceforge.net/projects/mjpg-streamer/&quot;&gt;http://sourceforge.net/projects/mjpg-streamer/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Tutorials&lt;/p&gt;
 
-    &lt;p&gt;In what follows I am following this blog post …&lt;br /&gt;
+    &lt;p&gt;In what follows I am following this blog post …  &lt;br /&gt;
   &lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&quot;&gt;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;This post is derived from previous link but explains how to install a USB webcam instead of raspberry pi camera module …&lt;br /&gt;
+    &lt;p&gt;This post is derived from previous link but explains how to install a USB webcam instead of raspberry pi camera module …  &lt;br /&gt;
   &lt;a href=&quot;http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/&quot;&gt;http://jacobsalmela.com/raspberry-pi-webcam-using-mjpg-streamer-over-internet/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -2652,9 +2639,9 @@ input_init() return value signals to exit
   &lt;li&gt;
     &lt;p&gt;Preliminaries&lt;/p&gt;
 
-    &lt;p&gt;~~~
-  sudo apt-get update&lt;br /&gt;
-  sudo apt-get upgrade&lt;br /&gt;
+    &lt;p&gt;~~~&lt;br /&gt;
+  sudo apt-get update  &lt;br /&gt;
+  sudo apt-get upgrade  &lt;br /&gt;
   ~~~&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -2749,13 +2736,13 @@ input_init() return value signals to exit
   &lt;li&gt;
     &lt;p&gt;Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).&lt;/p&gt;
 
-    &lt;p&gt;~~~
-  pi@pi50 ~ $ lsusb&lt;br /&gt;
-  Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp.&lt;br /&gt;
-  Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&lt;br /&gt;
-  Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.&lt;br /&gt;
-  Bus 001 Device 004: ID 1a40:0201 Terminus Technology Inc. FE 2.1 7-port Hub&lt;br /&gt;
-  Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye&lt;br /&gt;
+    &lt;p&gt;~~~&lt;br /&gt;
+  pi@pi50 ~ $ lsusb  &lt;br /&gt;
+  Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp.  &lt;br /&gt;
+  Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  &lt;br /&gt;
+  Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.  &lt;br /&gt;
+  Bus 001 Device 004: ID 1a40:0201 Terminus Technology Inc. FE 2.1 7-port Hub  &lt;br /&gt;
+  Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye  &lt;br /&gt;
 ~~~&lt;/p&gt;
 
     &lt;p&gt;The last entry is my camera, a ‘Sony Playstation Eye’.&lt;/p&gt;
@@ -2763,21 +2750,21 @@ input_init() return value signals to exit
   &lt;li&gt;
     &lt;p&gt;install v4l-utils (THESE ARE WRONG !!!!!!!!!!!!!!!!)&lt;/p&gt;
 
-    &lt;p&gt;Getting v4l2 on the raspberry is witchcraft, as of march 2015 it seems to be installed by default???
-  &amp;gt; sudo apt-get install v4l2-utils
+    &lt;p&gt;Getting v4l2 on the raspberry is witchcraft, as of march 2015 it seems to be installed by default???&lt;br /&gt;
+  &amp;gt; sudo apt-get install v4l2-utils&lt;br /&gt;
   &amp;gt; sudo apt-get install uv4l2 uv4l2-raspicam&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Check the parameters of our USB camera&lt;/p&gt;
 
-    &lt;p&gt;~~~
+    &lt;p&gt;~~~&lt;br /&gt;
   v4l2-ctl –list-formats&lt;/p&gt;
 
-    &lt;p&gt;ioctl: VIDIOC_ENUM_FMT&lt;br /&gt;
-      Index       : 0&lt;br /&gt;
-      Type        : Video Capture&lt;br /&gt;
-      Pixel Format: ‘YUYV’&lt;br /&gt;
-      Name        : YUYV&lt;br /&gt;
+    &lt;p&gt;ioctl: VIDIOC_ENUM_FMT  &lt;br /&gt;
+      Index       : 0  &lt;br /&gt;
+      Type        : Video Capture  &lt;br /&gt;
+      Pixel Format: ‘YUYV’  &lt;br /&gt;
+      Name        : YUYV  &lt;br /&gt;
 ~~~&lt;/p&gt;
 
     &lt;p&gt;The YUYV is very important, I need to pass a -y option to jpg_streamer –input command. If you see MPEG you don’t need this -y switch.&lt;/p&gt;
@@ -2846,8 +2833,8 @@ input_init() return value signals to exit
 
 &lt;h4 id=&quot;install-opencv&quot;&gt;Install opencv&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;sudo apt-get update&lt;br /&gt;
-sudo apt-get upgrade&lt;br /&gt;
+  &lt;p&gt;sudo apt-get update  &lt;br /&gt;
+sudo apt-get upgrade  &lt;br /&gt;
 sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2872,11 +2859,11 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
   &lt;li&gt;
     &lt;p&gt;after pluggin in usb drive + usb camera&lt;/p&gt;
 
-    &lt;p&gt;pi@pi40 ~ $ lsusb&lt;br /&gt;
-  Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp. 
-  Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&lt;br /&gt;
-  Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
-  Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye&lt;br /&gt;
+    &lt;p&gt;pi@pi40 ~ $ lsusb  &lt;br /&gt;
+  Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp. &lt;br /&gt;
+  Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  &lt;br /&gt;
+  Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. &lt;br /&gt;
+  Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye  &lt;br /&gt;
   Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -2891,7 +2878,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
   &lt;li&gt;Check the frame rate by recording a clock&lt;/li&gt;
   &lt;li&gt;Add in template code for stop/start, start with keyboard and then move to GPIO&lt;/li&gt;
   &lt;li&gt;Get the DC60 STK1160 video to usb dongle working&lt;/li&gt;
-  &lt;li&gt;This website says that it may just auto detect in newer linux kernels?
+  &lt;li&gt;This website says that it may just auto detect in newer linux kernels?&lt;br /&gt;
 http://linuxtv.org/wiki/index.php/Stk1160# Making_it_Work&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2969,7 +2956,7 @@ cap.release()
   &lt;li&gt;be able to run bokeh examples&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;[UPDATE August 16, 2015]
+&lt;p&gt;[UPDATE August 16, 2015]&lt;br /&gt;
 [THIS IS NOT WORKING … REWRITING]&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3042,7 +3029,7 @@ Thank you for installing Miniconda!
 &lt;h3 id=&quot;make-sure-numpy-and-pandas-is-correct&quot;&gt;Make sure numpy and pandas is correct&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;pip install numpy –upgrade&lt;br /&gt;
+  &lt;p&gt;pip install numpy –upgrade  &lt;br /&gt;
 pip install pandas –upgrade&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -3121,8 +3108,8 @@ wsgiref==0.1.2
 &lt;h3 id=&quot;run-the-bokeh-server&quot;&gt;Run the bokeh-server&lt;/h3&gt;
 &lt;p&gt;Remember, this make temporary files in directory you run it in.&lt;/p&gt;
 
-&lt;p&gt;–ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006&lt;br /&gt;
-&amp;gt; 
+&lt;p&gt;–ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006  &lt;br /&gt;
+&amp;gt; &lt;br /&gt;
 &amp;gt; bokeh-server –backend=memory –ip 0.0.0.0&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
@@ -3221,7 +3208,7 @@ while True:
    <link href="http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/"/>
    <updated>2014-02-14T17:01:06-05:00</updated>
    <id>http://blog.cudmore.io/post/2014/02/14/Monitoring mice in their home cage</id>
-   <content type="html">&lt;p&gt;[Aug 4, 2014, updated]
+   <content type="html">&lt;p&gt;[Aug 4, 2014, updated]&lt;br /&gt;
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
 &lt;h2 id=&quot;goal&quot;&gt;Goal&lt;/h2&gt;

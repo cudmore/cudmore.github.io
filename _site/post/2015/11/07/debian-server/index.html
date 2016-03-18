@@ -243,10 +243,10 @@
   <li>
     <p>Check your debian version</p>
 
-    <p><code class="highlighter-rouge">
-cat /etc/debian_version 
+    <div class="highlighter-rouge"><pre class="highlight"><code>cat /etc/debian_version 
 8.2
-</code></p>
+</code></pre>
+    </div>
   </li>
 </ul>
 
@@ -275,129 +275,120 @@ cat /etc/debian_version
 </ul>
 
 <h4 id="add-in-a-second-hard-drive">Add in a second hard drive</h4>
+
 <ul>
-  <li>partition</li>
-</ul>
+  <li>
+    <p>partition</p>
 
-<p><code class="highlighter-rouge">
-  cfdisk /dev/sdb
- </code></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ss
-    
-       ss
-    
-          ss
+    <div class="highlighter-rouge"><pre class="highlight"><code>cfdisk /dev/sdb
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>format</p>
 
-<ul>
-  <li>format</li>
-</ul>
+    <div class="highlighter-rouge"><pre class="highlight"><code>mkfs.ext4 /dev/sdb1
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Once disk is partitioned and formatted, this is what it looks like</p>
 
-<p><code class="highlighter-rouge">
-  mkfs.ext4 /dev/sdb1
- </code></p>
-
-<ul>
-  <li>Once disk is partitioned and formatted, this is what it looks like</li>
-</ul>
-
-<p>```</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cudmore@debian:~$ sudo fdisk -l /dev/sdb
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">cudmore@debian:~$ </span>sudo fdisk -l /dev/sdb
 Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: gpt
+Units: sectors of 1 <span class="k">*</span> 512 <span class="o">=</span> 512 bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512 bytes / 512 bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: 512 bytes / 512 bytes
+Disklabel <span class="nb">type</span>: gpt
 Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
   
 Device     Start        End    Sectors  Size Type
 /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>Mount the second harddrive in a folder /movies</p>
 
-<p>```</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>mkdir /movies <span class="c"># remember to set group and group rwx later</span>
+mount -t ext4 /dev/sdb1 /movies
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>blkid to get unique name for fstab entry</p>
 
-<ul>
-  <li>Mount the second harddrive in a folder /movies</li>
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">cudmore@debian:~$ </span>sudo blkid
+/dev/sda1: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"30EE-7B6B"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"vfat"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"1eae1e11-6902-45f9-9c27-55ab648972b3"</span>
+/dev/sda2: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"2cf97347-1baf-4abf-a297-650ebf4dfdff"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"15ac40fa-5874-423b-9282-209a8b88a60a"</span>
+/dev/sda3: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"16a7a205-220c-4583-a758-4fcaf3eb0417"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"swap"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"fa435c81-ab1e-4192-97ba-e55c08ceb932"</span>
+/dev/sdb1: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"f6b5096b-188b-4204-92aa-31e8c58e0eb6"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"61e5434f-7975-45a8-a8c4-6148fb56f9b4"</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Append the new disk to /etc/fstab</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">cudmore@debian:~$ </span>more /etc/fstab 
+<span class="c"># /etc/fstab: static file system information.</span>
+<span class="c">#</span>
+<span class="c"># Use 'blkid' to print the universally unique identifier for a</span>
+<span class="c"># device; this may be used with UUID= as a more robust way to name devices</span>
+<span class="c"># that works even if disks are added and removed. See fstab(5).</span>
+<span class="c">#</span>
+<span class="c"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+<span class="c"># / was on /dev/sda2 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    <span class="nv">errors</span><span class="o">=</span>remount-ro 0       1
+<span class="c"># /boot/efi was on /dev/sda1 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>30EE-7B6B  /boot/efi       vfat    <span class="nb">umask</span><span class="o">=</span>0077      0       1
+<span class="c"># swap was on /dev/sda3 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
+<span class="c"># 2tb drive for movies</span>
+<span class="nv">UUID</span><span class="o">=</span>f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 <span class="nv">errors</span><span class="o">=</span>remount-ro 0 1
+</code></pre>
+    </div>
+  </li>
 </ul>
-
-<p><code class="highlighter-rouge">
-  mkdir /movies # remember to set group and group rwx later
-  mount -t ext4 /dev/sdb1 /movies
- </code></p>
-
-<ul>
-  <li>blkid to get unique name for fstab entry</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  cudmore@debian:~$ sudo blkid
-  /dev/sda1: UUID="30EE-7B6B" TYPE="vfat" PARTUUID="1eae1e11-6902-45f9-9c27-55ab648972b3"
-  /dev/sda2: UUID="2cf97347-1baf-4abf-a297-650ebf4dfdff" TYPE="ext4" PARTUUID="15ac40fa-5874-423b-9282-209a8b88a60a"
-  /dev/sda3: UUID="16a7a205-220c-4583-a758-4fcaf3eb0417" TYPE="swap" PARTUUID="fa435c81-ab1e-4192-97ba-e55c08ceb932"
-  /dev/sdb1: UUID="f6b5096b-188b-4204-92aa-31e8c58e0eb6" TYPE="ext4" PARTUUID="61e5434f-7975-45a8-a8c4-6148fb56f9b4"
- </code></p>
-
-<ul>
-  <li>Append the new disk to /etc/fstab</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  cudmore@debian:~$ more /etc/fstab 
-  # /etc/fstab: static file system information.
-  #
-  # Use 'blkid' to print the universally unique identifier for a
-  # device; this may be used with UUID= as a more robust way to name devices
-  # that works even if disks are added and removed. See fstab(5).
-  #
-  # &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
-  # / was on /dev/sda2 during installation
-  UUID=2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    errors=remount-ro 0       1
-  # /boot/efi was on /dev/sda1 during installation
-  UUID=30EE-7B6B  /boot/efi       vfat    umask=0077      0       1
-  # swap was on /dev/sda3 during installation
-  UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
-  # 2tb drive for movies
-  UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
- </code></p>
 
 <h4 id="users-and-groups">Users and groups</h4>
 
 <ul>
-  <li>Make a second user ‘user2’</li>
+  <li>
+    <p>Make a second user ‘user2’</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo adduser user2
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Make a group ‘movies’</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo addgroup movies
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Add myself (user1) and user2 to the ‘movies’ group</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G movies user1
+sudo usermod -a -G movies user2
+</code></pre>
+    </div>
+  </li>
 </ul>
-
-<p><code class="highlighter-rouge">
-  sudo adduser user2
- </code></p>
-
-<ul>
-  <li>Make a group ‘movies’</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  sudo addgroup movies
- </code>
-  - Add myself (user1) and user2 to the ‘movies’ group</p>
-
-<p><code class="highlighter-rouge">
-  sudo usermod -a -G movies user1
-  sudo usermod -a -G movies user2
- </code></p>
 
 <h4 id="make-second-harddrive-rwx-for-group-movies">Make second harddrive rwx for group ‘movies’</h4>
 <ul>
-  <li>make sure the second hard drive has rwx permission for group ‘movies’</li>
-</ul>
+  <li>
+    <p>make sure the second hard drive has rwx permission for group ‘movies’</p>
 
-<p><code class="highlighter-rouge">
-  # the first 'movies' is the name of the group, the second /movies is the folder
-  sudo chgrp -R movies /movies
-  sudo chmod -R g+rwx /movies
- </code></p>
+    <div class="highlighter-rouge"><pre class="highlight"><code># the first 'movies' is the name of the group, the second /movies is the folder
+sudo chgrp -R movies /movies
+sudo chmod -R g+rwx /movies
+</code></pre>
+    </div>
+  </li>
+</ul>
 
 <h4 id="apple-file-protocol-afp">Apple-File-Protocol (afp)</h4>
 
@@ -415,25 +406,25 @@ Device     Start        End    Sectors  Size Type
 
 <p>[movie_server] is a mount point that will mount my second hard drive from folder /movies.</p>
 
-<p>```
-  ;
-  ; Netatalk 3.x configuration file
+<p>```<br />
+  ;<br />
+  ; Netatalk 3.x configuration file<br />
   ;</p>
 
-<p>[Global]
+<p>[Global]<br />
   ; Global server settings</p>
 
-<p>[Homes]
-  ; basedir regex = /xxxx
-    ;user1 will mount as user1_server
-    home name = $u_server
+<p>[Homes]<br />
+  ; basedir regex = /xxxx<br />
+    ;user1 will mount as user1_server<br />
+    home name = $u_server<br />
     basedir regex = /home</p>
 
-<p>; [My AFP Volume]
+<p>; [My AFP Volume]<br />
   ; path = /path/to/volume</p>
 
-<p>[movies_server]
-  path = /movies
+<p>[movies_server]<br />
+  path = /movies<br />
   ```</p>
 
 <h4 id="remote-desktop-with-vnc">Remote desktop with vnc</h4>
@@ -455,36 +446,34 @@ Device     Start        End    Sectors  Size Type
 <h4 id="install-sambasmb-file-sharing">Install samba/smb file sharing</h4>
 <ul>
   <li>Follow something like <a href="https://wiki.debian.org/SambaServerSimple">this</a></li>
-  <li>edit with ‘sudo pico /etc/samba/smb.conf’</li>
-</ul>
+  <li>
+    <p>edit with ‘sudo pico /etc/samba/smb.conf’</p>
 
-<p><code class="highlighter-rouge">
-  [movies_server]
-   comment = movies on debian server
-   read only = no
-   locking = no
-   path = /path_to_our_files
-   guest ok = no
-  </code></p>
-
-<ul>
-  <li>Restart samba
-   <code class="highlighter-rouge">
-   sudo /etc/init.d/samba restart
-  </code></li>
+    <div class="highlighter-rouge"><pre class="highlight"><code>[movies_server]
+comment = movies on debian server
+read only = no
+locking = no
+path = /path_to_our_files
+guest ok = no
+</code></pre>
+    </div>
+  </li>
+  <li>Restart samba<br />
+<code class="highlighter-rouge">
+sudo /etc/init.d/samba restart
+</code></li>
 </ul>
 
 <h4 id="run-python-scripts-at-boot">Run python scripts at boot</h4>
 <ul>
   <li>This is very unclear to me</li>
-  <li>Directly edit ‘sudo pico /etc/crontab’</li>
-</ul>
+  <li>
+    <p>Directly edit ‘sudo pico /etc/crontab’</p>
 
-<p><code class="highlighter-rouge">
-  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &gt;&gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&gt;&amp;1
- </code></p>
-
-<ul>
+    <div class="highlighter-rouge"><pre class="highlight"><code>@reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &gt;&gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&gt;&amp;1
+</code></pre>
+    </div>
+  </li>
   <li>I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my ‘print’ statements as it runs?</li>
 </ul>
 
@@ -493,58 +482,58 @@ Device     Start        End    Sectors  Size Type
 <p><code class="highlighter-rouge">
   sudo apt-get install transmission
   sudo apt-get install transmission-daemon
- </code>
-  - Follow very specific instructions <a href="https://trac.transmissionbt.com/wiki/HeadlessUsage/General">here</a>
-  - <a href="https://help.ubuntu.com/community/TransmissionHowTo">this</a> might be more useful.
-  - Modify /var/lib/transmission-daemon/info/settings.json</p>
-
-<p><code class="highlighter-rouge">
-  "download-dir": "/movies/transmission_download",
-  "rpc-whitelist": "127.0.0.1,192.168.*.*",
-  "rpc-authentication-required": false,
  </code></p>
 
 <ul>
-  <li>Maybe add transmissions user to ‘movies’ group? (movies group was made above).</li>
+  <li>Follow very specific instructions <a href="https://trac.transmissionbt.com/wiki/HeadlessUsage/General">here</a></li>
+  <li><a href="https://help.ubuntu.com/community/TransmissionHowTo">this</a> might be more useful.</li>
+  <li>
+    <p>Modify /var/lib/transmission-daemon/info/settings.json</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>"download-dir": "/movies/transmission_download",
+"rpc-whitelist": "127.0.0.1,192.168.*.*",
+"rpc-authentication-required": false,
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Maybe add transmissions user to ‘movies’ group? (movies group was made above).</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G movies transmission
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>That didn’t work (maybe I needed a -R). Fuck all this security anyways.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo chmod -R a+rwx /movies/transmission_download/
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Make sure to stop and then start daemon when editing the configuration file.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo service transmission-daemon stop
+sudo nano /var/lib/transmission-daemon/info/settings.json
+sudo service transmission-daemon start
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Access transmissions via web interface</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>http://192.168.1.200:9091
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G debian-transmission cudmore 
+</code></pre>
+    </div>
+  </li>
 </ul>
-
-<p><code class="highlighter-rouge">
-  sudo usermod -a -G movies transmission
- </code></p>
-
-<ul>
-  <li>That didn’t work (maybe I needed a -R). Fuck all this security anyways.</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  sudo chmod -R a+rwx /movies/transmission_download/
- </code></p>
-
-<ul>
-  <li>Make sure to stop and then start daemon when editing the configuration file.</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  sudo service transmission-daemon stop
-  sudo nano /var/lib/transmission-daemon/info/settings.json
-  sudo service transmission-daemon start
- </code></p>
-
-<ul>
-  <li>Access transmissions via web interface</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  http://192.168.1.200:9091
- </code></p>
-
-<ul>
-  <li>My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-  sudo usermod -a -G debian-transmission cudmore 
- </code></p>
 
 <h4 id="install-particle-cloud-server">Install particle cloud server</h4>
 

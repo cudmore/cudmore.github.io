@@ -284,9 +284,9 @@
       <item>
         <title>Install OSX</title>
         
-          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br /&gt;
- - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br /&gt;
- - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;&lt;br /&gt;
+          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  &lt;br /&gt;
+ - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;  &lt;br /&gt;
+ - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;  &lt;br /&gt;
  - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
 
 </description>
@@ -376,8 +376,8 @@
 
 &lt;h4 id=&quot;install-opencv&quot;&gt;Install opencv&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;sudo apt-get update&lt;br /&gt;
-sudo apt-get upgrade&lt;br /&gt;
+  &lt;p&gt;sudo apt-get update  &lt;br /&gt;
+sudo apt-get upgrade  &lt;br /&gt;
 sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -424,7 +424,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
       <item>
         <title>Monitoring mice in their home cage</title>
         
-          <description>&lt;p&gt;[Aug 4, 2014, updated]
+          <description>&lt;p&gt;[Aug 4, 2014, updated]&lt;br /&gt;
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
 </description>

@@ -1,5 +1,9 @@
 markdown: kramdown
 
+kramdown:
+   input: GFM
+   syntax_highlighter: rouge
+
 #added for jekyll3 20160212
 gems:
     - jekyll-paginate
