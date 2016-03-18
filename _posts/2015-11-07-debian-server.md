@@ -96,7 +96,6 @@ Goal is to set up a home server running Debain Jessie.
 
   - blkid to get unique name for fstab entry
   
-<<<<<<< HEAD
     ```bash
     cudmore@debian:~$ sudo blkid
     /dev/sda1: UUID="30EE-7B6B" TYPE="vfat" PARTUUID="1eae1e11-6902-45f9-9c27-55ab648972b3"
@@ -104,15 +103,6 @@ Goal is to set up a home server running Debain Jessie.
     /dev/sda3: UUID="16a7a205-220c-4583-a758-4fcaf3eb0417" TYPE="swap" PARTUUID="fa435c81-ab1e-4192-97ba-e55c08ceb932"
     /dev/sdb1: UUID="f6b5096b-188b-4204-92aa-31e8c58e0eb6" TYPE="ext4" PARTUUID="61e5434f-7975-45a8-a8c4-6148fb56f9b4"
     ```
-=======
-  ~~~
-  cudmore@debian:~$ sudo blkid
-  /dev/sda1: UUID="30EE-7B6B" TYPE="vfat" PARTUUID="1eae1e11-6902-45f9-9c27-55ab648972b3"
-  /dev/sda2: UUID="2cf97347-1baf-4abf-a297-650ebf4dfdff" TYPE="ext4" PARTUUID="15ac40fa-5874-423b-9282-209a8b88a60a"
-  /dev/sda3: UUID="16a7a205-220c-4583-a758-4fcaf3eb0417" TYPE="swap" PARTUUID="fa435c81-ab1e-4192-97ba-e55c08ceb932"
-  /dev/sdb1: UUID="f6b5096b-188b-4204-92aa-31e8c58e0eb6" TYPE="ext4" PARTUUID="61e5434f-7975-45a8-a8c4-6148fb56f9b4"
-  ~~~
->>>>>>> origin/master
 
   - Append the new disk to /etc/fstab
 
