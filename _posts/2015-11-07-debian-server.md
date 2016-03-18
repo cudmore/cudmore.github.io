@@ -6,7 +6,7 @@ date: 2015-11-07 22:01:06
 tags:
 - osx
 - linux
----
+--- 
 
 Goal is to set up a home server running Debain Jessie.
 
