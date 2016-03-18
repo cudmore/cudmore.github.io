@@ -406,26 +406,26 @@ sudo chmod -R g+rwx /movies
 
 <p>[movie_server] is a mount point that will mount my second hard drive from folder /movies.</p>
 
-<p>```<br />
-  ;<br />
-  ; Netatalk 3.x configuration file<br />
-  ;</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>;
+; Netatalk 3.x configuration file
+;
 
-<p>[Global]<br />
-  ; Global server settings</p>
+[Global]
+; Global server settings
 
-<p>[Homes]<br />
-  ; basedir regex = /xxxx<br />
-    ;user1 will mount as user1_server<br />
-    home name = $u_server<br />
-    basedir regex = /home</p>
+[Homes]
+; basedir regex = /xxxx
+;user1 will mount as user1_server
+home name = $u_server
+basedir regex = /home
 
-<p>; [My AFP Volume]<br />
-  ; path = /path/to/volume</p>
+; [My AFP Volume]
+; path = /path/to/volume
 
-<p>[movies_server]<br />
-  path = /movies<br />
-  ```</p>
+[movies_server]
+path = /movies
+</code></pre>
+</div>
 
 <h4 id="remote-desktop-with-vnc">Remote desktop with vnc</h4>
 <ul>

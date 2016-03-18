@@ -168,26 +168,26 @@ $u is a variable that inserts the current username. It is defined in the [afp.co
 
 [movie_server] is a mount point that will mount my second hard drive from folder /movies.
 
-  ```
-  ;
-  ; Netatalk 3.x configuration file
-  ;
-  
-  [Global]
-  ; Global server settings
-  
-  [Homes]
-  ; basedir regex = /xxxx
-    ;user1 will mount as user1_server
-    home name = $u_server
-    basedir regex = /home
-  
-  ; [My AFP Volume]
-  ; path = /path/to/volume
-  
-  [movies_server]
-  path = /movies
-  ```
+```
+;
+; Netatalk 3.x configuration file
+;
+
+[Global]
+; Global server settings
+
+[Homes]
+; basedir regex = /xxxx
+;user1 will mount as user1_server
+home name = $u_server
+basedir regex = /home
+
+; [My AFP Volume]
+; path = /path/to/volume
+
+[movies_server]
+path = /movies
+```
 
 #### Remote desktop with vnc
   - This is not working. May be jessie bug?

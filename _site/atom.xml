@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-17T21:21:56-04:00</updated>
+ <updated>2016-03-17T21:26:51-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -1130,26 +1130,26 @@ sudo chmod -R g+rwx /movies
 
 &lt;p&gt;[movie_server] is a mount point that will mount my second hard drive from folder /movies.&lt;/p&gt;
 
-&lt;p&gt;```&lt;br /&gt;
-  ;&lt;br /&gt;
-  ; Netatalk 3.x configuration file&lt;br /&gt;
-  ;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;
+; Netatalk 3.x configuration file
+;
 
-&lt;p&gt;[Global]&lt;br /&gt;
-  ; Global server settings&lt;/p&gt;
+[Global]
+; Global server settings
 
-&lt;p&gt;[Homes]&lt;br /&gt;
-  ; basedir regex = /xxxx&lt;br /&gt;
-    ;user1 will mount as user1_server&lt;br /&gt;
-    home name = $u_server&lt;br /&gt;
-    basedir regex = /home&lt;/p&gt;
+[Homes]
+; basedir regex = /xxxx
+;user1 will mount as user1_server
+home name = $u_server
+basedir regex = /home
 
-&lt;p&gt;; [My AFP Volume]&lt;br /&gt;
-  ; path = /path/to/volume&lt;/p&gt;
+; [My AFP Volume]
+; path = /path/to/volume
 
-&lt;p&gt;[movies_server]&lt;br /&gt;
-  path = /movies&lt;br /&gt;
-  ```&lt;/p&gt;
+[movies_server]
+path = /movies
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;remote-desktop-with-vnc&quot;&gt;Remote desktop with vnc&lt;/h4&gt;
 &lt;ul&gt;
