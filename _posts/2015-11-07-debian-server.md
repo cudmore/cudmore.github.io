@@ -33,10 +33,10 @@ Goal is to set up a home server running Debain Jessie.
   - Install debian
   - Check your debian version
   
-    ```
+    ~~~
     cat /etc/debian_version 
     8.2
-    ```
+    ~~~
 
 ### 2) Configure debian jessie
 
@@ -96,6 +96,7 @@ Goal is to set up a home server running Debain Jessie.
 
   - blkid to get unique name for fstab entry
   
+<<<<<<< HEAD
     ```bash
     cudmore@debian:~$ sudo blkid
     /dev/sda1: UUID="30EE-7B6B" TYPE="vfat" PARTUUID="1eae1e11-6902-45f9-9c27-55ab648972b3"
@@ -103,6 +104,15 @@ Goal is to set up a home server running Debain Jessie.
     /dev/sda3: UUID="16a7a205-220c-4583-a758-4fcaf3eb0417" TYPE="swap" PARTUUID="fa435c81-ab1e-4192-97ba-e55c08ceb932"
     /dev/sdb1: UUID="f6b5096b-188b-4204-92aa-31e8c58e0eb6" TYPE="ext4" PARTUUID="61e5434f-7975-45a8-a8c4-6148fb56f9b4"
     ```
+=======
+  ~~~
+  cudmore@debian:~$ sudo blkid
+  /dev/sda1: UUID="30EE-7B6B" TYPE="vfat" PARTUUID="1eae1e11-6902-45f9-9c27-55ab648972b3"
+  /dev/sda2: UUID="2cf97347-1baf-4abf-a297-650ebf4dfdff" TYPE="ext4" PARTUUID="15ac40fa-5874-423b-9282-209a8b88a60a"
+  /dev/sda3: UUID="16a7a205-220c-4583-a758-4fcaf3eb0417" TYPE="swap" PARTUUID="fa435c81-ab1e-4192-97ba-e55c08ceb932"
+  /dev/sdb1: UUID="f6b5096b-188b-4204-92aa-31e8c58e0eb6" TYPE="ext4" PARTUUID="61e5434f-7975-45a8-a8c4-6148fb56f9b4"
+  ~~~
+>>>>>>> origin/master
 
   - Append the new disk to /etc/fstab
 
@@ -157,12 +167,11 @@ Goal is to set up a home server running Debain Jessie.
 
 #### Apple-File-Protocol (afp)
 
-  - Follow [debian jessie afp install guide](http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie)
- 
+  - Follow [debian jessie afp install guide](http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie) 
   - I am using netatalk-3.1.7
   - Modify /usr/local/etc/afp.conf
 
-  The key here is to specify the name of the mount point using 'home name = $u_server'. Otherwise your mount point becomes '[[user]]'s home' and programs like Microsoft Word and Fiji will probably not find the path with the apostrophe in the name.
+The key here is to specify the name of the mount point using 'home name = $u_server'. Otherwise your mount point becomes '[[user]]'s home' and programs like Microsoft Word and Fiji will probably not find the path with the apostrophe in the name.
 
 $u is a variable that inserts the current username. It is defined in the [afp.conf](http://netatalk.sourceforge.net/3.0/htmldocs/afp.conf.5.html) documentation.
 
