@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-16T23:59:52-04:00</updated>
+ <updated>2016-03-26T10:31:14-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -33,7 +33,7 @@
     &lt;p&gt;A major advancement here is that platformio comes preconfigured to talk to boards like the &lt;a href=&quot;https://www.pjrc.com/store/teensy32.html&quot;&gt;teensy&lt;/a&gt;, &lt;a href=&quot;https://www.adafruit.com/products/2471&quot;&gt;eps8266&lt;/a&gt;, and &lt;a href=&quot;http://nodemcu.com/index_en.html#fr_54747361d775ef1a3600000f&quot;&gt;node mcu&lt;/a&gt;. I have some of these boards lying around and could never use them with the pi (too much of a hack to get gui arduino ide installed) and never even considered using them on a headless debian server.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Running the gui arduino ide on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine. &lt;/p&gt;
+    &lt;p&gt;Running the gui arduino ide on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -548,7 +548,7 @@ curl -o http://192.168.1.12:5010/lastimage
 &lt;p&gt;Now I want to get the videos/images off the machine with the camera. There are more options than I can count but here are three:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Push the recorded video/images to another server from within Python/Flask. I’ve done this before with &lt;a href=&quot;http://www.paramiko.org&quot;&gt;Paramiko&lt;/a&gt; but have always had problems with the code hanging or exceptions thrown when a network connection is lost. &lt;/li&gt;
+  &lt;li&gt;Push the recorded video/images to another server from within Python/Flask. I’ve done this before with &lt;a href=&quot;http://www.paramiko.org&quot;&gt;Paramiko&lt;/a&gt; but have always had problems with the code hanging or exceptions thrown when a network connection is lost.&lt;/li&gt;
   &lt;li&gt;Have another machine (also running flask) pull the images off the camera machine. This can be done with the /lastimage REST path. This requires the other machine to be running server code itself and to have some sort of timer.&lt;/li&gt;
   &lt;li&gt;Use &lt;strong&gt;rsynch&lt;/strong&gt; on the machine running the camera to a push videos/images to a remote server and use &lt;strong&gt;cron&lt;/strong&gt; to do this at a regular interval.&lt;/li&gt;
 &lt;/ul&gt;
@@ -1301,10 +1301,8 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;Alternatively, a sensor client could have two sensors: a motion detector and a camera. In this case, motion would trigger an image capture and then transmit this as two events to a data server (a motion detection timestamp and an image).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;real-world-input&quot;&gt;‘Real world’ input&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;###’Real world’ input
+ - Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.&lt;/p&gt;
 
 &lt;h3 id=&quot;api&quot;&gt;API&lt;/h3&gt;
 
@@ -2074,8 +2072,8 @@ export XKL_XMODMAP_DISABLE=1
   &lt;li&gt;&lt;a href=&quot;http://www.wavemetrics.com/support/versions.htm&quot;&gt;Igor&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://fiji.sc/Downloads&quot;&gt;Fiji&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;Using ‘Fiji Life-Line version, 2014 November 25’. &lt;/li&gt;
-      &lt;li&gt;Fiji will not run until setting: Security &amp;amp; Privacy -&amp;gt; Allow apps downloaded from: Anywhere  &lt;/li&gt;
+      &lt;li&gt;Using ‘Fiji Life-Line version, 2014 November 25’.&lt;/li&gt;
+      &lt;li&gt;Fiji will not run until setting: Security &amp;amp; Privacy -&amp;gt; Allow apps downloaded from: Anywhere&lt;/li&gt;
       &lt;li&gt;Installing Java SE 6&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -2087,7 +2085,7 @@ export XKL_XMODMAP_DISABLE=1
   &lt;li&gt;XCode command line tools &lt;br /&gt;
  ~~~
  xcode-select –install
- ~~~  &lt;/li&gt;
+ ~~~&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://continuum.io/downloads&quot;&gt;Anaconda&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;Jekyll&lt;/a&gt; &lt;br /&gt;
  ~~~
@@ -2139,19 +2137,19 @@ export XKL_XMODMAP_DISABLE=1
 &lt;h4 id=&quot;myjhu-vpn-this-is-the-part-that-is-always-fucking-impossible&quot;&gt;myjhu VPN (This is the part that is always FUCKING IMPOSSIBLE)&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;[FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]  &lt;/li&gt;
+  &lt;li&gt;[FUCK IT, IT IS NOT MY JOB TO DOCUMENT SOFTWARE THAT DOES NOT WORK AND IS MANAGED BY INCOMPETENT AND OVERPAID TWITS]&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;~~- Start by going &lt;a href=&quot;https://jhpulse.johnshopkins.edu.&quot;&gt;here&lt;/a&gt;~~&lt;br /&gt;
- ~~- https://jhpulse.johnshopkins.edu.~~  &lt;/p&gt;
+&lt;p&gt;&lt;del&gt;- Start by going &lt;a href=&quot;https://jhpulse.johnshopkins.edu.&quot;&gt;here&lt;/a&gt;&lt;/del&gt;&lt;br /&gt;
+ &lt;del&gt;- https://jhpulse.johnshopkins.edu.&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;~~- Forces install of Java 8u45~~  &lt;/p&gt;
+&lt;p&gt;&lt;del&gt;- Forces install of Java 8u45&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;~~- https://www.java.com/en/download/mac_download.jsp~~&lt;br /&gt;
-~~- jre-8u45-macosx-x64.dmg~~  &lt;/p&gt;
+&lt;p&gt;&lt;del&gt;- https://www.java.com/en/download/mac_download.jsp&lt;/del&gt;&lt;br /&gt;
+&lt;del&gt;- jre-8u45-macosx-x64.dmg&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;~~- Install Junos Pulse (twice)~~&lt;br /&gt;
- ~~- Requires manual setting of Safari security~~&lt;br /&gt;
+&lt;p&gt;&lt;del&gt;- Install Junos Pulse (twice)&lt;/del&gt;&lt;br /&gt;
+ &lt;del&gt;- Requires manual setting of Safari security&lt;/del&gt;&lt;br /&gt;
  - Complete bullshit amateur hack job&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://blog.cudmore.io/images/i-can-see-you-black-flag.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
@@ -2230,7 +2228,7 @@ servercmd=/home1/robertcu/unison
 &lt;h3 id=&quot;startup-mailer&quot;&gt;Startup mailer&lt;/h3&gt;
 &lt;p&gt;See my post &lt;a href=&quot;http://www.robertcudmore.org/blog/?p=60&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Use gmail ‘cudmore.raspberry@gmail.com’ to send  &lt;/p&gt;
+&lt;p&gt;Use gmail ‘cudmore.raspberry@gmail.com’ to send&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; wget http://cudmore.github.io/downloads/startup_mailer.py
 &lt;/code&gt;&lt;/pre&gt;
@@ -2260,20 +2258,20 @@ servercmd=/home1/robertcu/unison
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Flask tutorial &lt;a href=&quot;http://mattrichardson.com/Raspberry-Pi-Flask/&quot;&gt;here&lt;/a&gt;  &lt;/p&gt;
+    &lt;p&gt;Flask tutorial &lt;a href=&quot;http://mattrichardson.com/Raspberry-Pi-Flask/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;sudo pip install flask  &lt;/p&gt;
+    &lt;p&gt;sudo pip install flask&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;socketio-for-flask&quot;&gt;socketio for Flask&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://flask-socketio.readthedocs.org/en/latest/&quot;&gt;socketio website&lt;/a&gt;  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://flask-socketio.readthedocs.org/en/latest/&quot;&gt;socketio website&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent&quot;&gt;socketio tutorial&lt;/a&gt;  &lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://blog.miguelgrinberg.com/post/easy-websockets-with-flask-and-gevent&quot;&gt;socketio tutorial&lt;/a&gt;&lt;/p&gt;
 
-    &lt;p&gt;sudo pip install flask-socketio  &lt;/p&gt;
+    &lt;p&gt;sudo pip install flask-socketio&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2307,9 +2305,9 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Note, make ‘input_uvc.so’ is for usb cam and ‘input_file’ is for raspberry CSI camera  &lt;/p&gt;
+&lt;p&gt;Note, make ‘input_uvc.so’ is for usb cam and ‘input_file’ is for raspberry CSI camera&lt;/p&gt;
 
-&lt;p&gt;If wget does not find mjpg-streamer, download it here  &lt;/p&gt;
+&lt;p&gt;If wget does not find mjpg-streamer, download it here&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget http://cudmore.github.io/downloads/mjpg-streamer-code-182.zip
 &lt;/code&gt;&lt;/pre&gt;
@@ -2317,7 +2315,7 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
 
 &lt;h3 id=&quot;opencv&quot;&gt;opencv&lt;/h3&gt;
 
-&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;See my post on open cv &lt;a href=&quot;http://cudmore.github.io/post/2015/03/07/use-opencv-to-acquire-video/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libopencv-dev python-opencv
 &lt;/code&gt;&lt;/pre&gt;
@@ -2337,7 +2335,7 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
   &lt;li&gt;
     &lt;p&gt;required for pandas and bokeh&lt;/p&gt;
 
-    &lt;p&gt;sudo pip install numpy –upgrade  &lt;/p&gt;
+    &lt;p&gt;sudo pip install numpy –upgrade&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2351,7 +2349,7 @@ sudo apt-get install v4l-utils # this is to detect parameters of USB camera
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;To do, get an example running again  &lt;/p&gt;
+    &lt;p&gt;To do, get an example running again&lt;/p&gt;
 
     &lt;p&gt;sudo pip install bokeh&lt;/p&gt;
   &lt;/li&gt;
@@ -2371,7 +2369,7 @@ sudo apt-get install python-qt4-dev
 &lt;h3 id=&quot;client-side-socketio-javascript&quot;&gt;Client side socket.io javascript&lt;/h3&gt;
 &lt;p&gt;Client side needs socketio javascript: http://socket.io&lt;br /&gt;
 Put this in your Flask project /static/js/&lt;br /&gt;
-Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js  &lt;/p&gt;
+Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js&lt;br /&gt;
@@ -2379,7 +2377,7 @@ cp socket.io.min.js Sites/iosserver/static/js/&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;client-side-jquery&quot;&gt;Client side jquery&lt;/h3&gt;
-&lt;p&gt;documentation at: http://jquery.com/download/  &lt;/p&gt;
+&lt;p&gt;documentation at: http://jquery.com/download/&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;wget wget http://code.jquery.com/jquery-1.11.2.min.js&lt;br /&gt;
@@ -2520,8 +2518,8 @@ input_init() return value signals to exit
 &lt;h3 id=&quot;what-it-does&quot;&gt;What it does&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Arm&lt;/strong&gt; - Start video recording when a TTL is received. Hook up the ScanImage frame clock to the Pi and this will start a video recording at the start of each stack or timeseries. &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Record&lt;/strong&gt; - Record a one time video. &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Arm&lt;/strong&gt; - Start video recording when a TTL is received. Hook up the ScanImage frame clock to the Pi and this will start a video recording at the start of each stack or timeseries.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Record&lt;/strong&gt; - Record a one time video.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Stream&lt;/strong&gt; - Stream the video to your web browser so you can see a live feed.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Stop&lt;/strong&gt; - Stop any video streaming or recording.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;IR On/Off&lt;/strong&gt; - Turn one set of LEDs on/off. The brightness of the LED is set with the slider. This is usually hooked up to a bank of IR LEDs.&lt;/li&gt;
@@ -2622,7 +2620,7 @@ input_init() return value signals to exit
   &lt;a href=&quot;http://sourceforge.net/projects/mjpg-streamer/&quot;&gt;http://sourceforge.net/projects/mjpg-streamer/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Tutorials  &lt;/p&gt;
+    &lt;p&gt;Tutorials&lt;/p&gt;
 
     &lt;p&gt;In what follows I am following this blog post …&lt;br /&gt;
   &lt;a href=&quot;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&quot;&gt;http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi&lt;/a&gt;&lt;/p&gt;
@@ -2636,7 +2634,7 @@ input_init() return value signals to exit
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Preliminaries  &lt;/p&gt;
+    &lt;p&gt;Preliminaries&lt;/p&gt;
 
     &lt;p&gt;~~~
   sudo apt-get update&lt;br /&gt;
@@ -2680,7 +2678,7 @@ input_init() return value signals to exit
 
 &lt;h3 id=&quot;raspberry-pi-camera-module&quot;&gt;(1) Raspberry Pi camera module&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;build and install for raspberry pi camera module.  &lt;/li&gt;
+  &lt;li&gt;build and install for raspberry pi camera module.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # build with &#39;make&#39;
@@ -2733,7 +2731,7 @@ input_init() return value signals to exit
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).  &lt;/p&gt;
+    &lt;p&gt;Plug in usb camera and verify it is automatically identified using ‘lsusb’. If it is not you need to get a different camera or go down the rabbit-hole of installing linux drivers (beyond the scope of this post).&lt;/p&gt;
 
     &lt;p&gt;~~~
   pi@pi50 ~ $ lsusb&lt;br /&gt;
@@ -2754,10 +2752,10 @@ input_init() return value signals to exit
   &amp;gt; sudo apt-get install uv4l2 uv4l2-raspicam&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Check the parameters of our USB camera  &lt;/p&gt;
+    &lt;p&gt;Check the parameters of our USB camera&lt;/p&gt;
 
     &lt;p&gt;~~~
-  v4l2-ctl –list-formats  &lt;/p&gt;
+  v4l2-ctl –list-formats&lt;/p&gt;
 
     &lt;p&gt;ioctl: VIDIOC_ENUM_FMT&lt;br /&gt;
       Index       : 0&lt;br /&gt;
@@ -2769,7 +2767,7 @@ input_init() return value signals to exit
     &lt;p&gt;The YUYV is very important, I need to pass a -y option to jpg_streamer –input command. If you see MPEG you don’t need this -y switch.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to. &lt;/p&gt;
+    &lt;p&gt;Here are some other commands to learn about calling conventions. This one told me who to pass -y for YUYV to.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2863,7 +2861,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
   Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&lt;br /&gt;
   Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. 
   Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;amp;E Products Ltd. or OmniVision Technologies, Inc. Sony Playstation Eye&lt;br /&gt;
-  Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.  &lt;/p&gt;
+  Bus 001 Device 004: ID 13fe:4100 Kingston Technology Company Inc.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -3029,17 +3027,17 @@ Thank you for installing Miniconda!
 
 &lt;blockquote&gt;
   &lt;p&gt;pip install numpy –upgrade&lt;br /&gt;
-pip install pandas –upgrade  &lt;/p&gt;
+pip install pandas –upgrade&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;install-bokeh&quot;&gt;Install bokeh&lt;/h3&gt;
 &lt;p&gt;In general ‘conda install bokeh’ does not work on Pi, bokeh is not in repo?&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;pip install bokeh  &lt;/p&gt;
+  &lt;p&gt;pip install bokeh&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html  &lt;/p&gt;
+&lt;p&gt;For a list of required packages, see http://bokeh.pydata.org/en/latest/tutorial/quick_install.html&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from: http://bokeh.pydata.org/en/latest/tutorial/quick_install.html
 Ideally, you should have the following libraries installed:
@@ -3169,14 +3167,14 @@ while True:
 &lt;h3 id=&quot;now-use-flask--bokeh-to-generate-a-single-html-page-no-bokeh-server&quot;&gt;Now use Flask + bokeh to generate a single html page (no bokeh-server)&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;eventual goal here is to have Flask server inject new data (via socketio) into html page with bokeh plot by modifying x/y data with javascript (on the client)&lt;/li&gt;
-  &lt;li&gt;simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple  &lt;/li&gt;
+  &lt;li&gt;simple example that works: https://github.com/bokeh/bokeh/tree/master/examples/embed/simple&lt;/li&gt;
   &lt;li&gt;more complex: https://github.com/bokeh/bokeh/tree/master/examples/embed/spectrogram&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;http://bokeh.pydata.org/en/latest/index.html  &lt;/li&gt;
-  &lt;li&gt;http://docs.continuum.io/anaconda/install.html  &lt;/li&gt;
+  &lt;li&gt;http://bokeh.pydata.org/en/latest/index.html&lt;/li&gt;
+  &lt;li&gt;http://docs.continuum.io/anaconda/install.html&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
