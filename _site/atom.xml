@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-26T10:35:01-04:00</updated>
+ <updated>2016-03-26T10:36:31-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -405,9 +405,17 @@ sudo systemctl stop mosquitto
 
 &lt;p&gt;But I need to check this.&lt;/p&gt;
 
-&lt;h3 id=&quot;to-do-get-pushsend-and-subscribe-working-on-an-arduino&quot;&gt;[To Do] Get push/send and subscribe working on an Arduino&lt;/h3&gt;
+&lt;h3 id=&quot;to-pushsend-and-subscribe-on-an-arduino-esp8266&quot;&gt;To push/send and subscribe on an Arduino ESP8266&lt;/h3&gt;
+
+&lt;p&gt;https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino&lt;/p&gt;
 
 &lt;p&gt;Use the &lt;a href=&quot;http://pubsubclient.knolleary.net&quot;&gt;pubsubclient&lt;/a&gt; library. And get an &lt;a href=&quot;http://esp8266.com&quot;&gt;ESP8266&lt;/a&gt; wifi chip working. The ESP8266 wifi chip is its own revolution. See chips from &lt;a href=&quot;https://www.sparkfun.com/products/13678&quot;&gt;Sparkfun&lt;/a&gt;, &lt;a href=&quot;https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/overview&quot;&gt;Adafruit&lt;/a&gt;, and a writeup in &lt;a href=&quot;http://makezine.com/2015/04/01/esp8266-5-microcontroller-wi-fi-now-arduino-compatible/&quot;&gt;Make&lt;/a&gt;. For this chip I have taken the plunge and made my first direct from China purchases on &lt;a href=&quot;http://www.aliexpress.com/af/esp8266.html?ltype=wholesale&amp;amp;d=y&amp;amp;origin=n&amp;amp;isViewCP=y&amp;amp;catId=0&amp;amp;initiative_id=AS_20160120203616&amp;amp;SearchText=esp8266&quot;&gt;Ali Express&lt;/a&gt;. The chips at &lt;a href=&quot;http://www.aliexpress.com&quot;&gt;Ali Express&lt;/a&gt; are ~ 5x cheaper. I love this stuff.&lt;/p&gt;
+
+&lt;h3 id=&quot;to-pushsend-and-read-mqtt-topics-in-python-use-paho-library&quot;&gt;To push/send and read MQTT topics in python use paho library&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install paho-mqtt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;python-publisher-script&quot;&gt;Python publisher script&lt;/h3&gt;
 
@@ -485,12 +493,6 @@ sudo systemctl stop mosquitto
     &lt;span class=&quot;n&quot;&gt;aaa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;h3 id=&quot;mqtt-on-an-esp8266&quot;&gt;MQTT On an ESP8266&lt;/h3&gt;
-
-&lt;p&gt;Now publish/subscribe to the MQTT broker using an ESP8266&lt;/p&gt;
-
-&lt;p&gt;https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino&lt;/p&gt;
 
 </content>
  </entry>
@@ -964,13 +966,15 @@ Okay!  New keys in place, your device will not restart.
   &lt;li&gt;Download debian jessie&lt;/li&gt;
   &lt;li&gt;Make a usb key&lt;/li&gt;
   &lt;li&gt;Install debian&lt;/li&gt;
-  &lt;li&gt;Check your debian version&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check your debian version&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cat /etc/debian_version 
-  8.2
- &lt;/code&gt;&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat /etc/debian_version 
+8.2
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;configure-debian-jessie&quot;&gt;2) Configure debian jessie&lt;/h3&gt;
 
@@ -997,124 +1001,125 @@ Okay!  New keys in place, your device will not restart.
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;add-in-a-second-hard-drive&quot;&gt;Add in a second hard drive&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;partition&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cfdisk /dev/sdb
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;format&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;partition&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cfdisk /dev/sdb
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;format&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkfs.ext4 /dev/sdb1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once disk is partitioned and formatted, this is what it looks like&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;cudmore@debian:~$ &lt;/span&gt;sudo fdisk -l /dev/sdb
+Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
+Units: sectors of 1 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 512 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 512 bytes
+Sector size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;logical/physical&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 512 bytes / 512 bytes
+I/O size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;minimum/optimal&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 512 bytes / 512 bytes
+Disklabel &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;: gpt
+Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
+  
+Device     Start        End    Sectors  Size Type
+/dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Mount the second harddrive in a folder /movies&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir /movies &lt;span class=&quot;c&quot;&gt;# remember to set group and group rwx later&lt;/span&gt;
+mount -t ext4 /dev/sdb1 /movies
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;blkid to get unique name for fstab entry&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;cudmore@debian:~$ &lt;/span&gt;sudo blkid
+/dev/sda1: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;30EE-7B6B&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vfat&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1eae1e11-6902-45f9-9c27-55ab648972b3&quot;&lt;/span&gt;
+/dev/sda2: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ext4&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;15ac40fa-5874-423b-9282-209a8b88a60a&quot;&lt;/span&gt;
+/dev/sda3: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;16a7a205-220c-4583-a758-4fcaf3eb0417&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;swap&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&quot;&lt;/span&gt;
+/dev/sdb1: &lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ext4&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PARTUUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Append the new disk to /etc/fstab&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;cudmore@debian:~$ &lt;/span&gt;more /etc/fstab 
+&lt;span class=&quot;c&quot;&gt;# /etc/fstab: static file system information.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Use &#39;blkid&#39; to print the universally unique identifier for a&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# device; this may be used with UUID= as a more robust way to name devices&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# that works even if disks are added and removed. See fstab(5).&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# &amp;lt;file system&amp;gt; &amp;lt;mount point&amp;gt;   &amp;lt;type&amp;gt;  &amp;lt;options&amp;gt;       &amp;lt;dump&amp;gt;  &amp;lt;pass&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# / was on /dev/sda2 during installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    &lt;span class=&quot;nv&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;remount-ro 0       1
+&lt;span class=&quot;c&quot;&gt;# /boot/efi was on /dev/sda1 during installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;30EE-7B6B  /boot/efi       vfat    &lt;span class=&quot;nb&quot;&gt;umask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0077      0       1
+&lt;span class=&quot;c&quot;&gt;# swap was on /dev/sda3 during installation&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
+&lt;span class=&quot;c&quot;&gt;# 2tb drive for movies&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 &lt;span class=&quot;nv&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;remount-ro 0 1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  mkfs.ext4 /dev/sdb1
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Once disk is partitioned and formatted, this is what it looks like&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;```
-  cudmore@debian:~$ sudo fdisk -l /dev/sdb
-  Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
-  Units: sectors of 1 * 512 = 512 bytes
-  Sector size (logical/physical): 512 bytes / 512 bytes
-  I/O size (minimum/optimal): 512 bytes / 512 bytes
-  Disklabel type: gpt
-  Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F&lt;/p&gt;
-
-&lt;p&gt;Device     Start        End    Sectors  Size Type
-  /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
-  ```&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Mount the second harddrive in a folder /movies&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  mkdir /movies # remember to set group and group rwx later
-  mount -t ext4 /dev/sdb1 /movies
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;blkid to get unique name for fstab entry&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cudmore@debian:~$ sudo blkid
-  /dev/sda1: UUID=&quot;30EE-7B6B&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;1eae1e11-6902-45f9-9c27-55ab648972b3&quot;
-  /dev/sda2: UUID=&quot;2cf97347-1baf-4abf-a297-650ebf4dfdff&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;15ac40fa-5874-423b-9282-209a8b88a60a&quot;
-  /dev/sda3: UUID=&quot;16a7a205-220c-4583-a758-4fcaf3eb0417&quot; TYPE=&quot;swap&quot; PARTUUID=&quot;fa435c81-ab1e-4192-97ba-e55c08ceb932&quot;
-  /dev/sdb1: UUID=&quot;f6b5096b-188b-4204-92aa-31e8c58e0eb6&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;61e5434f-7975-45a8-a8c4-6148fb56f9b4&quot;
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Append the new disk to /etc/fstab&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  cudmore@debian:~$ more /etc/fstab 
-  # /etc/fstab: static file system information.
-  #
-  # Use &#39;blkid&#39; to print the universally unique identifier for a
-  # device; this may be used with UUID= as a more robust way to name devices
-  # that works even if disks are added and removed. See fstab(5).
-  #
-  # &amp;lt;file system&amp;gt; &amp;lt;mount point&amp;gt;   &amp;lt;type&amp;gt;  &amp;lt;options&amp;gt;       &amp;lt;dump&amp;gt;  &amp;lt;pass&amp;gt;
-  # / was on /dev/sda2 during installation
-  UUID=2cf97347-1baf-4abf-a297-650ebf4dfdff /               ext4    errors=remount-ro 0       1
-  # /boot/efi was on /dev/sda1 during installation
-  UUID=30EE-7B6B  /boot/efi       vfat    umask=0077      0       1
-  # swap was on /dev/sda3 during installation
-  UUID=16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
-  # 2tb drive for movies
-  UUID=f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 errors=remount-ro 0 1
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;users-and-groups&quot;&gt;Users and groups&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Make a second user ‘user2’&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make a second user ‘user2’&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo adduser user2
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make a group ‘movies’&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo addgroup movies
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add myself (user1) and user2 to the ‘movies’ group&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -a -G movies user1
+sudo usermod -a -G movies user2
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo adduser user2
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Make a group ‘movies’&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo addgroup movies
- &lt;/code&gt;
-  - Add myself (user1) and user2 to the ‘movies’ group&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo usermod -a -G movies user1
-  sudo usermod -a -G movies user2
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;make-second-harddrive-rwx-for-group-movies&quot;&gt;Make second harddrive rwx for group ‘movies’&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;make sure the second hard drive has rwx permission for group ‘movies’&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;make sure the second hard drive has rwx permission for group ‘movies’&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  # the first &#39;movies&#39; is the name of the group, the second /movies is the folder
-  sudo chgrp -R movies /movies
-  sudo chmod -R g+rwx /movies
- &lt;/code&gt;&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# the first &#39;movies&#39; is the name of the group, the second /movies is the folder
+sudo chgrp -R movies /movies
+sudo chmod -R g+rwx /movies
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (afp)&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Follow &lt;a href=&quot;http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie&quot;&gt;debian jessie afp install guide&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Follow &lt;a href=&quot;http://netatalk.sourceforge.net/wiki/index.php/Install_Netatalk_3.1.7_on_Debian_8_Jessie&quot;&gt;debian jessie afp install guide&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;I am using netatalk-3.1.7&lt;/li&gt;
   &lt;li&gt;Modify /usr/local/etc/afp.conf&lt;/li&gt;
 &lt;/ul&gt;
@@ -1125,26 +1130,26 @@ Okay!  New keys in place, your device will not restart.
 
 &lt;p&gt;[movie_server] is a mount point that will mount my second hard drive from folder /movies.&lt;/p&gt;
 
-&lt;p&gt;```
-  ;
-  ; Netatalk 3.x configuration file
-  ;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;
+; Netatalk 3.x configuration file
+;
 
-&lt;p&gt;[Global]
-  ; Global server settings&lt;/p&gt;
+[Global]
+; Global server settings
 
-&lt;p&gt;[Homes]
-  ; basedir regex = /xxxx
-    ;user1 will mount as user1_server
-    home name = $u_server
-    basedir regex = /home&lt;/p&gt;
+[Homes]
+; basedir regex = /xxxx
+;user1 will mount as user1_server
+home name = $u_server
+basedir regex = /home
 
-&lt;p&gt;; [My AFP Volume]
-  ; path = /path/to/volume&lt;/p&gt;
+; [My AFP Volume]
+; path = /path/to/volume
 
-&lt;p&gt;[movies_server]
-  path = /movies
-  ```&lt;/p&gt;
+[movies_server]
+path = /movies
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;remote-desktop-with-vnc&quot;&gt;Remote desktop with vnc&lt;/h4&gt;
 &lt;ul&gt;
@@ -1165,36 +1170,34 @@ Okay!  New keys in place, your device will not restart.
 &lt;h4 id=&quot;install-sambasmb-file-sharing&quot;&gt;Install samba/smb file sharing&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;Follow something like &lt;a href=&quot;https://wiki.debian.org/SambaServerSimple&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;edit with ‘sudo pico /etc/samba/smb.conf’&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;edit with ‘sudo pico /etc/samba/smb.conf’&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  [movies_server]
-   comment = movies on debian server
-   read only = no
-   locking = no
-   path = /path_to_our_files
-   guest ok = no
-  &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[movies_server]
+comment = movies on debian server
+read only = no
+locking = no
+path = /path_to_our_files
+guest ok = no
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
   &lt;li&gt;Restart samba
-   &lt;code class=&quot;highlighter-rouge&quot;&gt;
-   sudo /etc/init.d/samba restart
-  &lt;/code&gt;&lt;/li&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+sudo /etc/init.d/samba restart
+&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;run-python-scripts-at-boot&quot;&gt;Run python scripts at boot&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;This is very unclear to me&lt;/li&gt;
-  &lt;li&gt;Directly edit ‘sudo pico /etc/crontab’&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Directly edit ‘sudo pico /etc/crontab’&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  @reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &amp;gt;&amp;gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &amp;gt;&amp;gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
   &lt;li&gt;I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my ‘print’ statements as it runs?&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1203,58 +1206,58 @@ Okay!  New keys in place, your device will not restart.
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
   sudo apt-get install transmission
   sudo apt-get install transmission-daemon
- &lt;/code&gt;
-  - Follow very specific instructions &lt;a href=&quot;https://trac.transmissionbt.com/wiki/HeadlessUsage/General&quot;&gt;here&lt;/a&gt;
-  - &lt;a href=&quot;https://help.ubuntu.com/community/TransmissionHowTo&quot;&gt;this&lt;/a&gt; might be more useful.
-  - Modify /var/lib/transmission-daemon/info/settings.json&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  &quot;download-dir&quot;: &quot;/movies/transmission_download&quot;,
-  &quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,
-  &quot;rpc-authentication-required&quot;: false,
  &lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Maybe add transmissions user to ‘movies’ group? (movies group was made above).&lt;/li&gt;
+  &lt;li&gt;Follow very specific instructions &lt;a href=&quot;https://trac.transmissionbt.com/wiki/HeadlessUsage/General&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/TransmissionHowTo&quot;&gt;this&lt;/a&gt; might be more useful.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Modify /var/lib/transmission-daemon/info/settings.json&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;download-dir&quot;: &quot;/movies/transmission_download&quot;,
+&quot;rpc-whitelist&quot;: &quot;127.0.0.1,192.168.*.*&quot;,
+&quot;rpc-authentication-required&quot;: false,
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Maybe add transmissions user to ‘movies’ group? (movies group was made above).&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -a -G movies transmission
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;That didn’t work (maybe I needed a -R). Fuck all this security anyways.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chmod -R a+rwx /movies/transmission_download/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure to stop and then start daemon when editing the configuration file.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo service transmission-daemon stop
+sudo nano /var/lib/transmission-daemon/info/settings.json
+sudo service transmission-daemon start
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Access transmissions via web interface&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://192.168.1.200:9091
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -a -G debian-transmission cudmore 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo usermod -a -G movies transmission
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;That didn’t work (maybe I needed a -R). Fuck all this security anyways.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo chmod -R a+rwx /movies/transmission_download/
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Make sure to stop and then start daemon when editing the configuration file.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo service transmission-daemon stop
-  sudo nano /var/lib/transmission-daemon/info/settings.json
-  sudo service transmission-daemon start
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Access transmissions via web interface&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  http://192.168.1.200:9091
- &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-  sudo usermod -a -G debian-transmission cudmore 
- &lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;install-particle-cloud-server&quot;&gt;Install particle cloud server&lt;/h4&gt;
 
