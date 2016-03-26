@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Arduino cli using platformio"
+title: "Programming an arduino with platformio"
 category: post
 date: 2016-02-13 22:01:06
 tags:

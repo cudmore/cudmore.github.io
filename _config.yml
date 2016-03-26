@@ -5,8 +5,7 @@ kramdown:
    syntax_highlighter: rouge
 
 #added for jekyll3 20160212
-gems:
-    - jekyll-paginate
+gems: [jekyll-paginate]
 
  
 # Permalinks

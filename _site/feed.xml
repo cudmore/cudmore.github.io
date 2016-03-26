@@ -8,7 +8,22 @@
     
       
       <item>
-        <title>Arduino cli using platformio</title>
+        <title>Keeping in sync with github</title>
+        
+          <description>&lt;p&gt;The cloud is ‘just someone else’s computer’. And most of it is just ‘someone else’s fileserver’.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 25 Mar 2016 20:00:00 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/03/25/Keeping-in-sync-with-github/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/03/25/Keeping-in-sync-with-github/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Programming an arduino with platformio</title>
         
           <description>&lt;p&gt;This post describes how to install and run &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to compile and upload arduino code via a command line interface (CLI). This is a major breakthrough as it allows writing, compiling, and uploading arduino code on an ARM processor (e.g. Raspberry Pi) and on a Debian server. This allows me to program arduino(s) physically connected to headless machines and circumvents all sorts of silliness around the lack of an Arduino IDE for the ARM platform (shame on you arduino).&lt;/p&gt;
 
@@ -16,8 +31,8 @@
         
         <pubDate>Sat, 13 Feb 2016 17:01:06 -0500</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/PlatformIO-an-arduino-ide-cli/</guid>
+        http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio/</guid>
       </item>
       
     
@@ -284,9 +299,9 @@
       <item>
         <title>Install OSX</title>
         
-          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br /&gt;
- - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br /&gt;
- - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;&lt;br /&gt;
+          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  &lt;br /&gt;
+ - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;  &lt;br /&gt;
+ - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;  &lt;br /&gt;
  - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
 
 </description>
@@ -376,8 +391,8 @@
 
 &lt;h4 id=&quot;install-opencv&quot;&gt;Install opencv&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;sudo apt-get update&lt;br /&gt;
-sudo apt-get upgrade&lt;br /&gt;
+  &lt;p&gt;sudo apt-get update  &lt;br /&gt;
+sudo apt-get upgrade  &lt;br /&gt;
 sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -424,7 +439,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
       <item>
         <title>Monitoring mice in their home cage</title>
         
-          <description>&lt;p&gt;[Aug 4, 2014, updated]
+          <description>&lt;p&gt;[Aug 4, 2014, updated]&lt;br /&gt;
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
 </description>
