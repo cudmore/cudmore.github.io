@@ -2,17 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Robert Cudmore</title>
-<<<<<<< Updated upstream
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-26T11:30:14-04:00</updated>
+ <updated>2016-04-20T11:20:21-04:00</updated>
  <id>http://blog.cudmore.io</id>
-=======
- <link href="/atom.xml" rel="self"/>
- <link href="/"/>
- <updated>2015-12-09T12:20:15-05:00</updated>
- <id></id>
->>>>>>> Stashed changes
  <author>
    <name>Robert Cudmore</name>
    <email></email>
@@ -113,6 +106,23 @@ jekyll 3.1.2 | Error:  jekyll-paginate
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle exec jekyll serve
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;h3 id=&quot;additional-junk-20160420&quot;&gt;Additional junk (20160420)&lt;/h3&gt;
+
+&lt;p&gt;On OSX 10.10.1 Yosemite I was getting errors in ‘nokogiri’ not findong ‘libxml2’ when I did ‘gem install’. See &lt;a href=&quot;https://github.com/sparklemotion/nokogiri/wiki/What-to-do-if-libxml2-is-being-a-jerk&quot;&gt;here&lt;/a&gt;. In general, follow nokogiri install &lt;a href=&quot;http://www.nokogiri.org/tutorials/installing_nokogiri.html#mac_os_x&quot;&gt;documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Remove macports &lt;a href=&quot;https://guide.macports.org/chunked/installing.macports.uninstalling.html&quot;&gt;following&lt;/a&gt;.&lt;br /&gt;
+  sudo port -fp uninstall installed&lt;/li&gt;
+  &lt;li&gt;Install homebrew&lt;/li&gt;
+  &lt;li&gt;Install gcc (this installed gcc-5.3.0)&lt;br /&gt;
+  brew install gcc&lt;/li&gt;
+  &lt;li&gt;Proceed as normal&lt;br /&gt;
+ sudo gem install nokogiri&lt;br /&gt;
+ bundle install&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;REMEMBER&lt;/strong&gt; to run jekyll locally with&lt;br /&gt;
+ bundle exec jekyll serve&lt;/li&gt;
+&lt;/ul&gt;
 
 </content>
  </entry>
@@ -613,14 +623,7 @@ sudo systemctl stop mosquitto
 
 &lt;p&gt;To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.&lt;/p&gt;
 
-<<<<<<< Updated upstream
 &lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves ‘pre-triggered’ video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I’ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
-=======
-&lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves &amp;#39;pre-triggered&amp;#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I&amp;#39;ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;VideoServer.py, controls the camera with the following interface:&lt;/p&gt;
->>>>>>> Stashed changes
 
 &lt;ul&gt;
   &lt;li&gt;VideoServer.py, controls the camera with the following interface:
