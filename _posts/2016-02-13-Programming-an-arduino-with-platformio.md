@@ -109,16 +109,16 @@ The first time this is run, platformio automatically downloads the necessary ard
 
 ### Additional info
 
- - [Serial ports][7]
+[Serial ports][7]
  
 	# list serial ports
 	platformio serialports list
 	# a Miniterm style serial port monitor ('ctrl+]' to quit)
 	platformio serialports monitor
 
-	'/dev/ttyACM0' #uno on debian
-	'/dev/ttyUSB0' #node mcu on debian
-	'/dev/cu.SLAB_USBtoUART' #node mcu on osx
+	/dev/ttyACM0 #uno and teensy on debian
+	/dev/ttyUSB0 #node mcu on debian
+	/dev/cu.SLAB_USBtoUART #node mcu on osx
 
 platformio.ini for nodemcu needs to know the serial port
 

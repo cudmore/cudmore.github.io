@@ -10,7 +10,9 @@ tags:
 - video
 ---
 
-The uv4l people have update their code and you can now stream real-time high resolution video to a browser. And it works on the Raspberry Pi.
+The uv4l people have update their code and you can now stream real-time high resolution video to a browser. And it works on the Raspberry Pi. The 'u' in uv4l is for 'user'. It is a user-space wrapper around the low-level kernel driver [v4l][v4l]. It is just a matter of time before the people making v4l put the finishing touches on it and it will come standard on linux distributions. On the Raspberry Pi, work is underway on [v4l2][v4l2].
+
+This software has a lot of aspirations beyond video including implementing all sorts of real-time web communication with [webRTC][webrtc]. 
 
 [Install drivers](http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&artid=14)
 
@@ -44,6 +46,9 @@ This runs a web server on port 8080. Once running, browse to your machines IP. T
 	  
 See Also
 
- - [Use cases[(http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&artid=16#example11)
+ - [Use cases](http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&artid=16#example11)
     
+[v4l]: https://www.linuxtv.org
+[v4l2]: https://www.raspberrypi.org/forums/viewtopic.php?t=62364
+[webrtc]: https://webrtc.org
     
