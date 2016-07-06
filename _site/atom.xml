@@ -2,22 +2,387 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Robert Cudmore</title>
-<<<<<<< Updated upstream
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-03-26T16:14:44-04:00</updated>
+ <updated>2016-07-05T23:20:28-04:00</updated>
  <id>http://blog.cudmore.io</id>
-=======
- <link href="/atom.xml" rel="self"/>
- <link href="/"/>
- <updated>2015-12-09T12:20:15-05:00</updated>
- <id></id>
->>>>>>> Stashed changes
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>uv4l on Raspberry Pi</title>
+   <link href="http://blog.cudmore.io/post/2016/06/04/uv4l-on-Raspberry-Pi/"/>
+   <updated>2016-06-04T21:01:06-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/06/04/uv4l-on-Raspberry-Pi</id>
+   <content type="html">&lt;p&gt;The uv4l people have update their code and you can now stream real-time high resolution video to a browser. And it works on the Raspberry Pi. The ‘u’ in uv4l is for ‘user’. It is a user-space wrapper around the low-level kernel driver &lt;a href=&quot;https://www.linuxtv.org&quot;&gt;v4l&lt;/a&gt;. It is just a matter of time before the people making v4l put the finishing touches on it and it will come standard on linux distributions. On the Raspberry Pi, work is underway on &lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?t=62364&quot;&gt;v4l2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This software has a lot of aspirations beyond video including implementing all sorts of real-time web communication with &lt;a href=&quot;https://webrtc.org&quot;&gt;webRTC&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&amp;amp;artid=14&quot;&gt;Install drivers&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl http://www.linux-projects.org/listing/uv4l_repo/lrkey.asc | sudo apt-key add -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add the following to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/apt/sources.list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ wheezy main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Install&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install uv4l uv4l-raspicam
+sudo apt-get install uv4l-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run driver&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;uv4l --driver raspicam --auto-video_nr --width 640 --height 480 --encoding jpeg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Kill&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pkill uv4l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run a streaming server with real-time video streaming&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;uv4l --driver raspicam --auto-video_nr --encoding h264 --width 640 --height 480 --enable-server on
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This runs a web server on port 8080. Once running, browse to your machines IP. The stream should have almost 0 lag time and be running at about 30 fps. Amazing.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://192.168.1.60:8080
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;See Also&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&amp;amp;artid=16#example11&quot;&gt;Use cases&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>VNC in Debian 8 Jessie</title>
+   <link href="http://blog.cudmore.io/post/2016/06/03/VNC-in-Debian-8-Jessie/"/>
+   <updated>2016-06-03T21:01:06-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/06/03/VNC-in-Debian-8-Jessie</id>
+   <content type="html">&lt;p&gt;Debian 8 Jessie will not run vnc using the gnome desktop. This bug will not be fixed until Debian 9.&lt;/p&gt;
+
+&lt;p&gt;Solution is to either use KDE or &lt;a href=&quot;http://mate-desktop.com&quot;&gt;Mate&lt;/a&gt; desktops. Mate is a fork of Gnome.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Uninstall Gnome&lt;/p&gt;
+
+    &lt;p&gt;apt-get remove gnome-core&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://wiki.mate-desktop.org/download&quot;&gt;Install Mate&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;sudo apt-get update&lt;br /&gt;
+  sudo apt-get install mate-desktop-environment-extras&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reconfigure xstartup&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Following &lt;a href=&quot;https://forums.linuxmint.com/viewtopic.php?t=99225&quot;&gt;this&lt;/a&gt; discussion.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pico /home/cudmore/.vnc/xstartup
+
+#!/bin/sh
+
+# Uncomment the following two lines for normal desktop:
+#unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+#. /etc/X11/xinit/xinitrc
+#/usr/bin/mate-session
+
+[ -x /etc/vnc/xstartup ] &amp;amp;&amp;amp; exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] &amp;amp;&amp;amp; xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &amp;amp;
+x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;amp;
+mate-session &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restart VNC&lt;/p&gt;
+
+    &lt;p&gt;vncserver -kill :1 # shutdown if neccessary&lt;br /&gt;
+  vncserver :1&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Login from a remote machine&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On OS X, use &lt;a href=&quot;https://www.realvnc.com/download/viewer/&quot;&gt;VNC Viewer&lt;/a&gt; from realvnc&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Installing Raspian Jessie on a Raspberry 2/3</title>
+   <link href="http://blog.cudmore.io/post/2016/05/20/raspian-jessie/"/>
+   <updated>2016-05-20T21:01:06-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/05/20/raspian-jessie</id>
+   <content type="html">&lt;p&gt;If you are Microsoft Windows based, have a look &lt;a href=&quot;http://www.circuitbasics.com/raspberry-pi-basics-setup-without-monitor-keyboard-headless-mode/&quot;&gt;here&lt;/a&gt; for a good install guide.&lt;/p&gt;
+
+&lt;h1 id=&quot;download-image&quot;&gt;Download image&lt;/h1&gt;
+
+&lt;p&gt;As of May 21, 2016 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-05-10-raspbian-jessie&lt;/code&gt;. &lt;a href=&quot;https://www.raspberrypi.org/downloads/&quot;&gt;Download here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;copy-image-to-sd-card&quot;&gt;Copy image to SD card&lt;/h1&gt;
+
+&lt;p&gt;Follow an installation guide &lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/README.md&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;On Mac OS&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#Insert SD card and format as Fat32
+diskutil list # find the /dev/disk&amp;lt;n&amp;gt;, mine was /dev/disk3
+diskutil unmountDisk /dev/disk3 #unmount disk
+# copy .img file to disk
+sudo dd bs=1m if=/Users/cudmore/Downloads/2016-05-10-raspbian-jessie.img of=/dev/rdisk3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;first-boot-of-the-pi&quot;&gt;First boot of the Pi&lt;/h1&gt;
+
+&lt;p&gt;Connect Pi to a router with an ethernet cable and boot&lt;/p&gt;
+
+&lt;p&gt;Find IP address using router web interface, usually http://192.168.1.1&lt;/p&gt;
+
+&lt;h1 id=&quot;login-via-ssh&quot;&gt;Login via ssh&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@192.168.1.15
+#password is raspberry
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;run-configuration-utility&quot;&gt;Run configuration utility&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo raspi-config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 Expand Filesystem&lt;/li&gt;
+  &lt;li&gt;2 Change User Password&lt;/li&gt;
+  &lt;li&gt;3 Boot Options
+    &lt;ul&gt;
+      &lt;li&gt;B1 Console&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;5 Internationalisation Options
+    &lt;ul&gt;
+      &lt;li&gt;I1 Change Local -&amp;gt; en_US.UTF-8 UTF-8&lt;/li&gt;
+      &lt;li&gt;I2 Change Timezone -&amp;gt; US -&amp;gt; Eastern&lt;/li&gt;
+      &lt;li&gt;I4 Change Wi-fi Country -&amp;gt; US United States&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;6 Enable Camera&lt;/li&gt;
+  &lt;li&gt;9 Advanced Options
+    &lt;ul&gt;
+      &lt;li&gt;A2 Hostname -&amp;gt; [choose a name here, I chose pi3]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Set the network name with xxx&lt;/li&gt;
+  &lt;li&gt;Turn on the camera&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Selecting Boot Options -&amp;gt; Console is important. IT seems Raspbian ships with X-Windows on by default.&lt;/p&gt;
+
+&lt;h1 id=&quot;update-the-system&quot;&gt;Update the system&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update  #update database
+sudo apt-get upgrade #update userspace
+sudo rpi-update      #update firmware (requires reboot)
+sudo reboot          #reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;afp--netatalk--avahi&quot;&gt;AFP / Netatalk / Avahi&lt;/h1&gt;
+
+&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install netatalk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When you mount the pi on OSX, it will mount as ‘Home Directory’ and the space ‘ ‘ will cause problems. Change the name to something like ‘pi3’.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/&quot;&gt;this blog post&lt;/a&gt; to change the name of the mount point from ‘Home Directory’.&lt;/p&gt;
+
+&lt;h3 id=&quot;change-the-default-name-of-your-pi-in-netatalk&quot;&gt;Change the default name of your Pi in netatalk&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# stop netatalk
+sudo /etc/init.d/netatalk stop
+
+# edit config file
+sudo nano /etc/netatalk/AppleVolumes.default
+
+# change this one line
+
+# By default all users have access to their home directories.
+#~/                     &quot;Home Directory&quot;
+~/                      &quot;pi50&quot;
+
+# restart netatalk
+sudo /etc/init.d/netatalk start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;setup-the-network&quot;&gt;Setup the network&lt;/h1&gt;
+
+&lt;h3 id=&quot;configure-etcnetworkinterfaces&quot;&gt;Configure /etc/network/interfaces&lt;/h3&gt;
+
+&lt;p&gt;The stock install of Raspian should already have this.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/network/interfaces
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;edit-wpasupplicantconf&quot;&gt;Edit wpa_supplicant.conf&lt;/h3&gt;
+
+&lt;p&gt;At Hopkins you want to follow &lt;a href=&quot;http://www.it.johnshopkins.edu/services/network/wireless/wpasupplicant.html&quot;&gt;these instruction&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid=&quot;NETGEAR28&quot;
+    psk=&quot;your_password_here&quot;
+}
+
+# &quot;hopkins&quot; wireless for JHU
+network={
+    ssid=&quot;hopkins&quot;
+    key_mgmt=WPA-EAP
+    eap=PEAP
+    phase2=&quot;auth=MSCHAPV2&quot;
+    identity=&quot;JHED_ID_Replace_Me&quot;
+    password=&quot;JHED_Password_Replace_Me&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;tell-your-router-to-assign-an-ip-based-on-mac-address-of-wifi-adapter&quot;&gt;Tell your router to assign an ip based on MAC address of wifi adapter&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig wlan0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The MAC address is listed as ‘HWaddr’ and in this case is ‘00:0b:81:89:11:8a’.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
+          inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
+          TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;make-the-pi-send-email-with-ip-on-boot&quot;&gt;Make the Pi send email with IP on boot&lt;/h1&gt;
+
+&lt;p&gt;Create an executable python script to send en email with IP. An example &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir code
+cd code
+wget https://github.com/cudmore/cudmore.github.io/raw/master/_site/downloads/startup_mailer.py
+chmod +x startup_mailer.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Make sure the first line in the .py code is &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Set the email parameters in startup_mail.py&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;to = &#39;robert.cudmore@gmail.com&#39;
+gmail_user = &#39;cudmore.raspberry@gmail.com&#39;
+gmail_password = &#39;ENTER_YOUR_PASSWORD_HERE&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run crontab as root and append one line &lt;code class=&quot;highlighter-rouge&quot;&gt;@reboot (sleep 10; /home/pi/code/startup_mailer.py)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo crontab -e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add this to end (sleep 5 does not work!!!!)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot (sleep 10; /home/pi/code/startup_mailer.py)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now, when pi boots it will send an email with it’s ip. Try it with&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;install-screen&quot;&gt;Install screen&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install screen
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Any code run inside a screen session will continue to run even after ou logout of the system.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen #start a screen session
+python my_python_code.py #start some code
+#detatch from screen with ctrl+a then d
+#logout
+#log back in
+screen -r #resume your screen session and you will see your code is still running
+#don&#39;t forget to detatch again with ctrl+a then d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Keeping in sync with github</title>
@@ -124,29 +489,15 @@ jekyll 3.1.2 | Error:  jekyll-paginate
    <id>http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio</id>
    <content type="html">&lt;p&gt;This post describes how to install and run &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to compile and upload arduino code via a command line interface (CLI). This is a major breakthrough as it allows writing, compiling, and uploading arduino code on an ARM processor (e.g. Raspberry Pi) and on a Debian server. This allows me to program arduino(s) physically connected to headless machines and circumvents all sorts of silliness around the lack of an Arduino IDE for the ARM platform (shame on you arduino).&lt;/p&gt;
 
-&lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
+&lt;p&gt;A major advancement here is that platformio comes preconfigured to talk to boards like the &lt;a href=&quot;https://www.pjrc.com/store/teensy32.html&quot;&gt;teensy&lt;/a&gt;, &lt;a href=&quot;https://www.adafruit.com/products/2471&quot;&gt;eps8266&lt;/a&gt;, and &lt;a href=&quot;http://nodemcu.com/index_en.html#fr_54747361d775ef1a3600000f&quot;&gt;node mcu&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Install and use &lt;a href=&quot;http://platformio.org/&quot;&gt;platformio&lt;/a&gt; to upload code to an Arduino connected by serial.&lt;/li&gt;
-  &lt;li&gt;Next post will read form this serial to plot sensor data in a web page using &lt;a href=&quot;http://p5js.org/&quot;&gt;p5.js&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;why-this-is-big-news&quot;&gt;Why this is big news&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;A major advancement here is that platformio comes preconfigured to talk to boards like the &lt;a href=&quot;https://www.pjrc.com/store/teensy32.html&quot;&gt;teensy&lt;/a&gt;, &lt;a href=&quot;https://www.adafruit.com/products/2471&quot;&gt;eps8266&lt;/a&gt;, and &lt;a href=&quot;http://nodemcu.com/index_en.html#fr_54747361d775ef1a3600000f&quot;&gt;node mcu&lt;/a&gt;. I have some of these boards lying around and could never use them with the pi (too much of a hack to get gui arduino ide installed) and never even considered using them on a headless debian server.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Running the gui arduino ide on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Running the Arduino IDE on a headless linux box was always a nuisance. I would always have to install, configure and run an X11 server (see &lt;a href=&quot;/post/2015/05/05/X11-on-Raspberry/&quot;&gt;this&lt;/a&gt; post) to pull up the graphic interface on a remote (host) machine.&lt;/p&gt;
 
 &lt;h3 id=&quot;install-platformio&quot;&gt;Install platformio&lt;/h3&gt;
 
 &lt;p&gt;Platformio is written in python, so all you need is&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo pip install -U platformio
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pip install -U platformio
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -171,6 +522,7 @@ platformio init
 &lt;p&gt;Populate platformio.ini with an uno board&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio init --board=uno
+platformio init --board=teensy31
 platformio init --board nodemcuv2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -206,7 +558,7 @@ build_flags = -D LED_BUILTIN=RED_LED
 
 &lt;h3 id=&quot;put-some-arduino-code-in-srcmaincpp&quot;&gt;Put some arduino code in src/main.cpp&lt;/h3&gt;
 
-&lt;p&gt;Debugging is not as pretty as with a GUI but this is not a problem as arduino code is usually simple and short. The whole arduino gui thing is just overkill in the first place. It is nice to simplify things by returning to a command line.&lt;/p&gt;
+&lt;p&gt;Debugging is not as pretty as with a GUI. The whole arduino gui thing is just overkill in the first place. It is nice to simplify things by returning to a command line.&lt;/p&gt;
 
 &lt;p&gt;Remember, we are programming in C++, NOT the arduino language.&lt;/p&gt;
 
@@ -239,31 +591,24 @@ void loop()
 
 &lt;h3 id=&quot;upload-code-to-arduino&quot;&gt;Upload code to arduino&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# not sure what this does (website says this &#39;processes the source code&#39;, maybe it compiles?
-platformio run
-# upload the firmware
-platformio run --target upload
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio run --target upload
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The first time this is run, platformio automatically downloads the necessary arduino libraries. On a Raspberry Pi 2, the first run took 10.5 seconds, subsequent runs took 2.5 seconds. This is a HUGE time savings over the GUI Arduino IDE.&lt;/p&gt;
+&lt;p&gt;The first time this is run, platformio automatically downloads the necessary arduino libraries.&lt;/p&gt;
 
 &lt;h3 id=&quot;additional-info&quot;&gt;Additional info&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://docs.platformio.org/en/latest/userguide/cmd_serialports.html&quot;&gt;Serial ports&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://docs.platformio.org/en/latest/userguide/cmd_serialports.html&quot;&gt;Serial ports&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# list serial ports
 platformio serialports list
 # a Miniterm style serial port monitor (&#39;ctrl+]&#39; to quit)
 platformio serialports monitor
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&#39;/dev/ttyACM0&#39; #uno on debian
-&#39;/dev/ttyUSB0&#39; #node mcu on debian
-&#39;/dev/cu.SLAB_USBtoUART&#39; #node mcu on osx
+/dev/ttyACM0 #uno and teensy on debian
+/dev/ttyUSB0 #node mcu on debian
+/dev/cu.SLAB_USBtoUART #node mcu on osx
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -274,6 +619,84 @@ platform = espressif
 framework = arduino
 board = nodemcuv2
 upload_port = /dev/ttyUSB0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PlatformIO</title>
+   <link href="http://blog.cudmore.io/post/2016/02/07/platformio/"/>
+   <updated>2016-02-07T17:01:06-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/02/07/platformio</id>
+   <content type="html">&lt;h2 id=&quot;crash-course-on-platformio&quot;&gt;Crash course on PlatformIO&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://platformio.org&quot;&gt;PlatformIO&lt;/a&gt; is a Python based command line interface to compile and upload code to an Arduino microcontroller.&lt;/p&gt;
+
+&lt;h3 id=&quot;install-platformio&quot;&gt;Install platformio&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install platformio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;initialize-a-platformio-project-and-specify-compilation-for-arduino-uno&quot;&gt;Initialize a Platformio project and specify compilation for Arduino Uno&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# initialize platformio in the current directory
+platformio init --board uno # arduino uno
+
+#additional boards can be added
+platformio init --board teensy31 # arduino teensy31
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;put-a-c-cpp-file-into-platformio-src-folder&quot;&gt;Put a C++ .cpp file into platformio /src/ folder&lt;/h3&gt;
+
+&lt;p&gt;Put .cpp Arduino source code into the /src/ directory&lt;/p&gt;
+
+&lt;h3 id=&quot;tweek-platformioini&quot;&gt;Tweek platformio.ini&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[env:uno]
+platform = atmelavr
+framework = arduino
+board = uno
+build_flags = -D _expose_interrupts_ #creates compiler directive
+
+[env:teensy31]
+platform = teensy
+framework = arduino
+board = teensy31
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;compile-and-upload-code&quot;&gt;Compile and upload code&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio run #compile arduino code
+platformio run --target upload #compile and upload
+platformio run --target clean #clean project
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;open-a-serial-port-with-platformio&quot;&gt;Open a serial port with platformio&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#this assumes the Arduino code is listening to serial at baud 115200
+platformio serialports monitor -p /dev/ttyACM0 -b 115200 #a serial port monitor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;find-the-correct-serial-port-by-listing-devtty&quot;&gt;Find the correct serial port by listing &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/tty*&lt;/code&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls /dev/tty*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;specify-the-correct-serial-port&quot;&gt;Specify the correct serial port&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/dev/ttyACM0 #uno
+/dev/ttyACM0 #teensy on raspberry
+/dev/tty.usbmodem618661 #teensy on osx
+/dev/ttyUSB0 #hand soldered arduino micro (home debian)
+/dev/tty.usbserial-A50285BI # hand soldered arduino micro on osx
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -630,14 +1053,7 @@ python3-mosquitto - MQTT version 3.1 Python 3 client library
 
 &lt;p&gt;To test this out, I will have a motion sensor on another Pi send a REST command to start video when it senses motion.&lt;/p&gt;
 
-<<<<<<< Updated upstream
 &lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves ‘pre-triggered’ video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I’ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
-=======
-&lt;p&gt;VideoServer.py is using a circular stream such that when recording is started, it also saves &amp;#39;pre-triggered&amp;#39; video before recording was started. It can also capture timelapse images while it is recording video. The Raspberry camera is very nice for these two features. I&amp;#39;ve written VideoServer as a class inheriting from &lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading.Thread&lt;/a&gt; so it can run daemonized as a background thread, otherwise it will block other code.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;VideoServer.py, controls the camera with the following interface:&lt;/p&gt;
->>>>>>> Stashed changes
 
 &lt;ul&gt;
   &lt;li&gt;VideoServer.py, controls the camera with the following interface:

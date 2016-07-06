@@ -20,6 +20,10 @@ This software has a lot of aspirations beyond video including implementing all s
 
 Add the following to `/etc/apt/sources.list`
 
+```
+sudo pico /etc/apt/sources.list
+```
+ 
 	deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ wheezy main
 
 Install

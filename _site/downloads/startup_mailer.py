@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import subprocess
 import smtplib
 import socket

@@ -69,7 +69,137 @@ Selecting Boot Options -> Console is important. IT seems Raspbian ships with X-W
 Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared' section
 
     sudo apt-get install netatalk
-    
+
+When you mount the pi on OSX, it will mount as 'Home Directory' and the space ' ' will cause problems. Change the name to something like 'pi3'.
+
+See [this blog post][afpmountpoint] to change the name of the mount point from 'Home Directory'.    
+
+### Change the default name of your Pi in netatalk
+
+    # stop netatalk
+    sudo /etc/init.d/netatalk stop
+
+    # edit config file
+    sudo nano /etc/netatalk/AppleVolumes.default
+
+    # change this one line
+
+    # By default all users have access to their home directories.
+    #~/                     "Home Directory"
+    ~/                      "pi50"
+
+    # restart netatalk
+    sudo /etc/init.d/netatalk start
+
+# Setup the network
+
+### Configure /etc/network/interfaces
+
+The stock install of Raspian should already have this.
+
+```
+sudo pico /etc/network/interfaces
+```
+
+    auto lo
+
+    iface lo inet loopback
+    iface eth0 inet dhcp
+
+    allow-hotplug wlan0
+    iface wlan0 inet manual
+    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+    iface default inet dhcp
+
+### Edit wpa_supplicant.conf
+
+At Hopkins you want to follow [these instruction](http://www.it.johnshopkins.edu/services/network/wireless/wpasupplicant.html)
+
+```
+sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
+```
+
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+
+    network={
+        ssid="NETGEAR28"
+        psk="your_password_here"
+    }
+
+    # "hopkins" wireless for JHU
+    network={
+        ssid="hopkins"
+        key_mgmt=WPA-EAP
+        eap=PEAP
+        phase2="auth=MSCHAPV2"
+        identity="JHED_ID_Replace_Me"
+        password="JHED_Password_Replace_Me"
+    }
+
+### Tell your router to assign an ip based on MAC address of wifi adapter
+
+    ifconfig wlan0
+
+The MAC address is listed as 'HWaddr' and in this case is '00:0b:81:89:11:8a'.
+
+    wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
+              inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+              RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
+              TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000 
+              RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
+
+# Make the Pi send email with IP on boot
+
+Create an executable python script to send en email with IP. An example [startup_mailer.py][startupmailer]
+
+    mkdir code
+    cd code
+    wget https://github.com/cudmore/cudmore.github.io/raw/master/_site/downloads/startup_mailer.py
+    chmod +x startup_mailer.py
+
+Make sure the first line in the .py code is `#!/usr/bin/python`.
+
+    #!/usr/bin/python
+
+Set the email parameters in startup_mail.py
+
+	to = 'robert.cudmore@gmail.com'
+	gmail_user = 'cudmore.raspberry@gmail.com'
+	gmail_password = 'ENTER_YOUR_PASSWORD_HERE'
+
+Run crontab as root and append one line `@reboot (sleep 10; /home/pi/code/startup_mailer.py)`
+
+    sudo crontab -e
+
+Add this to end (sleep 5 does not work!!!!)
+
+    @reboot (sleep 10; /home/pi/code/startup_mailer.py)
+
+Now, when pi boots it will send an email with it's ip. Try it with
+
+    sudo reboot
+
+## Install screen
+
+    sudo apt-get install screen
+
+Any code run inside a screen session will continue to run even after ou logout of the system.
+
+    screen #start a screen session
+    python my_python_code.py #start some code
+    #detatch from screen with ctrl+a then d
+    #logout
+    #log back in
+    screen -r #resume your screen session and you will see your code is still running
+    #don't forget to detatch again with ctrl+a then d
+
+   
 [downloadraspian]: https://www.raspberrypi.org/downloads/
 [installguide]: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 [mswindows]: http://www.circuitbasics.com/raspberry-pi-basics-setup-without-monitor-keyboard-headless-mode/
+[afpmountpoint]: http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/
+[startupmailer]: https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py
+
