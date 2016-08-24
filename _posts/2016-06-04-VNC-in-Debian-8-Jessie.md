@@ -50,3 +50,36 @@ Following [this](https://forums.linuxmint.com/viewtopic.php?t=99225) discussion.
 - Login from a remote machine
 
 On OS X, use [VNC Viewer](https://www.realvnc.com/download/viewer/) from realvnc
+
+- [UPDATE] 20160823 Installed cairo-dock
+
+[See this](http://glx-dock.org/ww_page.php?p=From%20the%20repository&lang=en) (I copy/pasted text below)
+
+Add this line to /etc/apt/sources.list (don't forget to replace #CODENAME# by stable/testing/unstable)
+
+    deb http://download.tuxfamily.org/glxdock/repository/debian #CODENAME# cairo-dock ## Cairo-Dock Stable
+
+Then, copy-paste all this box in a terminal of your Debian stable/testing/unstable
+
+    su
+    wget -q http://download.tuxfamily.org/glxdock/repository/cairo-dock.gpg -O- | apt-key add - 
+    apt-get update 
+    apt-get install cairo-dock cairo-dock-plug-ins
+
+Force APT to use packages from our repository
+It's recommended to force APT to use Cairo-Dock's packages from our repository instead of Cairo-Dock's packages from official Debian repositories (because the latter are poorly made with a lot of unnecessary dependencies). For that, simply create this file: /etc/apt/preferences.d/cairo-dock 
+With this content:
+
+    Package: cairo-dock* libgldi* 
+    Pin: origin download.tuxfamily.org 
+    Pin-Priority: 990
+
+- Turn off default mate tray (the one at the bottom)
+
+Right-click panel/tray and delete it
+
+- Add to startup items
+
+    /usr/bin/cairo-dock
+    
+    
