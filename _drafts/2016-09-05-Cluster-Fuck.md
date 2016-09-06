@@ -31,4 +31,16 @@ http://www.fil.ion.ucl.ac.uk/spm/software/
 
 Is this like a case where you are allowed to write bad sentences in a word processor but would never blaim the programmer who made the word-processor.
 
- 
+
+# part two
+
+really nice post on how software engineers (like me) can fail
+
+http://yosefk.com/blog/why-bad-scientific-code-beats-code-following-best-practices.html
+
+I guess in response to this
+
+http://techblog.bozho.net/the-astonishingly-low-quality-of-scientific-code/
+
+Which in itself is pretty good. The problem that biology research does not pay programmers so has all this sfotware that is oe big hack.
+
