@@ -9,7 +9,7 @@ tags:
 
 
 
-I am venturing out to comment on science rather than how to make science stuff.
+I am venturing out to comment on science culture rather than how to make science stuff.
 
 Excellent NY Times article
 
