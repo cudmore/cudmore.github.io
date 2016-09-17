@@ -21,7 +21,7 @@ Setting udev rules is critical for using platformio and a teensy. Instruction ar
 	Waiting for Teensy device...
 	(hint: press the reset button)
 
-Recipes is:
+Recipe is:
 
  - place 49-teensy.rules (see below) in /etc/udev/rules.d/49-teensy.rules
  - reboot
@@ -61,7 +61,7 @@ Make sure .rules file is created with sudo.
 
 # teensy udev rules
 
-See description [here](https://www.pjrc.com/teensy/loader_linux.html) and download from https://www.pjrc.com/teensy/49-teensy.rules
+See description [here](https://www.pjrc.com/teensy/loader_linux.html) and download from [https://www.pjrc.com/teensy/49-teensy.rules](https://www.pjrc.com/teensy/49-teensy.rules)
  
 	# UDEV Rules for Teensy boards, http://www.pjrc.com/teensy/
 	#
