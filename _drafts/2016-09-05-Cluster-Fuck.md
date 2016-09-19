@@ -68,4 +68,10 @@ http://www.sciencemag.org/news/2016/04/alexandra-elbakyan-founded-sci-hub-thwart
 
 unless she keeps spinning the good of this (as she is doing incredibly) she will go to jail
 
+# 4
+
+Problems with being over 40 in the tech industry
+
+http://www.bloomberg.com/news/articles/2016-09-08/silicon-valley-s-job-hungry-say-we-re-not-to-old-for-this
+
 
