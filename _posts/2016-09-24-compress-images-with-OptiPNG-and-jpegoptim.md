@@ -10,7 +10,7 @@ tags:
 - jekyll
 ---
 
-Lossless compression of png with (OptiPNG)[http://optipng.sourceforge.net] and jpg with (jpegoptim)[https://github.com/tjko/jpegoptim].
+Lossless compression of png with [OptiPNG](http://optipng.sourceforge.net) and jpg with (jpegoptim)[https://github.com/tjko/jpegoptim].
 
 See (this post)[http://www.tecmint.com/optimize-and-compress-jpeg-or-png-batch-images-linux-commandline/].
 
