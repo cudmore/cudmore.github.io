@@ -8,6 +8,51 @@
     
       
       <item>
+        <title>uv4l on Raspberry Pi</title>
+        
+          <description>&lt;p&gt;The uv4l people have update their code and you can now stream real-time high resolution video to a browser. And it works on the Raspberry Pi. The ‘u’ in uv4l is for ‘user’. It is a user-space wrapper around the low-level kernel driver &lt;a href=&quot;https://www.linuxtv.org&quot;&gt;v4l&lt;/a&gt;. It is just a matter of time before the people making v4l put the finishing touches on it and it will come standard on linux distributions. On the Raspberry Pi, work is underway on &lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?t=62364&quot;&gt;v4l2&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 04 Jun 2016 21:01:06 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/06/04/uv4l-on-Raspberry-Pi/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/06/04/uv4l-on-Raspberry-Pi/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>VNC in Debian 8 Jessie</title>
+        
+          <description>&lt;p&gt;Debian 8 Jessie will not run vnc using the gnome desktop. This bug will not be fixed until Debian 9.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 03 Jun 2016 21:01:06 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/06/03/VNC-in-Debian-8-Jessie/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/06/03/VNC-in-Debian-8-Jessie/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Installing Raspian Jessie on a Raspberry 2/3</title>
+        
+          <description>&lt;p&gt;If you are Microsoft Windows based, have a look &lt;a href=&quot;http://www.circuitbasics.com/raspberry-pi-basics-setup-without-monitor-keyboard-headless-mode/&quot;&gt;here&lt;/a&gt; for a good install guide.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 20 May 2016 21:01:06 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/05/20/raspian-jessie/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/05/20/raspian-jessie/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Keeping in sync with github</title>
         
           <description>&lt;p&gt;The cloud is ‘just someone else’s computer’. And most of it is just ‘someone else’s fileserver’.&lt;/p&gt;
@@ -33,6 +78,21 @@
         <link>
         http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio/</link>
         <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>PlatformIO</title>
+        
+          <description>&lt;h2 id=&quot;crash-course-on-platformio&quot;&gt;Crash course on PlatformIO&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sun, 07 Feb 2016 17:01:06 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/02/07/platformio/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/07/platformio/</guid>
       </item>
       
     

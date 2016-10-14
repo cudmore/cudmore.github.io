@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Treadmill manuscript"
+title: "Software and science research"
 category: post
 date: 2016-02-28 22:01:06
 tags:
