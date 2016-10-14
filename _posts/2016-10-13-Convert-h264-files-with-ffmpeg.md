@@ -14,15 +14,17 @@ This bash script will make new copies of all .h264 files in the current working 
  - Output files will be renamed with .mp4 extension
  
 
-    ```
-    #INPUT="$1"
-    
-    mkdir mp4
-    
-    for file in *.h264 ; do
-        filename="${file%.*}"
-        echo $filename
-        ffmpeg -r 15 -i "$file" -vcodec copy "mp4/$file.mp4"
-        sleep 3
-    done
-    ```
+```bash
+#!/bin/bash
+
+#INPUT="$1"
+
+mkdir mp4
+
+for file in *.h264 ; do
+	filename="${file%.*}"
+	echo $filename
+	ffmpeg -r 15 -i "$file" -vcodec copy "mp4/$file.mp4"
+	sleep 3
+done
+```
