@@ -14,7 +14,7 @@ This bash script will make new copies of all .h264 files in the current working 
  - Output files will be renamed with .mp4 extension
  
 
-    ~~~
+    ```
     #INPUT="$1"
     
     mkdir mp4
@@ -25,4 +25,4 @@ This bash script will make new copies of all .h264 files in the current working 
         ffmpeg -r 15 -i "$file" -vcodec copy "mp4/$file.mp4"
         sleep 3
     done
-    ~~~
+    ```
