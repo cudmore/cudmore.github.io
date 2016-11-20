@@ -82,5 +82,22 @@ to run jekyll i need to use
 
     bundle exec jekyll serve
 
+### Additional junk (20160420)
+
+On OSX 10.10.1 Yosemite I was getting errors in 'nokogiri' not findong 'libxml2' when I did 'gem install'. See [here][2]. In general, follow nokogiri install [documentation][4]
+
+ - Remove macports [following][3].
+     sudo port -fp uninstall installed
+ - Install homebrew
+ - Install gcc (this installed gcc-5.3.0)
+     brew install gcc
+ - Proceed as normal
+    sudo gem install nokogiri
+    bundle install
+ - **REMEMBER** to run jekyll locally with
+    bundle exec jekyll serve
 
 [1]: https://help.github.com/articles/setting-up-your-pages-site-locally-with-jekyll/
+[2]: https://github.com/sparklemotion/nokogiri/wiki/What-to-do-if-libxml2-is-being-a-jerk
+[3]: https://guide.macports.org/chunked/installing.macports.uninstalling.html
+[4]: http://www.nokogiri.org/tutorials/installing_nokogiri.html#mac_os_x
