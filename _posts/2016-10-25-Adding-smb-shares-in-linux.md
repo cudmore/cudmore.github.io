@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Convert .h264 video with ffmpeg"
+title: "Adding smb shares in linux"
 category: post
 date: 2016-10-25 00:00:00
 tags:

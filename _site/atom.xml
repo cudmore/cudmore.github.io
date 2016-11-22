@@ -4,17 +4,299 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
-<<<<<<< HEAD
- <updated>2016-04-21T12:46:11-04:00</updated>
-=======
- <updated>2016-07-05T23:20:28-04:00</updated>
->>>>>>> origin/master
+ <updated>2016-11-20T12:26:23-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Prairie scope analysis</title>
+   <link href="http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis/"/>
+   <updated>2016-11-19T19:00:00-05:00</updated>
+   <id>http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis</id>
+   <content type="html">&lt;h2 id=&quot;current-workflow&quot;&gt;Current workflow&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;prairie2tif_.py : Convert single image .tif directories (saved by Prairie) into single .tif stacks&lt;/li&gt;
+  &lt;li&gt;bAlignFolder_.py : Align on channel 2 (GFP) and apply alignment to channel 1&lt;/li&gt;
+  &lt;li&gt;bAvgTimeSeries_.py : Average n_avg number of frames to make new stack where output stack has n_orig/n_avg number of frames. Keep an eye on dwell time and samples average per pixel.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do-understanding-how-to-acquire-good-images&quot;&gt;To Do (understanding how to acquire good images)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There is a lot of shot noise in my images. Either laser is too high or PMT gain is too high. This shot noise has similar intensity to my GFP signal, this is bad.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do-pre-process-raw-data&quot;&gt;To Do (Pre-process raw data)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;write bAvgTimeSeries_.py&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I need some median filter somehwere. Decide if I do this before or after frame averaging? My guess is before? Add median filter (3 pixels) to bAvgTimeSeries_.py&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Write a ‘meta’ batch to (i) prairie2tif_ (ii) bAlignFolder_ (iii) bAvgTimeSeries_&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Modify prairie2tif_.py to optionally spit out a comma delimited report, one stack per row, with all detection parameters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do-efficiency&quot;&gt;To Do (Efficiency)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Figure out how to have multiple instances of Fiji running so we can speed up alignment with MultiStackReg in bAlignFolder_.py. Right now if I run this alignment on 10 stacks with 1800 frames and two channels it takes 96 minutes (5738.76 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do-video&quot;&gt;To Do (Video)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Write bash script to convert all video in a session from .h264 to .mp4. Put output into /mp4/ folder.&lt;/li&gt;
+  &lt;li&gt;Figure out the correspondence between my acquired Prairie time-series and my video. Video is labelled with frame numbers but Prairie outputs more frames (via end of frame ttl) than are actually acquired..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do-igor&quot;&gt;To Do (Igor)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bring it all together in Igor&lt;/li&gt;
+  &lt;li&gt;Load a generic directory of AvgTimeSeries&lt;/li&gt;
+  &lt;li&gt;Load a directory of Raspberry .txt files (not neccessary?)&lt;/li&gt;
+  &lt;li&gt;Load a directory of .mp4 videos&lt;/li&gt;
+  &lt;li&gt;Synch AvgTimeSeries stack with video&lt;/li&gt;
+  &lt;li&gt;Use LineTool to draw (and save) lines across vessels and get diameter through time&lt;/li&gt;
+  &lt;li&gt;Use stack/video synching to verify movement evokes capillary dilation/constriction&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-do-the-fucking-analysis&quot;&gt;To Do (the fucking analysis)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use this hole system to first look at surface arteries and veins&lt;/li&gt;
+  &lt;li&gt;Then look at 1st or branches of diving arteries/veins. Arteries don’t really branch? Determine if 1st order off ascending veins dilate/constrict in response to movement.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ideas&quot;&gt;Ideas&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Try and estimate blood flow by integrating/averaging fluorescence in a tube across time. There are always green specs flying by, if flow goes up there should be more specs and it should be on average brighter.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;converting-h264-to-mp4&quot;&gt;Converting .h264 to .mp4&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Double check triggercamera.py to verify 30 fps&lt;/li&gt;
+  &lt;li&gt;Run this script from within folder with .h264 files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#INPUT=&quot;$1&quot;&lt;/span&gt;
+
+mkdir mp4
+
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;file &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.h264 ; &lt;span class=&quot;k&quot;&gt;do
+	&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%.*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;
+	ffmpeg -r 30 -i &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -vcodec copy &lt;span class=&quot;s2&quot;&gt;&quot;mp4/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.mp4&quot;&lt;/span&gt;
+	sleep 3
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Adding smb shares in linux</title>
+   <link href="http://blog.cudmore.io/post/2016/10/24/Adding-smb-shares-in-linux/"/>
+   <updated>2016-10-24T20:00:00-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/10/24/Adding-smb-shares-in-linux</id>
+   <content type="html">&lt;p&gt;Mount a remote folder 10.16.80.212/share into a folder /mnt/datashare. Use /etc/fstab so this remote folder is mounted on every boot.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edit fstab&lt;/p&gt;
+
+    &lt;p&gt;sudo pico /etc/fstab&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add a line like this&lt;/p&gt;
+
+    &lt;p&gt;//10.16.80.212/share    /mnt/datashare  cifs    user=cudmore,pass=mypassword,uid=pi,gid=pi        0       0&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here, we mount a remote folder (//10.16.80.212/share) into a local directory (/etc/datashare). The remote machine is logged in via a user (cudmore) with password (mypassword). Once mounted, the local folder (/mnt/datashare) will have user/owner (pi) and group (pi).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Mount by hand&lt;/p&gt;
+
+    &lt;p&gt;sudo mount -a&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unmount&lt;/p&gt;
+
+    &lt;p&gt;sudo umount /mnt/datashare&lt;/p&gt;
+
+    &lt;p&gt;# if /mnt/datashare is not mounted, you will get&lt;br /&gt;
+  # umount: /mnt/datashare/: not mounted&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Convert .h264 video with ffmpeg</title>
+   <link href="http://blog.cudmore.io/post/2016/10/12/Convert-h264-files-with-ffmpeg/"/>
+   <updated>2016-10-12T20:00:00-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/10/12/Convert-h264-files-with-ffmpeg</id>
+   <content type="html">&lt;p&gt;This bash script will make new copies of all .h264 files in the current working directory&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Output files will have 15 frames-per-second (-r 15)&lt;/li&gt;
+  &lt;li&gt;Output files will be placed in /mp4/ directory&lt;/li&gt;
+  &lt;li&gt;Output files will be renamed with .mp4 extension&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#INPUT=&quot;$1&quot;&lt;/span&gt;
+
+mkdir mp4
+
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;file &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.h264 ; &lt;span class=&quot;k&quot;&gt;do
+	&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%.*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;
+	ffmpeg -r 15 -i &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -vcodec copy &lt;span class=&quot;s2&quot;&gt;&quot;mp4/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.mp4&quot;&lt;/span&gt;
+	sleep 3
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Compress-images-with-OptiPNG-and-jpegoptim</title>
+   <link href="http://blog.cudmore.io/post/2016/09/23/compress-images-with-OptiPNG-and-jpegoptim/"/>
+   <updated>2016-09-23T21:01:06-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/09/23/compress-images-with-OptiPNG-and-jpegoptim</id>
+   <content type="html">&lt;p&gt;Lossless compression of png with &lt;a href=&quot;http://optipng.sourceforge.net&quot;&gt;OptiPNG&lt;/a&gt; and jpg with (jpegoptim)[https://github.com/tjko/jpegoptim].&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;http://www.tecmint.com/optimize-and-compress-jpeg-or-png-batch-images-linux-commandline/&quot;&gt;this post&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Platformio-teensy-udev-rules</title>
+   <link href="http://blog.cudmore.io/post/2016/09/16/teensy-and-platformio-udev-rules/"/>
+   <updated>2016-09-16T21:01:06-04:00</updated>
+   <id>http://blog.cudmore.io/post/2016/09/16/teensy-and-platformio-udev-rules</id>
+   <content type="html">&lt;p&gt;Setting udev rules is critical for using platformio and a teensy. Instruction are &lt;a href=&quot;https://www.pjrc.com/teensy/loader_linux.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#this command
+platformio run --target upload
+
+#was giving this
+Unable to claim interface, check USB permissions
+Error opening USB device: could not claim interface 0: Operation not permitted
+Waiting for Teensy device...
+(hint: press the reset button)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Recipe is:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;place 49-teensy.rules (see below) in /etc/udev/rules.d/49-teensy.rules&lt;/li&gt;
+  &lt;li&gt;reboot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Make sure .rules file is created with sudo.&lt;/p&gt;
+
+&lt;h1 id=&quot;platformio-version&quot;&gt;platformio version&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio --version
+#gives
+PlatformIO, version 3.0.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;platformio-serialports-list&quot;&gt;platformio serialports list&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio serialports list
+
+#gives
+Usage: platformio [OPTIONS] COMMAND [ARGS]...
+
+Error: No such command &quot;serialport&quot;
+pi@pi3:~ $ platformio serialports list
+/dev/ttyACM0
+------------
+Hardware ID: USB VID:PID=16C0:0483 SER=617160 LOCATION=1-1.5
+Description: USB Serial
+
+/dev/ttyAMA0
+------------
+Hardware ID: 3f201000.uart
+Description: ttyAMA0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;check-devttyacm0&quot;&gt;check /dev/ttyACM0&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls -al /dev/ttyACM0 
+ #gives
+ crw-rw-rw- 1 root dialout 166, 0 Sep 17 14:31 /dev/ttyACM0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;teensy-udev-rules&quot;&gt;teensy udev rules&lt;/h1&gt;
+
+&lt;p&gt;See description &lt;a href=&quot;https://www.pjrc.com/teensy/loader_linux.html&quot;&gt;here&lt;/a&gt; and download from &lt;a href=&quot;https://www.pjrc.com/teensy/49-teensy.rules&quot;&gt;https://www.pjrc.com/teensy/49-teensy.rules&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# UDEV Rules for Teensy boards, http://www.pjrc.com/teensy/
+#
+# The latest version of this file may be found at:
+#   http://www.pjrc.com/teensy/49-teensy.rules
+#
+# This file must be placed at:
+#
+# /etc/udev/rules.d/49-teensy.rules    (preferred location)
+#   or
+# /lib/udev/rules.d/49-teensy.rules    (req&#39;d on some broken systems)
+#
+# To install, type this command in a terminal:
+#   sudo cp 49-teensy.rules /etc/udev/rules.d/49-teensy.rules
+#
+# After this file is installed, physically unplug and reconnect Teensy.
+#
+ATTRS{idVendor}==&quot;16c0&quot;, ATTRS{idProduct}==&quot;04[789]?&quot;, ENV{ID_MM_DEVICE_IGNORE}=&quot;1&quot;
+ATTRS{idVendor}==&quot;16c0&quot;, ATTRS{idProduct}==&quot;04[789]?&quot;, ENV{MTP_NO_PROBE}=&quot;1&quot;
+SUBSYSTEMS==&quot;usb&quot;, ATTRS{idVendor}==&quot;16c0&quot;, ATTRS{idProduct}==&quot;04[789]?&quot;, MODE:=&quot;0666&quot;
+KERNEL==&quot;ttyACM*&quot;, ATTRS{idVendor}==&quot;16c0&quot;, ATTRS{idProduct}==&quot;04[789]?&quot;, MODE:=&quot;0666&quot;
+#
+# If you share your linux system with other users, or just don&#39;t like the
+# idea of write permission for everybody, you can replace MODE:=&quot;0666&quot; with
+# OWNER:=&quot;yourusername&quot; to create the device owned by you, or with
+# GROUP:=&quot;somegroupname&quot; and mange access using standard unix groups.
+#
+#
+# If using USB Serial you get a new device each time (Ubuntu 9.10)
+# eg: /dev/ttyACM0, ttyACM1, ttyACM2, ttyACM3, ttyACM4, etc
+#    apt-get remove --purge modemmanager     (reboot may be necessary)
+#
+# Older modem proding (eg, Ubuntu 9.04) caused very slow serial device detection.
+# To fix, add this near top of /lib/udev/rules.d/77-nm-probe-modem-capabilities.rules
+#   SUBSYSTEMS==&quot;usb&quot;, ATTRS{idVendor}==&quot;16c0&quot;, ATTRS{idProduct}==&quot;04[789]?&quot;, GOTO=&quot;nm_modem_probe_end&quot; 
+#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>uv4l on Raspberry Pi</title>
@@ -142,6 +424,52 @@ mate-session &amp;amp;
 &lt;/ul&gt;
 
 &lt;p&gt;On OS X, use &lt;a href=&quot;https://www.realvnc.com/download/viewer/&quot;&gt;VNC Viewer&lt;/a&gt; from realvnc&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[UPDATE] 20160823 Installed cairo-dock&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://glx-dock.org/ww_page.php?p=From%20the%20repository&amp;amp;lang=en&quot;&gt;See this&lt;/a&gt; (I copy/pasted text below)&lt;/p&gt;
+
+&lt;p&gt;Add this line to /etc/apt/sources.list (don’t forget to replace #CODENAME# by stable/testing/unstable)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://download.tuxfamily.org/glxdock/repository/debian #CODENAME# cairo-dock ## Cairo-Dock Stable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then, copy-paste all this box in a terminal of your Debian stable/testing/unstable&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;su
+wget -q http://download.tuxfamily.org/glxdock/repository/cairo-dock.gpg -O- | apt-key add - 
+apt-get update 
+apt-get install cairo-dock cairo-dock-plug-ins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Force APT to use packages from our repository&lt;br /&gt;
+It’s recommended to force APT to use Cairo-Dock’s packages from our repository instead of Cairo-Dock’s packages from official Debian repositories (because the latter are poorly made with a lot of unnecessary dependencies). For that, simply create this file: /etc/apt/preferences.d/cairo-dock &lt;br /&gt;
+With this content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Package: cairo-dock* libgldi* 
+Pin: origin download.tuxfamily.org 
+Pin-Priority: 990
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Turn off default mate tray (the one at the bottom)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Right-click panel/tray and delete it&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add to startup items&lt;/p&gt;
+
+    &lt;p&gt;/usr/bin/cairo-dock&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  

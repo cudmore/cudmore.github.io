@@ -8,6 +8,81 @@
     
       
       <item>
+        <title>Prairie scope analysis</title>
+        
+          <description>&lt;h2 id=&quot;current-workflow&quot;&gt;Current workflow&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Sat, 19 Nov 2016 19:00:00 -0500</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Adding smb shares in linux</title>
+        
+          <description>&lt;p&gt;Mount a remote folder 10.16.80.212/share into a folder /mnt/datashare. Use /etc/fstab so this remote folder is mounted on every boot.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 24 Oct 2016 20:00:00 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/10/24/Adding-smb-shares-in-linux/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/10/24/Adding-smb-shares-in-linux/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Convert .h264 video with ffmpeg</title>
+        
+          <description>&lt;p&gt;This bash script will make new copies of all .h264 files in the current working directory&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 12 Oct 2016 20:00:00 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/10/12/Convert-h264-files-with-ffmpeg/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/10/12/Convert-h264-files-with-ffmpeg/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Compress-images-with-OptiPNG-and-jpegoptim</title>
+        
+          <description>&lt;p&gt;Lossless compression of png with &lt;a href=&quot;http://optipng.sourceforge.net&quot;&gt;OptiPNG&lt;/a&gt; and jpg with (jpegoptim)[https://github.com/tjko/jpegoptim].&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 23 Sep 2016 21:01:06 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/09/23/compress-images-with-OptiPNG-and-jpegoptim/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/09/23/compress-images-with-OptiPNG-and-jpegoptim/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Platformio-teensy-udev-rules</title>
+        
+          <description>&lt;p&gt;Setting udev rules is critical for using platformio and a teensy. Instruction are &lt;a href=&quot;https://www.pjrc.com/teensy/loader_linux.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 16 Sep 2016 21:01:06 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2016/09/16/teensy-and-platformio-udev-rules/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/09/16/teensy-and-platformio-udev-rules/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>uv4l on Raspberry Pi</title>
         
           <description>&lt;p&gt;The uv4l people have update their code and you can now stream real-time high resolution video to a browser. And it works on the Raspberry Pi. The ‘u’ in uv4l is for ‘user’. It is a user-space wrapper around the low-level kernel driver &lt;a href=&quot;https://www.linuxtv.org&quot;&gt;v4l&lt;/a&gt;. It is just a matter of time before the people making v4l put the finishing touches on it and it will come standard on linux distributions. On the Raspberry Pi, work is underway on &lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?t=62364&quot;&gt;v4l2&lt;/a&gt;.&lt;/p&gt;
