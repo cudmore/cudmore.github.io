@@ -73,3 +73,15 @@ for file in *.h264 ; do
 	sleep 3
 done
 ```
+
+## Raspberry
+
+Raspberry ip is 10.16.81.61
+
+## Raspberry To Do
+
+  - Have igor signal animal ID to REST interface
+  - When Igor is master, signal file that will be saved to rest interface. We need to use file number, not name as we don't know if Prairie software will be acquiring z-stack, time-series, line scan, etc (they have different names)
+  - Have PiCamera save current frame when it received a frame TTL. PiCamera has at least two different 'current frame' variables, figure out which one
+  - Make sure I get PiCamera fps somewhere in saved _r.txt file. Igor is having trouble finding this.
+  
