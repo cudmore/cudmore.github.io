@@ -4,13 +4,29 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2016-12-12T22:45:10-05:00</updated>
+ <updated>2017-04-01T23:20:23-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Google Cloud Platform</title>
+   <link href="http://blog.cudmore.io/post/2017/03/10/google-cloud-platform/"/>
+   <updated>2017-03-10T19:00:00-05:00</updated>
+   <id>http://blog.cudmore.io/post/2017/03/10/google-cloud-platform</id>
+   <content type="html">&lt;p&gt;Oh my god this is complex. I got a flask app to run on google cloud.&lt;/p&gt;
+
+&lt;p&gt;Here are the links&lt;/p&gt;
+
+&lt;p&gt;https://console.cloud.google.com/home/dashboard?project=cudmorecloudproject&lt;/p&gt;
+
+&lt;p&gt;https://cudmorecloudproject.appspot.com/&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Prairie scope analysis</title>
