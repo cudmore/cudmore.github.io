@@ -4,13 +4,157 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2017-04-01T23:20:23-04:00</updated>
+ <updated>2017-10-17T15:37:23-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Home Cage Activity</title>
+   <link href="http://blog.cudmore.io/post/2017/10/16/Home-cage-activity/"/>
+   <updated>2017-10-16T20:00:01-04:00</updated>
+   <id>http://blog.cudmore.io/post/2017/10/16/Home-cage-activity</id>
+   <content type="html">&lt;p&gt;This was originally written as readme for Valerie in the Bergles lab, 20160723&lt;/p&gt;
+
+&lt;p&gt;IP: 10.16.79.93&lt;br /&gt;
+username: pi&lt;br /&gt;
+password: raspberry&lt;/p&gt;
+
+&lt;h2 id=&quot;mount-the-pi-hard-drive-as-a-file-server&quot;&gt;Mount the pi hard-drive as a file-server&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;On Windows, in the start menu, type
+\\10.16.79.93
+
+On OSX, in the ‘Coonect to Server...’ dialog, type:
+afp://10.16.79.93
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;to-login-to-the-pi-on-windows&quot;&gt;To Login to the Pi on Windows&lt;/h2&gt;
+
+&lt;p&gt;Download and then use Putty&lt;/p&gt;
+
+&lt;h2 id=&quot;to-login-to-the-pi-on-osx&quot;&gt;To Login to the Pi on OSX&lt;/h2&gt;
+
+&lt;p&gt;Use terminal and then type:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@10.16.79.93
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;logout-of-the-pi&quot;&gt;Logout of the Pi&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;running-the-code&quot;&gt;Running the code&lt;/h2&gt;
+
+&lt;h3 id=&quot;run-the-code-inside-of-screen&quot;&gt;Run the code inside of &lt;strong&gt;screen&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Run testhome.py to control the lights&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen
+cd /home/pi/homecageactivity
+python testhome.py
+#exit screen with ctrl+a then d
+exit 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run video.py to record video&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen
+cd /home/pi/homecageactivity
+python testhome.py
+#exit screen with ctrl+a then d
+exit 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Both programs need to be run inside a screen session. This way when your ssh session logs out, the programs will continue to run. If you do not run these programs within a screen session, the programs will stop recording when you log out.&lt;/p&gt;
+
+&lt;p&gt;To exit screen mode, hold down ‘ctrl’ and then ‘a’ key at the same time. Let go of ‘ctrl’ and ‘a’ keys. Then press ‘d’ key&lt;/p&gt;
+
+&lt;h3 id=&quot;to-return-to-a-screen-session&quot;&gt;To return to a screen session&lt;/h3&gt;
+
+&lt;p&gt;1) List the sessions with ‘screen -r’&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen -r
+~/homecageactivity $ screen -r
+There are several suitable screens on:
+  1255.pts-5.homecage	(07/20/2016 04:41:04 PM)	(Detached)
+  1186.pts-1.homecage	(07/20/2016 04:40:06 PM)	(Detached)
+Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2) Return to a particular screen with&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen -r 1255.pts-5.homecage
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Or&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen -r 1186.pts-1.homecage
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;to-stop-a-program&quot;&gt;To stop a program&lt;/h3&gt;
+
+&lt;p&gt;Return to its screen (with screen -r …) and press ctrl+c&lt;/p&gt;
+
+&lt;h2 id=&quot;saved-files&quot;&gt;Saved files&lt;/h2&gt;
+
+&lt;p&gt;File are saved in&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home/pi/video/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Video files in .h264 need to be converted to .mp4 so they have meaningful fps. Do this with a bash script on osx.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Put the following code into a text file named convert.sh in same folder as .h264 files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	mkdir mp4
+
+	&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;file &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.h264 ; &lt;span class=&quot;k&quot;&gt;do
+		&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%.*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+		&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;
+		ffmpeg -r 15 -i &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -vcodec copy &lt;span class=&quot;s2&quot;&gt;&quot;mp4/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.mp4&quot;&lt;/span&gt;
+		sleep 3
+	&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;chmod +x convert.sh&lt;/li&gt;
+  &lt;li&gt;./convert.sh will make a new mp4 directory with all your video files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;to-start-over&quot;&gt;To start over&lt;/h2&gt;
+
+&lt;p&gt;The following sequence will start the video recording and lights again&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1) pull power and plug back in
+2) login with putty/terminal
+3) cd /homecageactivity
+4) screen
+5) python testhome.py
+6) [exit screen with ctrl+a then d]
+7) screen
+8) python video.py
+9) [exit screen with ctrl+a then d]
+10) exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Google Cloud Platform</title>
@@ -25,6 +169,15 @@
 
 &lt;p&gt;https://cudmorecloudproject.appspot.com/&lt;/p&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Test</title>
+   <link href="http://blog.cudmore.io/post/2017/01/12/Test/"/>
+   <updated>2017-01-12T19:00:00-05:00</updated>
+   <id>http://blog.cudmore.io/post/2017/01/12/Test</id>
+   <content type="html">
 </content>
  </entry>
  
@@ -119,6 +272,20 @@ mkdir mp4
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;h2 id=&quot;raspberry&quot;&gt;Raspberry&lt;/h2&gt;
+
+&lt;p&gt;Raspberry ip is 10.16.81.61&lt;/p&gt;
+
+&lt;h2 id=&quot;raspberry-to-do&quot;&gt;Raspberry To Do&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Have igor signal animal ID to REST interface&lt;/li&gt;
+  &lt;li&gt;When Igor is master, signal file that will be saved to rest interface. We need to use file number, not name as we don’t know if Prairie software will be acquiring z-stack, time-series, line scan, etc (they have different names)&lt;/li&gt;
+  &lt;li&gt;Have PiCamera save current frame when it received a frame TTL. PiCamera has at least two different ‘current frame’ variables, figure out which one&lt;/li&gt;
+  &lt;li&gt;Make sure I get PiCamera fps somewhere in saved _r.txt file. Igor is having trouble finding this.&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  
