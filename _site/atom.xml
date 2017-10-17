@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2017-10-17T15:37:23-04:00</updated>
+ <updated>2017-10-17T15:57:49-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -17,27 +17,25 @@
    <link href="http://blog.cudmore.io/post/2017/10/16/Home-cage-activity/"/>
    <updated>2017-10-16T20:00:01-04:00</updated>
    <id>http://blog.cudmore.io/post/2017/10/16/Home-cage-activity</id>
-   <content type="html">&lt;p&gt;This was originally written as readme for Valerie in the Bergles lab, 20160723&lt;/p&gt;
+   <content type="html">&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
 
-&lt;p&gt;IP: 10.16.79.93&lt;br /&gt;
-username: pi&lt;br /&gt;
-password: raspberry&lt;/p&gt;
+&lt;p&gt;This was originally written as readme for Valerie in the Bergles lab, 20160723.&lt;/p&gt;
 
-&lt;h2 id=&quot;mount-the-pi-hard-drive-as-a-file-server&quot;&gt;Mount the pi hard-drive as a file-server&lt;/h2&gt;
+&lt;p&gt;The parts list and implementation details are in &lt;a href=&quot;/post/2014/02/14/Monitoring-mice-in-their-home-cage/&quot;&gt;the original blog post&lt;/a&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;On Windows, in the start menu, type
-\\10.16.79.93
+&lt;h2 id=&quot;the-raspberry-pi-is-running-debian-linux-and-is-networked&quot;&gt;The Raspberry Pi is running Debian Linux and is networked&lt;/h2&gt;
 
-On OSX, in the ‘Coonect to Server...’ dialog, type:
-afp://10.16.79.93
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IP: 10.16.79.93
+username: pi
+password: raspberry
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;to-login-to-the-pi-on-windows&quot;&gt;To Login to the Pi on Windows&lt;/h2&gt;
+&lt;h3 id=&quot;to-login-to-the-pi-on-windows&quot;&gt;To Login to the Pi on Windows&lt;/h3&gt;
 
 &lt;p&gt;Download and then use Putty&lt;/p&gt;
 
-&lt;h2 id=&quot;to-login-to-the-pi-on-osx&quot;&gt;To Login to the Pi on OSX&lt;/h2&gt;
+&lt;h3 id=&quot;to-login-to-the-pi-on-osx&quot;&gt;To Login to the Pi on OSX&lt;/h3&gt;
 
 &lt;p&gt;Use terminal and then type:&lt;/p&gt;
 
@@ -50,11 +48,25 @@ afp://10.16.79.93
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;h3 id=&quot;mount-the-pi-hard-drive-as-a-file-server&quot;&gt;Mount the pi hard-drive as a file-server&lt;/h3&gt;
+
+&lt;p&gt;On Windows, in the start menu, type&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\\10.16.79.93
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On OSX, in the ‘Connect to Server…’ dialog, type:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;afp://10.16.79.93
+or
+smb://10.16.79.93
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;h2 id=&quot;running-the-code&quot;&gt;Running the code&lt;/h2&gt;
 
-&lt;h3 id=&quot;run-the-code-inside-of-screen&quot;&gt;Run the code inside of &lt;strong&gt;screen&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;Run testhome.py to control the lights&lt;/p&gt;
+&lt;p&gt;Run &lt;strong&gt;testhome.py&lt;/strong&gt; to control the lights&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen
 cd /home/pi/homecageactivity
@@ -64,7 +76,7 @@ exit
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Run video.py to record video&lt;/p&gt;
+&lt;p&gt;Run &lt;strong&gt;video.py&lt;/strong&gt; to record video&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen
 cd /home/pi/homecageactivity
@@ -118,7 +130,7 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
 &lt;p&gt;Video files in .h264 need to be converted to .mp4 so they have meaningful fps. Do this with a bash script on osx.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Put the following code into a text file named convert.sh in same folder as .h264 files&lt;/li&gt;
+  &lt;li&gt;Put the following code into a text file named convert.sh in same folder as .h264 files.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	mkdir mp4
@@ -134,8 +146,10 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
 
 &lt;ul&gt;
   &lt;li&gt;chmod +x convert.sh&lt;/li&gt;
-  &lt;li&gt;./convert.sh will make a new mp4 directory with all your video files&lt;/li&gt;
+  &lt;li&gt;./convert.sh&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;convert.sh&lt;/strong&gt; will make an mp4/ folder with .mp4 copies of all your video files&lt;/p&gt;
 
 &lt;h2 id=&quot;to-start-over&quot;&gt;To start over&lt;/h2&gt;
 
@@ -153,6 +167,7 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
 10) exit
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
 </content>
  </entry>
  
@@ -4284,7 +4299,7 @@ while True:
    <title>Monitoring mice in their home cage</title>
    <link href="http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/"/>
    <updated>2014-02-14T17:01:06-05:00</updated>
-   <id>http://blog.cudmore.io/post/2014/02/14/Monitoring mice in their home cage</id>
+   <id>http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage</id>
    <content type="html">&lt;p&gt;[Aug 4, 2014, updated]&lt;br /&gt;
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
@@ -4294,7 +4309,8 @@ while True:
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;parts&quot;&gt;Parts&lt;/h3&gt;
-&lt;p&gt;#### Computer&lt;/p&gt;
+
+&lt;h4 id=&quot;computer&quot;&gt;Computer&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Raspberry Pi, Model B 512MB RAM, [Adafruit 998](http://www.adafruit.com/products/998) target=&quot;_blank&quot;&amp;gt;Adafruit 998&lt;/li&gt;
 	&lt;li&gt;4 GB SD Card, &lt;a href=&quot;http://www.adafruit.com/products/102&quot; target=&quot;_blank&quot;&gt;Adafruit 102&lt;/a&gt;&lt;/li&gt;

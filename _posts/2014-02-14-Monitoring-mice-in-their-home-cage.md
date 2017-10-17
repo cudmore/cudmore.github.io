@@ -17,6 +17,7 @@ tags:
 - videotape mice in their home cage.
 
 ### Parts
+
 #### Computer
 <UL>
 <LI>Raspberry Pi, Model B 512MB RAM, [Adafruit 998](http://www.adafruit.com/products/998) target="_blank">Adafruit 998</a></li>

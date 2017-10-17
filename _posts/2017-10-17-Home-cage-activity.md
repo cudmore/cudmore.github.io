@@ -7,28 +7,25 @@ tags:
 - analysis
 ---
 
-This was originally written as readme for Valerie in the Bergles lab, 20160723
+## History
 
-IP: 10.16.79.93
-username: pi
-password: raspberry
+This was originally written as readme for Valerie in the Bergles lab, 20160723.
 
+The parts list and implementation details are in [the original blog post][1].
 
-## Mount the pi hard-drive as a file-server
+## The Raspberry Pi is running Debian Linux and is networked
 
-    On Windows, in the start menu, type
-    \\10.16.79.93
-
-    On OSX, in the ‘Coonect to Server...’ dialog, type:
-    afp://10.16.79.93
+	IP: 10.16.79.93
+	username: pi
+	password: raspberry
 
 
-## To Login to the Pi on Windows
+### To Login to the Pi on Windows
 
 Download and then use Putty
 
 
-## To Login to the Pi on OSX
+### To Login to the Pi on OSX
 
 Use terminal and then type:
 
@@ -38,12 +35,22 @@ Use terminal and then type:
 ### Logout of the Pi
     exit
 
+### Mount the pi hard-drive as a file-server
+
+On Windows, in the start menu, type
+
+    \\10.16.79.93
+
+On OSX, in the ‘Connect to Server...’ dialog, type:
+
+    afp://10.16.79.93
+    or
+    smb://10.16.79.93
+
 
 ## Running the code
 
-### Run the code inside of **screen**
-
-Run testhome.py to control the lights
+Run **testhome.py** to control the lights
 
     screen
     cd /home/pi/homecageactivity
@@ -51,7 +58,7 @@ Run testhome.py to control the lights
     #exit screen with ctrl+a then d
     exit 
 
-Run video.py to record video
+Run **video.py** to record video
 
     screen
     cd /home/pi/homecageactivity
@@ -96,7 +103,7 @@ File are saved in
 
 Video files in .h264 need to be converted to .mp4 so they have meaningful fps. Do this with a bash script on osx.
 
- - Put the following code into a text file named convert.sh in same folder as .h264 files
+ - Put the following code into a text file named convert.sh in same folder as .h264 files.
 
 ```bash
 	mkdir mp4
@@ -110,7 +117,9 @@ Video files in .h264 need to be converted to .mp4 so they have meaningful fps. D
 ```
 	
  - chmod +x convert.sh
- - ./convert.sh will make a new mp4 directory with all your video files
+ - ./convert.sh
+ 
+ **convert.sh** will make an mp4/ folder with .mp4 copies of all your video files
 
 ## To start over
 
@@ -126,3 +135,5 @@ The following sequence will start the video recording and lights again
     8) python video.py
     9) [exit screen with ctrl+a then d]
     10) exit
+    
+[1]: /post/2014/02/14/Monitoring-mice-in-their-home-cage/
