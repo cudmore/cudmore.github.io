@@ -34,6 +34,11 @@
   <!-- added 20151219 -->
   <link rel="alternate" type="application/rss+xml" title="My Site RSS" href="/feed.xml" />
 
+  <!-- added 20171023 -->
+    {% if jekyll.environment == 'production' %}
+    {% include analytics.html %}
+    {% endif %}
+
 </head>
 
 
