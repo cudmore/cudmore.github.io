@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Home Debian server setup
+title: "Home Debian server setup"
 category: post
 date: 2017-10-22 00:00:01
 tags:
