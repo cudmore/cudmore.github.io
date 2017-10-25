@@ -12,7 +12,7 @@ Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.
  - Motherboard is [GA-Z77X-UP5-TH](http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov)  
  - BIOS is [F12](http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios)  
  - Followed Tonymac post by [Stork](http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html)
-
+ - Wrok motherboard is: (GA-Z97M-D3H)[https://www.gigabyte.com/Motherboard/GA-Z97M-D3H-rev-10#ov]
 
 #### Analysis  
  - [Igor](http://www.wavemetrics.com/support/versions.htm)
