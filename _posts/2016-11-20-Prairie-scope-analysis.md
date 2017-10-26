@@ -7,6 +7,8 @@ tags:
 - analysis
 ---
 
+PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER
+
 ## Current workflow
 
  - prairie2tif_.py : Convert single image .tif directories (saved by Prairie) into single .tif stacks
@@ -85,3 +87,27 @@ Raspberry ip is 10.16.81.61
   - Have PiCamera save current frame when it received a frame TTL. PiCamera has at least two different 'current frame' variables, figure out which one
   - Make sure I get PiCamera fps somewhere in saved _r.txt file. Igor is having trouble finding this.
   
+## Prairie View blog with updates and release notes
+
+https://pvupdate.blogspot.com/
+
+## Fiji plugin for prairie
+
+See Prairie View blog side-bar
+
+https://www.dropbox.com/s/in593hvhc2v3dwj/Prairie_Reader.zip?dl=0
+
+## Prairie emission filters
+
+This is from the original [scope quote][1] (20150528), assuming it is what we have?
+
+Dual emission filters (et525/70m-2p and et595/50m-2p) and t565lpxr dichroic beam splitter for simultaneous viewing and acquisition from both detectors
+
+See Thermo Fischer Fluorescence SpectraViewer
+
+https://www.thermofisher.com/us/en/home/life-science/cell-analysis/labeling-chemistry/fluorescence-spectraviewer.html
+
+With red filter centered at 595 nm we are collecting ~ 50% of Texas Red emission. 
+
+
+[1]: images/JHU-15-051120E.pdf
