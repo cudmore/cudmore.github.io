@@ -110,4 +110,4 @@ https://www.thermofisher.com/us/en/home/life-science/cell-analysis/labeling-chem
 With red filter centered at 595 nm we are collecting ~ 50% of Texas Red emission. 
 
 
-[1]: images/JHU-15-051120E.pdf
+[1]: /images/JHU-15-051120E.pdf

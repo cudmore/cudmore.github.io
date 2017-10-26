@@ -35,6 +35,9 @@
   <!-- added 20151219 -->
   <link rel="alternate" type="application/rss+xml" title="My Site RSS" href="/feed.xml" />
 
+  <!-- added 20171023 -->
+    
+
 </head>
 
 
@@ -75,11 +78,11 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		    
 		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
-		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/01/12/Test/">Test</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2016/11/19/Prairie-scope-analysis/">Prairie scope analysis</a><BR>
 		    
@@ -143,7 +146,7 @@
     		  jekyll
     		</a>
 		
-    		<a style="font-size: 127%" href="/tags/#debian">
+    		<a style="font-size: 140%" href="/tags/#debian">
     		  debian
     		</a>
 		
@@ -155,7 +158,7 @@
     		  video
     		</a>
 		
-    		<a style="font-size: 90%" href="/tags/#analysis">
+    		<a style="font-size: 77%" href="/tags/#analysis">
     		  analysis
     		</a>
 		
@@ -232,7 +235,7 @@
   <li>be able to run bokeh examples</li>
 </ul>
 
-<p>[UPDATE August 16, 2015]<br />
+<p>[UPDATE August 16, 2015]
 [THIS IS NOT WORKING … REWRITING]</p>
 
 <ul>
@@ -305,7 +308,7 @@ Thank you for installing Miniconda!
 <h3 id="make-sure-numpy-and-pandas-is-correct">Make sure numpy and pandas is correct</h3>
 
 <blockquote>
-  <p>pip install numpy –upgrade  <br />
+  <p>pip install numpy –upgrade<br />
 pip install pandas –upgrade</p>
 </blockquote>
 
@@ -384,8 +387,8 @@ wsgiref==0.1.2
 <h3 id="run-the-bokeh-server">Run the bokeh-server</h3>
 <p>Remember, this make temporary files in directory you run it in.</p>
 
-<p>–ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006  <br />
-&gt; <br />
+<p>–ip 0.0.0.0 will redirect the server to your external IP, in my case http://192.168.1.40:5006<br />
+&gt; 
 &gt; bokeh-server –backend=memory –ip 0.0.0.0</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>pi@pi40 ~/bokeh_examples $ bokeh-server --backend=memory --ip 0.0.0.0
@@ -490,6 +493,7 @@ while True:
 
 
     </div>
+
 
   </body>
 </html>
