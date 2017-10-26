@@ -99,6 +99,8 @@ https://www.dropbox.com/s/in593hvhc2v3dwj/Prairie_Reader.zip?dl=0
 
 ## Prairie emission filters
 
+Scope ID is 4647, use to search email for long threads with technicians ending around 11/11/16 - 12/5/16
+
 This is from the original [scope quote][1] (20150528), assuming it is what we have?
 
 Dual emission filters (et525/70m-2p and et595/50m-2p) and t565lpxr dichroic beam splitter for simultaneous viewing and acquisition from both detectors
