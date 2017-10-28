@@ -78,8 +78,11 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
+<<<<<<< HEAD
 		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
+=======
+>>>>>>> origin/master
 		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
 		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
@@ -417,12 +420,12 @@ sudo apt-get install python-qt4-dev
 <h1 id="stop-here-">!!! Stop Here !!!</h1>
 
 <h3 id="client-side-socketio-javascript">Client side socket.io javascript</h3>
-<p>Client side needs socketio javascript: http://socket.io  <br />
-Put this in your Flask project /static/js/  <br />
+<p>Client side needs socketio javascript: http://socket.io<br />
+Put this in your Flask project /static/js/<br />
 Something like /home/pi/Sites/iosserver/static/js/socket.io.min.js</p>
 
 <blockquote>
-  <p>wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js  <br />
+  <p>wget https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js<br />
 cp socket.io.min.js Sites/iosserver/static/js/</p>
 </blockquote>
 
@@ -430,7 +433,7 @@ cp socket.io.min.js Sites/iosserver/static/js/</p>
 <p>documentation at: http://jquery.com/download/</p>
 
 <blockquote>
-  <p>wget wget http://code.jquery.com/jquery-1.11.2.min.js  <br />
+  <p>wget wget http://code.jquery.com/jquery-1.11.2.min.js<br />
 cp jquery-1.11.2.min.js Sites/iosserver/static/js/</p>
 </blockquote>
 
@@ -438,18 +441,18 @@ cp jquery-1.11.2.min.js Sites/iosserver/static/js/</p>
 <p>anaconda install tutorial http://docs.continuum.io/anaconda/install.html</p>
 
 <blockquote>
-  <p>wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh<br />
+  <p>wget http://repo.continuum.io/miniconda/Miniconda-3.5.5-Linux-armv6l.sh
 bash Miniconda-3.5.5-Linux-armv6l.sh</p>
 </blockquote>
 
 <blockquote>
-  <p>conda update conda<br />
+  <p>conda update conda
 conda update anaconda</p>
 </blockquote>
 
 <h3 id="bokeh">bokeh</h3>
-<p>bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html<br />
-make sure dependencies are installed: NumPy, Pandas, and Redis<br />
+<p>bokeh quickstart: http://bokeh.pydata.org/en/latest/docs/quickstart.html
+make sure dependencies are installed: NumPy, Pandas, and Redis
 &gt; pip install bokeh</p>
 
 <h3 id="streaming-from-a-webcam-or-camera-module-using-mjpg-streamer">Streaming from a webcam or camera module using mjpg streamer</h3>
@@ -478,16 +481,16 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
 <h3 id="my-usb-webcam-has-following-output">my usb webcam has following output</h3>
 <ul>
   <li>
-    <p>v4l2-ctl –list-formats<br />
-  pi@pi50 ~ $ v4l2-ctl –list-formats<br />
-  ioctl: VIDIOC_ENUM_FMT<br />
-      Index       : 0<br />
-      Type        : Video Capture<br />
-      Pixel Format: ‘YUYV’<br />
+    <p>v4l2-ctl –list-formats
+  pi@pi50 ~ $ v4l2-ctl –list-formats
+  ioctl: VIDIOC_ENUM_FMT
+      Index       : 0
+      Type        : Video Capture
+      Pixel Format: ‘YUYV’
       Name        : YUYV</p>
   </li>
   <li>
-    <p>v4l2-ctl –list-ctrls<br />
+    <p>v4l2-ctl –list-ctrls
   pi@pi50 ~ $ v4l2-ctl –list-ctrls</p>
 
     <p>User Controls</p>
@@ -515,12 +518,12 @@ Bus 001 Device 005: ID 1415:2000 Nam Tai E&amp;E Products Ltd. or OmniVision Tec
   </li>
 </ul>
 
-<p>-mjpg_streamer –input “input_uvc.so –help”<br />
-	pi@pi50 ~ $ mjpg_streamer –input “input_uvc.so –help”<br />
-	MJPG Streamer Version: svn rev: Unversioned directory<br />
-	 —————————————————————<br />
-	 Help for input plugin..: UVC webcam grabber<br />
-	 —————————————————————<br />
+<p>-mjpg_streamer –input “input_uvc.so –help”
+	pi@pi50 ~ $ mjpg_streamer –input “input_uvc.so –help”
+	MJPG Streamer Version: svn rev: Unversioned directory
+	 —————————————————————
+	 Help for input plugin..: UVC webcam grabber
+	 —————————————————————
 	 The following parameters can be passed to this plugin:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code> [-d | --device ].......: video device to open (your camera)

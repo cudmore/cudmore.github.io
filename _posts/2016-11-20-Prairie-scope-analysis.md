@@ -9,6 +9,8 @@ tags:
 
 Acquisition and analysis workflow for Prairie two-photon scope
 
+PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER
+
 ## Current workflow
 
  - prairie2tif_.py : Convert single image .tif directories (saved by Prairie) into single .tif stacks
@@ -87,3 +89,38 @@ Raspberry ip is 10.16.81.61
   - Have PiCamera save current frame when it received a frame TTL. PiCamera has at least two different 'current frame' variables, figure out which one
   - Make sure I get PiCamera fps somewhere in saved _r.txt file. Igor is having trouble finding this.
   
+## Prairie View blog with updates and release notes
+
+https://pvupdate.blogspot.com/
+
+## Fiji plugin for prairie
+
+See Prairie View blog side-bar
+
+https://www.dropbox.com/s/in593hvhc2v3dwj/Prairie_Reader.zip?dl=0
+
+## Prairie emission filters
+
+Scope ID is 4647, use to search email for long threads with technicians ending around 11/11/16 - 12/5/16
+
+This is from the original [scope quote][1] (20150528), assuming it is what we have?
+
+Dual emission filters (et525/70m-2p and et595/50m-2p) and t565lpxr dichroic beam splitter for simultaneous viewing and acquisition from both detectors
+
+ - green band pass filter (could not find 70m version) is (et525/50m-2p)[https://www.chroma.com/products/parts/et525-50m]
+ - red band-pass filter is (et595/50m-2p)[https://www.chroma.com/products/parts/et595-50m]
+ - dichroic beam splitter is (t565lpxr)[https://www.chroma.com/products/parts/t565lpxr]
+
+See Thermo Fischer Fluorescence SpectraViewer for (Texas Red emission profile)[https://www.thermofisher.com/us/en/home/life-science/cell-analysis/labeling-chemistry/fluorescence-spectraviewer.html]
+
+With red filter centered at 595 nm we are collecting ~ 50% of Texas Red emission. But the band is 50m which should do the job? But may not be enough?
+
+## Sutter red filter
+
+This is from email to Zeng You 20150416, did he replace this?
+
+The red filter in front of the PMT is from Chroma and is a HQ 610/75m
+
+(HQ 610/75m)[https://www.chroma.com/products/parts/hq610-75m]
+
+[1]: /images/JHU-15-051120E.pdf

@@ -8,7 +8,26 @@
     
       
       <item>
+<<<<<<< HEAD
         <title>Raspberry startup tweet</title>
+=======
+        <title>Home Debian server setup</title>
+        
+          <description>&lt;h3 id=&quot;homeassistant&quot;&gt;Homeassistant&lt;/h3&gt;
+
+</description>
+        
+        <pubDate>Sat, 21 Oct 2017 20:00:01 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Home Cage Activity</title>
+>>>>>>> origin/master
         
           <description>&lt;p&gt;Have a Raspberry send a tweet with its IP when it boots. This is incredibly useful when your Pi is headless with no monitor. There are tons of tutorials on this including one at &lt;a href=&quot;http://www.instructables.com/id/How-to-Send-Tweets-From-Your-Raspberry-Pi/&quot;&gt;instructables&lt;/a&gt; and another at &lt;a href=&quot;https://opensource.com/article/17/8/raspberry-pi-twitter-bot&quot;&gt;opensource&lt;/a&gt;.&lt;/p&gt;
 
@@ -38,6 +57,7 @@
     
       
       <item>
+<<<<<<< HEAD
         <title>Home Cage Activity</title>
         
           <description>&lt;p&gt;Record video 24/7 with a Raspberry Pi&lt;/p&gt;
@@ -71,6 +91,11 @@
         <title>Prairie scope analysis</title>
         
           <description>&lt;p&gt;Acquisition and analysis workflow for Prairie two-photon scope&lt;/p&gt;
+=======
+        <title>Prairie scope analysis</title>
+        
+          <description>&lt;p&gt;PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER&lt;/p&gt;
+>>>>>>> origin/master
 
 </description>
         
@@ -494,10 +519,11 @@
       <item>
         <title>Install OSX</title>
         
-          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  &lt;br /&gt;
- - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;  &lt;br /&gt;
- - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;  &lt;br /&gt;
- - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/p&gt;
+          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;br /&gt;
+ - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;br /&gt;
+ - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;&lt;br /&gt;
+ - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;
+ - Wrok motherboard is: (GA-Z97M-D3H)[https://www.gigabyte.com/Motherboard/GA-Z97M-D3H-rev-10#ov]&lt;/p&gt;
 
 </description>
         
@@ -586,8 +612,8 @@
 
 &lt;h4 id=&quot;install-opencv&quot;&gt;Install opencv&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;sudo apt-get update  &lt;br /&gt;
-sudo apt-get upgrade  &lt;br /&gt;
+  &lt;p&gt;sudo apt-get update&lt;br /&gt;
+sudo apt-get upgrade&lt;br /&gt;
 sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -634,7 +660,7 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
       <item>
         <title>Monitoring mice in their home cage</title>
         
-          <description>&lt;p&gt;[Aug 4, 2014, updated]&lt;br /&gt;
+          <description>&lt;p&gt;[Aug 4, 2014, updated]
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
 </description>
