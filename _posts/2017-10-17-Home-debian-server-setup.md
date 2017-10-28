@@ -7,6 +7,8 @@ tags:
 - debian
 ---
 
+Tweaking MQTT server to talk to Homeassistant
+
 ### Homeassistant
 
 Web interface is at: http://192.168.1.200:8123

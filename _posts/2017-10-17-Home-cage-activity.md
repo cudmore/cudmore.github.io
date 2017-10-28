@@ -7,6 +7,8 @@ tags:
 - analysis
 ---
 
+Record video 24/7 with a Raspberry Pi
+
 ## History
 
 This was originally written as readme for Valerie in the Bergles lab, 20160723.

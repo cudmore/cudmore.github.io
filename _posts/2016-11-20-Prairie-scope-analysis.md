@@ -7,6 +7,8 @@ tags:
 - analysis
 ---
 
+Acquisition and analysis workflow for Prairie two-photon scope
+
 ## Current workflow
 
  - prairie2tif_.py : Convert single image .tif directories (saved by Prairie) into single .tif stacks

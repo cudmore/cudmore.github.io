@@ -8,9 +8,39 @@
     
       
       <item>
+        <title>Raspberry startup tweet</title>
+        
+          <description>&lt;p&gt;Have a Raspberry send a tweet with its IP when it boots. This is incredibly useful when your Pi is headless with no monitor. There are tons of tutorials on this including one at &lt;a href=&quot;http://www.instructables.com/id/How-to-Send-Tweets-From-Your-Raspberry-Pi/&quot;&gt;instructables&lt;/a&gt; and another at &lt;a href=&quot;https://opensource.com/article/17/8/raspberry-pi-twitter-bot&quot;&gt;opensource&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 26 Oct 2017 20:00:01 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2017/10/26/Raspberry-startup-tweet/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/26/Raspberry-startup-tweet/</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Home Debian server setup</title>
+        
+          <description>&lt;p&gt;Tweaking MQTT server to talk to Homeassistant&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 21 Oct 2017 20:00:01 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Home Cage Activity</title>
         
-          <description>&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
+          <description>&lt;p&gt;Record video 24/7 with a Raspberry Pi&lt;/p&gt;
 
 </description>
         
@@ -38,23 +68,9 @@
     
       
       <item>
-        <title>Test</title>
-        
-          <description>
-</description>
-        
-        <pubDate>Thu, 12 Jan 2017 19:00:00 -0500</pubDate>
-        <link>
-        http://blog.cudmore.io/post/2017/01/12/Test/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/01/12/Test/</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>Prairie scope analysis</title>
         
-          <description>&lt;h2 id=&quot;current-workflow&quot;&gt;Current workflow&lt;/h2&gt;
+          <description>&lt;p&gt;Acquisition and analysis workflow for Prairie two-photon scope&lt;/p&gt;
 
 </description>
         

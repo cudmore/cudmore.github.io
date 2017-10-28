@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2017-10-17T15:57:49-04:00</updated>
+ <updated>2017-10-28T00:34:13-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -13,11 +13,220 @@
 
  
  <entry>
+   <title>Raspberry startup tweet</title>
+   <link href="http://blog.cudmore.io/post/2017/10/26/Raspberry-startup-tweet/"/>
+   <updated>2017-10-26T20:00:01-04:00</updated>
+   <id>http://blog.cudmore.io/post/2017/10/26/Raspberry-startup-tweet</id>
+   <content type="html">&lt;p&gt;Have a Raspberry send a tweet with its IP when it boots. This is incredibly useful when your Pi is headless with no monitor. There are tons of tutorials on this including one at &lt;a href=&quot;http://www.instructables.com/id/How-to-Send-Tweets-From-Your-Raspberry-Pi/&quot;&gt;instructables&lt;/a&gt; and another at &lt;a href=&quot;https://opensource.com/article/17/8/raspberry-pi-twitter-bot&quot;&gt;opensource&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is what you will get&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;it&quot; dir=&quot;ltr&quot;&gt;triggercamera1 10.16.80.238 2016-10-20 18:04:40&lt;/p&gt;&amp;mdash; cudmore.io (@cudmore_io) &lt;a href=&quot;https://twitter.com/cudmore_io/status/789225852013834244?ref_src=twsrc%5Etfw&quot;&gt;October 20, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Used to send &lt;a href=&quot;http://www.robertcudmore.org/blog/?p=60&quot;&gt;email at boot&lt;/a&gt; but I can’t get the Pi to send email via gmail any more?&lt;/p&gt;
+
+&lt;h3 id=&quot;create-and-configure-a-twitter-app&quot;&gt;Create and configure a twitter app&lt;/h3&gt;
+
+&lt;p&gt;Go to &lt;a href=&quot;http://apps.twitter.com&quot;&gt;apps.twitter.com&lt;/a&gt; and make a twitter app. You will need a normal twitter account. Make sure you turn on read/write access. Once that is done, note down all the keys.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Consumer Key (API key)&lt;/li&gt;
+  &lt;li&gt;Consumer Secret (API Secret)&lt;/li&gt;
+  &lt;li&gt;Access Token&lt;/li&gt;
+  &lt;li&gt;Access Token Secret&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;install-tweepy-could-also-use-twython&quot;&gt;install tweepy (could also use twython)&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install tweepy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;write-a-python-script&quot;&gt;Write a python script&lt;/h3&gt;
+
+&lt;p&gt;Lets call it &lt;code class=&quot;highlighter-rouge&quot;&gt;startup_tweeter.py&lt;/code&gt;. See Github Gist below.&lt;/p&gt;
+
+&lt;h3 id=&quot;make-the-python-script-run-at-boot&quot;&gt;Make the python script run at boot&lt;/h3&gt;
+
+&lt;p&gt;Make script executable&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod u+x startup_tweeter.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Edit crontab&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo crontab -e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add one line at the end of crontab&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot (sleep 10; /home/pi/startup_tweeter.py)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;python-script-to-tweet-ip&quot;&gt;Python script to tweet IP&lt;/h3&gt;
+
+&lt;p&gt;This is taken from &lt;a href=&quot;http://raspi.tv/2013/how-to-create-a-twitter-app-on-the-raspberry-pi-with-python-tweepy-part-1&quot;&gt;RasPi.tv&lt;/a&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/cudmore/7c909d2c51c3315c7b03e1485d0ad25a.js&quot;&gt;&lt;/script&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Home Debian server setup</title>
+   <link href="http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/"/>
+   <updated>2017-10-21T20:00:01-04:00</updated>
+   <id>http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup</id>
+   <content type="html">&lt;p&gt;Tweaking MQTT server to talk to Homeassistant&lt;/p&gt;
+
+&lt;h3 id=&quot;homeassistant&quot;&gt;Homeassistant&lt;/h3&gt;
+
+&lt;p&gt;Web interface is at: http://192.168.1.200:8123&lt;/p&gt;
+
+&lt;p&gt;For setup, see: https://home-assistant.io/docs/installation/virtualenv/&lt;/p&gt;
+
+&lt;p&gt;Application is in /srv/homeassistant/&lt;/p&gt;
+
+&lt;p&gt;Added a user /home/homeassistant&lt;/p&gt;
+
+&lt;p&gt;Main configuration file is: /home/homeassistant/.homeassistant/configuration.yaml&lt;/p&gt;
+
+&lt;p&gt;To edit configuration.yaml, switch user: sudo su -s /bin/bash homeassistant&lt;/p&gt;
+
+&lt;p&gt;To run homeassistant (from my normal account): sudo -u homeassistant -H /srv/homeassistant/bin/hass&lt;/p&gt;
+
+&lt;p&gt;todo: learn how to run this crap at startup&lt;/p&gt;
+
+&lt;p&gt;My homeassistant is subscribing and getting packets from mosquitto mqtt server with the following in configuration.yml&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mqtt:
+  broker: 192.168.1.200       
+  #username: your_username
+  #password: your_password
+
+sensor 1:
+  platform: mqtt
+  name: &quot;Temperature&quot;
+  state_topic: &quot;nodemcu1/temperature&quot;
+  qos: 0
+  unit_of_measurement: &quot;ºC&quot;
+
+sensor 2:
+  platform: mqtt
+  name: &quot;Humidity&quot;
+  state_topic: &quot;nodemcu1/humidity&quot;
+  qos: 0
+  unit_of_measurement: &quot;%&quot;
+
+sensor 3:
+  platform: mqtt
+  name: &quot;Light&quot;
+  state_topic: &quot;nodemcu1/light&quot;
+  qos: 0
+  unit_of_measurement: &quot;%&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;python3-is-in-env-py36&quot;&gt;Python3 is in env py36&lt;/h3&gt;
+
+&lt;p&gt;To get homeassistant working, installed virtual env ‘py36’ for python 3.6 install&lt;/p&gt;
+
+&lt;p&gt;See: https://conda.io/docs/user-guide/tasks/manage-python.html&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py36 python=3.6 anaconda
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Activate environment&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py36
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Deactivate environment&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source deactivate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mqtt&quot;&gt;MQTT&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&quot;/post/2016/01/19/MQTT/&quot;&gt;MQTT post&lt;/a&gt; on how to start/stop&lt;/p&gt;
+
+&lt;p&gt;Basically&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl start mosquitto
+sudo systemctl stop mosquitto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;MQTT is running at 192.168.1.200:1883&lt;/p&gt;
+
+&lt;p&gt;Mosquitto config is in: /etc/mosquitto/mosquitto.conf&lt;/p&gt;
+
+&lt;p&gt;My node mcu is&lt;/p&gt;
+
+&lt;h3 id=&quot;node-mcu-temperature-sensor&quot;&gt;Node MCU temperature sensor&lt;/h3&gt;
+
+&lt;p&gt;This info is directly from router 192.168.1.1&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;192.168.1.3
+ESP_D38E41
+18:FE:34:D3:8E:41
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;temperature-server&quot;&gt;temperature server&lt;/h3&gt;
+
+&lt;p&gt;is in: ~/Sites/temperatureserver/app.py&lt;/p&gt;
+
+&lt;p&gt;run it manually with screen (too much of a pain to get it to run on boot)&lt;/p&gt;
+
+&lt;p&gt;once running, is at: http://192.168.1.200:5000&lt;br /&gt;
+or: cudmore.duckdns.org:5000&lt;/p&gt;
+
+&lt;p&gt;Remember, duckdns only works because I (1) port forward to .200 on router and (2) run some sort of synch software (from duckdns people) to notify their servers when my dynamic IP changes&lt;/p&gt;
+
+&lt;p&gt;temperature server subscribes to the MQTT server and listens on broker channel ‘#’&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;paho.Client().subscribe(&#39;#&#39;, 0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;These are my mqtt broker channels&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if msg.topic == &#39;nodemcu1/light&#39;:
+	nodemcu1_light = str(msg.payload)
+	#print &#39;    nodemcu1_light=&#39;, nodemcu1_light
+if msg.topic == &#39;nodemcu1/temperature&#39;:
+	nodemcu1_temperature = str(msg.payload)
+	#print &#39;    nodemcu1_temperature=&#39;, nodemcu1_temperature
+if msg.topic == &#39;nodemcu1/humidity&#39;:
+	nodemcu1_humidity = str(msg.payload)
+	#print &#39;    nodemcu1_humidity=&#39;, nodemcu1_humidity
+
+if msg.topic == &#39;nodemcu2/temperature&#39;:
+	nodemcu2_temperature = str(msg.payload)
+if msg.topic == &#39;nodemcu2/humidity&#39;:
+	nodemcu2_humidity = str(msg.payload)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>Home Cage Activity</title>
    <link href="http://blog.cudmore.io/post/2017/10/16/Home-cage-activity/"/>
    <updated>2017-10-16T20:00:01-04:00</updated>
    <id>http://blog.cudmore.io/post/2017/10/16/Home-cage-activity</id>
-   <content type="html">&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
+   <content type="html">&lt;p&gt;Record video 24/7 with a Raspberry Pi&lt;/p&gt;
+
+&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
 
 &lt;p&gt;This was originally written as readme for Valerie in the Bergles lab, 20160723.&lt;/p&gt;
 
@@ -188,20 +397,13 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
  </entry>
  
  <entry>
-   <title>Test</title>
-   <link href="http://blog.cudmore.io/post/2017/01/12/Test/"/>
-   <updated>2017-01-12T19:00:00-05:00</updated>
-   <id>http://blog.cudmore.io/post/2017/01/12/Test</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>Prairie scope analysis</title>
    <link href="http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis/"/>
    <updated>2016-11-19T19:00:00-05:00</updated>
    <id>http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis</id>
-   <content type="html">&lt;h2 id=&quot;current-workflow&quot;&gt;Current workflow&lt;/h2&gt;
+   <content type="html">&lt;p&gt;Acquisition and analysis workflow for Prairie two-photon scope&lt;/p&gt;
+
+&lt;h2 id=&quot;current-workflow&quot;&gt;Current workflow&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;prairie2tif_.py : Convert single image .tif directories (saved by Prairie) into single .tif stacks&lt;/li&gt;
