@@ -105,11 +105,20 @@ This is from the original [scope quote][1] (20150528), assuming it is what we ha
 
 Dual emission filters (et525/70m-2p and et595/50m-2p) and t565lpxr dichroic beam splitter for simultaneous viewing and acquisition from both detectors
 
-See Thermo Fischer Fluorescence SpectraViewer
+ - green band pass filter (could not find 70m version) is (et525/50m-2p)[https://www.chroma.com/products/parts/et525-50m]
+ - red band-pass filter is (et595/50m-2p)[https://www.chroma.com/products/parts/et595-50m]
+ - dichroic beam splitter is (t565lpxr)[https://www.chroma.com/products/parts/t565lpxr]
 
-https://www.thermofisher.com/us/en/home/life-science/cell-analysis/labeling-chemistry/fluorescence-spectraviewer.html
+See Thermo Fischer Fluorescence SpectraViewer for (Texas Red emission profile)[https://www.thermofisher.com/us/en/home/life-science/cell-analysis/labeling-chemistry/fluorescence-spectraviewer.html]
 
-With red filter centered at 595 nm we are collecting ~ 50% of Texas Red emission. 
+With red filter centered at 595 nm we are collecting ~ 50% of Texas Red emission. But the band is 50m which should do the job? But may not be enough?
 
+## Sutter red filter
+
+This is from email to Zeng You 20150416, did he replace this?
+
+The red filter in front of the PMT is from Chroma and is a HQ 610/75m
+
+(HQ 610/75m)[https://www.chroma.com/products/parts/hq610-75m]
 
 [1]: /images/JHU-15-051120E.pdf
