@@ -17,21 +17,19 @@ The parts list and implementation details are in [the original blog post][1].
 
 ## The Raspberry Pi is running Debian Linux and is networked
 
-	IP: 10.16.79.93
+	IP: 10.16.80.162
 	username: pi
-	password: raspberry
+	password: 
 
 
-### To Login to the Pi on Windows
+### To login to the Pi
 
-Download and then use Putty
+On Windows, download and then use Putty
 
 
-### To Login to the Pi on OSX
+On OSX, use the terminal application in `/Applications/Utilities/Terminal.app` and type:
 
-Use terminal and then type:
-
-    ssh pi@10.16.79.93
+    ssh pi@10.16.80.162
 
 
 ### Logout of the Pi
@@ -39,15 +37,15 @@ Use terminal and then type:
 
 ### Mount the pi hard-drive as a file-server
 
-On Windows, in the start menu, type
+On Windows, in the start menu, type:
 
-    \\10.16.79.93
+    \\10.16.80.162
 
-On OSX, in the ‘Connect to Server...’ dialog, type:
+On OSX, ‘Connect to Server...’ and type:
 
-    afp://10.16.79.93
+    afp://10.16.80.162
     or
-    smb://10.16.79.93
+    smb://10.16.80.162
 
 
 ## Running the code
@@ -55,7 +53,7 @@ On OSX, in the ‘Connect to Server...’ dialog, type:
 Run **testhome.py** to control the lights
 
     screen
-    cd /home/pi/homecageactivity
+    cd /home/pi/Sites/homecage
     python testhome.py
     #exit screen with ctrl+a then d
     exit 
@@ -63,7 +61,7 @@ Run **testhome.py** to control the lights
 Run **video.py** to record video
 
     screen
-    cd /home/pi/homecageactivity
+    cd /home/pi/Sites/homecage
     python testhome.py
     #exit screen with ctrl+a then d
     exit 
@@ -105,7 +103,7 @@ File are saved in
 
 Video files in .h264 need to be converted to .mp4 so they have meaningful fps. Do this with a bash script on osx.
 
- - Put the following code into a text file named convert.sh in same folder as .h264 files.
+ - Put the following code into a text file named `convert.sh` in same folder as .h264 files.
 
 ```bash
 	mkdir mp4
@@ -129,7 +127,7 @@ The following sequence will start the video recording and lights again
 
     1) pull power and plug back in
     2) login with putty/terminal
-    3) cd /homecageactivity
+    3) cd Sites/homecage
     4) screen
     5) python testhome.py
     6) [exit screen with ctrl+a then d]

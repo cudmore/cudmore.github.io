@@ -131,3 +131,34 @@ The red filter in front of the PMT is from Chroma and is a HQ 610/75m
 
 [1]: /images/JHU-15-051120E.pdf
 [Ultima-Operators-Manual-Rev-B]: /images/Ultima-Operators-Manual-Rev-B.pdf
+
+## Synch code to robertcudmore.org
+
+Treadmill is synching code to robertcudmore.org with unison
+
+Install unison with
+
+    sudo apt-get install unison
+    
+Save this into `/home/pi/.unison/treadmill.prf`
+
+```bash
+# Unison preferences file
+root = /home/pi/Sites/treadmill
+root = ssh://robertcu@robertcudmore.org/raspberry/Sites/treadmill
+
+#ignore = Path */raw/*
+
+ignore = Name *.pyc
+ignore = Name .git*
+ignore = Name .*
+ignore = Name .DS_Store
+ignore = Name *.DS_Store
+ignore = Name *.shtml
+ignore = Name *.htaccess
+
+# Be fast even on Windows
+#fastcheck = yes
+
+servercmd=/home1/robertcu/unison
+```
