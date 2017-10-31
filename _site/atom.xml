@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2017-10-31T17:22:32-04:00</updated>
+ <updated>2017-10-31T18:31:54-04:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -226,10 +226,6 @@ if msg.topic == &#39;nodemcu2/humidity&#39;:
    <id>http://blog.cudmore.io/post/2017/10/16/Home-cage-activity</id>
    <content type="html">&lt;p&gt;Record video 24/7 with a Raspberry Pi&lt;/p&gt;
 
-&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
-
-&lt;p&gt;This was originally written as readme for Valerie in the Bergles lab, 20160723.&lt;/p&gt;
-
 &lt;p&gt;The parts list and implementation details are in &lt;a href=&quot;/post/2014/02/14/Monitoring-mice-in-their-home-cage/&quot;&gt;the original blog post&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-raspberry-pi-is-running-debian-linux-and-is-networked&quot;&gt;The Raspberry Pi is running Debian Linux and is networked&lt;/h2&gt;
@@ -271,13 +267,25 @@ smb://10.16.80.162
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;h3 id=&quot;saved-files&quot;&gt;Saved files&lt;/h3&gt;
+
+&lt;p&gt;File are saved in &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/pi/video/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;super-simplified&quot;&gt;Super simplified&lt;/h2&gt;
+
+&lt;p&gt;Login to the pi and there are three commands&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;start&lt;/strong&gt; : Start lights and video&lt;br /&gt;
+ &lt;strong&gt;stop&lt;/strong&gt; : Stop lights and video&lt;br /&gt;
+ &lt;strong&gt;running&lt;/strong&gt; : Tells you if the lights/video are running&lt;/p&gt;
+
 &lt;h2 id=&quot;running-the-code&quot;&gt;Running the code&lt;/h2&gt;
 
-&lt;p&gt;Run &lt;strong&gt;testhome.py&lt;/strong&gt; to control the lights&lt;/p&gt;
+&lt;p&gt;Run &lt;strong&gt;lights.py&lt;/strong&gt; to control the lights&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen
 cd /home/pi/Sites/homecage
-python testhome.py
+python lights.py
 #exit screen with ctrl+a then d
 exit 
 &lt;/code&gt;&lt;/pre&gt;
@@ -287,7 +295,7 @@ exit
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen
 cd /home/pi/Sites/homecage
-python testhome.py
+python video.py
 #exit screen with ctrl+a then d
 exit 
 &lt;/code&gt;&lt;/pre&gt;
@@ -326,13 +334,7 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
 
 &lt;p&gt;Return to its screen (with screen -r …) and press ctrl+c&lt;/p&gt;
 
-&lt;h2 id=&quot;saved-files&quot;&gt;Saved files&lt;/h2&gt;
-
-&lt;p&gt;File are saved in&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home/pi/video/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;h2 id=&quot;converting-h264-files-to-mp4&quot;&gt;Converting .h264 files to .mp4&lt;/h2&gt;
 
 &lt;p&gt;Video files in .h264 need to be converted to .mp4 so they have meaningful fps. Do this with a bash script on osx.&lt;/p&gt;
 
@@ -366,7 +368,7 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
 2) login with putty/terminal
 3) cd Sites/homecage
 4) screen
-5) python testhome.py
+5) python lights.py
 6) [exit screen with ctrl+a then d]
 7) screen
 8) python video.py
@@ -375,6 +377,13 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;h2 id=&quot;the-source-code-for-lightspy-and-videopy&quot;&gt;The source code for lights.py and video.py&lt;/h2&gt;
+
+&lt;script src=&quot;https://gist.github.com/cudmore/576a808108acf22ff0a259cc1fc30c2a.js&quot;&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;This was originally written as readme for Valerie in the Bergles lab, 20160723.&lt;/p&gt;
 </content>
  </entry>
  

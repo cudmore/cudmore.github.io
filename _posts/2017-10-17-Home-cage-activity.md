@@ -9,10 +9,6 @@ tags:
 
 Record video 24/7 with a Raspberry Pi
 
-## History
-
-This was originally written as readme for Valerie in the Bergles lab, 20160723.
-
 The parts list and implementation details are in [the original blog post][1].
 
 ## The Raspberry Pi is running Debian Linux and is networked
@@ -21,11 +17,9 @@ The parts list and implementation details are in [the original blog post][1].
 	username: pi
 	password: 
 
-
 ### To login to the Pi
 
 On Windows, download and then use Putty
-
 
 On OSX, use the terminal application in `/Applications/Utilities/Terminal.app` and type:
 
@@ -47,14 +41,26 @@ On OSX, ‘Connect to Server...’ and type:
     or
     smb://10.16.80.162
 
+### Saved files
 
+File are saved in `/home/pi/video/`
+
+
+## Super simplified
+
+ Login to the pi and there are three commands
+ 
+ **start** : Start lights and video
+ **stop** : Stop lights and video
+ **running** : Tells you if the lights/video are running
+ 
 ## Running the code
 
-Run **testhome.py** to control the lights
+Run **lights.py** to control the lights
 
     screen
     cd /home/pi/Sites/homecage
-    python testhome.py
+    python lights.py
     #exit screen with ctrl+a then d
     exit 
 
@@ -62,7 +68,7 @@ Run **video.py** to record video
 
     screen
     cd /home/pi/Sites/homecage
-    python testhome.py
+    python video.py
     #exit screen with ctrl+a then d
     exit 
 
@@ -95,11 +101,7 @@ Or
 Return to its screen (with screen -r ...) and press ctrl+c
 
 
-## Saved files
-
-File are saved in
-
-    /home/pi/video/
+## Converting .h264 files to .mp4
 
 Video files in .h264 need to be converted to .mp4 so they have meaningful fps. Do this with a bash script on osx.
 
@@ -129,11 +131,18 @@ The following sequence will start the video recording and lights again
     2) login with putty/terminal
     3) cd Sites/homecage
     4) screen
-    5) python testhome.py
+    5) python lights.py
     6) [exit screen with ctrl+a then d]
     7) screen
     8) python video.py
     9) [exit screen with ctrl+a then d]
     10) exit
-    
+
+## The source code for lights.py and video.py
+
+<script src="https://gist.github.com/cudmore/576a808108acf22ff0a259cc1fc30c2a.js"></script>
 [1]: /post/2014/02/14/Monitoring-mice-in-their-home-cage/
+
+## History
+
+This was originally written as readme for Valerie in the Bergles lab, 20160723.
