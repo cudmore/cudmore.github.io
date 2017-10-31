@@ -12,7 +12,9 @@ Acquisition and analysis workflow for Prairie two-photon scope
 PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER
 
 [Operator's Manual][Ultima-Operators-Manual-Rev-B] pdf
+
 Scope ID is 4647
+
 [Original Quote][1] pdf
 
 ## Current workflow
