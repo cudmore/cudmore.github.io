@@ -11,6 +11,10 @@ Acquisition and analysis workflow for Prairie two-photon scope
 
 PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER
 
+[Operator's Manual][Ultima-Operators-Manual-Rev-B] pdf
+Scope ID is 4647
+[Original Quote][1] pdf
+
 ## Current workflow
 
  - prairie2tif_.py : Convert single image .tif directories (saved by Prairie) into single .tif stacks
@@ -124,3 +128,4 @@ The red filter in front of the PMT is from Chroma and is a HQ 610/75m
 (HQ 610/75m)[https://www.chroma.com/products/parts/hq610-75m]
 
 [1]: /images/JHU-15-051120E.pdf
+[Ultima-Operators-Manual-Rev-B]: /images/Ultima-Operators-Manual-Rev-B.pdf
