@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>libav for ffmpeg</title>
+        
+          <description>&lt;p&gt;I have written this post countless times. Here I will finally switch to using libav over ffmpeg.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 31 Oct 2017 20:00:01 -0400</pubDate>
+        <link>
+        http://blog.cudmore.io/post/2017/10/31/libav-for-ffmpeg/</link>
+        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/31/libav-for-ffmpeg/</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Raspberry startup tweet</title>
         
           <description>&lt;p&gt;Have a Raspberry send a tweet with its IP when it boots. This is incredibly useful when your Pi is headless with no monitor. There are tons of tutorials on this including one at &lt;a href=&quot;http://www.instructables.com/id/How-to-Send-Tweets-From-Your-Raspberry-Pi/&quot;&gt;instructables&lt;/a&gt; and another at &lt;a href=&quot;https://opensource.com/article/17/8/raspberry-pi-twitter-bot&quot;&gt;opensource&lt;/a&gt;.&lt;/p&gt;

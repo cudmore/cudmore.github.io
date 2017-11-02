@@ -16,6 +16,14 @@ The parts list and implementation details are in [the original blog post][1].
 	IP: 10.16.80.162
 	username: pi
 	password: 
+	
+The IP should not change, this was set up with the network office.
+
+When the Pi boots, it will tweet with its ip address. Subscribe to `@cudmore_io` (or is it cudmore.io) to receive the tweets.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">homecage 10.16.80.162 2017-11-01 15:57:56</p>&mdash; cudmore.io (@cudmore_io) <a href="https://twitter.com/cudmore_io/status/925814187967774721?ref_src=twsrc%5Etfw">November 1, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 ### To login to the Pi
 
@@ -54,7 +62,7 @@ File are saved in `/home/pi/video/`
  **stop** : Stop lights and video
  **running** : Tells you if the lights/video are running
  
-## Running the code
+## Running the code (old, not needed)
 
 Run **lights.py** to control the lights
 
@@ -146,3 +154,40 @@ The following sequence will start the video recording and lights again
 ## History
 
 This was originally written as readme for Valerie in the Bergles lab, 20160723.
+
+## Other systems
+
+[1][https://www.nc3rs.org.uk/crackit-news/automated-monitoring-mouse-behaviour-social-home-cage-groups]
+
+## Adding a crontab entry
+
+Open up crontab in editor
+
+    crontab -e
+    
+Append these lines
+
+    @reboot (sleep 15; python /home/pi/code/startup_tweeter.py &)
+    @reboot (sleep 15; cd /home/pi/Sites/triggercamera; python /home/pi/Sites/triggercamera/triggercamera_app.py &)
+    
+## Images
+
+<IMG SRC="images/homecage/1.jpg" width=400>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
