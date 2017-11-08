@@ -18,7 +18,17 @@ See the [ffmpeg/libav][1] recipe I am following on the Debian wiki.
 	sudo apt-get update
 	sudo apt-get install libav-tools
 
-avconv -r 15 -i ~/video/20171101/20171101_162658.h264 -r 15 -vcodec copy mp4/20171101_162658.mp4
+## convert
+
+The .h264 is primarily designed for streaming and does not have the concept of fps (it is determined by the rate of streaming).
+
+Here we convert `20171108_102418.h264` into `20171108_102418.mp4` with 15 fps.
+
+    avconv -i 20171108_102418.h264 -r 15 -vcodec copy mp4/20171108_102418.mp4
+
+## to do
+
+Write bash script to convert a directory of .h264 into .mp4 (with fps)
 
 
 [1]: https://wiki.debian.org/ffmpeg
