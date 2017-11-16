@@ -14,9 +14,25 @@ The uv4l people have update their code and you can now stream real-time high res
 
 This software has a lot of aspirations beyond video including implementing all sorts of real-time web communication with [webRTC][webrtc]. 
 
-[Install drivers](http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&artid=14)
+As of Nov 2017, following [this tutorial][1].
 
 	curl http://www.linux-projects.org/listing/uv4l_repo/lrkey.asc | sudo apt-key add -
+
+Determine which version of Raspbian you are running. We will assume we are running the newer `jessie` version.
+
+```
+cat /etc/os-release
+```
+PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
+NAME="Raspbian GNU/Linux"
+VERSION_ID="8"
+VERSION="8 (jessie)"
+ID=raspbian
+ID_LIKE=debian
+HOME_URL="http://www.raspbian.org/"
+SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
+BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+```
 
 Add the following to `/etc/apt/sources.list`
 
@@ -24,11 +40,12 @@ Add the following to `/etc/apt/sources.list`
 sudo pico /etc/apt/sources.list
 ```
  
-	deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ wheezy main
+	deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ jessie main
 
 Install
 
-	sudo apt-get update
+	sudo apt-get update #update database
+	sudo apt-get upgrade #update userspace, not neccessary but for good measure
 	sudo apt-get install uv4l uv4l-raspicam
 	sudo apt-get install uv4l-server
 	
@@ -47,7 +64,17 @@ Run a streaming server with real-time video streaming
 This runs a web server on port 8080. Once running, browse to your machines IP. The stream should have almost 0 lag time and be running at about 30 fps. Amazing.
 
 	http://192.168.1.60:8080
-	  
+	
+### Problem
+
+uv4l is now starting at system boot and i can't turn it off?
+
+Can be stopped with
+
+```
+sudo /etc/init.d/uv4l_raspicam stop
+```
+  
 See Also
 
  - [Use cases](http://www.linux-projects.org/modules/sections/index.php?op=viewarticle&artid=16#example11)
@@ -55,4 +82,4 @@ See Also
 [v4l]: https://www.linuxtv.org
 [v4l2]: https://www.raspberrypi.org/forums/viewtopic.php?t=62364
 [webrtc]: https://webrtc.org
-    
+[1]: https://www.linux-projects.org/uv4l/installation/
