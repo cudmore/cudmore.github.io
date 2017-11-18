@@ -12,20 +12,28 @@ If you are Microsoft Windows based, have a look [here][mswindows] for a good ins
 
 # Download image
 
-As of May 21, 2016 the image was named `2016-05-10-raspbian-jessie`. [Download here][downloadraspian]
+ - As of May 21, 2016 the image was named `2016-05-10-raspbian-jessie`.
+ - As of Nov 16, 2017 the image was named `2017-09-07-raspbian-stretch-lite`.
+ [Download here][downloadraspian]
 
 # Copy image to SD card
 
 Follow an installation guide [here][installguide].
+
+Unzip the .zip file. Right click the .zip file and select 'Open With - Archive Utility.app (default)'. This will yields a .img file.
 
 On Mac OS
 
     #Insert SD card and format as Fat32
 	diskutil list # find the /dev/disk<n>, mine was /dev/disk3
 	diskutil unmountDisk /dev/disk3 #unmount disk
-	# copy .img file to disk
-	sudo dd bs=1m if=/Users/cudmore/Downloads/2016-05-10-raspbian-jessie.img of=/dev/rdisk3
+	# copy .img file to SD card
+	sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk3
 
+As of the November 2016 release, Raspbian has the SSH server disabled by default. You will have to enable it manually. To enable the ssh server, create a file named 'ssh' in the root folder of the SD card
+
+    touch /Volumes/boot/ssh
+    
 # First boot of the Pi
 
 Connect Pi to a router with an ethernet cable and boot
@@ -172,7 +180,7 @@ Set the email parameters in startup_mail.py
 
 Run crontab as root and append one line `@reboot (sleep 10; /home/pi/code/startup_mailer.py)`
 
-    sudo crontab -e
+    crontab -e
 
 Add this to end (sleep 5 does not work!!!!)
 
@@ -182,7 +190,7 @@ Now, when pi boots it will send an email with it's ip. Try it with
 
     sudo reboot
 
-## Install screen
+## Install screen (not needed any more)
 
     sudo apt-get install screen
 
