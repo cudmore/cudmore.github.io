@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2017-11-20T12:20:15-05:00</updated>
+ <updated>2017-11-22T12:11:51-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -1136,6 +1136,8 @@ Pin-Priority: 990
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;p&gt;20171122 - The name and location of these options have changed. This is still the general idea&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;1 Expand Filesystem&lt;/li&gt;
   &lt;li&gt;2 Change User Password&lt;/li&gt;
@@ -1166,13 +1168,15 @@ Pin-Priority: 990
 &lt;h3 id=&quot;update-the-system&quot;&gt;2.3) Update the system&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update  #update database
-sudo apt-get upgrade #update userspace
+sudo apt-get upgrade #update userspace (this can take a long time)
 sudo rpi-update      #update firmware (requires reboot)
 sudo reboot          #reboot
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&quot;setup-the-network&quot;&gt;Setup the network&lt;/h2&gt;
+
+&lt;p&gt;20171122, Looks like this got complicated again. See &lt;a href=&quot;https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address&quot;&gt;this&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi.&lt;/p&gt;
 
@@ -1193,6 +1197,18 @@ allow-hotplug wlan0
 iface wlan0 inet manual
 wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;20171122 the file now contains&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and &#39;man dhcpcd.conf&#39;
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1258,6 +1274,8 @@ network={
 
 &lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/&quot;&gt;this blog post&lt;/a&gt; to change the name of the mount point from ‘Home Directory’.&lt;/p&gt;
 
+&lt;p&gt;In the following &lt;code class=&quot;highlighter-rouge&quot;&gt;the_name_you_want&lt;/code&gt; should be changed to the name you want.&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# stop netatalk
 sudo /etc/init.d/netatalk stop
 
@@ -1268,27 +1286,80 @@ sudo nano /etc/netatalk/AppleVolumes.default
 
 # By default all users have access to their home directories.
 #~/                     &quot;Home Directory&quot;
-~/                      &quot;pi50&quot;
+~/                      &quot;the_name_you_want&quot;
 
 # restart netatalk
 sudo /etc/init.d/netatalk start
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;make-the-pi-send-email-with-ip-on-boot-20171120-no-longer-works&quot;&gt;Make the Pi send email with IP on boot (20171120, no longer works)&lt;/h2&gt;
+&lt;h2 id=&quot;install-additional-python-packages&quot;&gt;Install additional python packages&lt;/h2&gt;
 
-&lt;p&gt;Create an executable python script to send en email with IP. An example &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# assuming you want python 2.7
+sudo apt-get install python-pip
+
+# pi camera
+sudo apt-get install python-picamera
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;startup-tweet&quot;&gt;Startup tweet&lt;/h2&gt;
+
+&lt;p&gt;Have the Pi send a tweet with its IP when it boots.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2017/10/27/Raspberry-startup-tweet/&quot;&gt;this blog post&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-uv4l-optional-for-video-streaming&quot;&gt;Install uv4l (optional for video streaming)&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/&quot;&gt;uv4l-on-Raspberry-Pi&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-unison-optional&quot;&gt;Install unison (optional)&lt;/h2&gt;
+
+&lt;p&gt;If you don’t know what unison is then don’t install it.&lt;/p&gt;
+
+&lt;p&gt;My remote server (via bluehost) has unison 2.4 installed. The newest version of Raspbian Jessie is using unison 2.8. I need to roll back unison on Raspberry to 2.4 for this to work&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir tmp
+cd tmp
+wget http://mirrordirector.raspbian.org/raspbian/pool/main/u/unison/unison_2.40.65-2_armhf.deb
+sudo dpkg -i unison_2.40.65-2_armhf.deb 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install unison
+# see link to set up auto authentication with rsa keys
+unison # run once to make /home/pi/.unison
+pico /home/pi/.unison/sites.prf    
+
+# This is contents of /home/pi/.unison/sites.prf
+# Unison preferences file
+root = /home/pi/Sites
+root = ssh://robertcu@robertcudmore.org/raspberry/Sites
+
+ignore = Name *.tif
+ignore = Name .AppleDouble
+ignore = Name .DS_Store
+ignore = Name *.DS_Store
+ignore = Name *.shtml
+ignore = Name *.htaccess
+
+# Be fast even on Windows
+# fastcheck = yes
+
+servercmd=/home1/robertcu/unison
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;startup-mailer-20171120-no-longer-works&quot;&gt;Startup mailer (20171120, no longer works)&lt;/h2&gt;
+
+&lt;p&gt;Have the Pi send an email with its IP address when it boots.&lt;/p&gt;
+
+&lt;p&gt;An example &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir code
 cd code
 wget https://github.com/cudmore/cudmore.github.io/raw/master/_site/downloads/startup_mailer.py
 chmod +x startup_mailer.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Make sure the first line in the .py code is &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1306,7 +1377,7 @@ gmail_password = &#39;ENTER_YOUR_PASSWORD_HERE&#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Add this to end (sleep 5 does not work!!!!)&lt;/p&gt;
+&lt;p&gt;Add this to end. Sleep is in seconds, this is necessary to wait for internet connection to come up.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot (sleep 10; /home/pi/code/startup_mailer.py)
 &lt;/code&gt;&lt;/pre&gt;
@@ -1315,28 +1386,6 @@ gmail_password = &#39;ENTER_YOUR_PASSWORD_HERE&#39;
 &lt;p&gt;Now, when pi boots it will send an email with it’s ip. Try it with&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;install-uv4l-optional-for-video-streaming&quot;&gt;Install uv4l (optional for video streaming)&lt;/h2&gt;
-
-&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/&quot;&gt;uv4l-on-Raspberry-Pi&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;install-screen-optional&quot;&gt;Install screen (optional)&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install screen
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Any code run inside a screen session will continue to run even after ou logout of the system.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screen #start a screen session
-python my_python_code.py #start some code
-#detatch from screen with ctrl+a then d
-#logout
-#log back in
-screen -r #resume your screen session and you will see your code is still running
-#don&#39;t forget to detatch again with ctrl+a then d
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 

@@ -82,7 +82,9 @@ You are on your own, download and use [Putty][putty].
 ### 2.2) Run configuration utility
 
     sudo raspi-config
-  
+
+20171122 - The name and location of these options have changed. This is still the general idea
+
  - 1 Expand Filesystem
  - 2 Change User Password
  - 3 Boot Options
@@ -102,11 +104,13 @@ Selecting Boot Options -> Console is important. It seems Raspbian ships with X-W
 ### 2.3) Update the system
 
     sudo apt-get update  #update database
-    sudo apt-get upgrade #update userspace
+    sudo apt-get upgrade #update userspace (this can take a long time)
     sudo rpi-update      #update firmware (requires reboot)
     sudo reboot          #reboot
 
 ## Setup the network
+
+20171122, Looks like this got complicated again. See [this][10]
 
 When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi.
 
@@ -127,6 +131,18 @@ sudo pico /etc/network/interfaces
     iface wlan0 inet manual
     wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
     iface default inet dhcp
+
+20171122 the file now contains
+
+```
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+```
 
 #### Edit wpa_supplicant.conf
 
@@ -184,6 +200,8 @@ When you mount the pi on MacOS, it will mount as 'Home Directory' and the space 
 
 See [this blog post][afpmountpoint] to change the name of the mount point from 'Home Directory'.    
 
+In the following `the_name_you_want` should be changed to the name you want.
+
     # stop netatalk
     sudo /etc/init.d/netatalk stop
 
@@ -194,23 +212,76 @@ See [this blog post][afpmountpoint] to change the name of the mount point from '
 
     # By default all users have access to their home directories.
     #~/                     "Home Directory"
-    ~/                      "pi50"
+    ~/                      "the_name_you_want"
 
     # restart netatalk
     sudo /etc/init.d/netatalk start
 
-## Make the Pi send email with IP on boot (20171120, no longer works)
+## Install additional python packages
 
-Create an executable python script to send en email with IP. An example [startup_mailer.py][startupmailer]
+    # assuming you want python 2.7
+    sudo apt-get install python-pip
+    
+    # pi camera
+    sudo apt-get install python-picamera
+    
+    
+## Startup tweet
+
+Have the Pi send a tweet with its IP when it boots.
+
+See [this blog post][startuptweeter]
+	
+## Install uv4l (optional for video streaming)
+
+See [uv4l-on-Raspberry-Pi][uv4l]
+
+## Install unison (optional)
+
+If you don't know what unison is then don't install it.
+
+My remote server (via bluehost) has unison 2.4 installed. The newest version of Raspbian Jessie is using unison 2.8. I need to roll back unison on Raspberry to 2.4 for this to work
+
+
+    mkdir tmp
+    cd tmp
+    wget http://mirrordirector.raspbian.org/raspbian/pool/main/u/unison/unison_2.40.65-2_armhf.deb
+    sudo dpkg -i unison_2.40.65-2_armhf.deb 
+
+```
+sudo apt-get install unison
+# see link to set up auto authentication with rsa keys
+unison # run once to make /home/pi/.unison
+pico /home/pi/.unison/sites.prf    
+
+# This is contents of /home/pi/.unison/sites.prf
+# Unison preferences file
+root = /home/pi/Sites
+root = ssh://robertcu@robertcudmore.org/raspberry/Sites
+
+ignore = Name *.tif
+ignore = Name .AppleDouble
+ignore = Name .DS_Store
+ignore = Name *.DS_Store
+ignore = Name *.shtml
+ignore = Name *.htaccess
+
+# Be fast even on Windows
+# fastcheck = yes
+
+servercmd=/home1/robertcu/unison
+```
+
+## Startup mailer (20171120, no longer works)
+
+Have the Pi send an email with its IP address when it boots.
+
+An example [startup_mailer.py][startupmailer]
 
     mkdir code
     cd code
     wget https://github.com/cudmore/cudmore.github.io/raw/master/_site/downloads/startup_mailer.py
     chmod +x startup_mailer.py
-
-Make sure the first line in the .py code is `#!/usr/bin/python`.
-
-    #!/usr/bin/python
 
 Set the email parameters in startup_mail.py
 
@@ -222,7 +293,7 @@ Run crontab as root and append one line `@reboot (sleep 10; /home/pi/code/startu
 
     crontab -e
 
-Add this to end (sleep 5 does not work!!!!)
+Add this to end. Sleep is in seconds, this is necessary to wait for internet connection to come up.
 
     @reboot (sleep 10; /home/pi/code/startup_mailer.py)
 
@@ -230,23 +301,7 @@ Now, when pi boots it will send an email with it's ip. Try it with
 
     sudo reboot
 
-## Install uv4l (optional for video streaming)
 
-See [uv4l-on-Raspberry-Pi][uv4l]
-
-## Install screen (optional)
-
-    sudo apt-get install screen
-
-Any code run inside a screen session will continue to run even after ou logout of the system.
-
-    screen #start a screen session
-    python my_python_code.py #start some code
-    #detatch from screen with ctrl+a then d
-    #logout
-    #log back in
-    screen -r #resume your screen session and you will see your code is still running
-    #don't forget to detatch again with ctrl+a then d
 
    
 [downloadraspian]: https://www.raspberrypi.org/downloads/
@@ -254,5 +309,7 @@ Any code run inside a screen session will continue to run even after ou logout o
 [mswindows]: http://www.circuitbasics.com/raspberry-pi-basics-setup-without-monitor-keyboard-headless-mode/
 [afpmountpoint]: http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/
 [startupmailer]: https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py
+[startuptweeter]: http://blog.cudmore.io/post/2017/10/27/Raspberry-startup-tweet/
 [uv4l]: http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/
 [putty]: http://www.putty.org/
+[10]: https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address
