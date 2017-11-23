@@ -1,12 +1,16 @@
 ---
 layout: post
-title: "Installing Raspian Jessie on a Raspberry 2/3"
+title: "Installing Raspian Stretch on a Raspberry Pi"
 category: post
-date: 2016-05-21 01:01:06
+date: 2017-11-22 01:01:06
 tags:
 - raspberry
 - linux
 ---
+
+These are instructions for installing the Raspian Stretch (Debian) system on a Raspberry Pi.
+
+This was originally written for Jessie in May 2016 and then updated for Stretch on Nov 22, 2017.
 
 ## 1) Set up the SD card
 
@@ -26,7 +30,7 @@ For either MacOS or Windows, follow an installation guide [here][installguide].
 
 Unzip the .zip file by right clicking the .zip file and selecting 'Open With - Archive Utility.app (default)'. This will yield a .img file.
 
-Insert SD card and format as Fat32 with DiskUtil.
+Insert SD card and use DiskUtil to format it as Fat32.
 
 Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount)
 
@@ -45,7 +49,7 @@ You should see something like this.
 Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk9
 
 ```bash
-sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk3
+sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk9
 ```
 
 #### On Windows
@@ -85,20 +89,22 @@ You are on your own, download and use [Putty][putty].
 
 20171122 - The name and location of these options have changed. This is still the general idea
 
- - 1 Expand Filesystem
- - 2 Change User Password
+ - 1 Change User password
+ - 2 Hostname -> [Chose a name]
  - 3 Boot Options
-   - B1 Console
- - 5 Internationalisation Options
-   - I1 Change Local -> en_US.UTF-8 UTF-8
-   - I2 Change Timezone -> US -> Eastern
-   - I4 Change Wi-fi Country -> US United States
- - 6 Enable Camera
- - 9 Advanced Options
-   - A2 Hostname -> [choose a name here, I chose pi3]
- - Set the network name with xxx
- - Turn on the camera
-   
+   - B1 Desktop / CLI 
+     - B1 Console
+ - 4 Localization Options
+   - I1 Change Local
+     - De-Select en_GB.UTF-8 UTF-8
+     - Select en_US.UTF-8 UTF-8 
+   - I2 Change Timezone
+   - I4 Change Wi-fi Country
+ - 5 Interface Options
+   - P1 Camera
+ - 7 Advanced Options
+   - A1 Expand Filesystem
+     
 Selecting Boot Options -> Console is important. It seems Raspbian ships with X-Windows on by default and you want to turn it off.
 
 ### 2.3) Update the system
@@ -110,7 +116,9 @@ Selecting Boot Options -> Console is important. It seems Raspbian ships with X-W
 
 ## Setup the network
 
-20171122, Looks like this got complicated again. See [this][10]
+If you are connecting to a router there is no additional setup required.
+
+20171122, With Raspbian Stretch this got complicated again. See [this][10]
 
 When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi.
 
@@ -132,7 +140,7 @@ sudo pico /etc/network/interfaces
     wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
     iface default inet dhcp
 
-20171122 the file now contains
+20171122 Raspbian Stretch the file now contains
 
 ```
 # interfaces(5) file used by ifup(8) and ifdown(8)
@@ -217,14 +225,14 @@ In the following `the_name_you_want` should be changed to the name you want.
     # restart netatalk
     sudo /etc/init.d/netatalk start
 
-## Install additional python packages
+## Install additional python packages (optional)
 
     # assuming you want python 2.7
     sudo apt-get install python-pip
     
     # pi camera
     sudo apt-get install python-picamera
-    
+
     
 ## Startup tweet
 
