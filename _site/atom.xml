@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://blog.cudmore.io/atom.xml" rel="self"/>
  <link href="http://blog.cudmore.io/"/>
- <updated>2017-11-28T09:11:17-05:00</updated>
+ <updated>2017-12-02T09:38:29-05:00</updated>
  <id>http://blog.cudmore.io</id>
  <author>
    <name>Robert Cudmore</name>
@@ -346,13 +346,13 @@ network={
 
 &lt;h2 id=&quot;afp--netatalk--avahi&quot;&gt;AFP / Netatalk / Avahi&lt;/h2&gt;
 
-&lt;p&gt;This will make the Pi a file-server that can be accessed from a MacOS computer with apple-file-protocol (afp).&lt;/p&gt;
+&lt;p&gt;This will make the Pi an apple-file-protocol file-server that can be accessed MacOS.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install netatalk
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section&lt;/p&gt;
+&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section. The Pi can be manually mounted from MacOS by going to &lt;code class=&quot;highlighter-rouge&quot;&gt;Go - Connect To Server...&lt;/code&gt; and entering &lt;code class=&quot;highlighter-rouge&quot;&gt;afp://IP&lt;/code&gt; where IP is the IP address of your Pi.&lt;/p&gt;
 
 &lt;h4 id=&quot;change-the-default-name-of-your-pi-in-netatalk&quot;&gt;Change the default name of your Pi in netatalk&lt;/h4&gt;
 
@@ -379,6 +379,49 @@ sudo /etc/init.d/netatalk start
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;h2 id=&quot;samba&quot;&gt;Samba&lt;/h2&gt;
+
+&lt;p&gt;This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install samba samba-common-bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/samba/smb.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/samba/smb.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add the following&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[share]
+Comment = Pi shared folder
+Path = /home/pi
+Browseable = yes
+Writeable = Yes
+only guest = no
+create mask = 0777
+directory mask = 0777
+Public = yes
+Guest ok = no
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add a password&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo smbpasswd -a pi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Restart samba&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/init.d/samba restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Test the server from another machine on the network. On a windows machine, mount the fileserver with &lt;code class=&quot;highlighter-rouge&quot;&gt;smb:\\IP&lt;/code&gt; where IP is the IP address of your pi.&lt;/p&gt;
+
 &lt;h2 id=&quot;install-additional-python-packages-optional&quot;&gt;Install additional python packages (optional)&lt;/h2&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# assuming you want python 2.7
@@ -391,13 +434,15 @@ sudo apt-get install python-picamera
 
 &lt;h2 id=&quot;startup-tweet&quot;&gt;Startup tweet&lt;/h2&gt;
 
-&lt;p&gt;Have the Pi send a tweet with its IP when it boots.&lt;/p&gt;
+&lt;p&gt;Have the Pi send a tweet with its IP when it boots. See &lt;a href=&quot;http://blog.cudmore.io/post/2017/10/27/Raspberry-startup-tweet/&quot;&gt;this blog post&lt;/a&gt; for instructions.&lt;/p&gt;
 
-&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2017/10/27/Raspberry-startup-tweet/&quot;&gt;this blog post&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;startup-mailer&quot;&gt;Startup mailer&lt;/h2&gt;
+
+&lt;p&gt;Have the Pi send an email with its IP address when it boots. See &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;this blog post&lt;/a&gt; for instructions. An example python script is here, &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;install-uv4l-optional-for-video-streaming&quot;&gt;Install uv4l (optional for video streaming)&lt;/h2&gt;
 
-&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/&quot;&gt;uv4l-on-Raspberry-Pi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/&quot;&gt;uv4l-on-Raspberry-Pi&lt;/a&gt; for instructions.&lt;/p&gt;
 
 &lt;h2 id=&quot;install-unison-optional&quot;&gt;Install unison (optional)&lt;/h2&gt;
 
@@ -433,45 +478,6 @@ ignore = Name *.htaccess
 # fastcheck = yes
 
 servercmd=/home1/robertcu/unison
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;startup-mailer-20171120-no-longer-works&quot;&gt;Startup mailer (20171120, no longer works)&lt;/h2&gt;
-
-&lt;p&gt;Have the Pi send an email with its IP address when it boots.&lt;/p&gt;
-
-&lt;p&gt;An example &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir code
-cd code
-wget https://github.com/cudmore/cudmore.github.io/raw/master/_site/downloads/startup_mailer.py
-chmod +x startup_mailer.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Set the email parameters in startup_mail.py&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;to = &#39;robert.cudmore@gmail.com&#39;
-gmail_user = &#39;cudmore.raspberry@gmail.com&#39;
-gmail_password = &#39;ENTER_YOUR_PASSWORD_HERE&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Run crontab as root and append one line &lt;code class=&quot;highlighter-rouge&quot;&gt;@reboot (sleep 10; /home/pi/code/startup_mailer.py)&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crontab -e
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Add this to end. Sleep is in seconds, this is necessary to wait for internet connection to come up.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot (sleep 10; /home/pi/code/startup_mailer.py)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now, when pi boots it will send an email with it’s ip. Try it with&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo reboot
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 

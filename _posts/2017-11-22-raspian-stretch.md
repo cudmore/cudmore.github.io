@@ -195,12 +195,11 @@ The MAC address is listed as 'HWaddr' and in this case is '00:0b:81:89:11:8a'.
 
 ## AFP / Netatalk / Avahi
 
-This will make the Pi a file-server that can be accessed from a MacOS computer with apple-file-protocol (afp).
+This will make the Pi an apple-file-protocol file-server that can be accessed MacOS.
 
     sudo apt-get install netatalk
 
-Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared' section
-
+Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared' section. The Pi can be manually mounted from MacOS by going to `Go - Connect To Server...` and entering `afp://IP` where IP is the IP address of your Pi.
 
 #### Change the default name of your Pi in netatalk
 
@@ -225,6 +224,40 @@ In the following `the_name_you_want` should be changed to the name you want.
     # restart netatalk
     sudo /etc/init.d/netatalk start
 
+
+## Samba
+
+This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.
+
+    sudo apt-get install samba samba-common-bin
+
+Edit `/etc/samba/smb.conf`
+
+	sudo pico /etc/samba/smb.conf
+
+Add the following
+
+	[share]
+	Comment = Pi shared folder
+	Path = /home/pi
+	Browseable = yes
+	Writeable = Yes
+	only guest = no
+	create mask = 0777
+	directory mask = 0777
+	Public = yes
+	Guest ok = no
+
+Add a password
+
+	sudo smbpasswd -a pi
+
+Restart samba
+
+	sudo /etc/init.d/samba restart
+	
+Test the server from another machine on the network. On a windows machine, mount the fileserver with `smb:\\IP` where IP is the IP address of your pi.
+
 ## Install additional python packages (optional)
 
     # assuming you want python 2.7
@@ -236,13 +269,15 @@ In the following `the_name_you_want` should be changed to the name you want.
     
 ## Startup tweet
 
-Have the Pi send a tweet with its IP when it boots.
-
-See [this blog post][startuptweeter]
+Have the Pi send a tweet with its IP when it boots. See [this blog post][startuptweeter] for instructions.
 	
+## Startup mailer
+
+Have the Pi send an email with its IP address when it boots. See [this blog post][startupmailer] for instructions. An example python script is here, [startup_mailer.py][startupmailer]
+
 ## Install uv4l (optional for video streaming)
 
-See [uv4l-on-Raspberry-Pi][uv4l]
+See [uv4l-on-Raspberry-Pi][uv4l] for instructions.
 
 ## Install unison (optional)
 
@@ -279,36 +314,6 @@ ignore = Name *.htaccess
 
 servercmd=/home1/robertcu/unison
 ```
-
-## Startup mailer (20171120, no longer works)
-
-Have the Pi send an email with its IP address when it boots.
-
-An example [startup_mailer.py][startupmailer]
-
-    mkdir code
-    cd code
-    wget https://github.com/cudmore/cudmore.github.io/raw/master/_site/downloads/startup_mailer.py
-    chmod +x startup_mailer.py
-
-Set the email parameters in startup_mail.py
-
-	to = 'robert.cudmore@gmail.com'
-	gmail_user = 'cudmore.raspberry@gmail.com'
-	gmail_password = 'ENTER_YOUR_PASSWORD_HERE'
-
-Run crontab as root and append one line `@reboot (sleep 10; /home/pi/code/startup_mailer.py)`
-
-    crontab -e
-
-Add this to end. Sleep is in seconds, this is necessary to wait for internet connection to come up.
-
-    @reboot (sleep 10; /home/pi/code/startup_mailer.py)
-
-Now, when pi boots it will send an email with it's ip. Try it with
-
-    sudo reboot
-
 
 
    
