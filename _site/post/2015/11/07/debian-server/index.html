@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -238,7 +238,7 @@
   <li>Run transmission for torrent download</li>
 </ul>
 
-<h3 id="the-hardware-is-as-follows">0) The hardware is as follows</h3>
+<h3 id="0-the-hardware-is-as-follows">0) The hardware is as follows</h3>
 
 <ul>
   <li>See my pcpartspicker <a href="http://pcpartpicker.com/p/PRq8Vn">inventory</a></li>
@@ -249,7 +249,7 @@
   <li>Power: EVGA 430W 80+ Certified ATX</li>
 </ul>
 
-<h3 id="download-and-install-debian">1) Download and install debian</h3>
+<h3 id="1-download-and-install-debian">1) Download and install debian</h3>
 
 <ul>
   <li>Download debian jessie</li>
@@ -258,26 +258,23 @@
   <li>
     <p>Check your debian version</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>cat /etc/debian_version 
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat /etc/debian_version 
 8.2
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ul>
 
-<h3 id="configure-debian-jessie">2) Configure debian jessie</h3>
+<h3 id="2-configure-debian-jessie">2) Configure debian jessie</h3>
 
 <h4 id="update-your-repositories">Update your repositories</h4>
 
-<p><code class="highlighter-rouge">
-  apt-get update
- </code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  apt-get update
+</code></pre></div></div>
 
 <h4 id="ssh">ssh</h4>
 
-<p><code class="highlighter-rouge">
-  apt-get install openssh-server
- </code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  apt-get install openssh-server
+</code></pre></div></div>
 
 <ul>
   <li>Follow <a href="https://wiki.debian.org/SSH# Installation_of_the_server">this</a></li>
@@ -295,21 +292,19 @@
   <li>
     <p>partition</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>cfdisk /dev/sdb
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cfdisk /dev/sdb
+</code></pre></div>    </div>
   </li>
   <li>
     <p>format</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>mkfs.ext4 /dev/sdb1
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext4 /dev/sdb1
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Once disk is partitioned and formatted, this is what it looks like</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">cudmore@debian:~$ </span>sudo fdisk -l /dev/sdb
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cudmore@debian:~<span class="nv">$ </span><span class="nb">sudo </span>fdisk <span class="nt">-l</span> /dev/sdb
 Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
 Units: sectors of 1 <span class="k">*</span> 512 <span class="o">=</span> 512 bytes
 Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512 bytes / 512 bytes
@@ -319,32 +314,29 @@ Disk identifier: 8B1D619B-4B38-44AE-AEE1-0180F07FC75F
   
 Device     Start        End    Sectors  Size Type
 /dev/sdb1   2048 3907029134 3907027087  1.8T Linux filesystem
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Mount the second harddrive in a folder /movies</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>mkdir /movies <span class="c"># remember to set group and group rwx later</span>
-mount -t ext4 /dev/sdb1 /movies
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir /movies <span class="c"># remember to set group and group rwx later</span>
+mount <span class="nt">-t</span> ext4 /dev/sdb1 /movies
+</code></pre></div>    </div>
   </li>
   <li>
     <p>blkid to get unique name for fstab entry</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">cudmore@debian:~$ </span>sudo blkid
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cudmore@debian:~<span class="nv">$ </span><span class="nb">sudo </span>blkid
 /dev/sda1: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"30EE-7B6B"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"vfat"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"1eae1e11-6902-45f9-9c27-55ab648972b3"</span>
 /dev/sda2: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"2cf97347-1baf-4abf-a297-650ebf4dfdff"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"15ac40fa-5874-423b-9282-209a8b88a60a"</span>
 /dev/sda3: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"16a7a205-220c-4583-a758-4fcaf3eb0417"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"swap"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"fa435c81-ab1e-4192-97ba-e55c08ceb932"</span>
 /dev/sdb1: <span class="nv">UUID</span><span class="o">=</span><span class="s2">"f6b5096b-188b-4204-92aa-31e8c58e0eb6"</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"61e5434f-7975-45a8-a8c4-6148fb56f9b4"</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Append the new disk to /etc/fstab</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">cudmore@debian:~$ </span>more /etc/fstab 
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cudmore@debian:~<span class="nv">$ </span>more /etc/fstab 
 <span class="c"># /etc/fstab: static file system information.</span>
 <span class="c">#</span>
 <span class="c"># Use 'blkid' to print the universally unique identifier for a</span>
@@ -360,8 +352,7 @@ mount -t ext4 /dev/sdb1 /movies
 <span class="nv">UUID</span><span class="o">=</span>16a7a205-220c-4583-a758-4fcaf3eb0417 none            swap    sw              0       0
 <span class="c"># 2tb drive for movies</span>
 <span class="nv">UUID</span><span class="o">=</span>f6b5096b-188b-4204-92aa-31e8c58e0eb6 /movies ext4 <span class="nv">errors</span><span class="o">=</span>remount-ro 0 1
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -371,24 +362,21 @@ mount -t ext4 /dev/sdb1 /movies
   <li>
     <p>Make a second user ‘user2’</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo adduser user2
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>adduser user2
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Make a group ‘movies’</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo addgroup movies
-</code></pre>
-    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>addgroup movies
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Add myself (user1) and user2 to the ‘movies’ group</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G movies user1
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo usermod -a -G movies user1
 sudo usermod -a -G movies user2
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -397,11 +385,10 @@ sudo usermod -a -G movies user2
   <li>
     <p>make sure the second hard drive has rwx permission for group ‘movies’</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code># the first 'movies' is the name of the group, the second /movies is the folder
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># the first 'movies' is the name of the group, the second /movies is the folder
 sudo chgrp -R movies /movies
 sudo chmod -R g+rwx /movies
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -419,7 +406,7 @@ sudo chmod -R g+rwx /movies
 
 <p>[movie_server] is a mount point that will mount my second hard drive from folder /movies.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;
 ; Netatalk 3.x configuration file
 ;
 
@@ -437,8 +424,7 @@ basedir regex = /home
 
 [movies_server]
 path = /movies
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="remote-desktop-with-vnc">Remote desktop with vnc</h4>
 <ul>
@@ -451,7 +437,7 @@ path = /movies
   <li>Download and follow <a href="http://docs.continuum.io/anaconda/install# linux-install">these</a> instructions on website</li>
 </ul>
 
-<h4 id="configure-duckdnshttpswwwduckdnsorg-to-keep-your-externalrouter-ip-up-to-date">Configure <a href="https://www.duckdns.org">duckdns</a> to keep your external/router ip up to date</h4>
+<h4 id="configure-duckdns-to-keep-your-externalrouter-ip-up-to-date">Configure <a href="https://www.duckdns.org">duckdns</a> to keep your external/router ip up to date</h4>
 <ul>
   <li>Follow <a href="https://www.duckdns.org/install.jsp">this</a></li>
 </ul>
@@ -462,19 +448,18 @@ path = /movies
   <li>
     <p>edit with ‘sudo pico /etc/samba/smb.conf’</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>[movies_server]
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[movies_server]
 comment = movies on debian server
 read only = no
 locking = no
 path = /path_to_our_files
 guest ok = no
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
-  <li>Restart samba<br />
-<code class="highlighter-rouge">
-sudo /etc/init.d/samba restart
-</code></li>
+  <li>Restart samba
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo /etc/init.d/samba restart
+</code></pre></div>    </div>
+  </li>
 </ul>
 
 <h4 id="run-python-scripts-at-boot">Run python scripts at boot</h4>
@@ -483,19 +468,17 @@ sudo /etc/init.d/samba restart
   <li>
     <p>Directly edit ‘sudo pico /etc/crontab’</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>@reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &gt;&gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&gt;&amp;1
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@reboot root /home/cudmore/anaconda2/bin/python /home/cudmore/Sites/temperatureserver/app.py &gt;&gt; /home/cudmore/Sites/temperatureserver/temperatureserver.log 2&gt;&amp;1
+</code></pre></div>    </div>
   </li>
   <li>I want this to redirect stdout to the .log file. It is redirecting when it starts up but is not redirecting my ‘print’ statements as it runs?</li>
 </ul>
 
 <h4 id="transmission-torrent-download">Transmission (torrent download)</h4>
 
-<p><code class="highlighter-rouge">
-  sudo apt-get install transmission
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo apt-get install transmission
   sudo apt-get install transmission-daemon
- </code></p>
+</code></pre></div></div>
 
 <ul>
   <li>Follow very specific instructions <a href="https://trac.transmissionbt.com/wiki/HeadlessUsage/General">here</a></li>
@@ -503,48 +486,42 @@ sudo /etc/init.d/samba restart
   <li>
     <p>Modify /var/lib/transmission-daemon/info/settings.json</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>"download-dir": "/movies/transmission_download",
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"download-dir": "/movies/transmission_download",
 "rpc-whitelist": "127.0.0.1,192.168.*.*",
 "rpc-authentication-required": false,
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Maybe add transmissions user to ‘movies’ group? (movies group was made above).</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G movies transmission
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo usermod -a -G movies transmission
+</code></pre></div>    </div>
   </li>
   <li>
     <p>That didn’t work (maybe I needed a -R). Fuck all this security anyways.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo chmod -R a+rwx /movies/transmission_download/
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo chmod -R a+rwx /movies/transmission_download/
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Make sure to stop and then start daemon when editing the configuration file.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo service transmission-daemon stop
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo service transmission-daemon stop
 sudo nano /var/lib/transmission-daemon/info/settings.json
 sudo service transmission-daemon start
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Access transmissions via web interface</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>http://192.168.1.200:9091
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://192.168.1.200:9091
+</code></pre></div>    </div>
   </li>
   <li>
     <p>My downloads were getting user/group debian-transmission. This will add user cudmore to group debian-transmission</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -a -G debian-transmission cudmore 
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo usermod -a -G debian-transmission cudmore 
+</code></pre></div>    </div>
   </li>
 </ul>
 

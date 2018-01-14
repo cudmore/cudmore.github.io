@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -234,38 +234,34 @@
 <p>I am doing all of this on a Debian Jessie server.</p>
 
 <h4 id="install-git">install git</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install git
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install git
+</code></pre></div></div>
 
 <h4 id="install-nodejs-use-su-to-enter-suroot">install nodejs (use su to enter su/root)</h4>
 <p>Following: https://github.com/nodesource/distributions</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_4.x | bash -
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_4.x | bash -
 apt-get install -y nodejs
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="install-particle-cli">Install particle cli</h4>
 <p>Following: https://github.com/spark/particle-cli</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo npm install -g particle-cli
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo npm install -g particle-cli
+</code></pre></div></div>
 
 <h4 id="install-particle-cloud-server">Install particle cloud server</h4>
 <p>Following: https://github.com/spark/spark-server/</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/spark/spark-server.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/spark/spark-server.git
 cd spark-server
 npm install
 node main.js
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>‘node main.js’ produced</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-------
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-------
 No users exist, you should create some users!
 -------
 connect.multipart() will be removed in connect 3.0
@@ -290,23 +286,20 @@ gQIDAQAB
 Your server IP address is: 192.168.1.200
 server started { host: 'localhost', port: 5683 }
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="continue-setting-up-particle-server">Continue setting up particle server</h4>
 <p>Install <a href="http://dfu-util.sourceforge.net">dfu-utils</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	# git clone git://git.code.sf.net/p/dfu-util/dfu-util
 	sudo apt-get build-dep dfu-util
 	sudo apt-get install libusb-1.0-0-dev
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>But that did not work so i did</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get upgrade dfu-util
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get upgrade dfu-util
+</code></pre></div></div>
 
 <p>This updated a boat load of things including jre and owncloud (leaving it in maintenance mode). To turn owncloud maintenance mode off, follow <a href="https://doc.owncloud.org/server/8.0/admin_manual/maintenance/enable_maintenance.html">this</a> and edit /var/www/owncloud/config/config.php and set ‘maintenance’ =&gt; false,’. The next time I logged into my owncloud server it triggered an update to 8.2.1</p>
 
@@ -314,13 +307,12 @@ server started { host: 'localhost', port: 5683 }
 
 <p>Still following: https://github.com/spark/spark-server/</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>particle keys server default_key.pub.pem 192.168.1.10
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>particle keys server default_key.pub.pem 192.168.1.10
+</code></pre></div></div>
 
 <p>gave</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cudmore@debian:~/spark-server$ sudo particle keys server default_key.pub.pem 192.168.1.200
 running dfu-util -l
 Found DFU device 2b04:d006
 checking file  default_key.pub192_168_1_200.der
@@ -349,8 +341,7 @@ Download	[=========================] 100%         1024 bytes
 Download done.
 File downloaded successfully
 Okay!  New keys in place, your device will not restart.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 </div>
 

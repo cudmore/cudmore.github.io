@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -229,22 +229,20 @@
   <span class="post-date">30 Apr 2015</span>
   <h4 id="ipython-auto-reload-imports">iPython auto reload imports</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>%load_ext autoreload
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%load_ext autoreload
 %autoreload 2
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To autoload these options, see:</p>
 
 <p>http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython/10472712# 10472712</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ipython profile create
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ipython profile create
 
 c.InteractiveShellApp.exec_lines = []
 c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
 c.InteractiveShellApp.exec_lines.append('%autoreload 2')
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

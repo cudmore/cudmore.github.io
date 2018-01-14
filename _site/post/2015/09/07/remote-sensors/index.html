@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -261,12 +261,14 @@
   <li>Alternatively, a sensor client could have two sensors: a motion detector and a camera. In this case, motion would trigger an image capture and then transmit this as two events to a data server (a motion detection timestamp and an image).</li>
 </ul>
 
-<p>###’Real world’ input<br />
- - Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.</p>
+<p>###’Real world’ input</p>
+<ul>
+  <li>Data servers can receive input from people. For example, a button to request a sensor client to read the current temperature or to take an image. In this senario, the sensor client also needs a data server to receive the button commands.</li>
+</ul>
 
 <h3 id="api">API</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/bokeh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bokeh
    plot with bokeh (python generates javascript and plots off my server)
 /images/a
    plot with matplotlib (generates a static image)
@@ -276,8 +278,7 @@
    plot with keen (pure javascript, pulling data from keen server)
 /system
    the type of system the server is running on 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 </div>
 

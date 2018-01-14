@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -231,44 +231,38 @@
 
 <p>See</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>https://www.raspberrypi.org/documentation/remote-access/vnc/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.raspberrypi.org/documentation/remote-access/vnc/
 http://elinux.org/RPi_VNC_Server
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="install-tightvncserver-server-on-raspberry">Install tightvncserver server on Raspberry</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install tightvncserver
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install tightvncserver
+</code></pre></div></div>
 
 <h3 id="run-tightvncserver-to-set-password">Run tightvncserver to set password</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>tightvncserver
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tightvncserver
+</code></pre></div></div>
 
 <h3 id="start-server-on-pi">Start server on pi</h3>
 
 <p>Use :1 if your Pi is running X11 by default (mine is)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vncserver :1 -geometry 1920x1080 -depth 24
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vncserver :1 -geometry 1920x1080 -depth 24
 vncserver :1 -geometry 1280x800 -depth 24
 vncserver :1 -geometry 1024x768 -depth 24
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="kill-server">kill server</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vncserver -kill :1
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vncserver -kill :1
+</code></pre></div></div>
 
 <h3 id="install-realvnc-client-on-osx">Install realVNC client on OSX</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>https://www.realvnc.com
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.realvnc.com
+</code></pre></div></div>
 
 <h3 id="enable-copypaste-between-host-and-server">Enable copy/paste between host and server</h3>
 
@@ -276,7 +270,7 @@ vncserver :1 -geometry 1024x768 -depth 24
 
 <p>http://raspberrypi.stackexchange.com/questions/4474/tightvnc-copy-paste-between-local-os-and-raspberry-pi</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># install
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># install
 sudo apt-get install autocutsel
 
 # edit /home/pi/.vnc/xstartup
@@ -294,8 +288,7 @@ autocutsel -fork
 # Fix to make GNOME work
 export XKL_XMODMAP_DISABLE=1
 /etc/X11/Xsession
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="alternative-is-to-use-x11vnc">Alternative is to use x11vnc</h3>
 

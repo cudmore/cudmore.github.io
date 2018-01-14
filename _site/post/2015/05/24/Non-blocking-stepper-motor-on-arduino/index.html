@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -269,9 +269,11 @@
 
 <p>Pinouts are in <a href="http://www.farnell.com/datasheets/1712854.pdf">.pdf on farnell website</a></p>
 
-<p>Mount with nut and lockwasher<br />
-- Hex Mount Nut: 3/8 in x 32<br />
-- Internal Tooth Lockwasher</p>
+<p>Mount with nut and lockwasher</p>
+<ul>
+  <li>Hex Mount Nut: 3/8 in x 32</li>
+  <li>Internal Tooth Lockwasher</li>
+</ul>
 
 <h3 id="rotary-encoder-library">Rotary encoder library</h3>
 
@@ -295,9 +297,8 @@
 
 <h4 id="good-code-for-python-matplotlib">Good code for python matplotlib</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>https://www.lebsanft.org/?p=48
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.lebsanft.org/?p=48
+</code></pre></div></div>
 
 <h4 id="processing-on-the-pi">Processing on the pi</h4>
 
@@ -306,52 +307,50 @@
 <p>http://cagewebdev.com/index.php/raspberry-pi-running-processing-on-your-raspi/</p>
 
 <h4 id="pyqtgraph">pyqtgraph</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo pip install pyqtgraph
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo pip install pyqtgraph
+</code></pre></div></div>
 
 <h3 id="gotchas">Gotchas</h3>
 <ul>
-  <li>Don’t connect pin 0 on Arduino, you will get arduino error<br />
+  <li>Don’t connect pin 0 on Arduino, you will get arduino error
  avrdude stk500_getsync(): not in sync</li>
 </ul>
 
 <h3 id="put-arduino-libraries-in">Put Arduino libraries in</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/share/arduino/libraries/
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/share/arduino/libraries/
+</code></pre></div></div>
 
 <h2 id="links">Links</h2>
 
 <ul>
   <li>
-    <p>AccellStepper Arduino library  <br />
+    <p>AccellStepper Arduino library<br />
 http://www.airspayce.com/mikem/arduino/AccelStepper/index.html</p>
   </li>
   <li>
-    <p>Non blocking rotary encoder library for Arduino  <br />
+    <p>Non blocking rotary encoder library for Arduino<br />
 http://www.pjrc.com/teensy/td_libs_Encoder.html</p>
   </li>
   <li>
-    <p>Setting any pin as a low level interrupt on Arduino  <br />
+    <p>Setting any pin as a low level interrupt on Arduino<br />
 http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html</p>
   </li>
   <li>
-    <p>easy driver motor controller  <br />
-http://www.schmalzhaus.com/EasyDriver/<br />
+    <p>easy driver motor controller<br />
+http://www.schmalzhaus.com/EasyDriver/
 http://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html</p>
   </li>
   <li>
-    <p>pinouts for ‘Honeywell 600-128-cbl’ rotary encoder  <br />
+    <p>pinouts for ‘Honeywell 600-128-cbl’ rotary encoder<br />
 http://www.farnell.com/datasheets/1712854.pdf</p>
   </li>
   <li>
-    <p>EasyDriver Tutorials  <br />
-http://bildr.org/2012/11/big-easy-driver-arduino/<br />
+    <p>EasyDriver Tutorials<br />
+http://bildr.org/2012/11/big-easy-driver-arduino/
 http://bildr.org/2012/11/big-easy-driver-arduino/</p>
   </li>
   <li>
-    <p>[not useful] A small fork of AccelStepper v1.3 with AF_motor (Adafruit motor shield) support  <br />
+    <p>[not useful] A small fork of AccelStepper v1.3 with AF_motor (Adafruit motor shield) support<br />
 https://github.com/adafruit/AccelStepper</p>
   </li>
   <li><a href="http://matplotlib.org">Matplotlib</a>.</li>

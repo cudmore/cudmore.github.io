@@ -4,7 +4,7 @@
     <title>Robert Cudmore - Articles</title>
     <description>Robert Cudmore Blog</description>
     <link>
-    http://blog.cudmore.io</link>
+    http://localhost:4000</link>
     
       
       <item>
@@ -14,10 +14,10 @@
 
 </description>
         
-        <pubDate>Mon, 27 Nov 2017 20:01:06 -0500</pubDate>
+        <pubDate>Tue, 28 Nov 2017 01:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/11/27/startup-mailer/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/11/27/startup-mailer/</guid>
+        http://localhost:4000/post/2017/11/28/startup-mailer/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/11/28/startup-mailer/</guid>
       </item>
       
     
@@ -29,10 +29,10 @@
 
 </description>
         
-        <pubDate>Tue, 21 Nov 2017 20:01:06 -0500</pubDate>
+        <pubDate>Wed, 22 Nov 2017 01:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/11/21/raspian-stretch/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/11/21/raspian-stretch/</guid>
+        http://localhost:4000/post/2017/11/22/raspian-stretch/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/11/22/raspian-stretch/</guid>
       </item>
       
     
@@ -44,10 +44,10 @@
 
 </description>
         
-        <pubDate>Tue, 31 Oct 2017 20:00:01 -0400</pubDate>
+        <pubDate>Wed, 01 Nov 2017 00:00:01 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/10/31/libav-for-ffmpeg/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/31/libav-for-ffmpeg/</guid>
+        http://localhost:4000/post/2017/11/01/libav-for-ffmpeg/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/11/01/libav-for-ffmpeg/</guid>
       </item>
       
     
@@ -59,10 +59,10 @@
 
 </description>
         
-        <pubDate>Thu, 26 Oct 2017 20:00:01 -0400</pubDate>
+        <pubDate>Fri, 27 Oct 2017 00:00:01 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/10/26/Raspberry-startup-tweet/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/26/Raspberry-startup-tweet/</guid>
+        http://localhost:4000/post/2017/10/27/Raspberry-startup-tweet/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/10/27/Raspberry-startup-tweet/</guid>
       </item>
       
     
@@ -74,10 +74,10 @@
 
 </description>
         
-        <pubDate>Sat, 21 Oct 2017 20:00:01 -0400</pubDate>
+        <pubDate>Sun, 22 Oct 2017 00:00:01 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/21/Home-debian-server-setup/</guid>
+        http://localhost:4000/post/2017/10/22/Home-debian-server-setup/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/10/22/Home-debian-server-setup/</guid>
       </item>
       
     
@@ -89,10 +89,10 @@
 
 </description>
         
-        <pubDate>Mon, 16 Oct 2017 20:00:01 -0400</pubDate>
+        <pubDate>Tue, 17 Oct 2017 00:00:01 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/10/16/Home-cage-activity/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/10/16/Home-cage-activity/</guid>
+        http://localhost:4000/post/2017/10/17/Home-cage-activity/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/10/17/Home-cage-activity/</guid>
       </item>
       
     
@@ -104,10 +104,10 @@
 
 </description>
         
-        <pubDate>Fri, 10 Mar 2017 19:00:00 -0500</pubDate>
+        <pubDate>Sat, 11 Mar 2017 00:00:00 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2017/03/10/google-cloud-platform/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2017/03/10/google-cloud-platform/</guid>
+        http://localhost:4000/post/2017/03/11/google-cloud-platform/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2017/03/11/google-cloud-platform/</guid>
       </item>
       
     
@@ -119,10 +119,10 @@
 
 </description>
         
-        <pubDate>Sat, 19 Nov 2016 19:00:00 -0500</pubDate>
+        <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/11/19/Prairie-scope-analysis/</guid>
+        http://localhost:4000/post/2016/11/20/Prairie-scope-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/11/20/Prairie-scope-analysis/</guid>
       </item>
       
     
@@ -134,10 +134,10 @@
 
 </description>
         
-        <pubDate>Mon, 24 Oct 2016 20:00:00 -0400</pubDate>
+        <pubDate>Tue, 25 Oct 2016 00:00:00 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/10/24/Adding-smb-shares-in-linux/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/10/24/Adding-smb-shares-in-linux/</guid>
+        http://localhost:4000/post/2016/10/25/Adding-smb-shares-in-linux/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/10/25/Adding-smb-shares-in-linux/</guid>
       </item>
       
     
@@ -149,10 +149,10 @@
 
 </description>
         
-        <pubDate>Wed, 12 Oct 2016 20:00:00 -0400</pubDate>
+        <pubDate>Thu, 13 Oct 2016 00:00:00 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/10/12/Convert-h264-files-with-ffmpeg/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/10/12/Convert-h264-files-with-ffmpeg/</guid>
+        http://localhost:4000/post/2016/10/13/Convert-h264-files-with-ffmpeg/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/10/13/Convert-h264-files-with-ffmpeg/</guid>
       </item>
       
     
@@ -164,10 +164,10 @@
 
 </description>
         
-        <pubDate>Fri, 23 Sep 2016 21:01:06 -0400</pubDate>
+        <pubDate>Sat, 24 Sep 2016 01:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/09/23/compress-images-with-OptiPNG-and-jpegoptim/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/09/23/compress-images-with-OptiPNG-and-jpegoptim/</guid>
+        http://localhost:4000/post/2016/09/24/compress-images-with-OptiPNG-and-jpegoptim/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/09/24/compress-images-with-OptiPNG-and-jpegoptim/</guid>
       </item>
       
     
@@ -179,10 +179,10 @@
 
 </description>
         
-        <pubDate>Fri, 16 Sep 2016 21:01:06 -0400</pubDate>
+        <pubDate>Sat, 17 Sep 2016 01:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/09/16/teensy-and-platformio-udev-rules/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/09/16/teensy-and-platformio-udev-rules/</guid>
+        http://localhost:4000/post/2016/09/17/teensy-and-platformio-udev-rules/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/09/17/teensy-and-platformio-udev-rules/</guid>
       </item>
       
     
@@ -194,10 +194,10 @@
 
 </description>
         
-        <pubDate>Sat, 04 Jun 2016 21:01:06 -0400</pubDate>
+        <pubDate>Sun, 05 Jun 2016 01:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/06/04/uv4l-on-Raspberry-Pi/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/06/04/uv4l-on-Raspberry-Pi/</guid>
+        http://localhost:4000/post/2016/06/05/uv4l-on-Raspberry-Pi/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/06/05/uv4l-on-Raspberry-Pi/</guid>
       </item>
       
     
@@ -209,10 +209,10 @@
 
 </description>
         
-        <pubDate>Fri, 03 Jun 2016 21:01:06 -0400</pubDate>
+        <pubDate>Sat, 04 Jun 2016 01:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/06/03/VNC-in-Debian-8-Jessie/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/06/03/VNC-in-Debian-8-Jessie/</guid>
+        http://localhost:4000/post/2016/06/04/VNC-in-Debian-8-Jessie/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/06/04/VNC-in-Debian-8-Jessie/</guid>
       </item>
       
     
@@ -224,10 +224,10 @@
 
 </description>
         
-        <pubDate>Fri, 25 Mar 2016 20:00:00 -0400</pubDate>
+        <pubDate>Sat, 26 Mar 2016 00:00:00 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/03/25/Keeping-in-sync-with-github/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/03/25/Keeping-in-sync-with-github/</guid>
+        http://localhost:4000/post/2016/03/26/Keeping-in-sync-with-github/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/03/26/Keeping-in-sync-with-github/</guid>
       </item>
       
     
@@ -239,10 +239,10 @@
 
 </description>
         
-        <pubDate>Sat, 13 Feb 2016 17:01:06 -0500</pubDate>
+        <pubDate>Sat, 13 Feb 2016 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/13/Programming-an-arduino-with-platformio/</guid>
+        http://localhost:4000/post/2016/02/13/Programming-an-arduino-with-platformio/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/02/13/Programming-an-arduino-with-platformio/</guid>
       </item>
       
     
@@ -254,10 +254,10 @@
 
 </description>
         
-        <pubDate>Sun, 07 Feb 2016 17:01:06 -0500</pubDate>
+        <pubDate>Sun, 07 Feb 2016 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/02/07/platformio/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/02/07/platformio/</guid>
+        http://localhost:4000/post/2016/02/07/platformio/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/02/07/platformio/</guid>
       </item>
       
     
@@ -269,10 +269,10 @@
 
 </description>
         
-        <pubDate>Wed, 20 Jan 2016 17:01:06 -0500</pubDate>
+        <pubDate>Wed, 20 Jan 2016 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/01/20/BitTorrent-Sync/</guid>
+        http://localhost:4000/post/2016/01/20/BitTorrent-Sync/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/01/20/BitTorrent-Sync/</guid>
       </item>
       
     
@@ -284,10 +284,10 @@
 
 </description>
         
-        <pubDate>Tue, 19 Jan 2016 17:01:06 -0500</pubDate>
+        <pubDate>Tue, 19 Jan 2016 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2016/01/19/MQTT/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2016/01/19/MQTT/</guid>
+        http://localhost:4000/post/2016/01/19/MQTT/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016/01/19/MQTT/</guid>
       </item>
       
     
@@ -299,10 +299,10 @@
 
 </description>
         
-        <pubDate>Sun, 06 Dec 2015 17:01:06 -0500</pubDate>
+        <pubDate>Sun, 06 Dec 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/12/06/camera-with-a-rest-interface/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/12/06/camera-with-a-rest-interface/</guid>
+        http://localhost:4000/post/2015/12/06/camera-with-a-rest-interface/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/12/06/camera-with-a-rest-interface/</guid>
       </item>
       
     
@@ -314,10 +314,10 @@
 
 </description>
         
-        <pubDate>Sat, 05 Dec 2015 17:01:06 -0500</pubDate>
+        <pubDate>Sat, 05 Dec 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/12/05/raspberry-wifi/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/12/05/raspberry-wifi/</guid>
+        http://localhost:4000/post/2015/12/05/raspberry-wifi/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/12/05/raspberry-wifi/</guid>
       </item>
       
     
@@ -329,10 +329,10 @@
 
 </description>
         
-        <pubDate>Tue, 01 Dec 2015 17:01:06 -0500</pubDate>
+        <pubDate>Tue, 01 Dec 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/12/01/particle-cloud-server/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/12/01/particle-cloud-server/</guid>
+        http://localhost:4000/post/2015/12/01/particle-cloud-server/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/12/01/particle-cloud-server/</guid>
       </item>
       
     
@@ -344,10 +344,10 @@
 
 </description>
         
-        <pubDate>Sat, 07 Nov 2015 17:01:06 -0500</pubDate>
+        <pubDate>Sat, 07 Nov 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/11/07/debian-server/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/11/07/debian-server/</guid>
+        http://localhost:4000/post/2015/11/07/debian-server/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/11/07/debian-server/</guid>
       </item>
       
     
@@ -359,10 +359,10 @@
 
 </description>
         
-        <pubDate>Mon, 07 Sep 2015 18:01:06 -0400</pubDate>
+        <pubDate>Mon, 07 Sep 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/09/07/remote-sensors/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/09/07/remote-sensors/</guid>
+        http://localhost:4000/post/2015/09/07/remote-sensors/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/09/07/remote-sensors/</guid>
       </item>
       
     
@@ -378,10 +378,10 @@
 
 </description>
         
-        <pubDate>Fri, 04 Sep 2015 18:01:06 -0400</pubDate>
+        <pubDate>Fri, 04 Sep 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/09/04/simple-form/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/09/04/simple-form/</guid>
+        http://localhost:4000/post/2015/09/04/simple-form/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/09/04/simple-form/</guid>
       </item>
       
     
@@ -393,10 +393,10 @@
 
 </description>
         
-        <pubDate>Fri, 14 Aug 2015 18:01:06 -0400</pubDate>
+        <pubDate>Fri, 14 Aug 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/08/14/PyQtGraph-to-display-a-stack/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/08/14/PyQtGraph-to-display-a-stack/</guid>
+        http://localhost:4000/post/2015/08/14/PyQtGraph-to-display-a-stack/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/08/14/PyQtGraph-to-display-a-stack/</guid>
       </item>
       
     
@@ -408,10 +408,10 @@
 
 </description>
         
-        <pubDate>Mon, 08 Jun 2015 18:01:06 -0400</pubDate>
+        <pubDate>Mon, 08 Jun 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/</guid>
+        http://localhost:4000/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/06/08/Behavioral-acquisition-with-raspberry-arduino-video-and-scan-image/</guid>
       </item>
       
     
@@ -423,10 +423,10 @@
 
 </description>
         
-        <pubDate>Sun, 07 Jun 2015 18:01:06 -0400</pubDate>
+        <pubDate>Sun, 07 Jun 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/</guid>
+        http://localhost:4000/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/</guid>
       </item>
       
     
@@ -438,10 +438,10 @@
 
 </description>
         
-        <pubDate>Sun, 24 May 2015 18:01:06 -0400</pubDate>
+        <pubDate>Sun, 24 May 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/</guid>
+        http://localhost:4000/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/05/24/Non-blocking-stepper-motor-on-arduino/</guid>
       </item>
       
     
@@ -453,10 +453,10 @@
 
 </description>
         
-        <pubDate>Tue, 05 May 2015 18:01:06 -0400</pubDate>
+        <pubDate>Tue, 05 May 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/05/05/mounting-a-usb-drive-at-boot/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/05/05/mounting-a-usb-drive-at-boot/</guid>
+        http://localhost:4000/post/2015/05/05/mounting-a-usb-drive-at-boot/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/05/05/mounting-a-usb-drive-at-boot/</guid>
       </item>
       
     
@@ -468,10 +468,10 @@
 
 </description>
         
-        <pubDate>Tue, 05 May 2015 18:01:06 -0400</pubDate>
+        <pubDate>Tue, 05 May 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/05/05/X11-on-Raspberry/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/05/05/X11-on-Raspberry/</guid>
+        http://localhost:4000/post/2015/05/05/X11-on-Raspberry/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/05/05/X11-on-Raspberry/</guid>
       </item>
       
     
@@ -483,10 +483,10 @@
 
 </description>
         
-        <pubDate>Mon, 04 May 2015 18:01:06 -0400</pubDate>
+        <pubDate>Mon, 04 May 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/05/04/Auto-login-to-ssh-server/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/05/04/Auto-login-to-ssh-server/</guid>
+        http://localhost:4000/post/2015/05/04/Auto-login-to-ssh-server/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/05/04/Auto-login-to-ssh-server/</guid>
       </item>
       
     
@@ -498,10 +498,10 @@
 
 </description>
         
-        <pubDate>Thu, 30 Apr 2015 18:01:06 -0400</pubDate>
+        <pubDate>Thu, 30 Apr 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/04/30/python-tricks/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/04/30/python-tricks/</guid>
+        http://localhost:4000/post/2015/04/30/python-tricks/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/04/30/python-tricks/</guid>
       </item>
       
     
@@ -513,10 +513,10 @@
 
 </description>
         
-        <pubDate>Wed, 29 Apr 2015 18:01:06 -0400</pubDate>
+        <pubDate>Wed, 29 Apr 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/04/29/vnc-on-raspberry/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/04/29/vnc-on-raspberry/</guid>
+        http://localhost:4000/post/2015/04/29/vnc-on-raspberry/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/04/29/vnc-on-raspberry/</guid>
       </item>
       
     
@@ -524,18 +524,20 @@
       <item>
         <title>Install OSX</title>
         
-          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.  &lt;br /&gt;
- - Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;  &lt;br /&gt;
- - BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;  &lt;br /&gt;
- - Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;br /&gt;
- - Wrok motherboard is: (GA-Z97M-D3H)[https://www.gigabyte.com/Motherboard/GA-Z97M-D3H-rev-10#ov]&lt;/p&gt;
+          <description>&lt;p&gt;Upgraded home desktop with fresh install of OSX 10.9.5 Mavericks.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Motherboard is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# ov&quot;&gt;GA-Z77X-UP5-TH&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;BIOS is &lt;a href=&quot;http://www.gigabyte.com/products/product-page.aspx?pid=4279# bios&quot;&gt;F12&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Followed Tonymac post by &lt;a href=&quot;http://www.tonymacx86.com/golden-builds/73112-updated-storks-thunderbolt-build-i5-3570k-ga-z77x-up5-th-gtx-650-ti-mavericks.html&quot;&gt;Stork&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Wrok motherboard is: (GA-Z97M-D3H)[https://www.gigabyte.com/Motherboard/GA-Z97M-D3H-rev-10#ov]&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         
-        <pubDate>Sun, 19 Apr 2015 18:01:06 -0400</pubDate>
+        <pubDate>Sun, 19 Apr 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/04/19/Install-OSX/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/04/19/Install-OSX/</guid>
+        http://localhost:4000/post/2015/04/19/Install-OSX/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/04/19/Install-OSX/</guid>
       </item>
       
     
@@ -552,10 +554,10 @@
 
 </description>
         
-        <pubDate>Fri, 27 Mar 2015 18:01:06 -0400</pubDate>
+        <pubDate>Fri, 27 Mar 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/27/lab-protocols/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/27/lab-protocols/</guid>
+        http://localhost:4000/post/2015/03/27/lab-protocols/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/03/27/lab-protocols/</guid>
       </item>
       
     
@@ -567,10 +569,10 @@
 
 </description>
         
-        <pubDate>Sat, 21 Mar 2015 18:01:06 -0400</pubDate>
+        <pubDate>Sat, 21 Mar 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/21/fresh-install-raspian/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/21/fresh-install-raspian/</guid>
+        http://localhost:4000/post/2015/03/21/fresh-install-raspian/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/03/21/fresh-install-raspian/</guid>
       </item>
       
     
@@ -582,10 +584,10 @@
 
 </description>
         
-        <pubDate>Fri, 20 Mar 2015 18:01:06 -0400</pubDate>
+        <pubDate>Fri, 20 Mar 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/20/Rapsberry-Pi-Video-Controller/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/20/Rapsberry-Pi-Video-Controller/</guid>
+        http://localhost:4000/post/2015/03/20/Rapsberry-Pi-Video-Controller/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/03/20/Rapsberry-Pi-Video-Controller/</guid>
       </item>
       
     
@@ -597,10 +599,10 @@
 
 </description>
         
-        <pubDate>Sun, 15 Mar 2015 18:01:06 -0400</pubDate>
+        <pubDate>Sun, 15 Mar 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/</guid>
+        http://localhost:4000/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/03/15/Installing-mjpg-streamer-on-a-raspberry-pi/</guid>
       </item>
       
     
@@ -617,17 +619,17 @@
 
 &lt;h4 id=&quot;install-opencv&quot;&gt;Install opencv&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;sudo apt-get update  &lt;br /&gt;
-sudo apt-get upgrade  &lt;br /&gt;
+  &lt;p&gt;sudo apt-get update&lt;br /&gt;
+sudo apt-get upgrade&lt;br /&gt;
 sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 &lt;/blockquote&gt;
 
 </description>
         
-        <pubDate>Sat, 07 Mar 2015 17:01:06 -0500</pubDate>
+        <pubDate>Sat, 07 Mar 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/07/use-opencv-to-acquire-video/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/07/use-opencv-to-acquire-video/</guid>
+        http://localhost:4000/post/2015/03/07/use-opencv-to-acquire-video/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/03/07/use-opencv-to-acquire-video/</guid>
       </item>
       
     
@@ -639,10 +641,10 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
 
 </description>
         
-        <pubDate>Thu, 05 Mar 2015 17:01:06 -0500</pubDate>
+        <pubDate>Thu, 05 Mar 2015 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2015/03/05/bokeh-on-the-raspberry-pi/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2015/03/05/bokeh-on-the-raspberry-pi/</guid>
+        http://localhost:4000/post/2015/03/05/bokeh-on-the-raspberry-pi/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2015/03/05/bokeh-on-the-raspberry-pi/</guid>
       </item>
       
     
@@ -656,8 +658,8 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
         
         <pubDate>Wed, 24 Dec 2014 00:00:00 -0500</pubDate>
         <link>
-        http://blog.cudmore.io/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/</guid>
+        http://localhost:4000/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/</link>
+        <guid isPermaLink="true">http://localhost:4000/2014/12/24/Python-calling-bash-to-get-drive-space-remaining/</guid>
       </item>
       
     
@@ -665,15 +667,15 @@ sudo apt-get install libopencv-dev python-opencv&lt;/p&gt;
       <item>
         <title>Monitoring mice in their home cage</title>
         
-          <description>&lt;p&gt;[Aug 4, 2014, updated]&lt;br /&gt;
+          <description>&lt;p&gt;[Aug 4, 2014, updated]
 [March 2015, moved to cudmore.github.io]&lt;/p&gt;
 
 </description>
         
-        <pubDate>Fri, 14 Feb 2014 17:01:06 -0500</pubDate>
+        <pubDate>Fri, 14 Feb 2014 22:01:06 +0000</pubDate>
         <link>
-        http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/</link>
-        <guid isPermaLink="true">http://blog.cudmore.io/post/2014/02/14/Monitoring-mice-in-their-home-cage/</guid>
+        http://localhost:4000/post/2014/02/14/Monitoring-mice-in-their-home-cage/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2014/02/14/Monitoring-mice-in-their-home-cage/</guid>
       </item>
       
     

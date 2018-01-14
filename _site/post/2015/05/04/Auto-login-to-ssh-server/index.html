@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -240,7 +240,7 @@
 
 <h4 id="client-generate-publicprivate-rsa-key-pair">[Client] Generate public/private rsa key pair</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh-keygen -t rsa
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen -t rsa
 
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/cudmore/.ssh/id_rsa): 
@@ -264,38 +264,32 @@ The key's randomart image is:
 |     . =.+.      |
 |       .o..      |
 +-----------------+
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<h4 id="client-idrsapub-from-the-client-to-the-ssh-server-need-to-enter-password">[Client] id_rsa.pub from the client to the ssh server (need to enter password)</h4>
+<h4 id="client-id_rsapub-from-the-client-to-the-ssh-server-need-to-enter-password">[Client] id_rsa.pub from the client to the ssh server (need to enter password)</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp ./.ssh/id_rsa.pub pi@192.168.1.70:~/id_rsa.pub
+</code></pre></div></div>
 
 <h4 id="client-login-to-the-ssh-server-last-time-you-will-need-a-password">[Client] Login to the ssh server (last time you will need a password)</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh pi@192.168.1.70
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh pi@192.168.1.70
+</code></pre></div></div>
 
 <h4 id="server-copy-the-key-into-the-correct-location-on-the-server">[Server] Copy the key into the correct location (on the server)</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
+</code></pre></div></div>
 
 <h4 id="server-delete-the-original-on-the-server">[Server] Delete the original (on the server)</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rm ./id_rsa.pub
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm ./id_rsa.pub
+</code></pre></div></div>
 
 <h4 id="client-the-next-time-you-login-you-will-not-be-asked-for-a-password">[Client] The next time you login you will not be asked for a password</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh pi@192.168.1.70
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh pi@192.168.1.70
+</code></pre></div></div>
 
 <h4 id="notes">Notes</h4>
 

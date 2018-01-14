@@ -78,19 +78,19 @@
 		<section id="article">
 		  <span class="sidebar-nav-item">Posts</span>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/27/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/28/startup-mailer/">Startup mailer on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/11/21/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/22/raspian-stretch/">Installing Raspian Stretch on a Raspberry Pi</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/31/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/11/01/libav-for-ffmpeg/">libav for ffmpeg</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/26/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/27/Raspberry-startup-tweet/">Raspberry startup tweet</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/21/Home-debian-server-setup/">Home Debian server setup</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/22/Home-debian-server-setup/">Home Debian server setup</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/10/16/Home-cage-activity/">Home Cage Activity</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/10/17/Home-cage-activity/">Home Cage Activity</a><BR>
 		    
-		      &raquo; <a class="sidebarlink" href="/post/2017/03/10/google-cloud-platform/">Google Cloud Platform</a><BR>
+		      &raquo; <a class="sidebarlink" href="/post/2017/03/11/google-cloud-platform/">Google Cloud Platform</a><BR>
 		    
 		</section>
 
@@ -231,53 +231,48 @@
 
 <h4 id="get-a-list-of-your-usb-devices-to-check-if-your-usb-drive-is-available">Get a list of your USB devices to check if your USB drive is available</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>lsusb
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsusb
 
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 13fe:5200 Kingston Technology Company Inc.
 Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="make-a-directory-to-mount-your-drivevolume-into">Make a directory to mount your drive/volume into</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo mkdir /home/pi/crap
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mkdir /home/pi/crap
+</code></pre></div></div>
 
 <h4 id="find-the-uuid-of-your-drive">Find the UUID of your drive</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo blkid
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo blkid
 
 /dev/mmcblk0p1: SEC_TYPE="msdos" LABEL="boot" UUID="2654-BFC0" TYPE="vfat"
 /dev/mmcblk0p2: UUID="548da502-ebde-45c0-9ab2-de5e2431ee0b" TYPE="ext4"
 /dev/sda1: LABEL="CRAP" UUID="7CCD-19F2" TYPE="vfat"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).</p>
 
 <h4 id="edit-your-etcfstab-file-by-appending-a-line-for-your-dive">Edit your /etc/fstab file by appending a line for your dive</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo pico /etc/fstab
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo pico /etc/fstab
 
 proc            /proc           proc    defaults          0       0
 /dev/mmcblk0p1  /boot           vfat    defaults          0       2
 /dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
 UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 # a swapfile is not a swap partition, so no using swapon|off from here on, use $
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).</p>
 
 <h4 id="remount-your-drives-and-check-the-drive-is-mounted">Remount Your drives and check the drive is mounted</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo mount -a
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mount -a
+</code></pre></div></div>
 
 <p>‘ls’ should show /video/ in blue to indicate it is mounted</p>
 
