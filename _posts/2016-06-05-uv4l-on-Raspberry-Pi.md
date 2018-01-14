@@ -16,12 +16,13 @@ This software has a lot of aspirations beyond video including implementing all s
 
 As of Nov 2017, following [this tutorial][1].
 
-	curl http://www.linux-projects.org/listing/uv4l_repo/lrkey.asc | sudo apt-key add -
+## Determine which version of Raspbian you are running.
 
-Determine which version of Raspbian you are running. We will assume we are running the newer `jessie` version.
 
 ```
 cat /etc/os-release
+```
+
 ```
 PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
 NAME="Raspbian GNU/Linux"
@@ -34,30 +35,50 @@ SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
 BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
 ```
 
-Add the following to `/etc/apt/sources.list`
+## Add apt key
 
-```
-sudo pico /etc/apt/sources.list
-```
- 
+### Wheezy or Jessie
+
+	curl http://www.linux-projects.org/listing/uv4l_repo/lrkey.asc | sudo apt-key add -
+	
+### Stretch
+
+	curl http://www.linux-projects.org/listing/uv4l_repo/lpkey.asc | sudo apt-key add -
+
+
+## Add the following to '/etc/apt/sources.list'
+
+Edit the file with `sudo pico /etc/apt/sources.list`
+
+### Wheezy
+
+	deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ wheezy main
+
+### Jessie
+
 	deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ jessie main
 
-Install
+### Stretch
+
+	deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/stretch stretch main
+	
+## Install uv4l
 
 	sudo apt-get update #update database
-	sudo apt-get upgrade #update userspace, not neccessary but for good measure
-	sudo apt-get install uv4l uv4l-raspicam
-	sudo apt-get install uv4l-server
+	sudo apt-get upgrade #update userspace
+	sudo apt-get install uv4l uv4l-raspicam uv4l-server
 	
-Run driver
+## Starting and stopping uv4l streaming
+
+### Run driver
 
     uv4l --driver raspicam --auto-video_nr --width 640 --height 480 --encoding jpeg
     
-Kill
+### Kill
 
     pkill uv4l
 
-Run a streaming server with real-time video streaming
+### Run a streaming server with real-time video streaming
 
 	uv4l --driver raspicam --auto-video_nr --encoding h264 --width 640 --height 480 --enable-server on
 
@@ -65,15 +86,9 @@ This runs a web server on port 8080. Once running, browse to your machines IP. T
 
 	http://192.168.1.60:8080
 	
-### Problem
+## Troubleshooting
 
-uv4l is now starting at system boot and i can't turn it off?
 
-Can be stopped with
-
-```
-sudo /etc/init.d/uv4l_raspicam stop
-```
   
 See Also
 

@@ -122,25 +122,60 @@ If you are connecting to a router there is no additional setup required.
 
 When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi.
 
-#### Configure /etc/network/interfaces
+### Raspbian Jessie (working on Hopkins network)
 
-The stock install of Raspian should already have this.
+#### Contents of `/etc/network/interfaces`
 
 ```
-sudo pico /etc/network/interfaces
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+auto lo
+iface lo inet loopback
+
+#iface eth0 inet manual
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+allow-hotplug wlan1
+iface wlan1 inet manual
+	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-    auto lo
+#### Contents of `/etc/wpa_supplicant/wpa_supplicant.conf`
 
-    iface lo inet loopback
-    iface eth0 inet dhcp
+```
+country=GB
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
 
-    allow-hotplug wlan0
-    iface wlan0 inet manual
-    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-    iface default inet dhcp
+network={
+	ssid="NETGEAR28"
+	psk="wideviolet906"
+}
 
-20171122 Raspbian Stretch the file now contains
+# "hopkins" wireless for JHU
+network={
+        ssid="hopkins"
+        key_mgmt=WPA-EAP
+        eap=PEAP
+        phase2="auth=MSCHAPV2"
+        identity="rcudmor1"
+        password="your_password_here"
+}
+```
+
+### Stretch
+
+Stretch `/etc/network/interfaces` is
 
 ```
 # interfaces(5) file used by ifup(8) and ifdown(8)
@@ -152,13 +187,9 @@ sudo pico /etc/network/interfaces
 source-directory /etc/network/interfaces.d
 ```
 
-#### Edit wpa_supplicant.conf
+#### Edit `/etc/wpa_supplicant/wpa_supplicant.conf`
 
 At Hopkins you want to follow [these instruction](http://www.it.johnshopkins.edu/services/network/wireless/wpasupplicant.html)
-
-```
-sudo pico /etc/wpa_supplicant/wpa_supplicant.conf 
-```
 
     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
     update_config=1
@@ -178,7 +209,9 @@ sudo pico /etc/wpa_supplicant/wpa_supplicant.conf
         password="JHED_Password_Replace_Me"
     }
 
-#### Tell your router to assign an ip based on MAC address of wifi adapter
+#### Configure a router to assign an ip based on MAC address of wifi adapter
+
+Get the mac address of your Pi
 
     ifconfig wlan0
 
@@ -315,8 +348,43 @@ ignore = Name *.htaccess
 servercmd=/home1/robertcu/unison
 ```
 
+## Stretch network working on router
 
-   
+sudo more /etc/network/interfaces
+
+```
+pi@homecage2:~ $ sudo more /etc/network/interfaces
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+# abb 20171212
+#auto lo
+#iface lo inet loopback
+
+#iface eth0 inet static
+#iface eth0 inet dhcp
+```
+
+sudo more /etc/dhcpcd.conf
+
+```
+###
+#20171122 cudmore
+###
+profile static_eth0
+static ip_address=10.16.80.38/24
+static routers=10.16.80.1
+static domain_name_servers=10.200.1.1 10.200.2.2
+
+interface eth0
+#fallback static_eth0
+```
+
 [downloadraspian]: https://www.raspberrypi.org/downloads/
 [installguide]: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 [mswindows]: http://www.circuitbasics.com/raspberry-pi-basics-setup-without-monitor-keyboard-headless-mode/
