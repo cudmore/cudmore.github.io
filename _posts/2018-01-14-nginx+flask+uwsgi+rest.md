@@ -24,9 +24,16 @@ tags:
 	sudo systemctl restart myproject.service
 	sudo systemctl status -l myproject.service
 
+	sudo systemctl start mmserver.service
+	sudo systemctl stop mmserver.service
+	sudo systemctl restart mmserver.service
+	sudo systemctl status -l mmserver.service
+
 sudo usermod -aG www-data cudmore
 
 sudo chown -R cudmore:www-data /home/cudmore/PyMapManager/*
+
+sudo ln -s /etc/nginx/sites-available/mmserver /etc/nginx/sites-enabled
 
 ### Move mmclient/ into /var/www/html/
 
@@ -35,7 +42,19 @@ sudo chown -R cudmore:www-data /home/cudmore/PyMapManager/*
 Now I can browse
 
 	http://192.168.1.200/mmclient
-	
+
+Run uWSGI manually
+
+	cd /home/cudmore/mmserver
+	source venv/bin/activate
+	uwsgi --socket 0.0.0.0:5000 --protocol=http -w mywsgi:app
+
+When i change mmserver.py, restart service
+
+	sudo systemctl restart mmserver.service
+	sudo systemctl status -l mmserver.service
+
+
 ## Contents of `/home/cudmore/myproject/myproject.py`
 
 ```
@@ -90,7 +109,7 @@ die-on-term = true
 
 ```
 [Unit]
-Description=uWSGI instance to serve myproject
+Description=uWSGI instance to serve mmserver
 After=network.target
 
 [Service]
@@ -106,6 +125,16 @@ WantedBy=multi-user.target
 
 ## Contents of /etc/nginx/sites-available/myproject
 
+Change this to `/etc/nginx/sites-available/mmserver`
+
+Need to change `cudmore` user group
+
+	sudo usermod -aG www-data cudmore
+	
+Need to link this file into default nginx configuration
+
+	ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+	
 ```
 server {
     listen 80;
@@ -116,10 +145,17 @@ server {
         try_files $uri $uri/ /index.html;
     }
 
-    location /api {
+    # not working
+    location /mmclient {
+        root /home/cudmore/PyMapManager/mmclient;
+        #root /var/www/html/testclient;
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api/v2 {
         include uwsgi_params;
         #uwsgi_pass unix:/home/cudmore/myproject/myproject.sock;
-        uwsgi_pass unix:///home/cudmore/myproject/myproject.sock;
+        uwsgi_pass unix:///home/cudmore/mmserver/mmserver.sock;
     }
 }
 ```
