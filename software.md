@@ -11,7 +11,7 @@ This is software I have developed since 2009. It is designed to allow me to perf
 
 <dd>
 <p>
-<A HREF="http://mapmanager.github.io" target="_blank">Map Manager 3</A> is a complete rewrite of <A HREF="http://www.robertcudmore.org/maptracker/" target="_blank">Map Tracker</A>
+<A HREF="http://mapmanager.github.io" target="_blank">Map Manager</A>, software to annotate image volume time-series.
 </p>
 </dd>
 
@@ -35,15 +35,13 @@ This is software I have developed since 2009. It is designed to allow me to perf
 </dd>
 
 
-#### [Fiji](http://fiji.sc/Fiji) plugins
+#### [Python](https://www.python.org)
 
 <dd>
 <p>
-<A HREF="https://github.com/cudmore/bob-fiji-plugins" target="_blank">Fiji macros and plugins</A>
+<A HREF="http://blog.cudmore.io/PyMapManager/" target="_blank">PyMapManager</A>
 </p>
 </dd>
-
-#### [Python](https://www.python.org)
 
 <dd>
 <p>
@@ -56,5 +54,15 @@ This is software I have developed since 2009. It is designed to allow me to perf
 <A HREF="http://blog.cudmore.io/homecage/" target="_blank">Homecage</A>
 </p>
 </dd>
+
+
+#### [Fiji](http://fiji.sc/Fiji) plugins
+
+<dd>
+<p>
+<A HREF="https://github.com/cudmore/bob-fiji-plugins" target="_blank">Fiji macros and plugins</A>
+</p>
+</dd>
+
 
 

@@ -4,13 +4,34 @@
  <title>Robert Cudmore</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-04-04T17:12:52-04:00</updated>
+ <updated>2018-04-07T21:59:39-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Robert Cudmore</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Jekyll Again</title>
+   <link href="http://localhost:4000/post/2018/02/02/jekyll-again/"/>
+   <updated>2018-02-01T20:01:06-05:00</updated>
+   <id>http://localhost:4000/post/2018/02/02/jekyll-again</id>
+   <content type="html">&lt;p&gt;To get up and running with Jekyll again. Do some cryptic and seemingly circular combination of this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll
+gem install bundler
+bundle update jekyll
+gem update jekyll
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;serve-locally&quot;&gt;Serve locally&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle exec jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>nginx+flask+uwsgi+rest</title>

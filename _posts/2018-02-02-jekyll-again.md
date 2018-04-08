@@ -5,9 +5,7 @@ category: post
 date: 2018-02-02 01:01:06
 ---
 
-To get up and running with Jekyll
-
-Do some cryptic and seemingly circular combination of this:
+To get up and running with Jekyll again. Do some cryptic and seemingly circular combination of this:
 
 ```
 gem install jekyll
