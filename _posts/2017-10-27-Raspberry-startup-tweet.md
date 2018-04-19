@@ -47,7 +47,7 @@ Edit crontab
 	
 Add one line at the end of crontab
 
-	@reboot (sleep 10; /home/pi/startup_tweeter.py)
+	@reboot (sleep 10; python /home/pi/startup_tweeter.py)
 
 ### Python script to tweet IP
 

@@ -10,7 +10,7 @@ tags:
 
 These are instructions for installing the Raspian Stretch (Debian) system on a Raspberry Pi.
 
-This was originally written for Jessie in May 2016 and then updated for Stretch on Nov 22, 2017.
+This was originally written for Jessie in May 2016, updated for Stretch on Nov 22, 2017, and then again on April 19, 2018.
 
 ## 1) Set up the SD card
 
@@ -18,10 +18,12 @@ With the SD card inserted into a card-reader on an existing computer.
 
 ### 1.1) Download image
 
- - As of May 21, 2016 the image was named `2016-05-10-raspbian-jessie`.
- - As of Nov 16, 2017 the image was named `2017-09-07-raspbian-stretch-lite`.
  [Download here][downloadraspian]
 
+ - As of May 21, 2016 the image was named `2016-05-10-raspbian-jessie`.
+ - As of Nov 16, 2017 the image was named `2017-09-07-raspbian-stretch-lite`.
+ - As of April 19, 2018 the image was named `2018-04-18-raspbian-stretch-lite`.
+ 
 ### 1.2) Copy the downloaded image to SD card
 
 For either MacOS or Windows, follow an installation guide [here][installguide]. 
@@ -30,7 +32,7 @@ For either MacOS or Windows, follow an installation guide [here][installguide].
 
 Unzip the .zip file by right clicking the .zip file and selecting 'Open With - Archive Utility.app (default)'. This will yield a .img file.
 
-Insert SD card and use DiskUtil to format it as Fat32.
+Insert SD card and use DiskUtil to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as 'MS-DOS (FAT)'.
 
 Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount)
 
@@ -46,11 +48,22 @@ You should see something like this.
    2:                      Linux                         1.8 GB     disk9s2
 ```
 
+or maybe
+
+```
+/dev/disk5 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *15.9 GB    disk5
+   1:                 DOS_FAT_32 U                       15.9 GB    disk5s1
+```
+
 Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk9
 
 ```bash
 sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk9
 ```
+
+Note that this command requires /dev/rdisk rather than /dev/disk. Just one example of why IT fuckers get paid alot.
 
 #### On Windows
 
@@ -87,10 +100,11 @@ You are on your own, download and use [Putty][putty].
 
     sudo raspi-config
 
-20171122 - The name and location of these options have changed. This is still the general idea
+The name and location of these options change as Raspbian gets updated. This is still the general idea
 
  - 1 Change User password
- - 2 Hostname -> [Chose a name]
+ - 2 Network Options - Configure network settings   
+   - N1 Hostname - Set the visible name for this Pi on a network  
  - 3 Boot Options
    - B1 Desktop / CLI 
      - B1 Console
@@ -107,6 +121,8 @@ You are on your own, download and use [Putty][putty].
      
 Selecting Boot Options -> Console is important. It seems Raspbian ships with X-Windows on by default and you want to turn it off.
 
+Here, I am setting my locale to en_US.UTF-8. If you are in a different country you should set this as you want.
+
 ### 2.3) Update the system
 
     sudo apt-get update  #update database
@@ -114,13 +130,61 @@ Selecting Boot Options -> Console is important. It seems Raspbian ships with X-W
     sudo rpi-update      #update firmware (requires reboot)
     sudo reboot          #reboot
 
+## Checking your Raspian, hardware, and firmware
+
+Checking your Raspian version
+
+	cat /etc/os-release
+	
+Returns
+
+	PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
+	NAME="Raspbian GNU/Linux"
+	VERSION_ID="9"
+	VERSION="9 (stretch)"
+	ID=raspbian
+	ID_LIKE=debian
+
+Checking your Raspberry Pi version (the hardware)
+
+	cat /proc/device-tree/model
+	
+Returns
+
+	Raspberry Pi 3 Model B Rev 1.2
+
+Checking your firmware (pretty cryptic)
+
+	uname -a
+
+Returns
+
+	Linux pi_bplus 4.14.34+ #1110 Mon Apr 16 14:51:42 BST 2018 armv6l GNU/Linux
+
 ## Setup the network
 
 If you are connecting to a router there is no additional setup required.
 
 20171122, With Raspbian Stretch this got complicated again. See [this][10]
 
-When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi.
+When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi. Ask your network administrator to authenticate based on the MAC address of the Raspberry Ethernet port. You can find this with:
+
+	ifconfig eth0
+	
+Returns
+
+```
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.5  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::303f:6054:3ec9:3bfb  prefixlen 64  scopeid 0x20<link>
+        ether b8:27:eb:aa:51:6d  txqueuelen 1000  (Ethernet)
+        RX packets 1927  bytes 147022 (143.5 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1729  bytes 118135 (115.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+In this case, the MAC adress is `b8:27:eb:aa:51:6d`
 
 ### Raspbian Jessie (working on Hopkins network)
 
@@ -175,7 +239,9 @@ network={
 
 ### Stretch
 
-Stretch `/etc/network/interfaces` is
+	cat /etc/network/interfaces
+	
+Gives:
 
 ```
 # interfaces(5) file used by ifup(8) and ifdown(8)
@@ -228,7 +294,7 @@ The MAC address is listed as 'HWaddr' and in this case is '00:0b:81:89:11:8a'.
 
 ## AFP / Netatalk / Avahi
 
-This will make the Pi an apple-file-protocol file-server that can be accessed MacOS.
+This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.
 
     sudo apt-get install netatalk
 
@@ -236,7 +302,7 @@ Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared
 
 #### Change the default name of your Pi in netatalk
 
-When you mount the pi on MacOS, it will mount as 'Home Directory' and the space ' ' will cause problems. Change the name to something like 'pi3'.
+When you mount the pi on MacOS, it will mount as 'Home Directory' and the space in 'Home Directory' will cause problems. Change the name to something like 'pi3'.
 
 See [this blog post][afpmountpoint] to change the name of the mount point from 'Home Directory'.    
 
@@ -246,7 +312,7 @@ In the following `the_name_you_want` should be changed to the name you want.
     sudo /etc/init.d/netatalk stop
 
     # edit config file
-    sudo nano /etc/netatalk/AppleVolumes.default
+    sudo pico /etc/netatalk/AppleVolumes.default
 
     # change this one line
 
@@ -257,6 +323,7 @@ In the following `the_name_you_want` should be changed to the name you want.
     # restart netatalk
     sudo /etc/init.d/netatalk start
 
+What the hell did we just do? We edited a text file using `pico`, an editor like `nano` or `emacs`. Welcome to the world of Linux. When in pico, you can search for a string with control+w and you can exit with control+x.
 
 ## Samba
 
@@ -293,7 +360,9 @@ Test the server from another machine on the network. On a windows machine, mount
 
 ## Install additional python packages (optional)
 
-    # assuming you want python 2.7
+We will use python pip to install additional python pckages.
+
+    # assuming you want python 2.7 (cool kids are using Python 3.x)
     sudo apt-get install python-pip
     
     # pi camera
@@ -335,6 +404,7 @@ pico /home/pi/.unison/sites.prf
 root = /home/pi/Sites
 root = ssh://robertcu@robertcudmore.org/raspberry/Sites
 
+ignore = Name *.pyc
 ignore = Name *.tif
 ignore = Name .AppleDouble
 ignore = Name .DS_Store
@@ -391,6 +461,6 @@ interface eth0
 [afpmountpoint]: http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/
 [startupmailer]: https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py
 [startuptweeter]: http://blog.cudmore.io/post/2017/10/27/Raspberry-startup-tweet/
-[uv4l]: http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/
+[uv4l]: http://blog.cudmore.io/post/2016/06/05/uv4l-on-Raspberry-Pi/
 [putty]: http://www.putty.org/
 [10]: https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address
