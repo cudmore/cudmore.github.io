@@ -9,13 +9,15 @@ tags:
 
 Acquisition and analysis workflow for Prairie two-photon scope
 
-PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER
+PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF SCOPE COMPUTER
 
 [Operator's Manual][Ultima-Operators-Manual-Rev-B] pdf
 
 Scope ID is 4647
 
 [Original Quote][1] pdf
+
+[Download Prairie View][3]. Password for 5.3 is 'glial'
 
 ## Current workflow
 
@@ -129,8 +131,6 @@ The red filter in front of the PMT is from Chroma and is a HQ 610/75m
 
 (HQ 610/75m)[https://www.chroma.com/products/parts/hq610-75m]
 
-[1]: /images/JHU-15-051120E.pdf
-[Ultima-Operators-Manual-Rev-B]: /images/Ultima-Operators-Manual-Rev-B.pdf
 
 ## Synch code to robertcudmore.org
 
@@ -162,3 +162,7 @@ ignore = Name *.htaccess
 
 servercmd=/home1/robertcu/unison
 ```
+
+[1]: /images/JHU-15-051120E.pdf
+[Ultima-Operators-Manual-Rev-B]: /images/Ultima-Operators-Manual-Rev-B.pdf
+[3]: https://pvupdate.blogspot.com/
