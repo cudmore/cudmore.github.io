@@ -10,11 +10,9 @@ tags:
 
 These are instructions for installing the Raspian Stretch (Debian) system on a Raspberry Pi.
 
-This was originally written for Jessie in May 2016, updated for Stretch on Nov 22, 2017, and then again on April 19, 2018.
-
 ## 1) Set up the SD card
 
-With the SD card inserted into a card-reader on an existing computer.
+You want a name brand `class 10` card with about 16 GB.
 
 ### 1.1) Download image
 
@@ -26,44 +24,39 @@ With the SD card inserted into a card-reader on an existing computer.
  
 ### 1.2) Copy the downloaded image to SD card
 
-For either MacOS or Windows, follow an installation guide [here][installguide]. 
+If you run into trouble, follow this [installation guide][installguide]. 
 
 #### On MacOS
 
-Unzip the .zip file by right clicking the .zip file and selecting 'Open With - Archive Utility.app (default)'. This will yield a .img file.
+Unzip the .zip file by right clicking the .zip file and selecting `Open With - Archive Utility.app (default)`. This will yield a .img file.
 
-Insert SD card and use DiskUtil to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as 'MS-DOS (FAT)'.
+Insert an SD card and use `DiskUtil` to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as 'MS-DOS (FAT)'.
 
 Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount)
 
-Find the location of your SD card, in a terminal type `diskutil list`.
+Find the location of your SD card
+
+```
+# in a terminal, type
+diskutil list
+```
 
 You should see something like this.
 
 ```
-/dev/disk9
+/dev/disk4 (external, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:     FDisk_partition_scheme                        *15.9 GB    disk9
-   1:             Windows_FAT_32 boot                    43.8 MB    disk9s1
-   2:                      Linux                         1.8 GB     disk9s2
+   0:     FDisk_partition_scheme                        *15.9 GB    disk4
+   1:             Windows_FAT_32 NO NAME                 15.9 GB    disk4s1
 ```
 
-or maybe
-
-```
-/dev/disk5 (external, physical):
-   #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:     FDisk_partition_scheme                        *15.9 GB    disk5
-   1:                 DOS_FAT_32 U                       15.9 GB    disk5s1
-```
-
-Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk9
+Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4
 
 ```bash
 sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk9
 ```
 
-Note that this command requires /dev/rdisk rather than /dev/disk. Just one example of why IT fuckers get paid alot.
+Note that this command requires `/dev/rdisk` rather than `/dev/disk`.
 
 #### On Windows
 
@@ -71,7 +64,7 @@ Follow install guides [here][installguide].
 
 ### 1.3) Configure the Pi run ssh on boot
 
-As of the November 2016 release, Raspbian has the SSH server disabled by default. You will have to enable it manually. To enable the ssh server, create a file named 'ssh' in the root folder of the SD card
+Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named `ssh` in the root folder of the SD card
 
 On MacOS, open a terminal and type:
 
@@ -87,18 +80,20 @@ Find IP address using router web interface, usually http://192.168.1.1
 
 #### On MacOS
 
-In a terminal window, type the following, where IP address is address of your Pi you found in the previous step.
+In a terminal window, type the following, where `[piIP]` is address of your Pi you found in the previous step.
 
-    ssh pi@192.168.1.15
+    ssh pi@[piIP]
     #password is raspberry
 
 #### On Windows
 
-You are on your own, download and use [Putty][putty].
+Download and use [Putty][putty].
     
 ### 2.2) Run configuration utility
 
-    sudo raspi-config
+```
+sudo raspi-config
+```
 
 The name and location of these options change as Raspbian gets updated. This is still the general idea
 
@@ -119,7 +114,7 @@ The name and location of these options change as Raspbian gets updated. This is 
  - 7 Advanced Options
    - A1 Expand Filesystem
      
-Selecting Boot Options -> Console is important. It seems Raspbian ships with X-Windows on by default and you want to turn it off.
+Selecting `3 Boot Options -> B1 Console` is important. It seems Raspbian ships with a GUI desktop on by default and you want to turn it off.
 
 Here, I am setting my locale to en_US.UTF-8. If you are in a different country you should set this as you want.
 
@@ -127,7 +122,6 @@ Here, I am setting my locale to en_US.UTF-8. If you are in a different country y
 
     sudo apt-get update  #update database
     sudo apt-get upgrade #update userspace (this can take a long time)
-    sudo rpi-update      #update firmware (requires reboot)
     sudo reboot          #reboot
 
 ## Checking your Raspian, hardware, and firmware
@@ -163,15 +157,15 @@ Returns
 
 ## Setup the network
 
-If you are connecting to a router there is no additional setup required.
-
-20171122, With Raspbian Stretch this got complicated again. See [this][10]
+If you are connecting to a local router there is no additional setup required.
 
 When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi. Ask your network administrator to authenticate based on the MAC address of the Raspberry Ethernet port. You can find this with:
 
-	ifconfig eth0
+```
+ifconfig eth0
+```
 	
-Returns
+Which returns something like this, telling us the MAC address is `b8:27:eb:aa:51:6d`
 
 ```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -184,125 +178,19 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-In this case, the MAC adress is `b8:27:eb:aa:51:6d`
-
-### Raspbian Jessie (working on Hopkins network)
-
-#### Contents of `/etc/network/interfaces`
-
-```
-# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-
-auto lo
-iface lo inet loopback
-
-#iface eth0 inet manual
-iface eth0 inet dhcp
-
-allow-hotplug wlan0
-iface wlan0 inet manual
-	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
-
-allow-hotplug wlan1
-iface wlan1 inet manual
-	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
-```
-
-#### Contents of `/etc/wpa_supplicant/wpa_supplicant.conf`
-
-```
-country=GB
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
-	ssid="NETGEAR28"
-	psk="wideviolet906"
-}
-
-# "hopkins" wireless for JHU
-network={
-        ssid="hopkins"
-        key_mgmt=WPA-EAP
-        eap=PEAP
-        phase2="auth=MSCHAPV2"
-        identity="rcudmor1"
-        password="your_password_here"
-}
-```
-
-### Stretch
-
-	cat /etc/network/interfaces
-	
-Gives:
-
-```
-# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-```
-
-#### Edit `/etc/wpa_supplicant/wpa_supplicant.conf`
-
-At Hopkins you want to follow [these instruction](http://www.it.johnshopkins.edu/services/network/wireless/wpasupplicant.html)
-
-    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-    update_config=1
-
-    network={
-        ssid="NETGEAR28"
-        psk="your_password_here"
-    }
-
-    # "hopkins" wireless for JHU
-    network={
-        ssid="hopkins"
-        key_mgmt=WPA-EAP
-        eap=PEAP
-        phase2="auth=MSCHAPV2"
-        identity="JHED_ID_Replace_Me"
-        password="JHED_Password_Replace_Me"
-    }
-
-#### Configure a router to assign an ip based on MAC address of wifi adapter
-
-Get the mac address of your Pi
-
-    ifconfig wlan0
-
-The MAC address is listed as 'HWaddr' and in this case is '00:0b:81:89:11:8a'.
-
-    wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
-              inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
-              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-              RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
-              TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000 
-              RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
-
-
-## AFP / Netatalk / Avahi
+## Apple-File-protocol (AFP)
 
 This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.
 
-    sudo apt-get install netatalk
+```
+sudo apt-get install netatalk
+```
 
-Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared' section. The Pi can be manually mounted from MacOS by going to `Go - Connect To Server...` and entering `afp://IP` where IP is the IP address of your Pi.
+Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared' section. The Pi can be manually mounted from MacOS by going to `Go - Connect To Server...` and entering `afp://[piIP]` where [piIP] is the IP address of your Pi.
 
-#### Change the default name of your Pi in netatalk
+### Change the default name of your Pi in netatalk (optional)
 
-When you mount the pi on MacOS, it will mount as 'Home Directory' and the space in 'Home Directory' will cause problems. Change the name to something like 'pi3'.
+When you mount the pi on MacOS, it will mount as `Home Directory` and the space in 'Home Directory' can cause problems. Change the name to something like 'pi3'.
 
 See [this blog post][afpmountpoint] to change the name of the mount point from 'Home Directory'.    
 
@@ -323,9 +211,9 @@ In the following `the_name_you_want` should be changed to the name you want.
     # restart netatalk
     sudo /etc/init.d/netatalk start
 
-What the hell did we just do? We edited a text file using `pico`, an editor like `nano` or `emacs`. Welcome to the world of Linux. When in pico, you can search for a string with control+w and you can exit with control+x.
+When using the `pico` editor, `ctrl+x` to save and quit, `ctrl+w` to search, `ctrl+v` to page down. Remember, the `pico` editor does not respond to mouse clicks, you need to move the cursor around with arrow keys.
 
-## Samba
+## Samba (AFP
 
 This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.
 
@@ -341,7 +229,7 @@ Add the following
 	Comment = Pi shared folder
 	Path = /home/pi
 	Browseable = yes
-	Writeable = Yes
+	Writeable = yes
 	only guest = no
 	create mask = 0777
 	directory mask = 0777
@@ -356,19 +244,8 @@ Restart samba
 
 	sudo /etc/init.d/samba restart
 	
-Test the server from another machine on the network. On a windows machine, mount the fileserver with `smb:\\IP` where IP is the IP address of your pi.
+Test the server from another machine on the network. On a windows machine, mount the fileserver with `smb:\\[piIP]` where [piIP] is the IP address of your pi.
 
-## Install additional python packages (optional)
-
-We will use python pip to install additional python pckages.
-
-    # assuming you want python 2.7 (cool kids are using Python 3.x)
-    sudo apt-get install python-pip
-    
-    # pi camera
-    sudo apt-get install python-picamera
-
-    
 ## Startup tweet
 
 Have the Pi send a tweet with its IP when it boots. See [this blog post][startuptweeter] for instructions.
@@ -377,83 +254,8 @@ Have the Pi send a tweet with its IP when it boots. See [this blog post][startup
 
 Have the Pi send an email with its IP address when it boots. See [this blog post][startupmailer] for instructions. An example python script is here, [startup_mailer.py][startupmailer]
 
-## Install uv4l (optional for video streaming)
+## Have fun with your pi
 
-See [uv4l-on-Raspberry-Pi][uv4l] for instructions.
-
-## Install unison (optional)
-
-If you don't know what unison is then don't install it.
-
-My remote server (via bluehost) has unison 2.4 installed. The newest version of Raspbian Jessie is using unison 2.8. I need to roll back unison on Raspberry to 2.4 for this to work
-
-
-    mkdir tmp
-    cd tmp
-    wget http://mirrordirector.raspbian.org/raspbian/pool/main/u/unison/unison_2.40.65-2_armhf.deb
-    sudo dpkg -i unison_2.40.65-2_armhf.deb 
-
-```
-sudo apt-get install unison
-# see link to set up auto authentication with rsa keys
-unison # run once to make /home/pi/.unison
-pico /home/pi/.unison/sites.prf    
-
-# This is contents of /home/pi/.unison/sites.prf
-# Unison preferences file
-root = /home/pi/Sites
-root = ssh://robertcu@robertcudmore.org/raspberry/Sites
-
-ignore = Name *.pyc
-ignore = Name *.tif
-ignore = Name .AppleDouble
-ignore = Name .DS_Store
-ignore = Name *.DS_Store
-ignore = Name *.shtml
-ignore = Name *.htaccess
-
-# Be fast even on Windows
-# fastcheck = yes
-
-servercmd=/home1/robertcu/unison
-```
-
-## Stretch network working on router
-
-sudo more /etc/network/interfaces
-
-```
-pi@homecage2:~ $ sudo more /etc/network/interfaces
-# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-
-# abb 20171212
-#auto lo
-#iface lo inet loopback
-
-#iface eth0 inet static
-#iface eth0 inet dhcp
-```
-
-sudo more /etc/dhcpcd.conf
-
-```
-###
-#20171122 cudmore
-###
-profile static_eth0
-static ip_address=10.16.80.38/24
-static routers=10.16.80.1
-static domain_name_servers=10.200.1.1 10.200.2.2
-
-interface eth0
-#fallback static_eth0
-```
 
 [downloadraspian]: https://www.raspberrypi.org/downloads/
 [installguide]: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
