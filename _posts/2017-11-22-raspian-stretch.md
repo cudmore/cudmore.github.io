@@ -178,7 +178,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-## Apple-File-protocol (AFP)
+## Apple-File-Protocol (AFP)
 
 This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.
 
@@ -213,7 +213,7 @@ In the following `the_name_you_want` should be changed to the name you want.
 
 When using the `pico` editor, `ctrl+x` to save and quit, `ctrl+w` to search, `ctrl+v` to page down. Remember, the `pico` editor does not respond to mouse clicks, you need to move the cursor around with arrow keys.
 
-## Samba (AFP
+## Samba (SMB)
 
 This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.
 
