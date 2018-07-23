@@ -53,7 +53,7 @@ You should see something like this.
 Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4
 
 ```bash
-sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk9
+sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk4
 ```
 
 Note that this command requires `/dev/rdisk` rather than `/dev/disk`.
