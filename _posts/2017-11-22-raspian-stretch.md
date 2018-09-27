@@ -32,8 +32,6 @@ Unzip the .zip file by right clicking the .zip file and selecting `Open With - A
 
 Insert an SD card and use `DiskUtil` to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as 'MS-DOS (FAT)'.
 
-Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount)
-
 Find the location of your SD card
 
 ```
@@ -50,10 +48,16 @@ You should see something like this.
    1:             Windows_FAT_32 NO NAME                 15.9 GB    disk4s1
 ```
 
+Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount) or use this command line
+
+```
+diskutil unmountDisk /dev/disk4
+```
+
 Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4
 
 ```bash
-sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk9
+sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk4
 ```
 
 Note that this command requires `/dev/rdisk` rather than `/dev/disk`.
