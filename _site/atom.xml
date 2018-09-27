@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-04-07T21:59:39-04:00</updated>
+ <updated>2018-09-27T11:54:47-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Robert Cudmore</name>
@@ -302,47 +302,52 @@ crontab -e
    <id>http://localhost:4000/post/2017/11/22/raspian-stretch</id>
    <content type="html">&lt;p&gt;These are instructions for installing the Raspian Stretch (Debian) system on a Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;This was originally written for Jessie in May 2016 and then updated for Stretch on Nov 22, 2017.&lt;/p&gt;
-
 &lt;h2 id=&quot;1-set-up-the-sd-card&quot;&gt;1) Set up the SD card&lt;/h2&gt;
 
-&lt;p&gt;With the SD card inserted into a card-reader on an existing computer.&lt;/p&gt;
+&lt;p&gt;You want a name brand &lt;code class=&quot;highlighter-rouge&quot;&gt;class 10&lt;/code&gt; card with about 16 GB.&lt;/p&gt;
 
 &lt;h3 id=&quot;11-download-image&quot;&gt;1.1) Download image&lt;/h3&gt;
 
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/downloads/&quot;&gt;Download here&lt;/a&gt;&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;As of May 21, 2016 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-05-10-raspbian-jessie&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;As of Nov 16, 2017 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2017-09-07-raspbian-stretch-lite&lt;/code&gt;.
- &lt;a href=&quot;https://www.raspberrypi.org/downloads/&quot;&gt;Download here&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;As of Nov 16, 2017 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2017-09-07-raspbian-stretch-lite&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;As of April 19, 2018 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2018-04-18-raspbian-stretch-lite&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;12-copy-the-downloaded-image-to-sd-card&quot;&gt;1.2) Copy the downloaded image to SD card&lt;/h3&gt;
 
-&lt;p&gt;For either MacOS or Windows, follow an installation guide &lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/README.md&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you run into trouble, follow this &lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/README.md&quot;&gt;installation guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;on-macos&quot;&gt;On MacOS&lt;/h4&gt;
 
-&lt;p&gt;Unzip the .zip file by right clicking the .zip file and selecting ‘Open With - Archive Utility.app (default)’. This will yield a .img file.&lt;/p&gt;
+&lt;p&gt;Unzip the .zip file by right clicking the .zip file and selecting &lt;code class=&quot;highlighter-rouge&quot;&gt;Open With - Archive Utility.app (default)&lt;/code&gt;. This will yield a .img file.&lt;/p&gt;
 
-&lt;p&gt;Insert SD card and use DiskUtil to format it as Fat32.&lt;/p&gt;
+&lt;p&gt;Insert an SD card and use &lt;code class=&quot;highlighter-rouge&quot;&gt;DiskUtil&lt;/code&gt; to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as ‘MS-DOS (FAT)’.&lt;/p&gt;
 
 &lt;p&gt;Use DiskUtil to ‘unmount’ the SD card (don’t eject, you need to unmount)&lt;/p&gt;
 
-&lt;p&gt;Find the location of your SD card, in a terminal type &lt;code class=&quot;highlighter-rouge&quot;&gt;diskutil list&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Find the location of your SD card&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# in a terminal, type
+diskutil list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;You should see something like this.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/dev/disk9
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/dev/disk4 (external, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:     FDisk_partition_scheme                        *15.9 GB    disk9
-   1:             Windows_FAT_32 boot                    43.8 MB    disk9s1
-   2:                      Linux                         1.8 GB     disk9s2
+   0:     FDisk_partition_scheme                        *15.9 GB    disk4
+   1:             Windows_FAT_32 NO NAME                 15.9 GB    disk4s1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk9&lt;/p&gt;
+&lt;p&gt;Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dd &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1m &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/rdisk9
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that this command requires &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/rdisk&lt;/code&gt; rather than &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/disk&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;on-windows&quot;&gt;On Windows&lt;/h4&gt;
 
@@ -350,7 +355,7 @@ crontab -e
 
 &lt;h3 id=&quot;13-configure-the-pi-run-ssh-on-boot&quot;&gt;1.3) Configure the Pi run ssh on boot&lt;/h3&gt;
 
-&lt;p&gt;As of the November 2016 release, Raspbian has the SSH server disabled by default. You will have to enable it manually. To enable the ssh server, create a file named ‘ssh’ in the root folder of the SD card&lt;/p&gt;
+&lt;p&gt;Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in the root folder of the SD card&lt;/p&gt;
 
 &lt;p&gt;On MacOS, open a terminal and type:&lt;/p&gt;
 
@@ -367,26 +372,30 @@ crontab -e
 
 &lt;h4 id=&quot;on-macos-1&quot;&gt;On MacOS&lt;/h4&gt;
 
-&lt;p&gt;In a terminal window, type the following, where IP address is address of your Pi you found in the previous step.&lt;/p&gt;
+&lt;p&gt;In a terminal window, type the following, where &lt;code class=&quot;highlighter-rouge&quot;&gt;[piIP]&lt;/code&gt; is address of your Pi you found in the previous step.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@192.168.1.15
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@[piIP]
 #password is raspberry
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;on-windows-1&quot;&gt;On Windows&lt;/h4&gt;
 
-&lt;p&gt;You are on your own, download and use &lt;a href=&quot;http://www.putty.org/&quot;&gt;Putty&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download and use &lt;a href=&quot;http://www.putty.org/&quot;&gt;Putty&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;22-run-configuration-utility&quot;&gt;2.2) Run configuration utility&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo raspi-config
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;20171122 - The name and location of these options have changed. This is still the general idea&lt;/p&gt;
+&lt;p&gt;The name and location of these options change as Raspbian gets updated. This is still the general idea&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;1 Change User password&lt;/li&gt;
-  &lt;li&gt;2 Hostname -&amp;gt; [Chose a name]&lt;/li&gt;
+  &lt;li&gt;2 Network Options - Configure network settings
+    &lt;ul&gt;
+      &lt;li&gt;N1 Hostname - Set the visible name for this Pi on a network&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;3 Boot Options
     &lt;ul&gt;
       &lt;li&gt;B1 Desktop / CLI
@@ -420,139 +429,87 @@ crontab -e
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Selecting Boot Options -&amp;gt; Console is important. It seems Raspbian ships with X-Windows on by default and you want to turn it off.&lt;/p&gt;
+&lt;p&gt;Selecting &lt;code class=&quot;highlighter-rouge&quot;&gt;3 Boot Options -&amp;gt; B1 Console&lt;/code&gt; is important. It seems Raspbian ships with a GUI desktop on by default and you want to turn it off.&lt;/p&gt;
+
+&lt;p&gt;Here, I am setting my locale to en_US.UTF-8. If you are in a different country you should set this as you want.&lt;/p&gt;
 
 &lt;h3 id=&quot;23-update-the-system&quot;&gt;2.3) Update the system&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update  #update database
 sudo apt-get upgrade #update userspace (this can take a long time)
-sudo rpi-update      #update firmware (requires reboot)
 sudo reboot          #reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;checking-your-raspian-hardware-and-firmware&quot;&gt;Checking your Raspian, hardware, and firmware&lt;/h2&gt;
+
+&lt;p&gt;Checking your Raspian version&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat /etc/os-release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Returns&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PRETTY_NAME=&quot;Raspbian GNU/Linux 9 (stretch)&quot;
+NAME=&quot;Raspbian GNU/Linux&quot;
+VERSION_ID=&quot;9&quot;
+VERSION=&quot;9 (stretch)&quot;
+ID=raspbian
+ID_LIKE=debian
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Checking your Raspberry Pi version (the hardware)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat /proc/device-tree/model
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Returns&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Raspberry Pi 3 Model B Rev 1.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Checking your firmware (pretty cryptic)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;uname -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Returns&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Linux pi_bplus 4.14.34+ #1110 Mon Apr 16 14:51:42 BST 2018 armv6l GNU/Linux
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;setup-the-network&quot;&gt;Setup the network&lt;/h2&gt;
 
-&lt;p&gt;If you are connecting to a router there is no additional setup required.&lt;/p&gt;
+&lt;p&gt;If you are connecting to a local router there is no additional setup required.&lt;/p&gt;
 
-&lt;p&gt;20171122, With Raspbian Stretch this got complicated again. See &lt;a href=&quot;https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address&quot;&gt;this&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi. Ask your network administrator to authenticate based on the MAC address of the Raspberry Ethernet port. You can find this with:&lt;/p&gt;
 
-&lt;p&gt;When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi.&lt;/p&gt;
-
-&lt;h3 id=&quot;raspbian-jessie-working-on-hopkins-network&quot;&gt;Raspbian Jessie (working on Hopkins network)&lt;/h3&gt;
-
-&lt;h4 id=&quot;contents-of-etcnetworkinterfaces&quot;&gt;Contents of &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/network/interfaces&lt;/code&gt;&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-
-auto lo
-iface lo inet loopback
-
-#iface eth0 inet manual
-iface eth0 inet dhcp
-
-allow-hotplug wlan0
-iface wlan0 inet manual
-	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
-
-allow-hotplug wlan1
-iface wlan1 inet manual
-	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig eth0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;contents-of-etcwpa_supplicantwpa_supplicantconf&quot;&gt;Contents of &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/wpa_supplicant/wpa_supplicant.conf&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Which returns something like this, telling us the MAC address is &lt;code class=&quot;highlighter-rouge&quot;&gt;b8:27:eb:aa:51:6d&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;country=GB
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
-	ssid=&quot;NETGEAR28&quot;
-	psk=&quot;wideviolet906&quot;
-}
-
-# &quot;hopkins&quot; wireless for JHU
-network={
-        ssid=&quot;hopkins&quot;
-        key_mgmt=WPA-EAP
-        eap=PEAP
-        phase2=&quot;auth=MSCHAPV2&quot;
-        identity=&quot;rcudmor1&quot;
-        password=&quot;your_password_here&quot;
-}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu 1500
+        inet 192.168.1.5  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::303f:6054:3ec9:3bfb  prefixlen 64  scopeid 0x20&amp;lt;link&amp;gt;
+        ether b8:27:eb:aa:51:6d  txqueuelen 1000  (Ethernet)
+        RX packets 1927  bytes 147022 (143.5 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1729  bytes 118135 (115.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;stretch&quot;&gt;Stretch&lt;/h3&gt;
+&lt;h2 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (AFP)&lt;/h2&gt;
 
-&lt;p&gt;Stretch &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/network/interfaces&lt;/code&gt; is&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;edit-etcwpa_supplicantwpa_supplicantconf&quot;&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/wpa_supplicant/wpa_supplicant.conf&lt;/code&gt;&lt;/h4&gt;
-
-&lt;p&gt;At Hopkins you want to follow &lt;a href=&quot;http://www.it.johnshopkins.edu/services/network/wireless/wpasupplicant.html&quot;&gt;these instruction&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
-    ssid=&quot;NETGEAR28&quot;
-    psk=&quot;your_password_here&quot;
-}
-
-# &quot;hopkins&quot; wireless for JHU
-network={
-    ssid=&quot;hopkins&quot;
-    key_mgmt=WPA-EAP
-    eap=PEAP
-    phase2=&quot;auth=MSCHAPV2&quot;
-    identity=&quot;JHED_ID_Replace_Me&quot;
-    password=&quot;JHED_Password_Replace_Me&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;configure-a-router-to-assign-an-ip-based-on-mac-address-of-wifi-adapter&quot;&gt;Configure a router to assign an ip based on MAC address of wifi adapter&lt;/h4&gt;
-
-&lt;p&gt;Get the mac address of your Pi&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig wlan0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The MAC address is listed as ‘HWaddr’ and in this case is ‘00:0b:81:89:11:8a’.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wlan0     Link encap:Ethernet  HWaddr 00:0b:81:89:11:8a  
-          inet addr:192.168.1.12  Bcast:192.168.1.255  Mask:255.255.255.0
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1112 errors:0 dropped:837 overruns:0 frame:0
-          TX packets:348 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:253265 (247.3 KiB)  TX bytes:56154 (54.8 KiB)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;afp--netatalk--avahi&quot;&gt;AFP / Netatalk / Avahi&lt;/h2&gt;
-
-&lt;p&gt;This will make the Pi an apple-file-protocol file-server that can be accessed MacOS.&lt;/p&gt;
+&lt;p&gt;This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install netatalk
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section. The Pi can be manually mounted from MacOS by going to &lt;code class=&quot;highlighter-rouge&quot;&gt;Go - Connect To Server...&lt;/code&gt; and entering &lt;code class=&quot;highlighter-rouge&quot;&gt;afp://IP&lt;/code&gt; where IP is the IP address of your Pi.&lt;/p&gt;
+&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section. The Pi can be manually mounted from MacOS by going to &lt;code class=&quot;highlighter-rouge&quot;&gt;Go - Connect To Server...&lt;/code&gt; and entering &lt;code class=&quot;highlighter-rouge&quot;&gt;afp://[piIP]&lt;/code&gt; where [piIP] is the IP address of your Pi.&lt;/p&gt;
 
-&lt;h4 id=&quot;change-the-default-name-of-your-pi-in-netatalk&quot;&gt;Change the default name of your Pi in netatalk&lt;/h4&gt;
+&lt;h3 id=&quot;change-the-default-name-of-your-pi-in-netatalk-optional&quot;&gt;Change the default name of your Pi in netatalk (optional)&lt;/h3&gt;
 
-&lt;p&gt;When you mount the pi on MacOS, it will mount as ‘Home Directory’ and the space ‘ ‘ will cause problems. Change the name to something like ‘pi3’.&lt;/p&gt;
+&lt;p&gt;When you mount the pi on MacOS, it will mount as &lt;code class=&quot;highlighter-rouge&quot;&gt;Home Directory&lt;/code&gt; and the space in ‘Home Directory’ can cause problems. Change the name to something like ‘pi3’.&lt;/p&gt;
 
 &lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/&quot;&gt;this blog post&lt;/a&gt; to change the name of the mount point from ‘Home Directory’.&lt;/p&gt;
 
@@ -562,7 +519,7 @@ network={
 sudo /etc/init.d/netatalk stop
 
 # edit config file
-sudo nano /etc/netatalk/AppleVolumes.default
+sudo pico /etc/netatalk/AppleVolumes.default
 
 # change this one line
 
@@ -574,7 +531,9 @@ sudo nano /etc/netatalk/AppleVolumes.default
 sudo /etc/init.d/netatalk start
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;samba&quot;&gt;Samba&lt;/h2&gt;
+&lt;p&gt;When using the &lt;code class=&quot;highlighter-rouge&quot;&gt;pico&lt;/code&gt; editor, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+x&lt;/code&gt; to save and quit, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+w&lt;/code&gt; to search, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+v&lt;/code&gt; to page down. Remember, the &lt;code class=&quot;highlighter-rouge&quot;&gt;pico&lt;/code&gt; editor does not respond to mouse clicks, you need to move the cursor around with arrow keys.&lt;/p&gt;
+
+&lt;h2 id=&quot;samba-smb&quot;&gt;Samba (SMB)&lt;/h2&gt;
 
 &lt;p&gt;This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.&lt;/p&gt;
 
@@ -592,7 +551,7 @@ sudo /etc/init.d/netatalk start
 Comment = Pi shared folder
 Path = /home/pi
 Browseable = yes
-Writeable = Yes
+Writeable = yes
 only guest = no
 create mask = 0777
 directory mask = 0777
@@ -610,16 +569,7 @@ Guest ok = no
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/init.d/samba restart
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Test the server from another machine on the network. On a windows machine, mount the fileserver with &lt;code class=&quot;highlighter-rouge&quot;&gt;smb:\\IP&lt;/code&gt; where IP is the IP address of your pi.&lt;/p&gt;
-
-&lt;h2 id=&quot;install-additional-python-packages-optional&quot;&gt;Install additional python packages (optional)&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# assuming you want python 2.7
-sudo apt-get install python-pip
-
-# pi camera
-sudo apt-get install python-picamera
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Test the server from another machine on the network. On a windows machine, mount the fileserver with &lt;code class=&quot;highlighter-rouge&quot;&gt;smb:\\[piIP]&lt;/code&gt; where [piIP] is the IP address of your pi.&lt;/p&gt;
 
 &lt;h2 id=&quot;startup-tweet&quot;&gt;Startup tweet&lt;/h2&gt;
 
@@ -629,79 +579,7 @@ sudo apt-get install python-picamera
 
 &lt;p&gt;Have the Pi send an email with its IP address when it boots. See &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;this blog post&lt;/a&gt; for instructions. An example python script is here, &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;install-uv4l-optional-for-video-streaming&quot;&gt;Install uv4l (optional for video streaming)&lt;/h2&gt;
-
-&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/05/uv4l-on-Raspberry-Pi/&quot;&gt;uv4l-on-Raspberry-Pi&lt;/a&gt; for instructions.&lt;/p&gt;
-
-&lt;h2 id=&quot;install-unison-optional&quot;&gt;Install unison (optional)&lt;/h2&gt;
-
-&lt;p&gt;If you don’t know what unison is then don’t install it.&lt;/p&gt;
-
-&lt;p&gt;My remote server (via bluehost) has unison 2.4 installed. The newest version of Raspbian Jessie is using unison 2.8. I need to roll back unison on Raspberry to 2.4 for this to work&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir tmp
-cd tmp
-wget http://mirrordirector.raspbian.org/raspbian/pool/main/u/unison/unison_2.40.65-2_armhf.deb
-sudo dpkg -i unison_2.40.65-2_armhf.deb 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install unison
-# see link to set up auto authentication with rsa keys
-unison # run once to make /home/pi/.unison
-pico /home/pi/.unison/sites.prf    
-
-# This is contents of /home/pi/.unison/sites.prf
-# Unison preferences file
-root = /home/pi/Sites
-root = ssh://robertcu@robertcudmore.org/raspberry/Sites
-
-ignore = Name *.tif
-ignore = Name .AppleDouble
-ignore = Name .DS_Store
-ignore = Name *.DS_Store
-ignore = Name *.shtml
-ignore = Name *.htaccess
-
-# Be fast even on Windows
-# fastcheck = yes
-
-servercmd=/home1/robertcu/unison
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;stretch-network-working-on-router&quot;&gt;Stretch network working on router&lt;/h2&gt;
-
-&lt;p&gt;sudo more /etc/network/interfaces&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@homecage2:~ $ sudo more /etc/network/interfaces
-# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-
-# abb 20171212
-#auto lo
-#iface lo inet loopback
-
-#iface eth0 inet static
-#iface eth0 inet dhcp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;sudo more /etc/dhcpcd.conf&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;###
-#20171122 cudmore
-###
-profile static_eth0
-static ip_address=10.16.80.38/24
-static routers=10.16.80.1
-static domain_name_servers=10.200.1.1 10.200.2.2
-
-interface eth0
-#fallback static_eth0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;have-fun-with-your-pi&quot;&gt;Have fun with your pi&lt;/h2&gt;
 
 </content>
  </entry>
@@ -786,7 +664,7 @@ sudo apt-get install libav-tools
 
 &lt;p&gt;Add one line at the end of crontab&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot (sleep 10; /home/pi/startup_tweeter.py)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@reboot (sleep 10; python /home/pi/startup_tweeter.py)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;python-script-to-tweet-ip&quot;&gt;Python script to tweet IP&lt;/h3&gt;
@@ -1141,13 +1019,15 @@ Type &quot;screen [-d] -r [pid.]tty.host&quot; to resume one of them.
    <id>http://localhost:4000/post/2016/11/20/Prairie-scope-analysis</id>
    <content type="html">&lt;p&gt;Acquisition and analysis workflow for Prairie two-photon scope&lt;/p&gt;
 
-&lt;p&gt;PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF COMPUTER&lt;/p&gt;
+&lt;p&gt;PUT THIS TOGETHER WITH CURRENT NOTES SITTING ON DESKTOP OF SCOPE COMPUTER&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/images/Ultima-Operators-Manual-Rev-B.pdf&quot;&gt;Operator’s Manual&lt;/a&gt; pdf&lt;/p&gt;
 
 &lt;p&gt;Scope ID is 4647&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/images/JHU-15-051120E.pdf&quot;&gt;Original Quote&lt;/a&gt; pdf&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pvupdate.blogspot.com/&quot;&gt;Download Prairie View&lt;/a&gt;. Password for 5.3 is ‘glial’&lt;/p&gt;
 
 &lt;h2 id=&quot;current-workflow&quot;&gt;Current workflow&lt;/h2&gt;
 
@@ -1314,6 +1194,7 @@ ignore &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Name &lt;span class=&quot;
 
 &lt;span class=&quot;nv&quot;&gt;servercmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home1/robertcu/unison
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 </content>
  </entry>
  

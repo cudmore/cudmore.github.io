@@ -11,7 +11,7 @@ This is software I have developed since 2009. It is designed to allow me to perf
 
 <dd>
 <p>
-<A HREF="http://mapmanager.github.io" target="_blank">Map Manager</A>, software to annotate image volume time-series.
+<A HREF="http://mapmanager.net" target="_blank">Map Manager</A>, software to annotate image volume time-series.
 </p>
 </dd>
 
