@@ -12,15 +12,16 @@ These are instructions for installing the Raspian Stretch (Debian) system on a R
 
 ## 1) Set up the SD card
 
-You want a name brand `class 10` card with about 16 GB.
+You want a name brand 'class 10' card with about 16 GB.
 
 ### 1.1) Download image
 
- [Download here][downloadraspian]
+ [Download][downloadraspian] an image of the Raspian operating system. You want to download 'Raspian Stretch Lite'.
 
  - As of May 21, 2016 the image was named `2016-05-10-raspbian-jessie`.
  - As of Nov 16, 2017 the image was named `2017-09-07-raspbian-stretch-lite`.
  - As of April 19, 2018 the image was named `2018-04-18-raspbian-stretch-lite`.
+ - As of Oct 17, 2018 the image was named `2018-10-09-raspbian-stretch-lite`.
  
 ### 1.2) Copy the downloaded image to SD card
 
@@ -30,7 +31,7 @@ If you run into trouble, follow this [installation guide][installguide].
 
 Unzip the .zip file by right clicking the .zip file and selecting `Open With - Archive Utility.app (default)`. This will yield a .img file.
 
-Insert an SD card and use `DiskUtil` to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as 'MS-DOS (FAT)'.
+Insert an SD card into the Mac and use `DiskUtil` to format it as Fat32. You can find the `DiskUtility.app` in /Applications/utilities. In OSX Sierra this is DiskUtil - Erase - Format as 'MS-DOS (FAT)'.
 
 Find the location of your SD card
 
@@ -57,10 +58,12 @@ diskutil unmountDisk /dev/disk4
 Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4
 
 ```bash
-sudo dd bs=1m if=/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img of=/dev/rdisk4
+sudo dd bs=1m if=/Users/cudmore/Downloads/2018-10-09-raspbian-stretch-lite.img of=/dev/rdisk4
 ```
 
 Note that this command requires `/dev/rdisk` rather than `/dev/disk`.
+
+Be very careful with this command, if you have multiple hard-drives make sure you specify the SD card we are using. If you get it wrong you could wipe an entire hard-drive.
 
 #### On Windows
 
@@ -68,7 +71,7 @@ Follow install guides [here][installguide].
 
 ### 1.3) Configure the Pi to run ssh at boot
 
-Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named `ssh` in the root folder of the SD card
+The SSH server allows you to login to the Pi with a command prompt. Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named `ssh` in the root folder of the SD card.
 
 On MacOS, open a terminal and type:
 
@@ -76,15 +79,18 @@ On MacOS, open a terminal and type:
     
 ## 2) First boot of the Pi
 
-Insert SD card into a Pi, connect Pi to a router with an ethernet cable and boot
+The tricky part here is finding the Pi IP address. The easiest option is to use a home **router**.
 
-Find IP address using router web interface, usually http://192.168.1.1
+ - Insert SD card into the Pi
+ - Connect the Pi to a **router** with an ethernet cable
+ - Plug in the USB power on the Pi.
+ - Find the IP address of the Pi using the **router** web interface, usually http://192.168.1.1
 
 ### 2.1) Login via ssh
 
 #### On MacOS
 
-In a terminal window, type the following, where `[piIP]` is address of your Pi you found in the previous step.
+In a terminal window, type the following, where `[piIP]` is address of your Pi you found in the previous step. The Terminal.app is in /Applications/Utilities in macOS.
 
     ssh pi@[piIP]
     #password is raspberry
@@ -150,6 +156,8 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX packets 1729  bytes 118135 (115.3 KiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+
+At Hopkins, log into the [https://jhars.nts.jhu.edu](https://jhars.nts.jhu.edu) website from any computer and use the “Register For a Fixed IP Address by Subnet”.
 
 ## Apple-File-Protocol (AFP)
 
@@ -278,7 +286,7 @@ Returns
 ## Have fun with your pi
 
 
-[downloadraspian]: https://www.raspberrypi.org/downloads/
+[downloadraspian]: https://www.raspberrypi.org/downloads/raspbian/
 [installguide]: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 [mswindows]: http://www.circuitbasics.com/raspberry-pi-basics-setup-without-monitor-keyboard-headless-mode/
 [afpmountpoint]: http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/
