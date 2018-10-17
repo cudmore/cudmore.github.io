@@ -66,7 +66,7 @@ Note that this command requires `/dev/rdisk` rather than `/dev/disk`.
 
 Follow install guides [here][installguide].
 
-### 1.3) Configure the Pi run ssh on boot
+### 1.3) Configure the Pi to run ssh at boot
 
 Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named `ssh` in the root folder of the SD card
 
@@ -127,37 +127,6 @@ Here, I am setting my locale to en_US.UTF-8. If you are in a different country y
     sudo apt-get update  #update database
     sudo apt-get upgrade #update userspace (this can take a long time)
     sudo reboot          #reboot
-
-## Checking your Raspian, hardware, and firmware
-
-Checking your Raspian version
-
-	cat /etc/os-release
-	
-Returns
-
-	PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
-	NAME="Raspbian GNU/Linux"
-	VERSION_ID="9"
-	VERSION="9 (stretch)"
-	ID=raspbian
-	ID_LIKE=debian
-
-Checking your Raspberry Pi version (the hardware)
-
-	cat /proc/device-tree/model
-	
-Returns
-
-	Raspberry Pi 3 Model B Rev 1.2
-
-Checking your firmware (pretty cryptic)
-
-	uname -a
-
-Returns
-
-	Linux pi_bplus 4.14.34+ #1110 Mon Apr 16 14:51:42 BST 2018 armv6l GNU/Linux
 
 ## Setup the network
 
@@ -240,6 +209,18 @@ Add the following
 	Public = yes
 	Guest ok = no
 
+	# this assumes the Pi has a /home/pi/video folder
+	[video]
+	Comment = Pi shared folder
+	Path = /home/pi/video
+	Browseable = yes
+	Writeable = yes
+	only guest = no
+	create mask = 0777
+	directory mask = 0777
+	Public = yes
+	Guest ok = no
+
 Add a password
 
 	sudo smbpasswd -a pi
@@ -248,15 +229,51 @@ Restart samba
 
 	sudo /etc/init.d/samba restart
 	
-Test the server from another machine on the network. On a windows machine, mount the fileserver with `smb:\\[piIP]` where [piIP] is the IP address of your pi.
+Test the server from another machine on the network. On a windows machine, mount the fileserver with `smb:\\[piIP]` where [piIP] is the IP address of your pi. You should see two mount points, `share` and `video`.
 
-## Startup tweet
+## Mounting a USB drive
 
-Have the Pi send a tweet with its IP when it boots. See [this blog post][startuptweeter] for instructions.
-	
-## Startup mailer
+When you plugin a USB drive, it will not be automatically detected. This needs to be configured manually, please see [mounting a usb drive][mounting-a-usb-drive] for instructions.
+
+## Startup email and tweet
+
+It is useful to have the Pi send notifications when it boots. Please see the [startupnotify][startupnotify] Github repository.
+
+<strike>Have the Pi send a tweet with its IP when it boots. See [this blog post][startuptweeter] for instructions.
 
 Have the Pi send an email with its IP address when it boots. See [this blog post][startupmailer] for instructions. An example python script is here, [startup_mailer.py][startupmailer]
+</strike>
+
+## Checking your Raspian, hardware, and firmware
+
+Checking your Raspian version
+
+	cat /etc/os-release
+	
+Returns
+
+	PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
+	NAME="Raspbian GNU/Linux"
+	VERSION_ID="9"
+	VERSION="9 (stretch)"
+	ID=raspbian
+	ID_LIKE=debian
+
+Checking your Raspberry Pi version (the hardware)
+
+	cat /proc/device-tree/model
+	
+Returns
+
+	Raspberry Pi 3 Model B Rev 1.2
+
+Checking your firmware (pretty cryptic)
+
+	uname -a
+
+Returns
+
+	Linux pi_bplus 4.14.34+ #1110 Mon Apr 16 14:51:42 BST 2018 armv6l GNU/Linux
 
 ## Have fun with your pi
 
@@ -270,3 +287,5 @@ Have the Pi send an email with its IP address when it boots. See [this blog post
 [uv4l]: http://blog.cudmore.io/post/2016/06/05/uv4l-on-Raspberry-Pi/
 [putty]: http://www.putty.org/
 [10]: https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address
+[startupnotify]: https://github.com/cudmore/startupnotify
+[mounting-a-usb-drive]: http://blog.cudmore.io/post/2015/05/05/mounting-a-usb-drive-at-boot/

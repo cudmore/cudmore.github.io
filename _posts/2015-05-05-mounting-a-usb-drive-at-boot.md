@@ -22,7 +22,7 @@ I have a Fat32 formatted USB drive and I want to have it mounted when the Raspbe
 
 #### Make a directory to mount your drive/volume into
 
-    sudo mkdir /home/pi/crap
+    sudo mkdir /home/pi/video
 
 #### Find the UUID of your drive
 
@@ -30,9 +30,9 @@ I have a Fat32 formatted USB drive and I want to have it mounted when the Raspbe
 
 	/dev/mmcblk0p1: SEC_TYPE="msdos" LABEL="boot" UUID="2654-BFC0" TYPE="vfat"
 	/dev/mmcblk0p2: UUID="548da502-ebde-45c0-9ab2-de5e2431ee0b" TYPE="ext4"
-	/dev/sda1: LABEL="CRAP" UUID="7CCD-19F2" TYPE="vfat"
+	/dev/sda1: LABEL="video" UUID="7CCD-19F2" TYPE="vfat"
 
-This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).
+This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘video’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).
 
 #### Edit your /etc/fstab file by appending a line for your dive
 
@@ -41,10 +41,10 @@ This tells me that my usb drive is in the device list at /dev/sda1, has the labe
 	proc            /proc           proc    defaults          0       0
 	/dev/mmcblk0p1  /boot           vfat    defaults          0       2
 	/dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
-	UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
+	UUID=7CCD-19F2 /home/pi/video    vfat    rw,umask=0      0       0
 	# a swapfile is not a swap partition, so no using swapon|off from here on, use $
 
-Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).
+Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/video. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).
 
 #### Remount Your drives and check the drive is mounted
 
@@ -52,7 +52,7 @@ Here, on the line starting with UUID, I have mounted a device using its UUID=7CC
 
 'ls' should show /video/ in blue to indicate it is mounted
 
-Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/crap’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.
+Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/video’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.
 
 #### Linux Commands
 
@@ -60,7 +60,7 @@ Important. When you make the directory where a drive will be mounted it MUST be 
 
 - List the Location, Label, UUID and Type of your USB devices: sudo blkid
 
-- Unmount a volume: sudo umount /home/pi/crap
+- Unmount a volume: sudo umount /home/pi/video
 
 - Mount everybody in fstab: sudo mount -a
 
