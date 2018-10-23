@@ -11,7 +11,7 @@ This is software I have developed since 2009. It is designed to allow me to perf
 
 <dd>
 <p>
-<A HREF="http://mapmanager.net" target="_blank">Map Manager</A>, software to annotate image volume time-series.
+<A HREF="https://mapmanager.net" target="_blank">Map Manager</A>, software to annotate image volume time-series.
 </p>
 </dd>
 
@@ -43,18 +43,27 @@ This is software I have developed since 2009. It is designed to allow me to perf
 </p>
 </dd>
 
+<!--
 <dd>
 <p>
 <A HREF="http://blog.cudmore.io/treadmill/" target="_blank">Treadmill</A>
 </p>
 </dd>
+-->
 
+<dd>
+<p>
+<A HREF="http://blog.cudmore.io/pie-doc/" target="_blank">PiE Server</A> - A Raspberry Pi Controlled Experiment (PiE)
+</p>
+</dd>
+
+<!--
 <dd>
 <p>
 <A HREF="http://blog.cudmore.io/homecage/" target="_blank">Homecage</A>
 </p>
 </dd>
-
+-->
 
 #### [Fiji](http://fiji.sc/Fiji) plugins
 
