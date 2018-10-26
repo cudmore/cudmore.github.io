@@ -4,7 +4,7 @@
  <title>Robert Cudmore</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-09-27T11:54:47-04:00</updated>
+ <updated>2018-10-26T15:53:13-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Robert Cudmore</name>
@@ -304,16 +304,16 @@ crontab -e
 
 &lt;h2 id=&quot;1-set-up-the-sd-card&quot;&gt;1) Set up the SD card&lt;/h2&gt;
 
-&lt;p&gt;You want a name brand &lt;code class=&quot;highlighter-rouge&quot;&gt;class 10&lt;/code&gt; card with about 16 GB.&lt;/p&gt;
+&lt;p&gt;You want a name brand ‘class 10’ card with about 16 GB.&lt;/p&gt;
 
 &lt;h3 id=&quot;11-download-image&quot;&gt;1.1) Download image&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/downloads/&quot;&gt;Download here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/downloads/raspbian/&quot;&gt;Download&lt;/a&gt; an image of the Raspian operating system. You want to ‘Download ZIP’ for ‘Raspian Stretch Lite’.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;As of May 21, 2016 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-05-10-raspbian-jessie&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;As of Nov 16, 2017 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2017-09-07-raspbian-stretch-lite&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;As of April 19, 2018 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2018-04-18-raspbian-stretch-lite&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;As of Oct 17, 2018 the image was named &lt;code class=&quot;highlighter-rouge&quot;&gt;2018-10-09-raspbian-stretch-lite&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;12-copy-the-downloaded-image-to-sd-card&quot;&gt;1.2) Copy the downloaded image to SD card&lt;/h3&gt;
@@ -324,9 +324,7 @@ crontab -e
 
 &lt;p&gt;Unzip the .zip file by right clicking the .zip file and selecting &lt;code class=&quot;highlighter-rouge&quot;&gt;Open With - Archive Utility.app (default)&lt;/code&gt;. This will yield a .img file.&lt;/p&gt;
 
-&lt;p&gt;Insert an SD card and use &lt;code class=&quot;highlighter-rouge&quot;&gt;DiskUtil&lt;/code&gt; to format it as Fat32. In OSX Sierra this is DiskUtil - Erase - Format as ‘MS-DOS (FAT)’.&lt;/p&gt;
-
-&lt;p&gt;Use DiskUtil to ‘unmount’ the SD card (don’t eject, you need to unmount)&lt;/p&gt;
+&lt;p&gt;Insert an SD card into the Mac and use &lt;code class=&quot;highlighter-rouge&quot;&gt;DiskUtil&lt;/code&gt; to format it as Fat32. You can find the &lt;code class=&quot;highlighter-rouge&quot;&gt;DiskUtility.app&lt;/code&gt; in /Applications/utilities. In OSX Sierra this is DiskUtil - Erase - Format as ‘MS-DOS (FAT)’.&lt;/p&gt;
 
 &lt;p&gt;Find the location of your SD card&lt;/p&gt;
 
@@ -342,20 +340,29 @@ diskutil list
    1:             Windows_FAT_32 NO NAME                 15.9 GB    disk4s1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4&lt;/p&gt;
+&lt;p&gt;Use DiskUtil to ‘unmount’ the SD card (don’t eject, you need to unmount) or use this command line (assuming your sd card is /dev/disk4)&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dd &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1m &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Users/cudmore/Downloads/2017-09-07-raspbian-stretch-lite.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/rdisk9
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;diskutil unmountDisk /dev/disk4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Note that this command requires &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/rdisk&lt;/code&gt; rather than &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/disk&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk4&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dd &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1m &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Users/cudmore/Downloads/2018-10-09-raspbian-stretch-lite.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/rdisk4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that this command requires &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/rdisk&lt;/code&gt; rather than &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/disk&lt;/code&gt;. Once the .img is copying to the SD card, you will not get any feedback from the command line. You can either wait for it to finish (this can vary from 1-3 minutes) and if you are impatient, you can see the progress with keyboard ctrl+t.&lt;/p&gt;
+
+&lt;p&gt;Be very careful with this command, if you have multiple hard-drives make sure you specify the SD card we are using. If you get it wrong you could wipe an entire hard-drive.&lt;/p&gt;
+
+&lt;p&gt;Once dd is done, the SD card should re-appear on the desktop named ‘boot’.&lt;/p&gt;
 
 &lt;h4 id=&quot;on-windows&quot;&gt;On Windows&lt;/h4&gt;
 
 &lt;p&gt;Follow install guides &lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/README.md&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;13-configure-the-pi-run-ssh-on-boot&quot;&gt;1.3) Configure the Pi run ssh on boot&lt;/h3&gt;
+&lt;h3 id=&quot;13-configure-the-pi-to-run-ssh-at-boot&quot;&gt;1.3) Configure the Pi to run ssh at boot&lt;/h3&gt;
 
-&lt;p&gt;Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in the root folder of the SD card&lt;/p&gt;
+&lt;p&gt;The SSH server allows you to login to the Pi with a command prompt. Raspbian usually has the SSH server disabled by default and it needs to be activated manually. To do this, create an empty file named &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in the root folder of the SD card.&lt;/p&gt;
 
 &lt;p&gt;On MacOS, open a terminal and type:&lt;/p&gt;
 
@@ -364,15 +371,20 @@ diskutil list
 
 &lt;h2 id=&quot;2-first-boot-of-the-pi&quot;&gt;2) First boot of the Pi&lt;/h2&gt;
 
-&lt;p&gt;Insert SD card into a Pi, connect Pi to a router with an ethernet cable and boot&lt;/p&gt;
+&lt;p&gt;The tricky part here is finding the Pi IP address. The easiest option is to use a home &lt;strong&gt;router&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Find IP address using router web interface, usually http://192.168.1.1&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Insert SD card into the Pi&lt;/li&gt;
+  &lt;li&gt;Connect the Pi to a &lt;strong&gt;router&lt;/strong&gt; with an ethernet cable&lt;/li&gt;
+  &lt;li&gt;Plug in the USB power on the Pi.&lt;/li&gt;
+  &lt;li&gt;Using another computer also plugged into the &lt;strong&gt;router&lt;/strong&gt;, find the IP address of the Pi using the &lt;strong&gt;router&lt;/strong&gt; web interface, usually http://192.168.1.1&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;21-login-via-ssh&quot;&gt;2.1) Login via ssh&lt;/h3&gt;
 
 &lt;h4 id=&quot;on-macos-1&quot;&gt;On MacOS&lt;/h4&gt;
 
-&lt;p&gt;In a terminal window, type the following, where &lt;code class=&quot;highlighter-rouge&quot;&gt;[piIP]&lt;/code&gt; is address of your Pi you found in the previous step.&lt;/p&gt;
+&lt;p&gt;In a terminal window, type the following, where &lt;code class=&quot;highlighter-rouge&quot;&gt;[piIP]&lt;/code&gt; is address of your Pi you found in the previous step. The Terminal.app is in /Applications/Utilities in macOS.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@[piIP]
 #password is raspberry
@@ -383,6 +395,8 @@ diskutil list
 &lt;p&gt;Download and use &lt;a href=&quot;http://www.putty.org/&quot;&gt;Putty&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;22-run-configuration-utility&quot;&gt;2.2) Run configuration utility&lt;/h3&gt;
+
+&lt;p&gt;On the command line, run the &lt;code class=&quot;highlighter-rouge&quot;&gt;raspi-config&lt;/code&gt; utility with:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo raspi-config
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -431,14 +445,139 @@ diskutil list
 
 &lt;p&gt;Selecting &lt;code class=&quot;highlighter-rouge&quot;&gt;3 Boot Options -&amp;gt; B1 Console&lt;/code&gt; is important. It seems Raspbian ships with a GUI desktop on by default and you want to turn it off.&lt;/p&gt;
 
-&lt;p&gt;Here, I am setting my locale to en_US.UTF-8. If you are in a different country you should set this as you want.&lt;/p&gt;
+&lt;p&gt;Here, we am setting my locale to ‘en_US.UTF-8 UTF-8’. If you are in a different country you should set this as you want.&lt;/p&gt;
+
+&lt;p&gt;Once finished, reboot the system when asked or manually from the command line with &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo reboot&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;23-update-the-system&quot;&gt;2.3) Update the system&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update  #update database
-sudo apt-get upgrade #update userspace (this can take a long time)
-sudo reboot          #reboot
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update --yes  #update database
+sudo apt-get upgrade --yes  #update userspace (this can take a long time)
+sudo reboot                #reboot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;setup-the-network&quot;&gt;Setup the network&lt;/h2&gt;
+
+&lt;p&gt;If you are connecting to a local router there is no additional setup required.&lt;/p&gt;
+
+&lt;p&gt;When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi. Ask your network administrator to authenticate based on the MAC address of the Raspberry Ethernet port. You can find this with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig eth0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Which returns something like this, telling us the MAC address is &lt;code class=&quot;highlighter-rouge&quot;&gt;b8:27:eb:aa:51:6d&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu 1500
+        inet 192.168.1.5  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::303f:6054:3ec9:3bfb  prefixlen 64  scopeid 0x20&amp;lt;link&amp;gt;
+        ether b8:27:eb:aa:51:6d  txqueuelen 1000  (Ethernet)
+        RX packets 1927  bytes 147022 (143.5 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1729  bytes 118135 (115.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;special-instructions-for-the-johns-hopkins-network&quot;&gt;Special instructions for The Johns Hopkins network&lt;/h3&gt;
+
+&lt;p&gt;At Hopkins, using a computer already on the Hopkins network, point a browser to &lt;a href=&quot;https://jhars.nts.jhu.edu&quot;&gt;https://jhars.nts.jhu.edu&lt;/a&gt; and click ‘Logon to JARS’, enter your Hopkins login/password, and then “Register For a Fixed IP Address by Subnet”. Be careful as different ethernet wall jacks have different subnets. The subnet is the 3rd number in an IP address. For example 10.16.80.31 has subnet 80. If you do not know the subnet of where you are plugging into, plugin a spare laptop and figure out the subnet.&lt;/p&gt;
+
+&lt;h2 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (AFP)&lt;/h2&gt;
+
+&lt;p&gt;This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install netatalk --yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section. The Pi can be manually mounted from MacOS by going to &lt;code class=&quot;highlighter-rouge&quot;&gt;Go - Connect To Server...&lt;/code&gt; and entering &lt;code class=&quot;highlighter-rouge&quot;&gt;afp://[piIP]&lt;/code&gt; where [piIP] is the IP address of your Pi.&lt;/p&gt;
+
+&lt;h3 id=&quot;change-the-default-name-of-your-pi-in-netatalk-optional&quot;&gt;Change the default name of your Pi in netatalk (optional)&lt;/h3&gt;
+
+&lt;p&gt;When you mount the pi on MacOS, it will mount as &lt;code class=&quot;highlighter-rouge&quot;&gt;Home Directory&lt;/code&gt; and the space in ‘Home Directory’ can cause problems. Change the name to something like ‘pi3’.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/&quot;&gt;this blog post&lt;/a&gt; to change the name of the mount point from ‘Home Directory’.&lt;/p&gt;
+
+&lt;p&gt;In the following &lt;code class=&quot;highlighter-rouge&quot;&gt;the_name_you_want&lt;/code&gt; should be changed to the name you want. One good strategy is to use the hostname.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# stop netatalk
+sudo /etc/init.d/netatalk stop
+
+# edit config file
+sudo pico /etc/netatalk/AppleVolumes.default
+
+# change this one line
+
+# By default all users have access to their home directories.
+#~/                     &quot;Home Directory&quot;
+~/                      &quot;the_name_you_want&quot;
+
+# restart netatalk
+sudo /etc/init.d/netatalk start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When using the &lt;code class=&quot;highlighter-rouge&quot;&gt;pico&lt;/code&gt; editor, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+x&lt;/code&gt; to save and quit, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+w&lt;/code&gt; to search, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+v&lt;/code&gt; to page down. Remember, the &lt;code class=&quot;highlighter-rouge&quot;&gt;pico&lt;/code&gt; editor does not respond to mouse clicks, you need to move the cursor around with arrow keys.&lt;/p&gt;
+
+&lt;h2 id=&quot;samba-smb&quot;&gt;Samba (SMB)&lt;/h2&gt;
+
+&lt;p&gt;This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install samba samba-common-bin --yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/samba/smb.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/samba/smb.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Copy and paste the following to the end of the file&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[share]
+Comment = Pi shared folder
+Path = /home/pi
+Browseable = yes
+Writeable = yes
+only guest = no
+create mask = 0777
+directory mask = 0777
+Public = yes
+Guest ok = no
+
+# this assumes the Pi has a /home/pi/video folder
+[video]
+Comment = Pi shared folder
+Path = /home/pi/video
+Browseable = yes
+Writeable = yes
+only guest = no
+create mask = 0777
+directory mask = 0777
+Public = yes
+Guest ok = no
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add a password&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo smbpasswd -a pi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Restart samba&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/init.d/samba restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Test the server from another machine on the network. On a windows machine, mount the fileserver with &lt;code class=&quot;highlighter-rouge&quot;&gt;smb:\\[piIP]&lt;/code&gt; where [piIP] is the IP address of your pi. You should see two mount points, &lt;code class=&quot;highlighter-rouge&quot;&gt;share&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;video&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;mounting-a-usb-drive&quot;&gt;Mounting a USB drive&lt;/h2&gt;
+
+&lt;p&gt;When you plugin a USB drive, it will not be automatically detected. This needs to be configured manually, please see &lt;a href=&quot;http://blog.cudmore.io/post/2015/05/05/mounting-a-usb-drive-at-boot/&quot;&gt;mounting a usb drive&lt;/a&gt; for instructions.&lt;/p&gt;
+
+&lt;h2 id=&quot;startup-email-and-tweet&quot;&gt;Startup email and tweet&lt;/h2&gt;
+
+&lt;p&gt;It is useful to have the Pi send notifications when it boots. Please see the &lt;a href=&quot;https://github.com/cudmore/startupnotify&quot;&gt;startupnotify&lt;/a&gt; Github repository.&lt;/p&gt;
+
+&lt;strike&gt;Have the Pi send a tweet with its IP when it boots. See [this blog post][startuptweeter] for instructions.
+
+Have the Pi send an email with its IP address when it boots. See [this blog post][startupmailer] for instructions. An example python script is here, [startup_mailer.py][startupmailer]
+&lt;/strike&gt;
 
 &lt;h2 id=&quot;checking-your-raspian-hardware-and-firmware&quot;&gt;Checking your Raspian, hardware, and firmware&lt;/h2&gt;
 
@@ -476,108 +615,6 @@ ID_LIKE=debian
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Linux pi_bplus 4.14.34+ #1110 Mon Apr 16 14:51:42 BST 2018 armv6l GNU/Linux
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;setup-the-network&quot;&gt;Setup the network&lt;/h2&gt;
-
-&lt;p&gt;If you are connecting to a local router there is no additional setup required.&lt;/p&gt;
-
-&lt;p&gt;When on a university network (At least the Hopkins network), it is strongly suggested to use hard wiring with an ethernet cable rather than relying on wifi. Ask your network administrator to authenticate based on the MAC address of the Raspberry Ethernet port. You can find this with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig eth0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Which returns something like this, telling us the MAC address is &lt;code class=&quot;highlighter-rouge&quot;&gt;b8:27:eb:aa:51:6d&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu 1500
-        inet 192.168.1.5  netmask 255.255.255.0  broadcast 192.168.1.255
-        inet6 fe80::303f:6054:3ec9:3bfb  prefixlen 64  scopeid 0x20&amp;lt;link&amp;gt;
-        ether b8:27:eb:aa:51:6d  txqueuelen 1000  (Ethernet)
-        RX packets 1927  bytes 147022 (143.5 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 1729  bytes 118135 (115.3 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;apple-file-protocol-afp&quot;&gt;Apple-File-Protocol (AFP)&lt;/h2&gt;
-
-&lt;p&gt;This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install netatalk
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once netatalk is installed, the Raspberry will show up in the Mac Finder ‘Shared’ section. The Pi can be manually mounted from MacOS by going to &lt;code class=&quot;highlighter-rouge&quot;&gt;Go - Connect To Server...&lt;/code&gt; and entering &lt;code class=&quot;highlighter-rouge&quot;&gt;afp://[piIP]&lt;/code&gt; where [piIP] is the IP address of your Pi.&lt;/p&gt;
-
-&lt;h3 id=&quot;change-the-default-name-of-your-pi-in-netatalk-optional&quot;&gt;Change the default name of your Pi in netatalk (optional)&lt;/h3&gt;
-
-&lt;p&gt;When you mount the pi on MacOS, it will mount as &lt;code class=&quot;highlighter-rouge&quot;&gt;Home Directory&lt;/code&gt; and the space in ‘Home Directory’ can cause problems. Change the name to something like ‘pi3’.&lt;/p&gt;
-
-&lt;p&gt;See &lt;a href=&quot;http://blog.cudmore.io/post/2015/06/07/Changing-default-mount-in-Apple-File-Sharing/&quot;&gt;this blog post&lt;/a&gt; to change the name of the mount point from ‘Home Directory’.&lt;/p&gt;
-
-&lt;p&gt;In the following &lt;code class=&quot;highlighter-rouge&quot;&gt;the_name_you_want&lt;/code&gt; should be changed to the name you want.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# stop netatalk
-sudo /etc/init.d/netatalk stop
-
-# edit config file
-sudo pico /etc/netatalk/AppleVolumes.default
-
-# change this one line
-
-# By default all users have access to their home directories.
-#~/                     &quot;Home Directory&quot;
-~/                      &quot;the_name_you_want&quot;
-
-# restart netatalk
-sudo /etc/init.d/netatalk start
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;When using the &lt;code class=&quot;highlighter-rouge&quot;&gt;pico&lt;/code&gt; editor, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+x&lt;/code&gt; to save and quit, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+w&lt;/code&gt; to search, &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+v&lt;/code&gt; to page down. Remember, the &lt;code class=&quot;highlighter-rouge&quot;&gt;pico&lt;/code&gt; editor does not respond to mouse clicks, you need to move the cursor around with arrow keys.&lt;/p&gt;
-
-&lt;h2 id=&quot;samba-smb&quot;&gt;Samba (SMB)&lt;/h2&gt;
-
-&lt;p&gt;This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install samba samba-common-bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/samba/smb.conf&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pico /etc/samba/smb.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Add the following&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[share]
-Comment = Pi shared folder
-Path = /home/pi
-Browseable = yes
-Writeable = yes
-only guest = no
-create mask = 0777
-directory mask = 0777
-Public = yes
-Guest ok = no
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Add a password&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo smbpasswd -a pi
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Restart samba&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/init.d/samba restart
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Test the server from another machine on the network. On a windows machine, mount the fileserver with &lt;code class=&quot;highlighter-rouge&quot;&gt;smb:\\[piIP]&lt;/code&gt; where [piIP] is the IP address of your pi.&lt;/p&gt;
-
-&lt;h2 id=&quot;startup-tweet&quot;&gt;Startup tweet&lt;/h2&gt;
-
-&lt;p&gt;Have the Pi send a tweet with its IP when it boots. See &lt;a href=&quot;http://blog.cudmore.io/post/2017/10/27/Raspberry-startup-tweet/&quot;&gt;this blog post&lt;/a&gt; for instructions.&lt;/p&gt;
-
-&lt;h2 id=&quot;startup-mailer&quot;&gt;Startup mailer&lt;/h2&gt;
-
-&lt;p&gt;Have the Pi send an email with its IP address when it boots. See &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;this blog post&lt;/a&gt; for instructions. An example python script is here, &lt;a href=&quot;https://github.com/cudmore/cudmore.github.io/blob/master/_site/downloads/startup_mailer.py&quot;&gt;startup_mailer.py&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;have-fun-with-your-pi&quot;&gt;Have fun with your pi&lt;/h2&gt;
 
@@ -3343,7 +3380,7 @@ Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n 
 
 &lt;h4 id=&quot;make-a-directory-to-mount-your-drivevolume-into&quot;&gt;Make a directory to mount your drive/volume into&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mkdir /home/pi/crap
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mkdir /home/pi/video
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;find-the-uuid-of-your-drive&quot;&gt;Find the UUID of your drive&lt;/h4&gt;
@@ -3352,10 +3389,10 @@ Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n 
 
 /dev/mmcblk0p1: SEC_TYPE=&quot;msdos&quot; LABEL=&quot;boot&quot; UUID=&quot;2654-BFC0&quot; TYPE=&quot;vfat&quot;
 /dev/mmcblk0p2: UUID=&quot;548da502-ebde-45c0-9ab2-de5e2431ee0b&quot; TYPE=&quot;ext4&quot;
-/dev/sda1: LABEL=&quot;CRAP&quot; UUID=&quot;7CCD-19F2&quot; TYPE=&quot;vfat&quot;
+/dev/sda1: LABEL=&quot;video&quot; UUID=&quot;7CCD-19F2&quot; TYPE=&quot;vfat&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘crap’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).&lt;/p&gt;
+&lt;p&gt;This tells me that my usb drive is in the device list at /dev/sda1, has the label ‘video’, a UUID of ’7CCD-19F2′, and is formatted as VFAT (e.g. FAT32).&lt;/p&gt;
 
 &lt;h4 id=&quot;edit-your-etcfstab-file-by-appending-a-line-for-your-dive&quot;&gt;Edit your /etc/fstab file by appending a line for your dive&lt;/h4&gt;
 
@@ -3364,11 +3401,11 @@ Bus 001 Device 005: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n 
 proc            /proc           proc    defaults          0       0
 /dev/mmcblk0p1  /boot           vfat    defaults          0       2
 /dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
-UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
+UUID=7CCD-19F2 /home/pi/video    vfat    rw,umask=0      0       0
 # a swapfile is not a swap partition, so no using swapon|off from here on, use $
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/crap. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).&lt;/p&gt;
+&lt;p&gt;Here, on the line starting with UUID, I have mounted a device using its UUID=7CCD-19F2 into a folder /home/pi/video. This is a Fat32 formatted drive (vfat) and everybody has read-write permissions (rw,umask=0). This recipe will not work for other types of formatted drives (Ext3, NTFS, etc).&lt;/p&gt;
 
 &lt;h4 id=&quot;remount-your-drives-and-check-the-drive-is-mounted&quot;&gt;Remount Your drives and check the drive is mounted&lt;/h4&gt;
 
@@ -3377,7 +3414,7 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
 
 &lt;p&gt;‘ls’ should show /video/ in blue to indicate it is mounted&lt;/p&gt;
 
-&lt;p&gt;Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/crap’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.&lt;/p&gt;
+&lt;p&gt;Important. When you make the directory where a drive will be mounted it MUST be done with ‘sudo mkdir /home/pi/video’. You need ‘sudo’ so fstab can mount it on boot, the final permissions of this mounted drive are set in the drives fstab line. In this case, ‘rw,umask=0′.&lt;/p&gt;
 
 &lt;h4 id=&quot;linux-commands&quot;&gt;Linux Commands&lt;/h4&gt;
 
@@ -3389,7 +3426,7 @@ UUID=7CCD-19F2 /home/pi/crap    vfat    rw,umask=0      0       0
     &lt;p&gt;List the Location, Label, UUID and Type of your USB devices: sudo blkid&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Unmount a volume: sudo umount /home/pi/crap&lt;/p&gt;
+    &lt;p&gt;Unmount a volume: sudo umount /home/pi/video&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Mount everybody in fstab: sudo mount -a&lt;/p&gt;

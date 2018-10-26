@@ -16,9 +16,8 @@ You want a name brand 'class 10' card with about 16 GB.
 
 ### 1.1) Download image
 
- [Download][downloadraspian] an image of the Raspian operating system. You want to download 'Raspian Stretch Lite'.
+ [Download][downloadraspian] an image of the Raspian operating system. You want to 'Download ZIP' for 'Raspian Stretch Lite'.
 
- - As of May 21, 2016 the image was named `2016-05-10-raspbian-jessie`.
  - As of Nov 16, 2017 the image was named `2017-09-07-raspbian-stretch-lite`.
  - As of April 19, 2018 the image was named `2018-04-18-raspbian-stretch-lite`.
  - As of Oct 17, 2018 the image was named `2018-10-09-raspbian-stretch-lite`.
@@ -49,7 +48,7 @@ You should see something like this.
    1:             Windows_FAT_32 NO NAME                 15.9 GB    disk4s1
 ```
 
-Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount) or use this command line
+Use DiskUtil to 'unmount' the SD card (don't eject, you need to unmount) or use this command line (assuming your sd card is /dev/disk4)
 
 ```
 diskutil unmountDisk /dev/disk4
@@ -61,9 +60,11 @@ Copy the .img file to the SD card. Assuming your SD card was listed as /dev/disk
 sudo dd bs=1m if=/Users/cudmore/Downloads/2018-10-09-raspbian-stretch-lite.img of=/dev/rdisk4
 ```
 
-Note that this command requires `/dev/rdisk` rather than `/dev/disk`.
+Note that this command requires `/dev/rdisk` rather than `/dev/disk`. Once the .img is copying to the SD card, you will not get any feedback from the command line. You can either wait for it to finish (this can vary from 1-3 minutes) and if you are impatient, you can see the progress with keyboard ctrl+t.
 
 Be very careful with this command, if you have multiple hard-drives make sure you specify the SD card we are using. If you get it wrong you could wipe an entire hard-drive.
+
+Once dd is done, the SD card should re-appear on the desktop named 'boot'.
 
 #### On Windows
 
@@ -84,7 +85,7 @@ The tricky part here is finding the Pi IP address. The easiest option is to use 
  - Insert SD card into the Pi
  - Connect the Pi to a **router** with an ethernet cable
  - Plug in the USB power on the Pi.
- - Find the IP address of the Pi using the **router** web interface, usually http://192.168.1.1
+ - Using another computer also plugged into the **router**, find the IP address of the Pi using the **router** web interface, usually http://192.168.1.1
 
 ### 2.1) Login via ssh
 
@@ -100,6 +101,8 @@ In a terminal window, type the following, where `[piIP]` is address of your Pi y
 Download and use [Putty][putty].
     
 ### 2.2) Run configuration utility
+
+On the command line, run the `raspi-config` utility with:
 
 ```
 sudo raspi-config
@@ -126,13 +129,15 @@ The name and location of these options change as Raspbian gets updated. This is 
      
 Selecting `3 Boot Options -> B1 Console` is important. It seems Raspbian ships with a GUI desktop on by default and you want to turn it off.
 
-Here, I am setting my locale to en_US.UTF-8. If you are in a different country you should set this as you want.
+Here, we am setting my locale to 'en_US.UTF-8 UTF-8'. If you are in a different country you should set this as you want.
+
+Once finished, reboot the system when asked or manually from the command line with `sudo reboot`.
 
 ### 2.3) Update the system
 
-    sudo apt-get update  #update database
-    sudo apt-get upgrade #update userspace (this can take a long time)
-    sudo reboot          #reboot
+    sudo apt-get update --yes  #update database
+    sudo apt-get upgrade --yes  #update userspace (this can take a long time)
+    sudo reboot                #reboot
 
 ## Setup the network
 
@@ -157,14 +162,16 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-At Hopkins, log into the [https://jhars.nts.jhu.edu](https://jhars.nts.jhu.edu) website from any computer and use the “Register For a Fixed IP Address by Subnet”.
+### Special instructions for The Johns Hopkins network
+
+At Hopkins, using a computer already on the Hopkins network, point a browser to [https://jhars.nts.jhu.edu](https://jhars.nts.jhu.edu) and click 'Logon to JARS', enter your Hopkins login/password, and then “Register For a Fixed IP Address by Subnet”. Be careful as different ethernet wall jacks have different subnets. The subnet is the 3rd number in an IP address. For example 10.16.80.31 has subnet 80. If you do not know the subnet of where you are plugging into, plugin a spare laptop and figure out the subnet.
 
 ## Apple-File-Protocol (AFP)
 
 This will make the Pi an apple-file-protocol file-server that can be accessed in MacOS.
 
 ```
-sudo apt-get install netatalk
+sudo apt-get install netatalk --yes
 ```
 
 Once netatalk is installed, the Raspberry will show up in the Mac Finder 'Shared' section. The Pi can be manually mounted from MacOS by going to `Go - Connect To Server...` and entering `afp://[piIP]` where [piIP] is the IP address of your Pi.
@@ -175,7 +182,7 @@ When you mount the pi on MacOS, it will mount as `Home Directory` and the space 
 
 See [this blog post][afpmountpoint] to change the name of the mount point from 'Home Directory'.    
 
-In the following `the_name_you_want` should be changed to the name you want.
+In the following `the_name_you_want` should be changed to the name you want. One good strategy is to use the hostname.
 
     # stop netatalk
     sudo /etc/init.d/netatalk stop
@@ -198,13 +205,13 @@ When using the `pico` editor, `ctrl+x` to save and quit, `ctrl+w` to search, `ct
 
 This will make the Pi a Samba (SMB) file server that can be accessed from both Windows and MacOS.
 
-    sudo apt-get install samba samba-common-bin
+    sudo apt-get install samba samba-common-bin --yes
 
 Edit `/etc/samba/smb.conf`
 
 	sudo pico /etc/samba/smb.conf
 
-Add the following
+Copy and paste the following to the end of the file
 
 	[share]
 	Comment = Pi shared folder
