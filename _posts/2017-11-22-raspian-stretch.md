@@ -89,6 +89,14 @@ The tricky part here is finding the Pi IP address. The easiest option is to use 
 
 ### 2.1) Login via ssh
 
+When you first login with ssh, you should see something like this and should answer yes with 'yes'.
+
+```
+The authenticity of host '192.168.1.6 (192.168.1.6)' can't be established.
+ECDSA key fingerprint is SHA256:OGOP7N89ckn1krAxx1AwwqRhwmdBkJ2YIWl3GOlgQNw.
+Are you sure you want to continue connecting (yes/no)?
+```
+
 #### On MacOS
 
 In a terminal window, type the following, where `[piIP]` is address of your Pi you found in the previous step. The Terminal.app is in /Applications/Utilities in macOS.
