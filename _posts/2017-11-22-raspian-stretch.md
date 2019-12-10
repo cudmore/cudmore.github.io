@@ -16,8 +16,9 @@ You want a name brand 'class 10' card with about 16 GB.
 
 ### 1.1) Download image
 
- [Download][downloadraspian] an image of the Raspian operating system. You want to 'Download ZIP' for 'Raspian Stretch Lite'.
+ [Download][downloadraspian] an image of the Raspian Stretch operating system. You want to 'Download ZIP' for 'Raspian Stretch Lite'. Raspian Stretch can be used on Pi computers up to and including verison 3. Stretch **will not work** on a Raspberry 4. A recipe for Raspberry 4 is coming soon.
 
+ - As of Dec 9, 2019 the Stretch image can be downloaded from: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2019-04-09/2019-04-08-raspbian-stretch-lite.zip
  - As of Nov 16, 2017 the image was named `2017-09-07-raspbian-stretch-lite`.
  - As of April 19, 2018 the image was named `2018-04-18-raspbian-stretch-lite`.
  - As of Oct 17, 2018 the image was named `2018-10-09-raspbian-stretch-lite`.
