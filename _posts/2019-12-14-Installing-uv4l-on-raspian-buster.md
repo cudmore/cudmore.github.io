@@ -62,7 +62,7 @@ http://192.168.1.9:8080/stream
 
 ### Troubleshooting
 
-Sometimes you get multiple `/dev/video0`, `/dev/video1`, `/dev/video10` excetera devices. Feal free to remove the with `sudo rm /vev/video*` and then maybe restart with `sudo reboot`.
+Sometimes you get multiple `/dev/video0`, `/dev/video1`, `/dev/video10` excetera devices. Feel free to remove them with `sudo rm /dev/video*` and then maybe restart with `sudo reboot`.
 
 ### Details:
 
