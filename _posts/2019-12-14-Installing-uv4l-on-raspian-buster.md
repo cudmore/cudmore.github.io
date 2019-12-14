@@ -5,8 +5,6 @@ category: post
 date: 2019-12-14 01:01:06
 ---
 
-## Install uv4l on Buster
-
 This is a recipe to install uv4l on a Raspberry 4 computer with Raspian Buster. Not much has changed since Raspian Stretch. As this recipe is followed, please pay attention to the details!
 
 After this install, run `uv4l` as follows:
