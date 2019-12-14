@@ -5,9 +5,11 @@ category: post
 date: 2019-12-14 01:02:06
 ---
 
+This is a recipe to install NetATalk (AFP) on a Raspberry Pi with Raspian Buster.
+
 ### Netatalk, aka apple-file-protocol (AFP)
 
-Thanks to the following for the solution: [https://www.raspberrypi.org/forums/viewtopic.php?t=243785]
+Thanks to the following for the solution: [https://www.raspberrypi.org/forums/viewtopic.php?t=243785][https://www.raspberrypi.org/forums/viewtopic.php?t=243785]
 
 The  configuration script is now in `/etc/netatalk/afp.conf`.
 
