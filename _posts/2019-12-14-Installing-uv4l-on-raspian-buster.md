@@ -54,7 +54,7 @@ sudo apt-get install uv4l uv4l-server uv4l-raspicam
 uv4l --driver raspicam --auto-video_nr --encoding h264 --width 1280 --height 720 --enable-server on
 ```
 
-And then view the stream in a browser with (pleae note your IP address might be different)
+And then view the stream in a browser with (please note your IP address might be different)
 
 ```
 http://192.168.1.9:8080/stream

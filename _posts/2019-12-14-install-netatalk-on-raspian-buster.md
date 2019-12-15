@@ -41,4 +41,6 @@ Restart netatalk
 sudo /etc/init.d/netatalk stop
 ```
 
-Now, on macOS, if you mount with 'Go - Connect TO Server' and enter `afp://[IP]` whre `[IP]` is the IP address of your Buster Pi, the Pi will mount on your desktop as `hostname` where hostname is the name you specify in `sudo raspi-config`.
+Now, on macOS, if you mount with 'Go - Connect To Server' and enter `afp://[IP]` where `[IP]` is the IP address of your Buster Pi, the Pi will mount on your desktop with its `hostname`.
+
+Remember, the hostname can be set with 'sudo raspi-config' and selecting Network Options - Hostname.
