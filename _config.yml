@@ -15,7 +15,7 @@ permalink:        pretty
 title:            Robert Cudmore
 tagline:          ''
 description:      'Robert Cudmore Blog'
-url:              http://blog.cudmore.io
+url:              http://cudmore.github.io
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
